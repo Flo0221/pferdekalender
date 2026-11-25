@@ -284,7 +284,25 @@ class CareRepository {
   // ------------------------------------------------------------- Erinnerungen
 
   /// Offene Einträge mit Erinnerungen aktiver Pferde (für den Abgleich).
-  Stream<List<ReminderCandidate>> watchReminderCandidates() {
+  Stream<List<ReminderCandidate>> watchReminderCandidates() =>
+      _watchOpen(onlyWithReminders: true);
+
+  /// Alle offenen Einträge aktiver Pferde (Web: Heute-Karte, Kalender-Export).
+  Stream<List<ReminderCandidate>> watchOpenEvents() =>
+      _watchOpen(onlyWithReminders: false);
+
+  /// Einmalige Abfrage aller offenen Einträge aktiver Pferde.
+  Future<List<ReminderCandidate>> getOpenEvents() =>
+      _openQuery(onlyWithReminders: false).get().then(_toCandidates);
+
+  Stream<List<ReminderCandidate>> _watchOpen({
+    required bool onlyWithReminders,
+  }) =>
+      _openQuery(onlyWithReminders: onlyWithReminders)
+          .watch()
+          .map(_toCandidates);
+
+  Selectable<QueryRow> _openQuery({required bool onlyWithReminders}) {
     final query = _db.customSelect(
       'SELECT e.*, h.name AS horse_name, h.call_name AS horse_call_name, '
       't.name AS type_name, '
@@ -294,7 +312,7 @@ class CareRepository {
       'JOIN horses h ON h.id = e.horse_id '
       'JOIN care_event_types t ON t.id = e.type_id '
       'WHERE e.done = 0 AND h.archived_at IS NULL '
-      'AND EXISTS (SELECT 1 FROM care_reminders r WHERE r.event_id = e.id)',
+      '${onlyWithReminders ? 'AND EXISTS (SELECT 1 FROM care_reminders r WHERE r.event_id = e.id)' : ''}',
       readsFrom: {
         _db.careEvents,
         _db.careReminders,
@@ -302,23 +320,23 @@ class CareRepository {
         _db.careEventTypes,
       },
     );
-    return query.watch().map(
-      (rows) => [
-        for (final row in rows)
-          ReminderCandidate(
-            event: _toEvent(
-              _db.careEvents.map(row.data),
-              row.readNullable<String>(_offsetsColumn),
-            ),
-            horseName: _displayName(
-              row.read<String>('horse_name'),
-              row.readNullable<String>('horse_call_name'),
-            ),
-            typeName: row.read<String>('type_name'),
-          ),
-      ],
-    );
+    return query;
   }
+
+  List<ReminderCandidate> _toCandidates(List<QueryRow> rows) => [
+    for (final row in rows)
+      ReminderCandidate(
+        event: _toEvent(
+          _db.careEvents.map(row.data),
+          row.readNullable<String>(_offsetsColumn),
+        ),
+        horseName: _displayName(
+          row.read<String>('horse_name'),
+          row.readNullable<String>('horse_call_name'),
+        ),
+        typeName: row.read<String>('type_name'),
+      ),
+  ];
 
   Stream<List<BirthdayCandidate>> watchBirthdayCandidates() =>
       (_db.select(_db.horses)..where(

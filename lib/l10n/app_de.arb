@@ -1412,5 +1412,24 @@
   "webInstallWhy": "Browser-Tab und installierte App haben getrennte Speicher. Daten, die du hier im Browser-Tab einträgst, siehst du in der installierten App nicht.",
   "webInstallOtherBrowser": "In Chrome/Edge: Drei-Punkte-Menü → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.",
   "webUpdateAvailable": "Neue Version verfügbar – jetzt neu laden",
-  "webUpdateReload": "Neu laden"
+  "webUpdateReload": "Neu laden",
+  "icsAddToCalendar": "In Kalender übernehmen",
+  "icsExportUpcoming": "Nächste 3 Monate in Kalender",
+  "icsExportUpcomingHint": "Alle offenen Pflegetermine aller Pferde als .ics-Datei – mit den eingestellten Erinnerungen. Erneut übernehmen aktualisiert die Termine.",
+  "icsExportNone": "In den nächsten 3 Monaten sind keine offenen Termine geplant.",
+  "icsExportDone": "{count, plural, =1{1 Termin} other{{count} Termine}} exportiert – im Kalender „Hinzufügen“ wählen.",
+  "@icsExportDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "icsAlarmText": "Pferdekalender-Erinnerung",
+  "todayCardTitle": "Auf einen Blick",
+  "todayOverdue": "Überfällig",
+  "todayToday": "Heute",
+  "todayNext7": "Nächste 7 Tage",
+  "todayNothing": "Heute und in den nächsten 7 Tagen steht nichts an.",
+  "todayShowAll": "Alle anzeigen"
 }

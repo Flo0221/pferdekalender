@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../core/format/formatters.dart';
+import '../../../core/platform/web_env.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/time/calendar_grid.dart';
 import '../../../core/time/local_date.dart';
@@ -17,6 +18,7 @@ import '../domain/care_type.dart';
 import 'care_labels.dart';
 import 'care_providers.dart';
 import 'widgets/care_event_tile.dart';
+import 'widgets/care_today_card.dart';
 
 enum _View { calendar, upcoming, history }
 
@@ -109,6 +111,7 @@ class _PflegeScreenState extends ConsumerState<PflegeScreen> {
     if (events.isEmpty) {
       return ListView(
         children: [
+          ..._webHeader(events),
           _calendar(l10n, byDay),
           EmptyState(
             icon: Icons.healing_outlined,
@@ -121,6 +124,7 @@ class _PflegeScreenState extends ConsumerState<PflegeScreen> {
     return ListView(
       padding: const EdgeInsets.only(bottom: 96),
       children: [
+        ..._webHeader(events),
         _calendar(l10n, byDay),
         const Divider(height: 1),
         Padding(
@@ -140,6 +144,15 @@ class _PflegeScreenState extends ConsumerState<PflegeScreen> {
       ],
     );
   }
+
+  /// Web-App: Heute-Karte + Kalender-Export (Ersatz für Benachrichtigungen).
+  List<Widget> _webHeader(List<CareEvent> events) => [
+    if (ref.watch(webEnvProvider).isWeb)
+      CareTodayCard(
+        events: events,
+        onShowAll: () => setState(() => _view = _View.upcoming),
+      ),
+  ];
 
   Widget _calendar(
     AppLocalizations l10n,
@@ -173,11 +186,13 @@ class _PflegeScreenState extends ConsumerState<PflegeScreen> {
   Widget _upcomingView(AppLocalizations l10n, List<CareEvent> events) {
     final open = upcomingSorted(events);
     if (open.isEmpty) {
-      return EmptyState(
+      final empty = EmptyState(
         icon: Icons.event_available_outlined,
         title: l10n.careUpcomingEmpty,
         message: l10n.emptyPflegeMessage,
       );
+      final header = _webHeader(events);
+      return header.isEmpty ? empty : ListView(children: [...header, empty]);
     }
     final today = LocalDate.today();
     final overdue = open.where((e) => e.isOverdue(today)).toList();

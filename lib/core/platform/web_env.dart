@@ -35,6 +35,10 @@ abstract class WebEnv {
   /// Aktiviert die wartende Version und lädt die Seite neu.
   void applyUpdate();
 
+  /// Datei direkt herunterladen bzw. öffnen (Web). Für .ics bietet Safari
+  /// dann „Zum Kalender hinzufügen“ an. Native: nicht verfügbar.
+  Future<void> downloadFile(List<int> bytes, String fileName, String mimeType);
+
   /// App-Abzeichen (Badging API), 0 entfernt es. Wird still ignoriert,
   /// wenn der Browser es nicht kann.
   void setBadge(int count);

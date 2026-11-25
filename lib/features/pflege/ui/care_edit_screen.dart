@@ -16,6 +16,7 @@ import '../domain/care_type.dart';
 import '../domain/interval_defaults.dart';
 import '../domain/repeat_interval.dart';
 import 'care_actions.dart';
+import 'care_calendar_export.dart';
 import 'care_labels.dart';
 import 'care_providers.dart';
 
@@ -303,6 +304,14 @@ class _CareEditScreenState extends ConsumerState<CareEditScreen> {
       appBar: AppBar(
         title: Text(_isNew ? l10n.careNew : l10n.careEdit),
         actions: [
+          // Web: gespeicherten offenen Termin in den iPhone-Kalender.
+          if (_original case final o?
+              when !o.done && calendarExportAvailable(ref))
+            IconButton(
+              tooltip: l10n.icsAddToCalendar,
+              icon: const Icon(Icons.event_outlined),
+              onPressed: () => exportCareEventToCalendar(context, ref, o.id),
+            ),
           if (!_isNew)
             IconButton(
               tooltip: l10n.actionDelete,

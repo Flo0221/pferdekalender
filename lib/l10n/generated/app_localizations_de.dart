@@ -2363,4 +2363,51 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get webUpdateReload => 'Neu laden';
+
+  @override
+  String get icsAddToCalendar => 'In Kalender übernehmen';
+
+  @override
+  String get icsExportUpcoming => 'Nächste 3 Monate in Kalender';
+
+  @override
+  String get icsExportUpcomingHint =>
+      'Alle offenen Pflegetermine aller Pferde als .ics-Datei – mit den eingestellten Erinnerungen. Erneut übernehmen aktualisiert die Termine.';
+
+  @override
+  String get icsExportNone =>
+      'In den nächsten 3 Monaten sind keine offenen Termine geplant.';
+
+  @override
+  String icsExportDone(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Termine',
+      one: '1 Termin',
+    );
+    return '$_temp0 exportiert – im Kalender „Hinzufügen“ wählen.';
+  }
+
+  @override
+  String get icsAlarmText => 'Pferdekalender-Erinnerung';
+
+  @override
+  String get todayCardTitle => 'Auf einen Blick';
+
+  @override
+  String get todayOverdue => 'Überfällig';
+
+  @override
+  String get todayToday => 'Heute';
+
+  @override
+  String get todayNext7 => 'Nächste 7 Tage';
+
+  @override
+  String get todayNothing =>
+      'Heute und in den nächsten 7 Tagen steht nichts an.';
+
+  @override
+  String get todayShowAll => 'Alle anzeigen';
 }

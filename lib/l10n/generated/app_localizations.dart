@@ -3999,6 +3999,78 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Neu laden'**
   String get webUpdateReload;
+
+  /// No description provided for @icsAddToCalendar.
+  ///
+  /// In de, this message translates to:
+  /// **'In Kalender übernehmen'**
+  String get icsAddToCalendar;
+
+  /// No description provided for @icsExportUpcoming.
+  ///
+  /// In de, this message translates to:
+  /// **'Nächste 3 Monate in Kalender'**
+  String get icsExportUpcoming;
+
+  /// No description provided for @icsExportUpcomingHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle offenen Pflegetermine aller Pferde als .ics-Datei – mit den eingestellten Erinnerungen. Erneut übernehmen aktualisiert die Termine.'**
+  String get icsExportUpcomingHint;
+
+  /// No description provided for @icsExportNone.
+  ///
+  /// In de, this message translates to:
+  /// **'In den nächsten 3 Monaten sind keine offenen Termine geplant.'**
+  String get icsExportNone;
+
+  /// No description provided for @icsExportDone.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Termin} other{{count} Termine}} exportiert – im Kalender „Hinzufügen“ wählen.'**
+  String icsExportDone(int count);
+
+  /// No description provided for @icsAlarmText.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferdekalender-Erinnerung'**
+  String get icsAlarmText;
+
+  /// No description provided for @todayCardTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Auf einen Blick'**
+  String get todayCardTitle;
+
+  /// No description provided for @todayOverdue.
+  ///
+  /// In de, this message translates to:
+  /// **'Überfällig'**
+  String get todayOverdue;
+
+  /// No description provided for @todayToday.
+  ///
+  /// In de, this message translates to:
+  /// **'Heute'**
+  String get todayToday;
+
+  /// No description provided for @todayNext7.
+  ///
+  /// In de, this message translates to:
+  /// **'Nächste 7 Tage'**
+  String get todayNext7;
+
+  /// No description provided for @todayNothing.
+  ///
+  /// In de, this message translates to:
+  /// **'Heute und in den nächsten 7 Tagen steht nichts an.'**
+  String get todayNothing;
+
+  /// No description provided for @todayShowAll.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle anzeigen'**
+  String get todayShowAll;
 }
 
 class _AppLocalizationsDelegate

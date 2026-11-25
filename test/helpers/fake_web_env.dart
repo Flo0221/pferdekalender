@@ -46,6 +46,13 @@ class FakeWebEnv implements WebEnv {
   Stream<void> get onUpdateAvailable => _updates.stream;
   @override
   void applyUpdate() => applyUpdateCalls++;
+  final downloads = <(String, String, List<int>)>[];
+  @override
+  Future<void> downloadFile(
+    List<int> bytes,
+    String fileName,
+    String mimeType,
+  ) async => downloads.add((fileName, mimeType, bytes));
   @override
   void setBadge(int count) => badge = count;
 }

@@ -24,5 +24,11 @@ class NativeWebEnv implements WebEnv {
   @override
   void applyUpdate() {}
   @override
+  Future<void> downloadFile(
+    List<int> bytes,
+    String fileName,
+    String mimeType,
+  ) async => throw UnsupportedError('Nur im Web');
+  @override
   void setBadge(int count) {}
 }
