@@ -14,7 +14,7 @@
   "titleSettings": "Einstellungen",
   "actionSettings": "Einstellungen öffnen",
   "emptyPflegeTitle": "Noch keine Pflegetermine",
-  "emptyPflegeMessage": "Hier erscheinen bald Hufe, Wurmkuren, Impfungen und Tierarzttermine.",
+  "emptyPflegeMessage": "Lege Hufbearbeitung, Wurmkur, Impfung oder Tierarzttermine an. Mit Wiederholung plant die App den nächsten Termin automatisch.",
   "emptyTrainingTitle": "Noch kein Training geplant",
   "emptyTrainingMessage": "Hier erscheinen bald Trainingseinheiten und der Plan-Generator.",
   "emptyFutterTitle": "Noch kein Futterplan",
@@ -265,5 +265,281 @@
   "contactRole_stall": "Stall",
   "contactRole_besitzer": "Besitzer",
   "contactRole_notfall": "Notfallkontakt",
-  "contactRole_sonstige": "Sonstige"
+  "contactRole_sonstige": "Sonstige",
+  "emptyPflegeNoHorse": "Lege zuerst im Tab „Pferd“ ein Pferd an.",
+  "careViewCalendar": "Kalender",
+  "careViewUpcoming": "Anstehend",
+  "careViewHistory": "Historie",
+  "careAdd": "Eintrag hinzufügen",
+  "careNew": "Neuer Eintrag",
+  "careEdit": "Eintrag bearbeiten",
+  "careDayEmpty": "Keine Einträge an diesem Tag",
+  "careUpcomingEmpty": "Keine offenen Termine",
+  "careHistoryEmpty": "Noch keine erledigten Einträge",
+  "careFilterAll": "Alle Arten",
+  "careOverdue": "Überfällig",
+  "careOverdueSince": "überfällig seit {days, plural, =1{1 Tag} other{{days} Tagen}}",
+  "@careOverdueSince": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "careToday": "heute",
+  "careTomorrow": "morgen",
+  "careInDays": "in {days} Tagen",
+  "@careInDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "careFormatMonth": "Monat",
+  "careFormat2Weeks": "2 Wochen",
+  "careFormatWeek": "Woche",
+  "careDone": "Erledigt",
+  "carePlanned": "Geplant",
+  "careMarkDone": "Als erledigt markieren",
+  "careMarkOpen": "Wieder öffnen",
+  "careDoneDateTitle": "Wann wurde es erledigt?",
+  "careRecalcTitle": "Folgetermin neu berechnen?",
+  "careRecalcText": "Der Folgetermin steht auf dem {old}. Ab dem tatsächlichen Datum gerechnet wäre er am {neu}.",
+  "@careRecalcText": {
+    "placeholders": {
+      "old": {
+        "type": "String"
+      },
+      "neu": {
+        "type": "String"
+      }
+    }
+  },
+  "careRecalcYes": "Neu berechnen",
+  "careRecalcNo": "Beibehalten",
+  "careFollowUpCreated": "Folgetermin am {date} angelegt",
+  "@careFollowUpCreated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "careDeleteTitle": "Eintrag löschen?",
+  "careDeleteText": "Der Eintrag wird unwiderruflich gelöscht.",
+  "careDeleteWithFollowUp": "Auch den offenen Folgetermin am {date} löschen",
+  "@careDeleteWithFollowUp": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "careFieldType": "Art",
+  "careFieldDate": "Datum",
+  "careFieldTime": "Uhrzeit (optional)",
+  "careFieldTimeClear": "Uhrzeit entfernen",
+  "careFieldTitle": "Titel",
+  "careFieldPerson": "Person",
+  "careFieldHufschmied": "Hufschmied / Hufpfleger",
+  "careFieldTierarzt": "Tierarzt",
+  "careFieldCost": "Kosten in € (optional)",
+  "careFieldNotes": "Notiz",
+  "careFieldHufArt": "Bearbeitung",
+  "careFieldPraeparat": "Präparat",
+  "careFieldWirkstoff": "Wirkstoff",
+  "careFieldDosierung": "Dosierung / Menge",
+  "careFieldLabor": "Labor",
+  "careFieldEpg": "Ergebnis EpG (Eier pro Gramm)",
+  "careFieldErgebnis": "Ergebnis (Freitext)",
+  "careFieldImpfung": "Impfung",
+  "careFieldImpfungName": "Name der Impfung",
+  "careFieldImpfstoff": "Impfstoff / Charge",
+  "careFieldGrundimmunisierung": "Grundimmunisierung",
+  "careFieldDone": "Bereits erledigt",
+  "careSectionRepeat": "Nächster Termin",
+  "careRepeatNone": "Keine Wiederholung",
+  "careRepeatAfter": "Wiederholen nach",
+  "careRepeatValue": "Anzahl",
+  "careRepeatSuggestion": "Vorschlag: {interval}",
+  "@careRepeatSuggestion": {
+    "placeholders": {
+      "interval": {
+        "type": "String"
+      }
+    }
+  },
+  "careRepeatNextOn": "Folgetermin am {date}",
+  "@careRepeatNextOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "careSectionReminders": "Erinnerung",
+  "careReminderNone": "Keine Erinnerung",
+  "careReminderOnDay": "Am Tag",
+  "careReminderDaysBefore": "{days, plural, =1{1 Tag vorher} other{{days} Tage vorher}}",
+  "@careReminderDaysBefore": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "careReminderPermissionDenied": "Benachrichtigungen sind für die App ausgeschaltet. Erinnerungen werden gespeichert, aber erst angezeigt, wenn du sie in den Android-Einstellungen erlaubst.",
+  "unitDays": "{n, plural, =1{Tag} other{Tage}}",
+  "@unitDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "unitWeeks": "{n, plural, =1{Woche} other{Wochen}}",
+  "@unitWeeks": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "unitMonths": "{n, plural, =1{Monat} other{Monate}}",
+  "@unitMonths": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "unitYears": "{n, plural, =1{Jahr} other{Jahre}}",
+  "@unitYears": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "intervalText": "{n} {unit}",
+  "@intervalText": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "careHintHuf": "Übliche Abstände: Beschlag 6–8 Wochen, Barhuf 4–8 Wochen.",
+  "careHintWurmkur": "Kein fester Standard. Vorschlag: Kotprobe alle 3 Monate in der Weidesaison, mindestens 1 Entwurmung pro Jahr – Intervall frei wählbar.",
+  "careHintInfluenza": "Influenza: 6 Monate (FN-Turnierpflicht), alternativ 12 Monate.",
+  "careHintTetanus": "Tetanus: je nach Impfstoff 2–3 Jahre.",
+  "careDisclaimerShort": "Nur ein Vorschlag – ersetzt keine Absprache mit Tierarzt, Hufschmied oder Trainer.",
+  "careVariant_barhuf": "Barhuf",
+  "careVariant_beschlag": "Beschlag",
+  "careVariant_kunststoff": "Kunststoff",
+  "careVariant_orthopaedisch": "Orthopädisch",
+  "careVariant_hufschuhe": "Hufschuhe",
+  "careVariant_tetanus": "Tetanus",
+  "careVariant_influenza": "Influenza",
+  "careVariant_herpes": "Herpes (EHV)",
+  "careVariant_tollwut": "Tollwut",
+  "careVariant_westnil": "West-Nil-Virus",
+  "careVariant_druse": "Druse",
+  "careVariant_sonstige": "Sonstige",
+  "careEpgValue": "{epg} EpG",
+  "@careEpgValue": {
+    "placeholders": {
+      "epg": {
+        "type": "int"
+      }
+    }
+  },
+  "careCostValue": "{amount} €",
+  "@careCostValue": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "careHistoryActiveIngredients": "Wirkstoffe zuletzt: {list}",
+  "@careHistoryActiveIngredients": {
+    "placeholders": {
+      "list": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelName": "Erinnerungen",
+  "notificationChannelDescription": "Erinnerungen an Pflegetermine und Geburtstage",
+  "notificationCareBody": "{type} für {horse} – {when}",
+  "@notificationCareBody": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "horse": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationBirthdayTitle": "Geburtstag 🎉",
+  "notificationBirthdayBody": "{horse} wird {when} {years, plural, =1{1 Jahr} other{{years} Jahre}} alt.",
+  "@notificationBirthdayBody": {
+    "placeholders": {
+      "horse": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationTestTitle": "Pferdekalender",
+  "notificationTestBody": "So sehen Erinnerungen aus.",
+  "settingsReminders": "Erinnerungen",
+  "settingsReminderTime": "Uhrzeit der Erinnerungen",
+  "settingsReminderDefaults": "Vorbelegung für neue Termine",
+  "settingsReminderExact": "Pünktliche Erinnerungen",
+  "settingsReminderExactHint": "Ohne diese Option kann Android Erinnerungen um einige Minuten verschieben, um Akku zu sparen.",
+  "settingsReminderExactDenied": "Bitte in den Android-Einstellungen „Wecker & Erinnerungen“ für den Pferdekalender erlauben.",
+  "settingsReminderPermission": "Benachrichtigungen erlaubt",
+  "settingsReminderPermissionOff": "Benachrichtigungen sind ausgeschaltet – tippen zum Erlauben",
+  "settingsReminderTest": "Test-Benachrichtigung senden",
+  "settingsCareTypes": "Eintragsarten",
+  "settingsCareTypesHint": "Namen, Farben und eigene Arten im Pflege-Kalender",
+  "settingsIntervals": "Standard-Intervalle",
+  "settingsIntervalsHint": "Vorschläge für „Wiederholen nach“",
+  "careTypeNew": "Neue Art",
+  "careTypeEdit": "Art bearbeiten",
+  "careTypeName": "Name",
+  "careTypeColor": "Farbe",
+  "careTypeIcon": "Symbol",
+  "careTypeArchive": "Ausblenden",
+  "careTypeUnarchive": "Wieder einblenden",
+  "careTypeArchivedLabel": "ausgeblendet",
+  "careTypeBuiltinHint": "Eingebaute Art – Formular und Symbol sind fest.",
+  "intervalNone": "Kein Vorschlag",
+  "intervalGeneral": "Allgemein",
+  "horseFieldBirthdayReminder": "Geburtstagserinnerung",
+  "calendarPrevious": "Zurück",
+  "calendarNext": "Weiter",
+  "calendarEntries": "{count, plural, =1{1 Eintrag} other{{count} Einträge}}",
+  "@calendarEntries": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

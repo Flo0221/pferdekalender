@@ -44,4 +44,14 @@ void main() {
       );
     }
   });
+
+  test('Erinnerungen: Receiver für Neustart und Berechtigungen vorhanden', () {
+    expect(manifest, contains('ScheduledNotificationReceiver'));
+    expect(manifest, contains('ScheduledNotificationBootReceiver'));
+    expect(manifest, contains('android.intent.action.BOOT_COMPLETED'));
+    expect(manifest, contains('android.permission.POST_NOTIFICATIONS'));
+    expect(manifest, contains('android.permission.RECEIVE_BOOT_COMPLETED'));
+    // USE_EXACT_ALARM wäre ohne Nachfrage – bewusst nicht verwendet.
+    expect(manifest, isNot(contains('USE_EXACT_ALARM')));
+  });
 }

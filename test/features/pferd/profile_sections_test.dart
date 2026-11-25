@@ -9,12 +9,15 @@ import 'package:pferdekalender/app.dart';
 import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
 import 'package:pferdekalender/core/files/documents_dir_provider.dart';
+import 'package:pferdekalender/core/notifications/notification_providers.dart';
 import 'package:pferdekalender/core/time/local_date.dart';
 import 'package:pferdekalender/features/pferd/domain/contact.dart';
 import 'package:pferdekalender/features/pferd/domain/horse.dart';
 import 'package:pferdekalender/features/pferd/ui/horse_providers.dart';
 import 'package:pferdekalender/features/pferd/ui/pferd_screen.dart';
 import 'package:pferdekalender/features/pferd/ui/widgets/weight_chart.dart';
+
+import '../../helpers/fake_notifications.dart';
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -26,6 +29,9 @@ void main() {
     final container = ProviderContainer(
       overrides: [
         databaseProvider.overrideWithValue(db),
+        notificationGatewayProvider.overrideWithValue(
+          FakeNotificationGateway(),
+        ),
         documentsDirProvider.overrideWith((ref) async => Directory.systemTemp),
       ],
     );

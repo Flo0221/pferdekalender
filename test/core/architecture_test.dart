@@ -28,4 +28,19 @@ void main() {
     ];
     expect(offenders, isEmpty);
   });
+
+  test('Zeitzonen nur aus eingebetteten Daten (kein HTTP-Nachladen)', () {
+    final forbidden = RegExp(
+      r"""import\s+['"]package:timezone/(standalone|browser)\.dart""",
+    );
+    final offenders = [
+      for (final f in Directory(
+        'lib',
+      ).listSync(recursive: true).whereType<File>())
+        if (f.path.endsWith('.dart') &&
+            forbidden.hasMatch(f.readAsStringSync()))
+          f.path,
+    ];
+    expect(offenders, isEmpty);
+  });
 }

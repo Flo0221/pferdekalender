@@ -53,7 +53,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emptyPflegeMessage =>
-      'Hier erscheinen bald Hufe, Wurmkuren, Impfungen und Tierarzttermine.';
+      'Lege Hufbearbeitung, Wurmkur, Impfung oder Tierarzttermine an. Mit Wiederholung plant die App den nächsten Termin automatisch.';
 
   @override
   String get emptyTrainingTitle => 'Noch kein Training geplant';
@@ -502,4 +502,476 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get contactRole_sonstige => 'Sonstige';
+
+  @override
+  String get emptyPflegeNoHorse => 'Lege zuerst im Tab „Pferd“ ein Pferd an.';
+
+  @override
+  String get careViewCalendar => 'Kalender';
+
+  @override
+  String get careViewUpcoming => 'Anstehend';
+
+  @override
+  String get careViewHistory => 'Historie';
+
+  @override
+  String get careAdd => 'Eintrag hinzufügen';
+
+  @override
+  String get careNew => 'Neuer Eintrag';
+
+  @override
+  String get careEdit => 'Eintrag bearbeiten';
+
+  @override
+  String get careDayEmpty => 'Keine Einträge an diesem Tag';
+
+  @override
+  String get careUpcomingEmpty => 'Keine offenen Termine';
+
+  @override
+  String get careHistoryEmpty => 'Noch keine erledigten Einträge';
+
+  @override
+  String get careFilterAll => 'Alle Arten';
+
+  @override
+  String get careOverdue => 'Überfällig';
+
+  @override
+  String careOverdueSince(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tagen',
+      one: '1 Tag',
+    );
+    return 'überfällig seit $_temp0';
+  }
+
+  @override
+  String get careToday => 'heute';
+
+  @override
+  String get careTomorrow => 'morgen';
+
+  @override
+  String careInDays(int days) {
+    return 'in $days Tagen';
+  }
+
+  @override
+  String get careFormatMonth => 'Monat';
+
+  @override
+  String get careFormat2Weeks => '2 Wochen';
+
+  @override
+  String get careFormatWeek => 'Woche';
+
+  @override
+  String get careDone => 'Erledigt';
+
+  @override
+  String get carePlanned => 'Geplant';
+
+  @override
+  String get careMarkDone => 'Als erledigt markieren';
+
+  @override
+  String get careMarkOpen => 'Wieder öffnen';
+
+  @override
+  String get careDoneDateTitle => 'Wann wurde es erledigt?';
+
+  @override
+  String get careRecalcTitle => 'Folgetermin neu berechnen?';
+
+  @override
+  String careRecalcText(String old, String neu) {
+    return 'Der Folgetermin steht auf dem $old. Ab dem tatsächlichen Datum gerechnet wäre er am $neu.';
+  }
+
+  @override
+  String get careRecalcYes => 'Neu berechnen';
+
+  @override
+  String get careRecalcNo => 'Beibehalten';
+
+  @override
+  String careFollowUpCreated(String date) {
+    return 'Folgetermin am $date angelegt';
+  }
+
+  @override
+  String get careDeleteTitle => 'Eintrag löschen?';
+
+  @override
+  String get careDeleteText => 'Der Eintrag wird unwiderruflich gelöscht.';
+
+  @override
+  String careDeleteWithFollowUp(String date) {
+    return 'Auch den offenen Folgetermin am $date löschen';
+  }
+
+  @override
+  String get careFieldType => 'Art';
+
+  @override
+  String get careFieldDate => 'Datum';
+
+  @override
+  String get careFieldTime => 'Uhrzeit (optional)';
+
+  @override
+  String get careFieldTimeClear => 'Uhrzeit entfernen';
+
+  @override
+  String get careFieldTitle => 'Titel';
+
+  @override
+  String get careFieldPerson => 'Person';
+
+  @override
+  String get careFieldHufschmied => 'Hufschmied / Hufpfleger';
+
+  @override
+  String get careFieldTierarzt => 'Tierarzt';
+
+  @override
+  String get careFieldCost => 'Kosten in € (optional)';
+
+  @override
+  String get careFieldNotes => 'Notiz';
+
+  @override
+  String get careFieldHufArt => 'Bearbeitung';
+
+  @override
+  String get careFieldPraeparat => 'Präparat';
+
+  @override
+  String get careFieldWirkstoff => 'Wirkstoff';
+
+  @override
+  String get careFieldDosierung => 'Dosierung / Menge';
+
+  @override
+  String get careFieldLabor => 'Labor';
+
+  @override
+  String get careFieldEpg => 'Ergebnis EpG (Eier pro Gramm)';
+
+  @override
+  String get careFieldErgebnis => 'Ergebnis (Freitext)';
+
+  @override
+  String get careFieldImpfung => 'Impfung';
+
+  @override
+  String get careFieldImpfungName => 'Name der Impfung';
+
+  @override
+  String get careFieldImpfstoff => 'Impfstoff / Charge';
+
+  @override
+  String get careFieldGrundimmunisierung => 'Grundimmunisierung';
+
+  @override
+  String get careFieldDone => 'Bereits erledigt';
+
+  @override
+  String get careSectionRepeat => 'Nächster Termin';
+
+  @override
+  String get careRepeatNone => 'Keine Wiederholung';
+
+  @override
+  String get careRepeatAfter => 'Wiederholen nach';
+
+  @override
+  String get careRepeatValue => 'Anzahl';
+
+  @override
+  String careRepeatSuggestion(String interval) {
+    return 'Vorschlag: $interval';
+  }
+
+  @override
+  String careRepeatNextOn(String date) {
+    return 'Folgetermin am $date';
+  }
+
+  @override
+  String get careSectionReminders => 'Erinnerung';
+
+  @override
+  String get careReminderNone => 'Keine Erinnerung';
+
+  @override
+  String get careReminderOnDay => 'Am Tag';
+
+  @override
+  String careReminderDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage vorher',
+      one: '1 Tag vorher',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get careReminderPermissionDenied =>
+      'Benachrichtigungen sind für die App ausgeschaltet. Erinnerungen werden gespeichert, aber erst angezeigt, wenn du sie in den Android-Einstellungen erlaubst.';
+
+  @override
+  String unitDays(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Tage',
+      one: 'Tag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String unitWeeks(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Wochen',
+      one: 'Woche',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String unitMonths(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Monate',
+      one: 'Monat',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String unitYears(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Jahre',
+      one: 'Jahr',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String intervalText(int n, String unit) {
+    return '$n $unit';
+  }
+
+  @override
+  String get careHintHuf =>
+      'Übliche Abstände: Beschlag 6–8 Wochen, Barhuf 4–8 Wochen.';
+
+  @override
+  String get careHintWurmkur =>
+      'Kein fester Standard. Vorschlag: Kotprobe alle 3 Monate in der Weidesaison, mindestens 1 Entwurmung pro Jahr – Intervall frei wählbar.';
+
+  @override
+  String get careHintInfluenza =>
+      'Influenza: 6 Monate (FN-Turnierpflicht), alternativ 12 Monate.';
+
+  @override
+  String get careHintTetanus => 'Tetanus: je nach Impfstoff 2–3 Jahre.';
+
+  @override
+  String get careDisclaimerShort =>
+      'Nur ein Vorschlag – ersetzt keine Absprache mit Tierarzt, Hufschmied oder Trainer.';
+
+  @override
+  String get careVariant_barhuf => 'Barhuf';
+
+  @override
+  String get careVariant_beschlag => 'Beschlag';
+
+  @override
+  String get careVariant_kunststoff => 'Kunststoff';
+
+  @override
+  String get careVariant_orthopaedisch => 'Orthopädisch';
+
+  @override
+  String get careVariant_hufschuhe => 'Hufschuhe';
+
+  @override
+  String get careVariant_tetanus => 'Tetanus';
+
+  @override
+  String get careVariant_influenza => 'Influenza';
+
+  @override
+  String get careVariant_herpes => 'Herpes (EHV)';
+
+  @override
+  String get careVariant_tollwut => 'Tollwut';
+
+  @override
+  String get careVariant_westnil => 'West-Nil-Virus';
+
+  @override
+  String get careVariant_druse => 'Druse';
+
+  @override
+  String get careVariant_sonstige => 'Sonstige';
+
+  @override
+  String careEpgValue(int epg) {
+    return '$epg EpG';
+  }
+
+  @override
+  String careCostValue(String amount) {
+    return '$amount €';
+  }
+
+  @override
+  String careHistoryActiveIngredients(String list) {
+    return 'Wirkstoffe zuletzt: $list';
+  }
+
+  @override
+  String get notificationChannelName => 'Erinnerungen';
+
+  @override
+  String get notificationChannelDescription =>
+      'Erinnerungen an Pflegetermine und Geburtstage';
+
+  @override
+  String notificationCareBody(String type, String horse, String when) {
+    return '$type für $horse – $when';
+  }
+
+  @override
+  String get notificationBirthdayTitle => 'Geburtstag 🎉';
+
+  @override
+  String notificationBirthdayBody(String horse, String when, int years) {
+    String _temp0 = intl.Intl.pluralLogic(
+      years,
+      locale: localeName,
+      other: '$years Jahre',
+      one: '1 Jahr',
+    );
+    return '$horse wird $when $_temp0 alt.';
+  }
+
+  @override
+  String get notificationTestTitle => 'Pferdekalender';
+
+  @override
+  String get notificationTestBody => 'So sehen Erinnerungen aus.';
+
+  @override
+  String get settingsReminders => 'Erinnerungen';
+
+  @override
+  String get settingsReminderTime => 'Uhrzeit der Erinnerungen';
+
+  @override
+  String get settingsReminderDefaults => 'Vorbelegung für neue Termine';
+
+  @override
+  String get settingsReminderExact => 'Pünktliche Erinnerungen';
+
+  @override
+  String get settingsReminderExactHint =>
+      'Ohne diese Option kann Android Erinnerungen um einige Minuten verschieben, um Akku zu sparen.';
+
+  @override
+  String get settingsReminderExactDenied =>
+      'Bitte in den Android-Einstellungen „Wecker & Erinnerungen“ für den Pferdekalender erlauben.';
+
+  @override
+  String get settingsReminderPermission => 'Benachrichtigungen erlaubt';
+
+  @override
+  String get settingsReminderPermissionOff =>
+      'Benachrichtigungen sind ausgeschaltet – tippen zum Erlauben';
+
+  @override
+  String get settingsReminderTest => 'Test-Benachrichtigung senden';
+
+  @override
+  String get settingsCareTypes => 'Eintragsarten';
+
+  @override
+  String get settingsCareTypesHint =>
+      'Namen, Farben und eigene Arten im Pflege-Kalender';
+
+  @override
+  String get settingsIntervals => 'Standard-Intervalle';
+
+  @override
+  String get settingsIntervalsHint => 'Vorschläge für „Wiederholen nach“';
+
+  @override
+  String get careTypeNew => 'Neue Art';
+
+  @override
+  String get careTypeEdit => 'Art bearbeiten';
+
+  @override
+  String get careTypeName => 'Name';
+
+  @override
+  String get careTypeColor => 'Farbe';
+
+  @override
+  String get careTypeIcon => 'Symbol';
+
+  @override
+  String get careTypeArchive => 'Ausblenden';
+
+  @override
+  String get careTypeUnarchive => 'Wieder einblenden';
+
+  @override
+  String get careTypeArchivedLabel => 'ausgeblendet';
+
+  @override
+  String get careTypeBuiltinHint =>
+      'Eingebaute Art – Formular und Symbol sind fest.';
+
+  @override
+  String get intervalNone => 'Kein Vorschlag';
+
+  @override
+  String get intervalGeneral => 'Allgemein';
+
+  @override
+  String get horseFieldBirthdayReminder => 'Geburtstagserinnerung';
+
+  @override
+  String get calendarPrevious => 'Zurück';
+
+  @override
+  String get calendarNext => 'Weiter';
+
+  @override
+  String calendarEntries(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Einträge',
+      one: '1 Eintrag',
+    );
+    return '$_temp0';
+  }
 }

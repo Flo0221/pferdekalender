@@ -6,6 +6,9 @@ import 'package:material_ui/material_ui.dart';
 import 'package:pferdekalender/app.dart';
 import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
+import 'package:pferdekalender/core/notifications/notification_providers.dart';
+
+import '../helpers/fake_notifications.dart';
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -14,7 +17,12 @@ void main() {
     final db = AppDatabase(NativeDatabase.memory());
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [databaseProvider.overrideWithValue(db)],
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          notificationGatewayProvider.overrideWithValue(
+            FakeNotificationGateway(),
+          ),
+        ],
         child: const PferdekalenderApp(),
       ),
     );
@@ -78,11 +86,17 @@ void main() {
     await tester.tap(find.byTooltip('Einstellungen öffnen'));
     await tester.pumpAndSettle();
     expect(find.text('Einstellungen'), findsOneWidget);
+    expect(find.text('Erinnerungen'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.textContaining('ersetzen keine Absprache mit Tierarzt'),
+      300,
+    );
     expect(
       find.textContaining('ersetzen keine Absprache mit Tierarzt'),
       findsOneWidget,
     );
 
+    await tester.scrollUntilVisible(find.text('Dunkel'), -300);
     await tester.tap(find.text('Dunkel'));
     await tester.pumpAndSettle();
     final app = tester.widget<MaterialApp>(find.byType(MaterialApp));

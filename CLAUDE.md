@@ -104,13 +104,30 @@ test/                         spiegelt lib/
   `tester.runAsync`, das hängt); am Ende `pumpWidget(SizedBox.shrink())`,
   `pump(1s)`, dann `tester.runAsync(db.close)`. Dokumentenordner über
   `documentsDirProvider` überschreiben.
+- **Erinnerungen:** `ReminderSync` (pflege/ui/reminder_sync.dart) beobachtet
+  offene Termine mit Erinnerung, Geburtstage und Einstellungen und plant bei
+  jeder Änderung *alle* Benachrichtigungen neu (cancel all + schedule, IDs
+  1…n, max. 400). Läuft bei jedem App-Start (`ref.watch` in `app.dart`).
+  Neustart: `ScheduledNotificationBootReceiver` des Plugins. Zeitpunkt =
+  Einstellung (Standard 9:00) am Tag „Datum − Offset“; am Termintag mit
+  früher Uhrzeit 60 min vorher. Exakte Alarme nur auf Wunsch (Einstellung +
+  Systemfreigabe), sonst `inexactAllowWhileIdle`. System-Zugriff nur über
+  `NotificationGateway` (in Tests `FakeNotificationGateway`).
+- **Folgetermine:** `planFollowUp` (pflege/domain/care_logic.dart). Ein neuer
+  Folgetermin entsteht nur für erledigte oder selbst angelegte Einträge, nie
+  für offene Folgetermine (Kette läuft max. einen Termin voraus). Verschieben
+  eines offenen Folgetermins nur nach Nachfrage („neu berechnen?“).
+- **Android-Ressourcen per Name** (z. B. Benachrichtigungs-Icon) in
+  `res/raw/keep.xml` eintragen, sonst entfernt der Release-Build sie.
+- **Test-Hilfe:** `test/helpers/test_app.dart` (`TestApp.create()`, `pump`,
+  `openTab`, `dispose`) für App-Widget-Tests.
 - **App-Version** steht doppelt: `pubspec.yaml` und `lib/core/app_info.dart`
   (Test prüft Gleichheit). Bewusst kein `package_info_plus`.
 
 ## Datenmodell-Konventionen
 
-- **IDs:** UUID v4 als `TEXT` (Paket `uuid`), keine Auto-Increment-IDs
-  (Ausnahme: `notification_id` für Benachrichtigungen ist ein stabiler int).
+- **IDs:** UUID v4 als `TEXT` (Paket `uuid`), keine Auto-Increment-IDs.
+  Benachrichtigungs-IDs werden nicht gespeichert (siehe Erinnerungen).
 - **Kalendertage:** `LocalDate`, in SQLite als `TEXT 'YYYY-MM-DD'`
   (`LocalDateConverter`). Nie `DateTime` für Kalendertage speichern.
 - **Uhrzeiten:** Minuten seit Mitternacht (`int`).
@@ -125,7 +142,7 @@ test/                         spiegelt lib/
 `settings` · `horses`, `horse_photos`, `horse_weights`, `contacts`,
 `horse_contacts` · `care_event_types`, `care_interval_defaults`,
 `care_events` (+ `variant_key`, `series_id`, `parent_event_id`) ·
-`reminders` (target_kind, target_id, offset_days, time_of_day, notification_id) ·
+`care_reminders` (event_id, offset_days; Geburtstage über `horses.birthday_reminder`) ·
 `shift_templates`, `shift_days` (1 Eintrag pro Datum, `source`, `pattern_id`,
 `override_minutes`, `other_person_covers`), `shift_patterns` ·
 `training_plans` (+ `distributed_at`), `training_sessions` (+ `form`, `reason`,
@@ -142,9 +159,17 @@ test/                         spiegelt lib/
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v2** (`settings`; `horses`, `horse_photos`,
-`horse_weights`, `contacts`, `horse_contacts`). Migrationstest:
-`test/drift/app_database/migration_test.dart`.
+Aktueller Stand: **Schema v3** (`settings`; `horses`, `horse_photos`,
+`horse_weights`, `contacts`, `horse_contacts`; `care_event_types`,
+`care_interval_defaults`, `care_events`, `care_reminders`). Migrationstest:
+`test/drift/app_database/migration_test.dart` (je Version ein Datenerhalt-Test).
+
+**Startwerte** (eingebaute Eintragsarten, Standard-Intervalle) werden in
+`beforeOpen` per `insertOrIgnore` ergänzt (`care_seed.dart`), nie in einem
+Migrationsschritt – sonst brechen spätere Migrationen. Ein entfernter
+Intervall-Vorschlag wird als `value = 0` gespeichert, damit er nicht
+zurückkommt. Eingebaute Arten haben feste IDs (`builtin_huf` …), werden nie
+gelöscht, nur ausgeblendet.
 
 ## Build-Hinweise
 
@@ -156,6 +181,8 @@ Aktueller Stand: **Schema v2** (`settings`; `horses`, `horse_photos`,
   (`ANDROID_HOME`), Flutter unter `/opt/sdk/flutter`. Beides ist nicht
   persistent – bei neuem Container neu installieren.
 - Maven Central antwortet gelegentlich mit 429 → Build einfach wiederholen.
+- `compileSdk = 37` fest in `android/app/build.gradle.kts` (Plugin-Vorgabe);
+  Plattform `platforms;android-37.0` muss installiert sein.
 
 ## Test-APK für das Handy (Branch `apk`)
 
@@ -167,6 +194,8 @@ committen.** Neue Testversion:
 `tool/check_release_permissions.sh build/app/outputs/flutter-apk/app-arm64-v8a-release.apk`,
 dann den Branch `apk` mit einem neuen orphan-Commit ersetzen (Force-Push), damit
 sich alte APKs nicht ansammeln; Version im README des Branches anpassen.
+Vorher immer prüfen, ob per Name genutzte Ressourcen im APK sind:
+`aapt2 dump resources <apk> | grep ic_stat`.
 
 ## Geprüfte Pakete (Netzwerk/Telemetrie)
 
@@ -176,8 +205,15 @@ sich alte APKs nicht ansammeln; Version im README des Branches anpassen.
 | flutter_riverpod, go_router, intl, uuid, path, path_provider | Basis | kein Netzwerk |
 | image_picker | Fotos | zieht `http` transitiv nur für die Web-Variante (`picked_file/html.dart`); auf Android nicht einkompiliert. Keine Manifest-Permissions. |
 | url_launcher | `tel:`-Links | keine Permissions; `<queries>` für `tel` im Manifest |
+| flutter_local_notifications | Erinnerungen | kein Netzwerk; Permissions POST_NOTIFICATIONS, VIBRATE; braucht Desugaring + compileSdk 37 |
+| timezone | Zeitzonen | **nur `data/latest.dart`** (eingebettet). `standalone.dart`/`browser.dart` laden per `http` – verboten, per Test geprüft |
+| flutter_timezone | Gerätezeitzone | kein Netzwerk, keine Permissions |
 
-Bewusst **nicht** verwendet: `package_info_plus`, Diagramm-Bibliotheken
+Verworfen: `table_calendar` (nutzt noch `flutter/material`, bricht mit
+`material_ui`) → eigener Kalender `core/widgets/month_calendar.dart`
++ reine Logik `core/time/calendar_grid.dart`.
+
+Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bibliotheken
 (Gewichtsverlauf ist ein eigener `CustomPainter`).
 
 ## Meilensteine
@@ -185,7 +221,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, Diagramm-Bibliotheken
 - [x] 1. Gerüst: Projekt, Ordner, Theme, Lokalisierung, 5 Tabs, Drift v1,
       Manifest-Härtung, CLAUDE.md
 - [x] 2. Pferd: Liste, Profil, Fotos, Gewicht, Kontakte, Pferde-Umschalter
-- [ ] 3. Pflege-Kalender inkl. Wiederholungen, Folgetermine, Erinnerungen
+- [x] 3. Pflege-Kalender inkl. Wiederholungen, Folgetermine, Erinnerungen
 - [ ] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
 - [ ] 5. Training: Kalender, manuelle Einheiten, Generator + Tests, Neu-Verteilen
 - [ ] 6. Futterplan mit Versionen und temporären Zusätzen
@@ -195,13 +231,15 @@ Bewusst **nicht** verwendet: `package_info_plus`, Diagramm-Bibliotheken
 
 ## TODO / offen
 
-- Einstellungen: Erinnerungs-Defaults, Export/Import, Intervall-Defaults,
-  Pflege-Eintragsarten (Meilensteine 3 und 7).
-- Geburtstagserinnerung: Spalte `horses.birthday_reminder` existiert, Schalter
-  und Benachrichtigung folgen mit den Erinnerungen in Meilenstein 3.
+- Einstellungen: Export/Import (Meilenstein 7).
+- Antippen einer Benachrichtigung öffnet nur die App, nicht den Eintrag
+  (payload `care:<id>` / `birthday:<id>` ist vorhanden) – Meilenstein 7.
+- Erinnerungen auf echtem Gerät testen: auch nach Neustart und mit
+  ausgeschalteter App (kein Emulator im Cloud-Container, kein KVM).
+- Optionale „Übersicht“ aller Kalender zusammen (Meilenstein 7).
 - Übersichtskarte im Pferd-Profil (nächster Termin, letzte Wurmkur …): Meilenstein 7.
 - Kontakte global verwalten (ohne Pferd, endgültig löschen): Meilenstein 7.
-- Beim endgültigen Löschen eines Pferdes müssen ab M3 auch Pflege-,
-  Trainings- und Futterdaten mitgelöscht werden (FK mit `onDelete: cascade`).
+- Beim endgültigen Löschen eines Pferdes müssen auch Trainings- und
+  Futterdaten mitgelöscht werden (FK mit `onDelete: cascade`; Pflege erledigt).
 - Release-Signierung: APK ist derzeit mit dem Debug-Key signiert (Meilenstein 8).
 - iOS-Projekt ist nur generiert, nicht angepasst (Meilenstein 9).

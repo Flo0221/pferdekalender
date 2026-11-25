@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ressourcen, die nur per Name (aus Dart) angesprochen werden, dürfen beim
+     Release-Build nicht weggekürzt werden – sonst stürzt das Planen von
+     Benachrichtigungen ab. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_stat_pferdekalender" />

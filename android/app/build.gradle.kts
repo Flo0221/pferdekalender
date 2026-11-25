@@ -6,10 +6,14 @@ plugins {
 
 android {
     namespace = "de.flo.pferdekalender"
-    compileSdk = flutter.compileSdkVersion
+    // flutter_local_notifications / androidx.core 1.19 verlangen compileSdk 37.
+    // (Betrifft nur das Kompilieren; minSdk/targetSdk bleiben unverändert.)
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Nötig für flutter_local_notifications (geplante Benachrichtigungen).
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -46,4 +50,8 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }

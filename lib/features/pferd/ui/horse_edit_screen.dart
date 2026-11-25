@@ -44,7 +44,7 @@ class _HorseEditScreenState extends ConsumerState<HorseEditScreen> {
   final _c = {for (final f in _F.values) f: TextEditingController()};
   LocalDate? _birthDate;
   HorseSex? _sex;
-  Horse? _original;
+  bool _birthdayReminder = false;
   bool _loading = true;
   bool _saving = false;
 
@@ -62,9 +62,9 @@ class _HorseEditScreenState extends ConsumerState<HorseEditScreen> {
           .read(horseRepositoryProvider)
           .getHorse(widget.horseId!);
       if (h != null) {
-        _original = h;
         _birthDate = h.birthDate;
         _sex = h.sex;
+        _birthdayReminder = h.birthdayReminder;
         final values = {
           _F.name: h.name,
           _F.callName: h.callName,
@@ -108,7 +108,7 @@ class _HorseEditScreenState extends ConsumerState<HorseEditScreen> {
       name: _t(_F.name)!,
       callName: _t(_F.callName),
       birthDate: _birthDate,
-      birthdayReminder: _original?.birthdayReminder ?? false,
+      birthdayReminder: _birthDate != null && _birthdayReminder,
       sex: _sex,
       breed: _t(_F.breed),
       colorMarkings: _t(_F.color),
@@ -172,6 +172,14 @@ class _HorseEditScreenState extends ConsumerState<HorseEditScreen> {
                     lastDate: LocalDate.today(),
                     onChanged: (d) => setState(() => _birthDate = d),
                   ),
+                  if (_birthDate != null)
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      secondary: const Icon(Icons.cake_outlined),
+                      title: Text(l10n.horseFieldBirthdayReminder),
+                      value: _birthdayReminder,
+                      onChanged: (v) => setState(() => _birthdayReminder = v),
+                    ),
                   _gap,
                   Text(
                     l10n.horseFieldSex,

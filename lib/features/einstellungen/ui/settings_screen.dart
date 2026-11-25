@@ -1,9 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../core/app_info.dart';
+import '../../../core/router/routes.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import '../domain/app_theme_mode.dart';
+import 'reminder_settings_section.dart';
 import 'settings_providers.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -46,6 +49,25 @@ class SettingsScreen extends ConsumerWidget {
                   .read(settingsRepositoryProvider)
                   .setThemeMode(selection.single),
             ),
+          ),
+          const Divider(height: 32),
+          _SectionHeader(l10n.settingsReminders),
+          const ReminderSettingsSection(),
+          const Divider(height: 32),
+          _SectionHeader(l10n.titlePflege),
+          ListTile(
+            leading: const Icon(Icons.category_outlined),
+            title: Text(l10n.settingsCareTypes),
+            subtitle: Text(l10n.settingsCareTypesHint),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.push(Routes.careTypes),
+          ),
+          ListTile(
+            leading: const Icon(Icons.repeat),
+            title: Text(l10n.settingsIntervals),
+            subtitle: Text(l10n.settingsIntervalsHint),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.push(Routes.careIntervals),
           ),
           const Divider(height: 32),
           _SectionHeader(l10n.settingsNoticeTitle),

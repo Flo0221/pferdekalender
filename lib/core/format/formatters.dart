@@ -12,6 +12,21 @@ abstract final class Fmt {
   static String dateShort(LocalDate d) =>
       _dateShort.format(d.toLocalDateTime());
   static String decimal(num value) => _decimal.format(value);
+  static final _money = NumberFormat('#,##0.00', 'de_DE');
+
+  /// 1250 → „12,50“.
+  static String money(int cents) => _money.format(cents / 100);
+
+  /// Minuten seit Mitternacht → „07:30“.
+  static String time(int minutes) =>
+      '${(minutes ~/ 60).toString().padLeft(2, '0')}:'
+      '${(minutes % 60).toString().padLeft(2, '0')}';
+
+  /// „12,50“ / „12.5“ / „12“ → Cent; `null` bei ungültiger Eingabe.
+  static int? parseMoneyCents(String input) {
+    final v = parseDecimal(input);
+    return v == null ? null : (v * 100).round();
+  }
 
   /// Parst deutsche Zahleneingaben („550,5“, „550.5“, „ 550 “).
   /// Gibt `null` zurück, wenn die Eingabe keine Zahl ist.

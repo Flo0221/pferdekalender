@@ -181,7 +181,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyPflegeMessage.
   ///
   /// In de, this message translates to:
-  /// **'Hier erscheinen bald Hufe, Wurmkuren, Impfungen und Tierarzttermine.'**
+  /// **'Lege Hufbearbeitung, Wurmkur, Impfung oder Tierarzttermine an. Mit Wiederholung plant die App den nächsten Termin automatisch.'**
   String get emptyPflegeMessage;
 
   /// No description provided for @emptyTrainingTitle.
@@ -969,6 +969,756 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Sonstige'**
   String get contactRole_sonstige;
+
+  /// No description provided for @emptyPflegeNoHorse.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege zuerst im Tab „Pferd“ ein Pferd an.'**
+  String get emptyPflegeNoHorse;
+
+  /// No description provided for @careViewCalendar.
+  ///
+  /// In de, this message translates to:
+  /// **'Kalender'**
+  String get careViewCalendar;
+
+  /// No description provided for @careViewUpcoming.
+  ///
+  /// In de, this message translates to:
+  /// **'Anstehend'**
+  String get careViewUpcoming;
+
+  /// No description provided for @careViewHistory.
+  ///
+  /// In de, this message translates to:
+  /// **'Historie'**
+  String get careViewHistory;
+
+  /// No description provided for @careAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Eintrag hinzufügen'**
+  String get careAdd;
+
+  /// No description provided for @careNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neuer Eintrag'**
+  String get careNew;
+
+  /// No description provided for @careEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Eintrag bearbeiten'**
+  String get careEdit;
+
+  /// No description provided for @careDayEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Einträge an diesem Tag'**
+  String get careDayEmpty;
+
+  /// No description provided for @careUpcomingEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine offenen Termine'**
+  String get careUpcomingEmpty;
+
+  /// No description provided for @careHistoryEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine erledigten Einträge'**
+  String get careHistoryEmpty;
+
+  /// No description provided for @careFilterAll.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Arten'**
+  String get careFilterAll;
+
+  /// No description provided for @careOverdue.
+  ///
+  /// In de, this message translates to:
+  /// **'Überfällig'**
+  String get careOverdue;
+
+  /// No description provided for @careOverdueSince.
+  ///
+  /// In de, this message translates to:
+  /// **'überfällig seit {days, plural, =1{1 Tag} other{{days} Tagen}}'**
+  String careOverdueSince(int days);
+
+  /// No description provided for @careToday.
+  ///
+  /// In de, this message translates to:
+  /// **'heute'**
+  String get careToday;
+
+  /// No description provided for @careTomorrow.
+  ///
+  /// In de, this message translates to:
+  /// **'morgen'**
+  String get careTomorrow;
+
+  /// No description provided for @careInDays.
+  ///
+  /// In de, this message translates to:
+  /// **'in {days} Tagen'**
+  String careInDays(int days);
+
+  /// No description provided for @careFormatMonth.
+  ///
+  /// In de, this message translates to:
+  /// **'Monat'**
+  String get careFormatMonth;
+
+  /// No description provided for @careFormat2Weeks.
+  ///
+  /// In de, this message translates to:
+  /// **'2 Wochen'**
+  String get careFormat2Weeks;
+
+  /// No description provided for @careFormatWeek.
+  ///
+  /// In de, this message translates to:
+  /// **'Woche'**
+  String get careFormatWeek;
+
+  /// No description provided for @careDone.
+  ///
+  /// In de, this message translates to:
+  /// **'Erledigt'**
+  String get careDone;
+
+  /// No description provided for @carePlanned.
+  ///
+  /// In de, this message translates to:
+  /// **'Geplant'**
+  String get carePlanned;
+
+  /// No description provided for @careMarkDone.
+  ///
+  /// In de, this message translates to:
+  /// **'Als erledigt markieren'**
+  String get careMarkDone;
+
+  /// No description provided for @careMarkOpen.
+  ///
+  /// In de, this message translates to:
+  /// **'Wieder öffnen'**
+  String get careMarkOpen;
+
+  /// No description provided for @careDoneDateTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Wann wurde es erledigt?'**
+  String get careDoneDateTitle;
+
+  /// No description provided for @careRecalcTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Folgetermin neu berechnen?'**
+  String get careRecalcTitle;
+
+  /// No description provided for @careRecalcText.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Folgetermin steht auf dem {old}. Ab dem tatsächlichen Datum gerechnet wäre er am {neu}.'**
+  String careRecalcText(String old, String neu);
+
+  /// No description provided for @careRecalcYes.
+  ///
+  /// In de, this message translates to:
+  /// **'Neu berechnen'**
+  String get careRecalcYes;
+
+  /// No description provided for @careRecalcNo.
+  ///
+  /// In de, this message translates to:
+  /// **'Beibehalten'**
+  String get careRecalcNo;
+
+  /// No description provided for @careFollowUpCreated.
+  ///
+  /// In de, this message translates to:
+  /// **'Folgetermin am {date} angelegt'**
+  String careFollowUpCreated(String date);
+
+  /// No description provided for @careDeleteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Eintrag löschen?'**
+  String get careDeleteTitle;
+
+  /// No description provided for @careDeleteText.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Eintrag wird unwiderruflich gelöscht.'**
+  String get careDeleteText;
+
+  /// No description provided for @careDeleteWithFollowUp.
+  ///
+  /// In de, this message translates to:
+  /// **'Auch den offenen Folgetermin am {date} löschen'**
+  String careDeleteWithFollowUp(String date);
+
+  /// No description provided for @careFieldType.
+  ///
+  /// In de, this message translates to:
+  /// **'Art'**
+  String get careFieldType;
+
+  /// No description provided for @careFieldDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum'**
+  String get careFieldDate;
+
+  /// No description provided for @careFieldTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Uhrzeit (optional)'**
+  String get careFieldTime;
+
+  /// No description provided for @careFieldTimeClear.
+  ///
+  /// In de, this message translates to:
+  /// **'Uhrzeit entfernen'**
+  String get careFieldTimeClear;
+
+  /// No description provided for @careFieldTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Titel'**
+  String get careFieldTitle;
+
+  /// No description provided for @careFieldPerson.
+  ///
+  /// In de, this message translates to:
+  /// **'Person'**
+  String get careFieldPerson;
+
+  /// No description provided for @careFieldHufschmied.
+  ///
+  /// In de, this message translates to:
+  /// **'Hufschmied / Hufpfleger'**
+  String get careFieldHufschmied;
+
+  /// No description provided for @careFieldTierarzt.
+  ///
+  /// In de, this message translates to:
+  /// **'Tierarzt'**
+  String get careFieldTierarzt;
+
+  /// No description provided for @careFieldCost.
+  ///
+  /// In de, this message translates to:
+  /// **'Kosten in € (optional)'**
+  String get careFieldCost;
+
+  /// No description provided for @careFieldNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get careFieldNotes;
+
+  /// No description provided for @careFieldHufArt.
+  ///
+  /// In de, this message translates to:
+  /// **'Bearbeitung'**
+  String get careFieldHufArt;
+
+  /// No description provided for @careFieldPraeparat.
+  ///
+  /// In de, this message translates to:
+  /// **'Präparat'**
+  String get careFieldPraeparat;
+
+  /// No description provided for @careFieldWirkstoff.
+  ///
+  /// In de, this message translates to:
+  /// **'Wirkstoff'**
+  String get careFieldWirkstoff;
+
+  /// No description provided for @careFieldDosierung.
+  ///
+  /// In de, this message translates to:
+  /// **'Dosierung / Menge'**
+  String get careFieldDosierung;
+
+  /// No description provided for @careFieldLabor.
+  ///
+  /// In de, this message translates to:
+  /// **'Labor'**
+  String get careFieldLabor;
+
+  /// No description provided for @careFieldEpg.
+  ///
+  /// In de, this message translates to:
+  /// **'Ergebnis EpG (Eier pro Gramm)'**
+  String get careFieldEpg;
+
+  /// No description provided for @careFieldErgebnis.
+  ///
+  /// In de, this message translates to:
+  /// **'Ergebnis (Freitext)'**
+  String get careFieldErgebnis;
+
+  /// No description provided for @careFieldImpfung.
+  ///
+  /// In de, this message translates to:
+  /// **'Impfung'**
+  String get careFieldImpfung;
+
+  /// No description provided for @careFieldImpfungName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name der Impfung'**
+  String get careFieldImpfungName;
+
+  /// No description provided for @careFieldImpfstoff.
+  ///
+  /// In de, this message translates to:
+  /// **'Impfstoff / Charge'**
+  String get careFieldImpfstoff;
+
+  /// No description provided for @careFieldGrundimmunisierung.
+  ///
+  /// In de, this message translates to:
+  /// **'Grundimmunisierung'**
+  String get careFieldGrundimmunisierung;
+
+  /// No description provided for @careFieldDone.
+  ///
+  /// In de, this message translates to:
+  /// **'Bereits erledigt'**
+  String get careFieldDone;
+
+  /// No description provided for @careSectionRepeat.
+  ///
+  /// In de, this message translates to:
+  /// **'Nächster Termin'**
+  String get careSectionRepeat;
+
+  /// No description provided for @careRepeatNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Wiederholung'**
+  String get careRepeatNone;
+
+  /// No description provided for @careRepeatAfter.
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederholen nach'**
+  String get careRepeatAfter;
+
+  /// No description provided for @careRepeatValue.
+  ///
+  /// In de, this message translates to:
+  /// **'Anzahl'**
+  String get careRepeatValue;
+
+  /// No description provided for @careRepeatSuggestion.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorschlag: {interval}'**
+  String careRepeatSuggestion(String interval);
+
+  /// No description provided for @careRepeatNextOn.
+  ///
+  /// In de, this message translates to:
+  /// **'Folgetermin am {date}'**
+  String careRepeatNextOn(String date);
+
+  /// No description provided for @careSectionReminders.
+  ///
+  /// In de, this message translates to:
+  /// **'Erinnerung'**
+  String get careSectionReminders;
+
+  /// No description provided for @careReminderNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Erinnerung'**
+  String get careReminderNone;
+
+  /// No description provided for @careReminderOnDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Am Tag'**
+  String get careReminderOnDay;
+
+  /// No description provided for @careReminderDaysBefore.
+  ///
+  /// In de, this message translates to:
+  /// **'{days, plural, =1{1 Tag vorher} other{{days} Tage vorher}}'**
+  String careReminderDaysBefore(int days);
+
+  /// No description provided for @careReminderPermissionDenied.
+  ///
+  /// In de, this message translates to:
+  /// **'Benachrichtigungen sind für die App ausgeschaltet. Erinnerungen werden gespeichert, aber erst angezeigt, wenn du sie in den Android-Einstellungen erlaubst.'**
+  String get careReminderPermissionDenied;
+
+  /// No description provided for @unitDays.
+  ///
+  /// In de, this message translates to:
+  /// **'{n, plural, =1{Tag} other{Tage}}'**
+  String unitDays(int n);
+
+  /// No description provided for @unitWeeks.
+  ///
+  /// In de, this message translates to:
+  /// **'{n, plural, =1{Woche} other{Wochen}}'**
+  String unitWeeks(int n);
+
+  /// No description provided for @unitMonths.
+  ///
+  /// In de, this message translates to:
+  /// **'{n, plural, =1{Monat} other{Monate}}'**
+  String unitMonths(int n);
+
+  /// No description provided for @unitYears.
+  ///
+  /// In de, this message translates to:
+  /// **'{n, plural, =1{Jahr} other{Jahre}}'**
+  String unitYears(int n);
+
+  /// No description provided for @intervalText.
+  ///
+  /// In de, this message translates to:
+  /// **'{n} {unit}'**
+  String intervalText(int n, String unit);
+
+  /// No description provided for @careHintHuf.
+  ///
+  /// In de, this message translates to:
+  /// **'Übliche Abstände: Beschlag 6–8 Wochen, Barhuf 4–8 Wochen.'**
+  String get careHintHuf;
+
+  /// No description provided for @careHintWurmkur.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein fester Standard. Vorschlag: Kotprobe alle 3 Monate in der Weidesaison, mindestens 1 Entwurmung pro Jahr – Intervall frei wählbar.'**
+  String get careHintWurmkur;
+
+  /// No description provided for @careHintInfluenza.
+  ///
+  /// In de, this message translates to:
+  /// **'Influenza: 6 Monate (FN-Turnierpflicht), alternativ 12 Monate.'**
+  String get careHintInfluenza;
+
+  /// No description provided for @careHintTetanus.
+  ///
+  /// In de, this message translates to:
+  /// **'Tetanus: je nach Impfstoff 2–3 Jahre.'**
+  String get careHintTetanus;
+
+  /// No description provided for @careDisclaimerShort.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur ein Vorschlag – ersetzt keine Absprache mit Tierarzt, Hufschmied oder Trainer.'**
+  String get careDisclaimerShort;
+
+  /// No description provided for @careVariant_barhuf.
+  ///
+  /// In de, this message translates to:
+  /// **'Barhuf'**
+  String get careVariant_barhuf;
+
+  /// No description provided for @careVariant_beschlag.
+  ///
+  /// In de, this message translates to:
+  /// **'Beschlag'**
+  String get careVariant_beschlag;
+
+  /// No description provided for @careVariant_kunststoff.
+  ///
+  /// In de, this message translates to:
+  /// **'Kunststoff'**
+  String get careVariant_kunststoff;
+
+  /// No description provided for @careVariant_orthopaedisch.
+  ///
+  /// In de, this message translates to:
+  /// **'Orthopädisch'**
+  String get careVariant_orthopaedisch;
+
+  /// No description provided for @careVariant_hufschuhe.
+  ///
+  /// In de, this message translates to:
+  /// **'Hufschuhe'**
+  String get careVariant_hufschuhe;
+
+  /// No description provided for @careVariant_tetanus.
+  ///
+  /// In de, this message translates to:
+  /// **'Tetanus'**
+  String get careVariant_tetanus;
+
+  /// No description provided for @careVariant_influenza.
+  ///
+  /// In de, this message translates to:
+  /// **'Influenza'**
+  String get careVariant_influenza;
+
+  /// No description provided for @careVariant_herpes.
+  ///
+  /// In de, this message translates to:
+  /// **'Herpes (EHV)'**
+  String get careVariant_herpes;
+
+  /// No description provided for @careVariant_tollwut.
+  ///
+  /// In de, this message translates to:
+  /// **'Tollwut'**
+  String get careVariant_tollwut;
+
+  /// No description provided for @careVariant_westnil.
+  ///
+  /// In de, this message translates to:
+  /// **'West-Nil-Virus'**
+  String get careVariant_westnil;
+
+  /// No description provided for @careVariant_druse.
+  ///
+  /// In de, this message translates to:
+  /// **'Druse'**
+  String get careVariant_druse;
+
+  /// No description provided for @careVariant_sonstige.
+  ///
+  /// In de, this message translates to:
+  /// **'Sonstige'**
+  String get careVariant_sonstige;
+
+  /// No description provided for @careEpgValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{epg} EpG'**
+  String careEpgValue(int epg);
+
+  /// No description provided for @careCostValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{amount} €'**
+  String careCostValue(String amount);
+
+  /// No description provided for @careHistoryActiveIngredients.
+  ///
+  /// In de, this message translates to:
+  /// **'Wirkstoffe zuletzt: {list}'**
+  String careHistoryActiveIngredients(String list);
+
+  /// No description provided for @notificationChannelName.
+  ///
+  /// In de, this message translates to:
+  /// **'Erinnerungen'**
+  String get notificationChannelName;
+
+  /// No description provided for @notificationChannelDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'Erinnerungen an Pflegetermine und Geburtstage'**
+  String get notificationChannelDescription;
+
+  /// No description provided for @notificationCareBody.
+  ///
+  /// In de, this message translates to:
+  /// **'{type} für {horse} – {when}'**
+  String notificationCareBody(String type, String horse, String when);
+
+  /// No description provided for @notificationBirthdayTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtstag 🎉'**
+  String get notificationBirthdayTitle;
+
+  /// No description provided for @notificationBirthdayBody.
+  ///
+  /// In de, this message translates to:
+  /// **'{horse} wird {when} {years, plural, =1{1 Jahr} other{{years} Jahre}} alt.'**
+  String notificationBirthdayBody(String horse, String when, int years);
+
+  /// No description provided for @notificationTestTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferdekalender'**
+  String get notificationTestTitle;
+
+  /// No description provided for @notificationTestBody.
+  ///
+  /// In de, this message translates to:
+  /// **'So sehen Erinnerungen aus.'**
+  String get notificationTestBody;
+
+  /// No description provided for @settingsReminders.
+  ///
+  /// In de, this message translates to:
+  /// **'Erinnerungen'**
+  String get settingsReminders;
+
+  /// No description provided for @settingsReminderTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Uhrzeit der Erinnerungen'**
+  String get settingsReminderTime;
+
+  /// No description provided for @settingsReminderDefaults.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorbelegung für neue Termine'**
+  String get settingsReminderDefaults;
+
+  /// No description provided for @settingsReminderExact.
+  ///
+  /// In de, this message translates to:
+  /// **'Pünktliche Erinnerungen'**
+  String get settingsReminderExact;
+
+  /// No description provided for @settingsReminderExactHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Ohne diese Option kann Android Erinnerungen um einige Minuten verschieben, um Akku zu sparen.'**
+  String get settingsReminderExactHint;
+
+  /// No description provided for @settingsReminderExactDenied.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte in den Android-Einstellungen „Wecker & Erinnerungen“ für den Pferdekalender erlauben.'**
+  String get settingsReminderExactDenied;
+
+  /// No description provided for @settingsReminderPermission.
+  ///
+  /// In de, this message translates to:
+  /// **'Benachrichtigungen erlaubt'**
+  String get settingsReminderPermission;
+
+  /// No description provided for @settingsReminderPermissionOff.
+  ///
+  /// In de, this message translates to:
+  /// **'Benachrichtigungen sind ausgeschaltet – tippen zum Erlauben'**
+  String get settingsReminderPermissionOff;
+
+  /// No description provided for @settingsReminderTest.
+  ///
+  /// In de, this message translates to:
+  /// **'Test-Benachrichtigung senden'**
+  String get settingsReminderTest;
+
+  /// No description provided for @settingsCareTypes.
+  ///
+  /// In de, this message translates to:
+  /// **'Eintragsarten'**
+  String get settingsCareTypes;
+
+  /// No description provided for @settingsCareTypesHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Namen, Farben und eigene Arten im Pflege-Kalender'**
+  String get settingsCareTypesHint;
+
+  /// No description provided for @settingsIntervals.
+  ///
+  /// In de, this message translates to:
+  /// **'Standard-Intervalle'**
+  String get settingsIntervals;
+
+  /// No description provided for @settingsIntervalsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorschläge für „Wiederholen nach“'**
+  String get settingsIntervalsHint;
+
+  /// No description provided for @careTypeNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Art'**
+  String get careTypeNew;
+
+  /// No description provided for @careTypeEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Art bearbeiten'**
+  String get careTypeEdit;
+
+  /// No description provided for @careTypeName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get careTypeName;
+
+  /// No description provided for @careTypeColor.
+  ///
+  /// In de, this message translates to:
+  /// **'Farbe'**
+  String get careTypeColor;
+
+  /// No description provided for @careTypeIcon.
+  ///
+  /// In de, this message translates to:
+  /// **'Symbol'**
+  String get careTypeIcon;
+
+  /// No description provided for @careTypeArchive.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausblenden'**
+  String get careTypeArchive;
+
+  /// No description provided for @careTypeUnarchive.
+  ///
+  /// In de, this message translates to:
+  /// **'Wieder einblenden'**
+  String get careTypeUnarchive;
+
+  /// No description provided for @careTypeArchivedLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'ausgeblendet'**
+  String get careTypeArchivedLabel;
+
+  /// No description provided for @careTypeBuiltinHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Eingebaute Art – Formular und Symbol sind fest.'**
+  String get careTypeBuiltinHint;
+
+  /// No description provided for @intervalNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Vorschlag'**
+  String get intervalNone;
+
+  /// No description provided for @intervalGeneral.
+  ///
+  /// In de, this message translates to:
+  /// **'Allgemein'**
+  String get intervalGeneral;
+
+  /// No description provided for @horseFieldBirthdayReminder.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtstagserinnerung'**
+  String get horseFieldBirthdayReminder;
+
+  /// No description provided for @calendarPrevious.
+  ///
+  /// In de, this message translates to:
+  /// **'Zurück'**
+  String get calendarPrevious;
+
+  /// No description provided for @calendarNext.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiter'**
+  String get calendarNext;
+
+  /// No description provided for @calendarEntries.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Eintrag} other{{count} Einträge}}'**
+  String calendarEntries(int count);
 }
 
 class _AppLocalizationsDelegate

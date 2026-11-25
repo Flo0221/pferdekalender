@@ -3,6 +3,8 @@ import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../features/pferd/data/horse_tables.dart';
+import '../../features/pflege/data/care_seed.dart';
+import '../../features/pflege/data/care_tables.dart';
 import '../time/local_date.dart';
 import 'app_database.steps.dart';
 import 'converters.dart';
@@ -24,6 +26,10 @@ part 'app_database.g.dart';
     HorseWeights,
     Contacts,
     HorseContacts,
+    CareEventTypes,
+    CareIntervalDefaults,
+    CareEvents,
+    CareReminders,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -40,7 +46,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -53,9 +59,19 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(schema.contacts);
         await m.createTable(schema.horseContacts);
       },
+      from2To3: (m, schema) async {
+        await m.createTable(schema.careEventTypes);
+        await m.createTable(schema.careIntervalDefaults);
+        await m.createTable(schema.careEvents);
+        await m.createTable(schema.careReminders);
+      },
     ),
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
+      // Startwerte immer nach allen Migrationen auf dem aktuellen Schema
+      // ergänzen (insertOrIgnore – Nutzeränderungen bleiben erhalten).
+      // (Ab Schema v3; Migrationstests öffnen auch ältere Zwischenstände.)
+      if (details.versionNow >= 3) await seedCareDefaults(this);
     },
   );
 }

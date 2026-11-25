@@ -8,8 +8,12 @@ import '../../features/futter/ui/futter_screen.dart';
 import '../../features/pferd/ui/horse_edit_screen.dart';
 import '../../features/pferd/ui/horse_list_screen.dart';
 import '../../features/pferd/ui/pferd_screen.dart';
+import '../../features/pflege/ui/care_edit_screen.dart';
+import '../../features/pflege/ui/care_intervals_screen.dart';
+import '../../features/pflege/ui/care_types_screen.dart';
 import '../../features/pflege/ui/pflege_screen.dart';
 import '../../features/training/ui/training_screen.dart';
+import '../time/local_date.dart';
 import 'app_shell.dart';
 import 'routes.dart';
 
@@ -33,6 +37,38 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
       path: Routes.settings,
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const SettingsScreen(),
+      routes: [
+        GoRoute(
+          path: 'eintragsarten',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const CareTypesScreen(),
+        ),
+        GoRoute(
+          path: 'intervalle',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const CareIntervalsScreen(),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: Routes.careNewBase,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) {
+        final iso = state.uri.queryParameters['datum'];
+        LocalDate? date;
+        try {
+          date = iso == null ? null : LocalDate.parse(iso);
+        } on FormatException {
+          date = null;
+        }
+        return CareEditScreen(initialDate: date);
+      },
+    ),
+    GoRoute(
+      path: '/pflege-eintrag/:id',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) =>
+          CareEditScreen(eventId: state.pathParameters['id']),
     ),
     GoRoute(
       path: Routes.horseList,

@@ -9,4 +9,10 @@ abstract final class Routes {
   static const horseList = '/pferde';
   static const horseNew = '/pferde/neu';
   static String horseEdit(String id) => '/pferde/$id/bearbeiten';
+  static const careNewBase = '/pflege-eintrag/neu';
+  static String careNew({String? date}) =>
+      date == null ? careNewBase : '$careNewBase?datum=$date';
+  static String careEdit(String id) => '/pflege-eintrag/$id';
+  static const careTypes = '/einstellungen/eintragsarten';
+  static const careIntervals = '/einstellungen/intervalle';
 }

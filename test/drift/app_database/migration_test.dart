@@ -7,6 +7,7 @@ import 'package:pferdekalender/core/db/app_database.dart';
 import 'generated/schema.dart';
 import 'generated/schema_v1.dart' as v1;
 import 'generated/schema_v2.dart' as v2;
+import 'generated/schema_v3.dart' as v3;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -60,6 +61,40 @@ void main() {
         expect(rows.single.key, 'theme_mode');
         expect(rows.single.value, 'dark');
         expect(await newDb.select(newDb.horses).get(), isEmpty);
+      },
+    );
+  });
+
+  test('v2 → v3 behält Pferde und legt Pflege-Startwerte an', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 2,
+      newVersion: 3,
+      createOld: v2.DatabaseAtV2.new,
+      createNew: v3.DatabaseAtV3.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.insert(
+          oldDb.horses,
+          v2.HorsesCompanion.insert(
+            id: 'h1',
+            name: 'Amigo',
+            birthDate: const Value('2015-04-02'),
+            createdAt: Value(ts),
+            updatedAt: Value(ts),
+          ),
+        );
+      },
+      validateItems: (newDb) async {
+        final horse = await newDb.select(newDb.horses).getSingle();
+        expect(horse.name, 'Amigo');
+        expect(horse.birthDate, '2015-04-02');
+        // Startwerte kommen über beforeOpen der App-Datenbank.
+        expect(await newDb.select(newDb.careEventTypes).get(), hasLength(9));
+        expect(
+          await newDb.select(newDb.careIntervalDefaults).get(),
+          isNotEmpty,
+        );
       },
     );
   });

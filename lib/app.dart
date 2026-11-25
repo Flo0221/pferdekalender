@@ -5,6 +5,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/einstellungen/domain/app_theme_mode.dart';
 import 'features/einstellungen/ui/settings_providers.dart';
+import 'features/pflege/ui/reminder_sync.dart';
 import 'l10n/generated/app_localizations.dart';
 
 class PferdekalenderApp extends ConsumerWidget {
@@ -13,6 +14,8 @@ class PferdekalenderApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    // Hält Benachrichtigungen mit der Datenbank synchron (auch beim Start).
+    ref.watch(reminderSyncProvider);
     final mode = ref.watch(themeModeProvider).value ?? AppThemeMode.system;
 
     return MaterialApp.router(
