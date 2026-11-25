@@ -122,6 +122,10 @@ void main() {
         tester,
         () => shifts.watchTemplates().first,
       );
+      // Zeitstempel sind sekundengenau – Änderung bewusst in der nächsten Sekunde.
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 1100)),
+      );
       await tester.runAsync(
         () => shifts.setShift(LocalDate.today().addDays(2), templates.first.id),
       );

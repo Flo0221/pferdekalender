@@ -13,15 +13,23 @@ class NotificationPermissionState {
   const NotificationPermissionState({
     required this.notificationsAllowed,
     required this.exactAlarmsAllowed,
+    this.exactAlarmsSupported = true,
   });
 
   final bool notificationsAllowed;
   final bool exactAlarmsAllowed;
+
+  /// Nur Android kennt die Einstellung „Wecker & Erinnerungen“.
+  final bool exactAlarmsSupported;
 }
 
 /// Schnittstelle zum Betriebssystem. In Tests durch eine Fälschung ersetzt.
 abstract interface class NotificationGateway {
   Future<void> init();
+
+  /// Wie viele Benachrichtigungen das System gleichzeitig vorhält
+  /// (Android ca. 500, iOS 64) – es werden nur die nächsten geplant.
+  int get maxPending;
 
   /// Löscht alle geplanten Benachrichtigungen und plant [notifications] neu.
   Future<void> replaceAll(
@@ -51,6 +59,11 @@ class LocalNotificationGateway implements NotificationGateway {
   final String channelDescription;
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
+
+  @override
+  int get maxPending => defaultTargetPlatform == TargetPlatform.iOS
+      ? 60
+      : maxPlannedNotifications;
 
   static const _channelId = 'erinnerungen';
   static const _icon = 'ic_stat_pferdekalender';
@@ -133,9 +146,16 @@ class LocalNotificationGateway implements NotificationGateway {
     await init();
     final android = _android;
     if (android == null) {
-      return const NotificationPermissionState(
-        notificationsAllowed: true,
+      // iOS: echte Abfrage; „exakte Alarme“ gibt es dort nicht (immer pünktlich).
+      final ios = _plugin
+          .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin
+          >();
+      final options = await ios?.checkPermissions();
+      return NotificationPermissionState(
+        notificationsAllowed: options?.isEnabled ?? true,
         exactAlarmsAllowed: true,
+        exactAlarmsSupported: false,
       );
     }
     return NotificationPermissionState(

@@ -57,8 +57,14 @@ final shiftChangedSincePlanProvider = Provider<bool>((ref) {
   if (plan == null || changed == null || plan.distributedAt == null) {
     return false;
   }
-  final at = DateTime.tryParse(changed);
-  if (at == null) return false;
+  final parsed = DateTime.tryParse(changed);
+  if (parsed == null) return false;
+  // `distributedAt` liegt in der DB nur sekundengenau vor – daher ebenfalls
+  // auf Sekunden kürzen, sonst bleibt der Hinweis nach dem Verteilen stehen.
+  final at = DateTime.fromMillisecondsSinceEpoch(
+    parsed.millisecondsSinceEpoch ~/ 1000 * 1000,
+    isUtc: true,
+  );
   if (!plan.params.endDate.isAfter(LocalDate.today())) return false;
   return at.isAfter(plan.distributedAt!);
 });

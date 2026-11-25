@@ -105,4 +105,43 @@ void main() {
     await care.close();
     await birthdays.close();
   });
+
+  test('Grenze des Systems wird eingehalten (iOS: 64)', () async {
+    final gateway = FakeNotificationGateway()..maxPending = 3;
+    final care = StreamController<List<ReminderCandidate>>();
+    final birthdays = StreamController<List<BirthdayCandidate>>();
+    final sync = ReminderSync(
+      gateway: gateway,
+      l10n: l10n,
+      care: care.stream,
+      birthdays: birthdays.stream,
+      debounce: const Duration(milliseconds: 5),
+      clock: () => now,
+    )..start();
+    care.add([
+      for (var i = 1; i <= 10; i++)
+        ReminderCandidate(
+          event: CareEvent(
+            id: 'e$i',
+            horseId: 'h',
+            typeId: BuiltinCareTypes.huf,
+            date: LocalDate(2026, 12, i),
+            reminderOffsets: const [0],
+          ),
+          horseName: 'Didi',
+          typeName: 'Hufbearbeitung',
+        ),
+    ]);
+    birthdays.add(const []);
+    sync.updateSettings(const ReminderSettings());
+    await Future<void>.delayed(const Duration(milliseconds: 30));
+    expect(gateway.planned.map((p) => p.payload), [
+      'care:e1',
+      'care:e2',
+      'care:e3',
+    ]);
+    await sync.dispose();
+    await care.close();
+    await birthdays.close();
+  });
 }

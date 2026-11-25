@@ -156,6 +156,14 @@ test/                         spiegelt lib/
   der ARB (wie die Trainingsvorlagen). Immer als Hinweis zur Rücksprache
   formulieren, nie als Diagnose. Karte „Gesundheit“ im Pferde-Profil unter
   „Fotos“ mit Kurzinfo (`healthSummaryText`).
+- **iOS:** `ios/Runner/AppDelegate.swift` registriert den Kanal
+  `de.flo.pferdekalender/backup` (setzt `isExcludedFromBackup` für das
+  Dokumentenverzeichnis; aus `main.dart` über
+  `core/platform/backup_exclusion.dart`) und den Benachrichtigungs-Delegate.
+  `PrivacyInfo.xcprivacy` ist von Hand in `project.pbxproj` eingetragen.
+  iOS hält max. 64 geplante Benachrichtigungen → `NotificationGateway.maxPending`
+  (iOS 60). „Pünktliche Erinnerungen“ nur auf Android sichtbar
+  (`exactAlarmsSupported`). Konfiguration geprüft in `test/core/ios_config_test.dart`.
 - **Tab-FABs** stehen in `HeroMode(enabled: false)` (IndexedStack, sonst
   Hero-Tag-Kollision).
 - **Kalender-Widget** `core/widgets/month_calendar.dart`: Punkte (`dotsFor`)
@@ -293,7 +301,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - [x] 6b. Gesundheit: Blutbild mit Laboklin-Referenzwerten, Regel-Auswertung, Futter-Bausteine
 - [ ] 7. Export/Import, Einstellungen, Übersichtskarte, Feinschliff
 - [ ] 8. Release-Build Android (Icon, Splash, Signing, Permission-Prüfung)
-- [ ] 9. iOS (nur nach Freigabe)
+- [x] 9. iOS: Konfiguration fertig (Info.plist, Backup-Ausschluss, Privacy-Manifest, Benachrichtigungen); **Build auf Mac/Xcode noch nicht verifiziert** – Anleitung `docs/IOS.md`
 
 ## TODO / offen
 
@@ -314,4 +322,5 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
   Rassenunterschiede nur als Hinweistext. Verlaufsdiagramm einzelner Werte
   über mehrere Blutbilder fehlt noch.
 - Release-Signierung: APK ist derzeit mit dem Debug-Key signiert (Meilenstein 8).
-- iOS-Projekt ist nur generiert, nicht angepasst (Meilenstein 9).
+- iOS: noch nie auf Mac/Xcode gebaut (kein Mac in der Cloud-Umgebung). Erster
+  Build durch den Nutzer nach `docs/IOS.md`; Fehler dann hier beheben.

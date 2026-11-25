@@ -24,6 +24,7 @@ List<PlannedNotification> buildReminderPlan({
   required List<BirthdayCandidate> birthdays,
   required ReminderSettings settings,
   required DateTime now,
+  int limit = maxPlannedNotifications,
 }) {
   final today = LocalDate.fromDateTime(now);
   final sources = <ReminderSource>[
@@ -59,6 +60,7 @@ List<PlannedNotification> buildReminderPlan({
     sources,
     now: now,
     reminderMinutes: settings.minutes,
+    limit: limit,
   );
 }
 
@@ -125,6 +127,7 @@ class ReminderSync {
       birthdays: birthdays,
       settings: settings,
       now: _clock(),
+      limit: gateway.maxPending,
     );
     try {
       await gateway.replaceAll(plan, exact: settings.exact);

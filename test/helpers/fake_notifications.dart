@@ -12,6 +12,9 @@ class FakeNotificationGateway implements NotificationGateway {
   final shown = <String>[];
 
   @override
+  int maxPending = 400;
+
+  @override
   Future<void> init() async {}
 
   @override

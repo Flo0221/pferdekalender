@@ -98,25 +98,26 @@ class ReminderSettingsSection extends ConsumerWidget {
             ],
           ),
         ),
-        SwitchListTile(
-          secondary: const Icon(Icons.alarm_outlined),
-          title: Text(l10n.settingsReminderExact),
-          subtitle: Text(
-            settings.exact &&
-                    permission != null &&
-                    !permission.exactAlarmsAllowed
-                ? l10n.settingsReminderExactDenied
-                : l10n.settingsReminderExactHint,
+        if (permission?.exactAlarmsSupported ?? true)
+          SwitchListTile(
+            secondary: const Icon(Icons.alarm_outlined),
+            title: Text(l10n.settingsReminderExact),
+            subtitle: Text(
+              settings.exact &&
+                      permission != null &&
+                      !permission.exactAlarmsAllowed
+                  ? l10n.settingsReminderExactDenied
+                  : l10n.settingsReminderExactHint,
+            ),
+            value: settings.exact,
+            onChanged: (on) async {
+              if (on) {
+                await gateway.requestExactAlarms();
+                ref.invalidate(_permissionProvider);
+              }
+              await repo.setValue(SettingKeys.exactReminders, '$on');
+            },
           ),
-          value: settings.exact,
-          onChanged: (on) async {
-            if (on) {
-              await gateway.requestExactAlarms();
-              ref.invalidate(_permissionProvider);
-            }
-            await repo.setValue(SettingKeys.exactReminders, '$on');
-          },
-        ),
         ListTile(
           leading: const Icon(Icons.notifications_active_outlined),
           title: Text(l10n.settingsReminderTest),
