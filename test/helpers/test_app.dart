@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart' show driftRuntimeOptions;
@@ -10,6 +11,8 @@ import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
 import 'package:pferdekalender/core/files/documents_dir_provider.dart';
 import 'package:pferdekalender/core/notifications/notification_providers.dart';
+import 'package:pferdekalender/features/training/domain/training_catalog.dart';
+import 'package:pferdekalender/features/training/ui/training_providers.dart';
 
 import 'fake_notifications.dart';
 
@@ -31,6 +34,8 @@ class TestApp {
         databaseProvider.overrideWithValue(db),
         documentsDirProvider.overrideWith((ref) async => Directory.systemTemp),
         notificationGatewayProvider.overrideWithValue(notifications),
+        // rootBundle lädt in der Testzeit nicht – Vorlagen direkt lesen.
+        trainingCatalogProvider.overrideWithValue(AsyncData(testCatalog)),
       ],
     );
     return TestApp(db, container, notifications);
@@ -61,6 +66,19 @@ class TestApp {
   Future<T> read<T>(WidgetTester tester, Future<T> Function() query) async =>
       (await tester.runAsync(query)) as T;
 
+  /// Wie `pumpAndSettle`, lässt aber zwischendurch echte Zeit verstreichen –
+  /// für Bildschirme, die beim Öffnen selbst die Datenbank abfragen (sonst
+  /// dreht der Ladekreisel endlos und `pumpAndSettle` läuft in den Timeout).
+  Future<void> settle(WidgetTester tester, {int rounds = 15}) async {
+    for (var i = 0; i < rounds; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 20)),
+      );
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+    await tester.pumpAndSettle();
+  }
+
   /// Sauberes Beenden (Drift-Stream-Timer, Datenbank schließen).
   Future<void> dispose(WidgetTester tester) async {
     await tester.pumpWidget(const SizedBox.shrink());
@@ -69,3 +87,9 @@ class TestApp {
     await tester.runAsync(db.close);
   }
 }
+
+/// Trainingsvorlagen aus `assets/training_templates.json`.
+final testCatalog = TrainingCatalog.fromJson(
+  (jsonDecode(File('assets/training_templates.json').readAsStringSync()) as Map)
+      .cast<String, Object?>(),
+);

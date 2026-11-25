@@ -1,7 +1,7 @@
 name: pferdekalender
 description: "Pferdekalender – lokal, offline"
 publish_to: 'none'
-version: 0.3.0+3
+version: 0.4.0+4
 
 environment:
   sdk: ^3.14.0
@@ -36,3 +36,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/training_templates.json

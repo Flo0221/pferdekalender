@@ -14,6 +14,10 @@ import '../../features/pflege/ui/care_edit_screen.dart';
 import '../../features/pflege/ui/care_intervals_screen.dart';
 import '../../features/pflege/ui/care_types_screen.dart';
 import '../../features/pflege/ui/pflege_screen.dart';
+import '../../features/training/domain/training.dart';
+import '../../features/training/ui/generator_screen.dart';
+import '../../features/training/ui/preview_screen.dart';
+import '../../features/training/ui/session_edit_screen.dart';
 import '../../features/training/ui/training_screen.dart';
 import '../time/local_date.dart';
 import 'app_shell.dart';
@@ -76,6 +80,32 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
       ],
     ),
     GoRoute(
+      path: Routes.trainingNewBase,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => SessionEditScreen(
+        initialDate: _parseDate(state.uri.queryParameters['datum']),
+      ),
+    ),
+    GoRoute(
+      path: '/training-einheit/:id',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) =>
+          SessionEditScreen(sessionId: state.pathParameters['id']),
+    ),
+    GoRoute(
+      path: Routes.trainingGenerator,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const GeneratorScreen(),
+      routes: [
+        GoRoute(
+          path: 'vorschau',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) =>
+              PreviewScreen(params: state.extra! as TrainingParams),
+        ),
+      ],
+    ),
+    GoRoute(
       path: Routes.careNewBase,
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) {
@@ -115,6 +145,15 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
     ),
   ],
 );
+
+LocalDate? _parseDate(String? iso) {
+  if (iso == null) return null;
+  try {
+    return LocalDate.parse(iso);
+  } on FormatException {
+    return null;
+  }
+}
 
 StatefulShellBranch _branch(String path, Widget screen) => StatefulShellBranch(
   routes: [GoRoute(path: path, builder: (context, state) => screen)],

@@ -6,6 +6,7 @@ import '../../features/dienstplan/data/shift_tables.dart';
 import '../../features/pferd/data/horse_tables.dart';
 import '../../features/pflege/data/care_seed.dart';
 import '../../features/pflege/data/care_tables.dart';
+import '../../features/training/data/training_tables.dart';
 import '../time/local_date.dart';
 import 'app_database.steps.dart';
 import 'converters.dart';
@@ -34,6 +35,8 @@ part 'app_database.g.dart';
     ShiftTemplates,
     ShiftPatterns,
     ShiftDays,
+    TrainingPlans,
+    TrainingSessions,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -50,7 +53,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -73,6 +76,10 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(schema.shiftTemplates);
         await m.createTable(schema.shiftPatterns);
         await m.createTable(schema.shiftDays);
+      },
+      from4To5: (m, schema) async {
+        await m.createTable(schema.trainingPlans);
+        await m.createTable(schema.trainingSessions);
       },
     ),
     beforeOpen: (details) async {

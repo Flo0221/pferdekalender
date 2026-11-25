@@ -16,7 +16,7 @@
   "emptyPflegeTitle": "Noch keine Pflegetermine",
   "emptyPflegeMessage": "Lege Hufbearbeitung, Wurmkur, Impfung oder Tierarzttermine an. Mit Wiederholung plant die App den nächsten Termin automatisch.",
   "emptyTrainingTitle": "Noch kein Training geplant",
-  "emptyTrainingMessage": "Hier erscheinen bald Trainingseinheiten und der Plan-Generator.",
+  "emptyTrainingMessage": "Trage Einheiten von Hand ein oder lass dir mit dem Plan-Generator einen Trainingsplan passend zu deinem Dienstplan erstellen.",
   "emptyFutterTitle": "Noch kein Futterplan",
   "emptyFutterMessage": "Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.",
   "emptyDienstTitle": "Noch keine Schichten",
@@ -685,5 +685,298 @@
   "shiftNeedTemplates": "Lege zuerst mindestens eine Schicht an.",
   "shiftPatternDefaultName": "Rhythmus",
   "shiftCustomAdd": "Eigene Schicht",
-  "shiftTemplatesHint": "Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl."
+  "shiftTemplatesHint": "Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl.",
+  "trainingNoHorse": "Lege zuerst im Tab „Pferd“ ein Pferd an.",
+  "trainingViewCalendar": "Kalender",
+  "trainingViewWeek": "Woche",
+  "trainingAddSession": "Einheit hinzufügen",
+  "trainingGenerator": "Plan-Generator",
+  "trainingNewSession": "Neue Einheit",
+  "trainingEditSession": "Einheit bearbeiten",
+  "trainingDayEmpty": "Ruhetag – keine Einheit geplant",
+  "trainingWeekLoad": "Wochenbelastung: {points} Punkte",
+  "@trainingWeekLoad": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "trainingLoadPoints": "{points} P.",
+  "@trainingLoadPoints": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "trainingSessionMeta": "Stufe {level} · {minutes} min",
+  "@trainingSessionMeta": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingLevel": "Stufe {level}",
+  "@trainingLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingLevel_0": "Ruhetag",
+  "trainingLevel_1": "Aktivpause",
+  "trainingLevel_2": "Leicht",
+  "trainingLevel_3": "Mittel",
+  "trainingLevel_4": "Kraft/Ausdauer",
+  "trainingLevel_5": "Hoch",
+  "trainingStatus_planned": "Geplant",
+  "trainingStatus_done": "Erledigt",
+  "trainingStatus_cancelled": "Ausgefallen",
+  "trainingFieldTitle": "Titel",
+  "trainingFieldDate": "Datum",
+  "trainingFieldForm": "Trainingsform",
+  "trainingFieldFormNone": "Keine Angabe",
+  "trainingFieldLevel": "Intensität (Belastungsstufe)",
+  "trainingFieldDuration": "Dauer",
+  "trainingFieldWarmup": "Aufwärmen",
+  "trainingFieldWork": "Arbeitsphase / Übungen",
+  "trainingFieldCooldown": "Abwärmen",
+  "trainingFieldLinesHint": "Eine Zeile pro Punkt",
+  "trainingFieldStatus": "Status",
+  "trainingFieldRating": "Wie lief es?",
+  "trainingFieldRatingValue": "{rating} von 5",
+  "@trainingFieldRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingFieldNotes": "Notiz",
+  "trainingPinned": "Fixiert – bleibt beim Neu-Verteilen",
+  "trainingCopy": "Kopieren",
+  "trainingCopyTo": "Kopieren auf …",
+  "trainingCopied": "Kopie am {date} angelegt",
+  "@trainingCopied": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "trainingDeleteTitle": "Einheit löschen?",
+  "trainingDeleteText": "Die Einheit wird unwiderruflich gelöscht.",
+  "trainingWhyHere": "Warum an diesem Tag?",
+  "trainingReasonMinutes": "{shift}{minutes} min Stallzeit",
+  "@trainingReasonMinutes": {
+    "placeholders": {
+      "shift": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingReasonAssumed": "Kein Dienstplan-Eintrag – {minutes} min angenommen",
+  "@trainingReasonAssumed": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingReasonSinceIntensive": "letzte intensive Einheit vor {days, plural, =1{1 Tag} other{{days} Tagen}}",
+  "@trainingReasonSinceIntensive": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingReasonNoIntensive": "keine intensive Einheit in den Tagen davor",
+  "trainingReasonIntensive": "intensiv – deshalb auf einen Tag mit viel Zeit gelegt",
+  "trainingReasonActivePause": "Aktivpause statt Ruhetag",
+  "trainingReasonAfterNight": "Tag nach Nachtschicht – nur locker",
+  "trainingReasonRecovery": "Tag nach einer Stufe-5-Einheit – bewusst leicht",
+  "trainingReasonDowngraded": "Stufe {from} war geplant, aber keine passende Einheit (Zeit/Formen) – daher leichter",
+  "@trainingReasonDowngraded": {
+    "placeholders": {
+      "from": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingReasonManual": "Von Hand angelegt oder verschoben",
+  "trainingPlanActive": "Aktueller Plan: {goal}",
+  "@trainingPlanActive": {
+    "placeholders": {
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "trainingPlanWeekOf": "Woche {week} von {weeks} · bis {end}",
+  "@trainingPlanWeekOf": {
+    "placeholders": {
+      "week": {
+        "type": "int"
+      },
+      "weeks": {
+        "type": "int"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "trainingPlanEnd": "Plan beenden",
+  "trainingPlanEndTitle": "Plan beenden?",
+  "trainingPlanEndText": "Künftige offene Einheiten dieses Plans werden entfernt. Erledigte und fixierte Einheiten bleiben.",
+  "trainingShiftChanged": "Dienstplan geändert – Plan ab heute neu verteilen?",
+  "trainingShiftChangedHint": "Nur künftige, offene Einheiten werden neu verteilt. Erledigte und verschobene (fixierte) Einheiten bleiben.",
+  "trainingRedistribute": "Neu verteilen",
+  "trainingRedistributed": "Plan ab heute neu verteilt",
+  "trainingGoal_muskelaufbau": "Muskelaufbau",
+  "trainingGoal_muskelerhalt": "Muskelerhalt",
+  "trainingGoal_kondition": "Kondition",
+  "trainingGoal_wiedereinstieg": "Wiedereinstieg nach Pause",
+  "trainingGoalHint_muskelaufbau": "Belastung steigt ca. 10 % pro Woche, jede 4. Woche Entlastung.",
+  "trainingGoalHint_muskelerhalt": "Gleichbleibende Belastung, 3–4 Einheiten pro Woche.",
+  "trainingGoalHint_kondition": "Mehr Gelände- und Intervalleinheiten, Intervalle werden länger.",
+  "trainingGoalHint_wiedereinstieg": "Nur nach Freigabe durch den Tierarzt! Woche 1–2 nur Schritt, langsame Steigerung.",
+  "generatorTitle": "Trainingsplan erstellen",
+  "generatorGoal": "Ziel",
+  "generatorFitness": "Aktueller Fitnessstand: {value} von 5",
+  "@generatorFitness": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorFitnessLow": "wenig trainiert",
+  "generatorFitnessHigh": "sehr fit",
+  "generatorDays": "Trainingstage pro Woche: {days}",
+  "@generatorDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorWeeks": "Planlänge",
+  "generatorWeeksValue": "{weeks} Wochen",
+  "@generatorWeeksValue": {
+    "placeholders": {
+      "weeks": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorStart": "Startdatum",
+  "generatorForms": "Verfügbare Trainingsformen",
+  "generatorFormsNone": "Bitte mindestens eine Trainingsform wählen.",
+  "generatorExclusions": "Ausschlüsse",
+  "generatorRestrictions": "Einschränkungen (nur zur Info)",
+  "generatorRestrictionsHint": "z. B. „Sehne links – nur gerade Linien“",
+  "generatorShare": "Anteil deiner Stallzeit für {horse}: {percent} %",
+  "@generatorShare": {
+    "placeholders": {
+      "horse": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorShareHint": "Bei mehreren Pferden teilt sich deine Stallzeit.",
+  "generatorBuffer": "Puffer für Putzen/Satteln: {minutes} min",
+  "@generatorBuffer": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorDefaultMinutes": "Tage ohne Dienstplan-Eintrag: {minutes} min annehmen",
+  "@generatorDefaultMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "generatorPreview": "Vorschau erstellen",
+  "generatorDisclaimerTitle": "Bevor es losgeht",
+  "generatorDisclaimerOk": "Verstanden",
+  "previewTitle": "Vorschau",
+  "previewApply": "Plan übernehmen",
+  "previewReplaceTitle": "Aktuellen Plan ersetzen?",
+  "previewReplaceText": "Der bisherige Plan wird beendet. Seine künftigen offenen Einheiten werden entfernt, erledigte und fixierte bleiben.",
+  "previewReplace": "Ersetzen",
+  "previewSaved": "Trainingsplan übernommen",
+  "previewWeek": "Woche {week}",
+  "@previewWeek": {
+    "placeholders": {
+      "week": {
+        "type": "int"
+      }
+    }
+  },
+  "previewDeload": "Entlastungswoche",
+  "previewLoadCurve": "Belastungskurve",
+  "previewLoadCurveLabel": "Wochenbelastung von {min} bis {max} Punkten",
+  "@previewLoadCurveLabel": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "previewSwap": "Andere Übung",
+  "previewNoAlternative": "Keine andere passende Einheit",
+  "previewRemove": "Entfernen",
+  "previewRest_rest": "Ruhetag",
+  "previewRest_covered": "Beisteller/Reitbeteiligung übernimmt",
+  "previewRest_afterNight": "Ruhetag (nach Nachtschicht)",
+  "previewRest_noTime": "Ruhetag (zu wenig Zeit)",
+  "previewRest_beforeStart": "–",
+  "previewWarning": "Woche {week}: nur {achieved} statt {requested} Einheiten möglich",
+  "@previewWarning": {
+    "placeholders": {
+      "week": {
+        "type": "int"
+      },
+      "achieved": {
+        "type": "int"
+      },
+      "requested": {
+        "type": "int"
+      }
+    }
+  },
+  "previewWarningNight": "wegen Nachtschichten",
+  "previewWarningTime": "wegen zu wenig Stallzeit",
+  "previewWarningCovered": "wegen Beisteller-Tagen",
+  "previewWarningShorter": "Tipp: Mit kürzeren Einheiten (ca. 15 min, z. B. Bodenarbeit) ginge an {days, plural, =1{1 weiteren Tag} other{{days} weiteren Tagen}} etwas.",
+  "@previewWarningShorter": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "previewFormRepeat": "Wenige Trainingsformen gewählt – manche Form kommt öfter als 2× pro Woche vor.",
+  "previewEmpty": "In diesem Zeitraum ist keine Einheit möglich."
 }

@@ -44,7 +44,11 @@ class TabScaffold extends StatelessWidget {
         ],
       ),
       body: body,
-      floatingActionButton: floatingActionButton,
+      // Alle Tabs liegen gleichzeitig im Baum (IndexedStack) – ohne HeroMode
+      // kollidieren die Standard-Hero-Tags der FABs beim Seitenwechsel.
+      floatingActionButton: floatingActionButton == null
+          ? null
+          : HeroMode(enabled: false, child: floatingActionButton!),
     );
   }
 }

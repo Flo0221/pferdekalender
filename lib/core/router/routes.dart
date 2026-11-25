@@ -19,4 +19,10 @@ abstract final class Routes {
   static const shiftPatterns = '/dienst-rhythmen';
   static const shiftPatternNew = '/dienst-rhythmen/neu';
   static String shiftPatternEdit(String id) => '/dienst-rhythmen/$id';
+  static const trainingNewBase = '/training-einheit/neu';
+  static String trainingNew({String? date}) =>
+      date == null ? trainingNewBase : '$trainingNewBase?datum=$date';
+  static String trainingEdit(String id) => '/training-einheit/$id';
+  static const trainingGenerator = '/training-generator';
+  static const trainingPreview = '/training-generator/vorschau';
 }

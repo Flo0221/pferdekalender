@@ -193,7 +193,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyTrainingMessage.
   ///
   /// In de, this message translates to:
-  /// **'Hier erscheinen bald Trainingseinheiten und der Plan-Generator.'**
+  /// **'Trage Einheiten von Hand ein oder lass dir mit dem Plan-Generator einen Trainingsplan passend zu deinem Dienstplan erstellen.'**
   String get emptyTrainingMessage;
 
   /// No description provided for @emptyFutterTitle.
@@ -2127,6 +2127,696 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl.'**
   String get shiftTemplatesHint;
+
+  /// No description provided for @trainingNoHorse.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege zuerst im Tab „Pferd“ ein Pferd an.'**
+  String get trainingNoHorse;
+
+  /// No description provided for @trainingViewCalendar.
+  ///
+  /// In de, this message translates to:
+  /// **'Kalender'**
+  String get trainingViewCalendar;
+
+  /// No description provided for @trainingViewWeek.
+  ///
+  /// In de, this message translates to:
+  /// **'Woche'**
+  String get trainingViewWeek;
+
+  /// No description provided for @trainingAddSession.
+  ///
+  /// In de, this message translates to:
+  /// **'Einheit hinzufügen'**
+  String get trainingAddSession;
+
+  /// No description provided for @trainingGenerator.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan-Generator'**
+  String get trainingGenerator;
+
+  /// No description provided for @trainingNewSession.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Einheit'**
+  String get trainingNewSession;
+
+  /// No description provided for @trainingEditSession.
+  ///
+  /// In de, this message translates to:
+  /// **'Einheit bearbeiten'**
+  String get trainingEditSession;
+
+  /// No description provided for @trainingDayEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag – keine Einheit geplant'**
+  String get trainingDayEmpty;
+
+  /// No description provided for @trainingWeekLoad.
+  ///
+  /// In de, this message translates to:
+  /// **'Wochenbelastung: {points} Punkte'**
+  String trainingWeekLoad(String points);
+
+  /// No description provided for @trainingLoadPoints.
+  ///
+  /// In de, this message translates to:
+  /// **'{points} P.'**
+  String trainingLoadPoints(String points);
+
+  /// No description provided for @trainingSessionMeta.
+  ///
+  /// In de, this message translates to:
+  /// **'Stufe {level} · {minutes} min'**
+  String trainingSessionMeta(int level, int minutes);
+
+  /// No description provided for @trainingLevel.
+  ///
+  /// In de, this message translates to:
+  /// **'Stufe {level}'**
+  String trainingLevel(int level);
+
+  /// No description provided for @trainingLevel_0.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag'**
+  String get trainingLevel_0;
+
+  /// No description provided for @trainingLevel_1.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktivpause'**
+  String get trainingLevel_1;
+
+  /// No description provided for @trainingLevel_2.
+  ///
+  /// In de, this message translates to:
+  /// **'Leicht'**
+  String get trainingLevel_2;
+
+  /// No description provided for @trainingLevel_3.
+  ///
+  /// In de, this message translates to:
+  /// **'Mittel'**
+  String get trainingLevel_3;
+
+  /// No description provided for @trainingLevel_4.
+  ///
+  /// In de, this message translates to:
+  /// **'Kraft/Ausdauer'**
+  String get trainingLevel_4;
+
+  /// No description provided for @trainingLevel_5.
+  ///
+  /// In de, this message translates to:
+  /// **'Hoch'**
+  String get trainingLevel_5;
+
+  /// No description provided for @trainingStatus_planned.
+  ///
+  /// In de, this message translates to:
+  /// **'Geplant'**
+  String get trainingStatus_planned;
+
+  /// No description provided for @trainingStatus_done.
+  ///
+  /// In de, this message translates to:
+  /// **'Erledigt'**
+  String get trainingStatus_done;
+
+  /// No description provided for @trainingStatus_cancelled.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausgefallen'**
+  String get trainingStatus_cancelled;
+
+  /// No description provided for @trainingFieldTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Titel'**
+  String get trainingFieldTitle;
+
+  /// No description provided for @trainingFieldDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum'**
+  String get trainingFieldDate;
+
+  /// No description provided for @trainingFieldForm.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingsform'**
+  String get trainingFieldForm;
+
+  /// No description provided for @trainingFieldFormNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Angabe'**
+  String get trainingFieldFormNone;
+
+  /// No description provided for @trainingFieldLevel.
+  ///
+  /// In de, this message translates to:
+  /// **'Intensität (Belastungsstufe)'**
+  String get trainingFieldLevel;
+
+  /// No description provided for @trainingFieldDuration.
+  ///
+  /// In de, this message translates to:
+  /// **'Dauer'**
+  String get trainingFieldDuration;
+
+  /// No description provided for @trainingFieldWarmup.
+  ///
+  /// In de, this message translates to:
+  /// **'Aufwärmen'**
+  String get trainingFieldWarmup;
+
+  /// No description provided for @trainingFieldWork.
+  ///
+  /// In de, this message translates to:
+  /// **'Arbeitsphase / Übungen'**
+  String get trainingFieldWork;
+
+  /// No description provided for @trainingFieldCooldown.
+  ///
+  /// In de, this message translates to:
+  /// **'Abwärmen'**
+  String get trainingFieldCooldown;
+
+  /// No description provided for @trainingFieldLinesHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Eine Zeile pro Punkt'**
+  String get trainingFieldLinesHint;
+
+  /// No description provided for @trainingFieldStatus.
+  ///
+  /// In de, this message translates to:
+  /// **'Status'**
+  String get trainingFieldStatus;
+
+  /// No description provided for @trainingFieldRating.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie lief es?'**
+  String get trainingFieldRating;
+
+  /// No description provided for @trainingFieldRatingValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{rating} von 5'**
+  String trainingFieldRatingValue(int rating);
+
+  /// No description provided for @trainingFieldNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get trainingFieldNotes;
+
+  /// No description provided for @trainingPinned.
+  ///
+  /// In de, this message translates to:
+  /// **'Fixiert – bleibt beim Neu-Verteilen'**
+  String get trainingPinned;
+
+  /// No description provided for @trainingCopy.
+  ///
+  /// In de, this message translates to:
+  /// **'Kopieren'**
+  String get trainingCopy;
+
+  /// No description provided for @trainingCopyTo.
+  ///
+  /// In de, this message translates to:
+  /// **'Kopieren auf …'**
+  String get trainingCopyTo;
+
+  /// No description provided for @trainingCopied.
+  ///
+  /// In de, this message translates to:
+  /// **'Kopie am {date} angelegt'**
+  String trainingCopied(String date);
+
+  /// No description provided for @trainingDeleteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Einheit löschen?'**
+  String get trainingDeleteTitle;
+
+  /// No description provided for @trainingDeleteText.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Einheit wird unwiderruflich gelöscht.'**
+  String get trainingDeleteText;
+
+  /// No description provided for @trainingWhyHere.
+  ///
+  /// In de, this message translates to:
+  /// **'Warum an diesem Tag?'**
+  String get trainingWhyHere;
+
+  /// No description provided for @trainingReasonMinutes.
+  ///
+  /// In de, this message translates to:
+  /// **'{shift}{minutes} min Stallzeit'**
+  String trainingReasonMinutes(String shift, int minutes);
+
+  /// No description provided for @trainingReasonAssumed.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Dienstplan-Eintrag – {minutes} min angenommen'**
+  String trainingReasonAssumed(int minutes);
+
+  /// No description provided for @trainingReasonSinceIntensive.
+  ///
+  /// In de, this message translates to:
+  /// **'letzte intensive Einheit vor {days, plural, =1{1 Tag} other{{days} Tagen}}'**
+  String trainingReasonSinceIntensive(int days);
+
+  /// No description provided for @trainingReasonNoIntensive.
+  ///
+  /// In de, this message translates to:
+  /// **'keine intensive Einheit in den Tagen davor'**
+  String get trainingReasonNoIntensive;
+
+  /// No description provided for @trainingReasonIntensive.
+  ///
+  /// In de, this message translates to:
+  /// **'intensiv – deshalb auf einen Tag mit viel Zeit gelegt'**
+  String get trainingReasonIntensive;
+
+  /// No description provided for @trainingReasonActivePause.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktivpause statt Ruhetag'**
+  String get trainingReasonActivePause;
+
+  /// No description provided for @trainingReasonAfterNight.
+  ///
+  /// In de, this message translates to:
+  /// **'Tag nach Nachtschicht – nur locker'**
+  String get trainingReasonAfterNight;
+
+  /// No description provided for @trainingReasonRecovery.
+  ///
+  /// In de, this message translates to:
+  /// **'Tag nach einer Stufe-5-Einheit – bewusst leicht'**
+  String get trainingReasonRecovery;
+
+  /// No description provided for @trainingReasonDowngraded.
+  ///
+  /// In de, this message translates to:
+  /// **'Stufe {from} war geplant, aber keine passende Einheit (Zeit/Formen) – daher leichter'**
+  String trainingReasonDowngraded(int from);
+
+  /// No description provided for @trainingReasonManual.
+  ///
+  /// In de, this message translates to:
+  /// **'Von Hand angelegt oder verschoben'**
+  String get trainingReasonManual;
+
+  /// No description provided for @trainingPlanActive.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktueller Plan: {goal}'**
+  String trainingPlanActive(String goal);
+
+  /// No description provided for @trainingPlanWeekOf.
+  ///
+  /// In de, this message translates to:
+  /// **'Woche {week} von {weeks} · bis {end}'**
+  String trainingPlanWeekOf(int week, int weeks, String end);
+
+  /// No description provided for @trainingPlanEnd.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan beenden'**
+  String get trainingPlanEnd;
+
+  /// No description provided for @trainingPlanEndTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan beenden?'**
+  String get trainingPlanEndTitle;
+
+  /// No description provided for @trainingPlanEndText.
+  ///
+  /// In de, this message translates to:
+  /// **'Künftige offene Einheiten dieses Plans werden entfernt. Erledigte und fixierte Einheiten bleiben.'**
+  String get trainingPlanEndText;
+
+  /// No description provided for @trainingShiftChanged.
+  ///
+  /// In de, this message translates to:
+  /// **'Dienstplan geändert – Plan ab heute neu verteilen?'**
+  String get trainingShiftChanged;
+
+  /// No description provided for @trainingShiftChangedHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur künftige, offene Einheiten werden neu verteilt. Erledigte und verschobene (fixierte) Einheiten bleiben.'**
+  String get trainingShiftChangedHint;
+
+  /// No description provided for @trainingRedistribute.
+  ///
+  /// In de, this message translates to:
+  /// **'Neu verteilen'**
+  String get trainingRedistribute;
+
+  /// No description provided for @trainingRedistributed.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan ab heute neu verteilt'**
+  String get trainingRedistributed;
+
+  /// No description provided for @trainingGoal_muskelaufbau.
+  ///
+  /// In de, this message translates to:
+  /// **'Muskelaufbau'**
+  String get trainingGoal_muskelaufbau;
+
+  /// No description provided for @trainingGoal_muskelerhalt.
+  ///
+  /// In de, this message translates to:
+  /// **'Muskelerhalt'**
+  String get trainingGoal_muskelerhalt;
+
+  /// No description provided for @trainingGoal_kondition.
+  ///
+  /// In de, this message translates to:
+  /// **'Kondition'**
+  String get trainingGoal_kondition;
+
+  /// No description provided for @trainingGoal_wiedereinstieg.
+  ///
+  /// In de, this message translates to:
+  /// **'Wiedereinstieg nach Pause'**
+  String get trainingGoal_wiedereinstieg;
+
+  /// No description provided for @trainingGoalHint_muskelaufbau.
+  ///
+  /// In de, this message translates to:
+  /// **'Belastung steigt ca. 10 % pro Woche, jede 4. Woche Entlastung.'**
+  String get trainingGoalHint_muskelaufbau;
+
+  /// No description provided for @trainingGoalHint_muskelerhalt.
+  ///
+  /// In de, this message translates to:
+  /// **'Gleichbleibende Belastung, 3–4 Einheiten pro Woche.'**
+  String get trainingGoalHint_muskelerhalt;
+
+  /// No description provided for @trainingGoalHint_kondition.
+  ///
+  /// In de, this message translates to:
+  /// **'Mehr Gelände- und Intervalleinheiten, Intervalle werden länger.'**
+  String get trainingGoalHint_kondition;
+
+  /// No description provided for @trainingGoalHint_wiedereinstieg.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur nach Freigabe durch den Tierarzt! Woche 1–2 nur Schritt, langsame Steigerung.'**
+  String get trainingGoalHint_wiedereinstieg;
+
+  /// No description provided for @generatorTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingsplan erstellen'**
+  String get generatorTitle;
+
+  /// No description provided for @generatorGoal.
+  ///
+  /// In de, this message translates to:
+  /// **'Ziel'**
+  String get generatorGoal;
+
+  /// No description provided for @generatorFitness.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktueller Fitnessstand: {value} von 5'**
+  String generatorFitness(int value);
+
+  /// No description provided for @generatorFitnessLow.
+  ///
+  /// In de, this message translates to:
+  /// **'wenig trainiert'**
+  String get generatorFitnessLow;
+
+  /// No description provided for @generatorFitnessHigh.
+  ///
+  /// In de, this message translates to:
+  /// **'sehr fit'**
+  String get generatorFitnessHigh;
+
+  /// No description provided for @generatorDays.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingstage pro Woche: {days}'**
+  String generatorDays(int days);
+
+  /// No description provided for @generatorWeeks.
+  ///
+  /// In de, this message translates to:
+  /// **'Planlänge'**
+  String get generatorWeeks;
+
+  /// No description provided for @generatorWeeksValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{weeks} Wochen'**
+  String generatorWeeksValue(int weeks);
+
+  /// No description provided for @generatorStart.
+  ///
+  /// In de, this message translates to:
+  /// **'Startdatum'**
+  String get generatorStart;
+
+  /// No description provided for @generatorForms.
+  ///
+  /// In de, this message translates to:
+  /// **'Verfügbare Trainingsformen'**
+  String get generatorForms;
+
+  /// No description provided for @generatorFormsNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte mindestens eine Trainingsform wählen.'**
+  String get generatorFormsNone;
+
+  /// No description provided for @generatorExclusions.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausschlüsse'**
+  String get generatorExclusions;
+
+  /// No description provided for @generatorRestrictions.
+  ///
+  /// In de, this message translates to:
+  /// **'Einschränkungen (nur zur Info)'**
+  String get generatorRestrictions;
+
+  /// No description provided for @generatorRestrictionsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'z. B. „Sehne links – nur gerade Linien“'**
+  String get generatorRestrictionsHint;
+
+  /// No description provided for @generatorShare.
+  ///
+  /// In de, this message translates to:
+  /// **'Anteil deiner Stallzeit für {horse}: {percent} %'**
+  String generatorShare(String horse, int percent);
+
+  /// No description provided for @generatorShareHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Bei mehreren Pferden teilt sich deine Stallzeit.'**
+  String get generatorShareHint;
+
+  /// No description provided for @generatorBuffer.
+  ///
+  /// In de, this message translates to:
+  /// **'Puffer für Putzen/Satteln: {minutes} min'**
+  String generatorBuffer(int minutes);
+
+  /// No description provided for @generatorDefaultMinutes.
+  ///
+  /// In de, this message translates to:
+  /// **'Tage ohne Dienstplan-Eintrag: {minutes} min annehmen'**
+  String generatorDefaultMinutes(int minutes);
+
+  /// No description provided for @generatorPreview.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorschau erstellen'**
+  String get generatorPreview;
+
+  /// No description provided for @generatorDisclaimerTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevor es losgeht'**
+  String get generatorDisclaimerTitle;
+
+  /// No description provided for @generatorDisclaimerOk.
+  ///
+  /// In de, this message translates to:
+  /// **'Verstanden'**
+  String get generatorDisclaimerOk;
+
+  /// No description provided for @previewTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorschau'**
+  String get previewTitle;
+
+  /// No description provided for @previewApply.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan übernehmen'**
+  String get previewApply;
+
+  /// No description provided for @previewReplaceTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktuellen Plan ersetzen?'**
+  String get previewReplaceTitle;
+
+  /// No description provided for @previewReplaceText.
+  ///
+  /// In de, this message translates to:
+  /// **'Der bisherige Plan wird beendet. Seine künftigen offenen Einheiten werden entfernt, erledigte und fixierte bleiben.'**
+  String get previewReplaceText;
+
+  /// No description provided for @previewReplace.
+  ///
+  /// In de, this message translates to:
+  /// **'Ersetzen'**
+  String get previewReplace;
+
+  /// No description provided for @previewSaved.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingsplan übernommen'**
+  String get previewSaved;
+
+  /// No description provided for @previewWeek.
+  ///
+  /// In de, this message translates to:
+  /// **'Woche {week}'**
+  String previewWeek(int week);
+
+  /// No description provided for @previewDeload.
+  ///
+  /// In de, this message translates to:
+  /// **'Entlastungswoche'**
+  String get previewDeload;
+
+  /// No description provided for @previewLoadCurve.
+  ///
+  /// In de, this message translates to:
+  /// **'Belastungskurve'**
+  String get previewLoadCurve;
+
+  /// No description provided for @previewLoadCurveLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Wochenbelastung von {min} bis {max} Punkten'**
+  String previewLoadCurveLabel(String min, String max);
+
+  /// No description provided for @previewSwap.
+  ///
+  /// In de, this message translates to:
+  /// **'Andere Übung'**
+  String get previewSwap;
+
+  /// No description provided for @previewNoAlternative.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine andere passende Einheit'**
+  String get previewNoAlternative;
+
+  /// No description provided for @previewRemove.
+  ///
+  /// In de, this message translates to:
+  /// **'Entfernen'**
+  String get previewRemove;
+
+  /// No description provided for @previewRest_rest.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag'**
+  String get previewRest_rest;
+
+  /// No description provided for @previewRest_covered.
+  ///
+  /// In de, this message translates to:
+  /// **'Beisteller/Reitbeteiligung übernimmt'**
+  String get previewRest_covered;
+
+  /// No description provided for @previewRest_afterNight.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag (nach Nachtschicht)'**
+  String get previewRest_afterNight;
+
+  /// No description provided for @previewRest_noTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag (zu wenig Zeit)'**
+  String get previewRest_noTime;
+
+  /// No description provided for @previewRest_beforeStart.
+  ///
+  /// In de, this message translates to:
+  /// **'–'**
+  String get previewRest_beforeStart;
+
+  /// No description provided for @previewWarning.
+  ///
+  /// In de, this message translates to:
+  /// **'Woche {week}: nur {achieved} statt {requested} Einheiten möglich'**
+  String previewWarning(int week, int achieved, int requested);
+
+  /// No description provided for @previewWarningNight.
+  ///
+  /// In de, this message translates to:
+  /// **'wegen Nachtschichten'**
+  String get previewWarningNight;
+
+  /// No description provided for @previewWarningTime.
+  ///
+  /// In de, this message translates to:
+  /// **'wegen zu wenig Stallzeit'**
+  String get previewWarningTime;
+
+  /// No description provided for @previewWarningCovered.
+  ///
+  /// In de, this message translates to:
+  /// **'wegen Beisteller-Tagen'**
+  String get previewWarningCovered;
+
+  /// No description provided for @previewWarningShorter.
+  ///
+  /// In de, this message translates to:
+  /// **'Tipp: Mit kürzeren Einheiten (ca. 15 min, z. B. Bodenarbeit) ginge an {days, plural, =1{1 weiteren Tag} other{{days} weiteren Tagen}} etwas.'**
+  String previewWarningShorter(int days);
+
+  /// No description provided for @previewFormRepeat.
+  ///
+  /// In de, this message translates to:
+  /// **'Wenige Trainingsformen gewählt – manche Form kommt öfter als 2× pro Woche vor.'**
+  String get previewFormRepeat;
+
+  /// No description provided for @previewEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'In diesem Zeitraum ist keine Einheit möglich.'**
+  String get previewEmpty;
 }
 
 class _AppLocalizationsDelegate

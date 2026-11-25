@@ -1,0 +1,351 @@
+{
+  "version": 1,
+  "_hinweis": "Vorlagen für den Trainingsplan-Generator. Eigene Einheiten einfach in 'units' ergänzen. Stufen 0–5 siehe 'levels'. 'tags' werden für Ausschlüsse genutzt (z. B. 'galopp', 'sprung', 'trab'). Ersetzt keine Absprache mit Tierarzt oder Trainer.",
+  "levels": [
+    { "level": 0, "name": "Ruhetag", "loadPerTenMinutes": 0 },
+    { "level": 1, "name": "Aktivpause", "loadPerTenMinutes": 1 },
+    { "level": 2, "name": "Leicht", "loadPerTenMinutes": 2 },
+    { "level": 3, "name": "Mittel", "loadPerTenMinutes": 3 },
+    { "level": 4, "name": "Kraft/Ausdauer", "loadPerTenMinutes": 5 },
+    { "level": 5, "name": "Hoch", "loadPerTenMinutes": 7 }
+  ],
+  "forms": [
+    { "key": "dressur", "name": "Reiten Dressur/Gymnastik" },
+    { "key": "longieren", "name": "Longieren" },
+    { "key": "bodenarbeit", "name": "Bodenarbeit" },
+    { "key": "stangen", "name": "Stangen/Cavaletti" },
+    { "key": "gelaende", "name": "Gelände/Ausritt" },
+    { "key": "huegel", "name": "Hügel/Bergauf" },
+    { "key": "intervall", "name": "Intervalltraining" },
+    { "key": "spazieren", "name": "Spazierengehen/Handpferd" },
+    { "key": "springen", "name": "Springen" }
+  ],
+  "exclusions": [
+    { "tag": "galopp", "name": "Kein Galopp" },
+    { "tag": "sprung", "name": "Kein Springen" },
+    { "tag": "trab", "name": "Kein Trab" },
+    { "tag": "reiten", "name": "Nicht reiten (nur vom Boden)" }
+  ],
+  "fitnessScale": { "1": 0.7, "2": 0.8, "3": 0.9, "4": 1.0, "5": 1.1 },
+  "warmup": [
+    "Mindestens 10 min Schritt, gern am langen Zügel bzw. ruhig geführt",
+    "Lösender Trab auf großen Linien, Handwechsel"
+  ],
+  "warmupWalkOnly": [
+    "Mindestens 10 min ruhiger Schritt"
+  ],
+  "cooldown": [
+    "Schritt am langen Zügel bzw. ruhig geführt, bis das Pferd trocken und entspannt ist"
+  ],
+  "pauseHint": "Konzentrationsphasen sind kurz: etwa alle 5–10 min eine kurze Pause im Schritt einlegen.",
+  "goals": {
+    "muskelaufbau": {
+      "progressionPerWeek": 0.10,
+      "deloadEvery": 4,
+      "deloadFactor": 0.7,
+      "maxLevel": 4,
+      "minLevel": 2,
+      "highDaysByFitness": { "1": 1, "2": 1, "3": 2, "4": 2, "5": 2 },
+      "level5MinFitness": 4,
+      "level5PerWeek": 1,
+      "preferredForms": ["stangen", "huegel", "dressur", "longieren"]
+    },
+    "muskelerhalt": {
+      "progressionPerWeek": 0.0,
+      "deloadEvery": 0,
+      "deloadFactor": 1.0,
+      "maxLevel": 4,
+      "minLevel": 2,
+      "maxDaysPerWeek": 4,
+      "highDaysByFitness": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
+      "level5MinFitness": 99,
+      "level5PerWeek": 0,
+      "preferredForms": ["dressur", "longieren", "gelaende", "bodenarbeit"]
+    },
+    "kondition": {
+      "progressionPerWeek": 0.10,
+      "deloadEvery": 4,
+      "deloadFactor": 0.7,
+      "maxLevel": 4,
+      "minLevel": 3,
+      "highDaysByFitness": { "1": 1, "2": 2, "3": 2, "4": 2, "5": 2 },
+      "level5MinFitness": 4,
+      "level5PerWeek": 1,
+      "intervalGrowthMinutesPerWeek": 0.5,
+      "preferredForms": ["gelaende", "intervall", "huegel"]
+    },
+    "wiedereinstieg": {
+      "progressionPerWeek": 0.10,
+      "deloadEvery": 0,
+      "deloadFactor": 1.0,
+      "maxLevel": 4,
+      "minLevel": 1,
+      "levelCapByWeek": [2, 2, 3, 4],
+      "maxMinutesByWeek": [30, 30, 40],
+      "noTrotWeeks": 2,
+      "highDaysByFitness": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
+      "level5MinFitness": 99,
+      "level5PerWeek": 0,
+      "preferredForms": ["spazieren", "bodenarbeit", "longieren", "dressur", "gelaende"]
+    }
+  },
+  "units": [
+    {
+      "key": "spazieren_schritt",
+      "name": "Spazierengehen",
+      "level": 1,
+      "form": "spazieren",
+      "minMinutes": 15,
+      "defaultMinutes": 30,
+      "maxMinutes": 60,
+      "tags": [],
+      "exercises": ["Ruhiger Schritt an der Hand, verschiedene Böden", "Grasen lassen als Belohnung"]
+    },
+    {
+      "key": "schritt_ausritt",
+      "name": "Schritt-Ausritt",
+      "level": 1,
+      "form": "gelaende",
+      "minMinutes": 25,
+      "defaultMinutes": 40,
+      "maxMinutes": 75,
+      "tags": ["reiten"],
+      "exercises": ["Fleißiger Schritt am langen Zügel", "Leichte Steigungen im Schritt"]
+    },
+    {
+      "key": "longe_schritt",
+      "name": "Lockeres Longieren im Schritt",
+      "level": 1,
+      "form": "longieren",
+      "minMinutes": 15,
+      "defaultMinutes": 20,
+      "maxMinutes": 25,
+      "tags": [],
+      "exercises": ["Schritt auf großem Zirkel", "Häufige Handwechsel"]
+    },
+    {
+      "key": "handpferd",
+      "name": "Handpferd / langer Spaziergang",
+      "level": 2,
+      "form": "spazieren",
+      "minMinutes": 30,
+      "defaultMinutes": 45,
+      "maxMinutes": 75,
+      "tags": [],
+      "exercises": ["Zügiger Schritt", "Kurze Bergauf-Passagen im Schritt", "Unterschiedliche Böden"]
+    },
+    {
+      "key": "bodenarbeit_basis",
+      "name": "Bodenarbeit",
+      "level": 2,
+      "form": "bodenarbeit",
+      "minMinutes": 20,
+      "defaultMinutes": 30,
+      "maxMinutes": 45,
+      "tags": [],
+      "exercises": [
+        "Rückwärtsrichten (wenige, ruhige Tritte)",
+        "Vorhandwendung",
+        "Führen in Stellung auf gebogenen Linien",
+        "Halten und Antreten an Stimme und Körpersprache",
+        "Übertreten lassen auf der Volte"
+      ]
+    },
+    {
+      "key": "dehnung_handarbeit",
+      "name": "Dehnung & Handarbeit",
+      "level": 2,
+      "form": "bodenarbeit",
+      "minMinutes": 20,
+      "defaultMinutes": 25,
+      "maxMinutes": 40,
+      "tags": [],
+      "exercises": [
+        "Vorwärts-abwärts im Schritt an der Hand",
+        "Seitliches Biegen mit Leckerli (nur in Absprache mit Tierarzt/Physio)",
+        "Schritt über einzelne Bodenstangen"
+      ]
+    },
+    {
+      "key": "gelassenheit",
+      "name": "Gelassenheitstraining",
+      "level": 2,
+      "form": "bodenarbeit",
+      "minMinutes": 20,
+      "defaultMinutes": 25,
+      "maxMinutes": 40,
+      "tags": [],
+      "exercises": ["Planen, Flatterband, Regenschirm", "Über Untergründe führen", "Ruhig stehen bleiben üben"]
+    },
+    {
+      "key": "reiten_locker",
+      "name": "Lösendes Reiten",
+      "level": 2,
+      "form": "dressur",
+      "minMinutes": 25,
+      "defaultMinutes": 30,
+      "maxMinutes": 45,
+      "tags": ["reiten", "trab"],
+      "exercises": [
+        "Lösende Arbeit im Schritt und leichten Trab",
+        "Große gebogene Linien, Zirkel, Schlangenlinien",
+        "Zügel aus der Hand kauen lassen"
+      ]
+    },
+    {
+      "key": "longe_uebergaenge",
+      "name": "Longieren mit Übergängen",
+      "level": 3,
+      "form": "longieren",
+      "minMinutes": 20,
+      "defaultMinutes": 25,
+      "maxMinutes": 35,
+      "tags": ["trab"],
+      "exercises": [
+        "Übergänge Schritt–Trab–Schritt",
+        "Zirkel verkleinern und vergrößern",
+        "Handwechsel alle paar Runden",
+        "Tempounterschiede im Trab"
+      ]
+    },
+    {
+      "key": "gymnastik_reiten",
+      "name": "Gymnastizierendes Reiten",
+      "level": 3,
+      "form": "dressur",
+      "minMinutes": 35,
+      "defaultMinutes": 40,
+      "maxMinutes": 55,
+      "tags": ["reiten", "trab"],
+      "exercises": [
+        "Viele Übergänge (auch innerhalb der Gangart)",
+        "Volten und Schlangenlinien",
+        "Zirkel verkleinern/vergrößern",
+        "Tempowechsel im Trab"
+      ]
+    },
+    {
+      "key": "seitengaenge",
+      "name": "Seitengänge",
+      "level": 3,
+      "form": "dressur",
+      "minMinutes": 30,
+      "defaultMinutes": 40,
+      "maxMinutes": 50,
+      "tags": ["reiten", "trab"],
+      "exercises": ["Schenkelweichen", "Schulterherein", "Travers (wenn bekannt)", "Zwischendurch geradeaus vorwärts"]
+    },
+    {
+      "key": "trabstangen",
+      "name": "Trabstangen am Boden",
+      "level": 3,
+      "form": "stangen",
+      "minMinutes": 25,
+      "defaultMinutes": 30,
+      "maxMinutes": 40,
+      "tags": ["trab"],
+      "exercises": ["3–4 Bodenstangen im Trababstand", "Stangen auf dem Zirkel (fächerförmig)", "Stangen im Schritt zum Einstieg"]
+    },
+    {
+      "key": "gelaende_trab",
+      "name": "Ausritt mit Trabphasen",
+      "level": 3,
+      "form": "gelaende",
+      "minMinutes": 40,
+      "defaultMinutes": 50,
+      "maxMinutes": 90,
+      "tags": ["reiten", "trab"],
+      "exercises": ["Wechsel von Schritt- und Trabphasen", "Ruhige Steigungen im Schritt", "Unterschiedliche Böden"]
+    },
+    {
+      "key": "cavaletti",
+      "name": "Cavaletti-Arbeit",
+      "level": 4,
+      "form": "stangen",
+      "minMinutes": 30,
+      "defaultMinutes": 35,
+      "maxMinutes": 45,
+      "tags": ["trab"],
+      "exercises": ["Cavaletti in niedriger Höhe im Trab", "Wechsel zwischen Stangen am Boden und erhöht", "Ausreichend Pausen zwischen den Durchgängen"]
+    },
+    {
+      "key": "stangen_erhoeht",
+      "name": "Einseitig erhöhte Stangen",
+      "level": 4,
+      "form": "stangen",
+      "minMinutes": 25,
+      "defaultMinutes": 30,
+      "maxMinutes": 40,
+      "tags": ["trab"],
+      "exercises": ["Stangen einseitig erhöht auf dem Zirkel", "Beide Hände gleich oft", "Wenige Wiederholungen, dafür sauber"]
+    },
+    {
+      "key": "longe_cavaletti",
+      "name": "Longieren über Cavaletti",
+      "level": 4,
+      "form": "longieren",
+      "minMinutes": 20,
+      "defaultMinutes": 25,
+      "maxMinutes": 35,
+      "tags": ["trab"],
+      "exercises": ["Cavaletti auf dem Zirkel", "Übergänge vor und nach den Stangen", "Handwechsel"]
+    },
+    {
+      "key": "huegel",
+      "name": "Hügeltraining",
+      "level": 4,
+      "form": "huegel",
+      "minMinutes": 30,
+      "defaultMinutes": 40,
+      "maxMinutes": 60,
+      "tags": ["trab"],
+      "exercises": ["Bergauf im fleißigen Schritt", "Kurze Trabreprisen bergauf", "Rückwärtsrichten am Hang (wenige Tritte)", "Bergab nur im Schritt"]
+    },
+    {
+      "key": "gelaende_intervall",
+      "name": "Gelände-Intervalle",
+      "level": 4,
+      "form": "intervall",
+      "minMinutes": 35,
+      "defaultMinutes": 45,
+      "maxMinutes": 75,
+      "tags": ["trab"],
+      "interval": { "baseWorkMinutes": 3, "restMinutes": 1, "gait": "Trab" },
+      "exercises": ["Intervalle: {work} min Trab / {rest} min Schritt, 4–6 Wiederholungen", "Auf gleichmäßigen, festen Böden"]
+    },
+    {
+      "key": "galopp_intervall",
+      "name": "Galopp-Intervalle",
+      "level": 5,
+      "form": "intervall",
+      "minMinutes": 40,
+      "defaultMinutes": 45,
+      "maxMinutes": 60,
+      "tags": ["galopp", "reiten"],
+      "interval": { "baseWorkMinutes": 2, "restMinutes": 2, "gait": "Galopp" },
+      "exercises": ["Intervalle: {work} min Galopp / {rest} min Schritt, 3–4 Wiederholungen", "Atmung beobachten, erst weiter, wenn sie sich beruhigt"]
+    },
+    {
+      "key": "springgymnastik",
+      "name": "Springgymnastik",
+      "level": 5,
+      "form": "springen",
+      "minMinutes": 35,
+      "defaultMinutes": 40,
+      "maxMinutes": 50,
+      "tags": ["sprung", "galopp", "reiten"],
+      "exercises": ["Gymnastikreihe aus Trab", "Kleine Hindernisse, wenige Durchgänge", "Zwischendurch lange Schrittpausen"]
+    },
+    {
+      "key": "parcours",
+      "name": "Parcours-Training",
+      "level": 5,
+      "form": "springen",
+      "minMinutes": 35,
+      "defaultMinutes": 45,
+      "maxMinutes": 55,
+      "tags": ["sprung", "galopp", "reiten"],
+      "exercises": ["Einzelsprünge und kurze Linien", "Wendungen im Galopp", "Gutes Abwärmen nicht vergessen"]
+    }
+  ]
+}

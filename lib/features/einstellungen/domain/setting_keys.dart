@@ -19,4 +19,7 @@ abstract final class SettingKeys {
   /// Zeitpunkt (ISO-8601, UTC) der letzten Dienstplan-Änderung – der
   /// Trainings-Tab bietet danach „Plan neu verteilen“ an.
   static const shiftChangedAt = 'shift_changed_at';
+
+  /// `"true"`, sobald der Hinweis beim ersten Trainingsplan bestätigt wurde.
+  static const trainingDisclaimerSeen = 'training_disclaimer_seen';
 }

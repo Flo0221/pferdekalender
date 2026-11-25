@@ -60,7 +60,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emptyTrainingMessage =>
-      'Hier erscheinen bald Trainingseinheiten und der Plan-Generator.';
+      'Trage Einheiten von Hand ein oder lass dir mit dem Plan-Generator einen Trainingsplan passend zu deinem Dienstplan erstellen.';
 
   @override
   String get emptyFutterTitle => 'Noch kein Futterplan';
@@ -1232,4 +1232,420 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get shiftTemplatesHint =>
       'Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl.';
+
+  @override
+  String get trainingNoHorse => 'Lege zuerst im Tab „Pferd“ ein Pferd an.';
+
+  @override
+  String get trainingViewCalendar => 'Kalender';
+
+  @override
+  String get trainingViewWeek => 'Woche';
+
+  @override
+  String get trainingAddSession => 'Einheit hinzufügen';
+
+  @override
+  String get trainingGenerator => 'Plan-Generator';
+
+  @override
+  String get trainingNewSession => 'Neue Einheit';
+
+  @override
+  String get trainingEditSession => 'Einheit bearbeiten';
+
+  @override
+  String get trainingDayEmpty => 'Ruhetag – keine Einheit geplant';
+
+  @override
+  String trainingWeekLoad(String points) {
+    return 'Wochenbelastung: $points Punkte';
+  }
+
+  @override
+  String trainingLoadPoints(String points) {
+    return '$points P.';
+  }
+
+  @override
+  String trainingSessionMeta(int level, int minutes) {
+    return 'Stufe $level · $minutes min';
+  }
+
+  @override
+  String trainingLevel(int level) {
+    return 'Stufe $level';
+  }
+
+  @override
+  String get trainingLevel_0 => 'Ruhetag';
+
+  @override
+  String get trainingLevel_1 => 'Aktivpause';
+
+  @override
+  String get trainingLevel_2 => 'Leicht';
+
+  @override
+  String get trainingLevel_3 => 'Mittel';
+
+  @override
+  String get trainingLevel_4 => 'Kraft/Ausdauer';
+
+  @override
+  String get trainingLevel_5 => 'Hoch';
+
+  @override
+  String get trainingStatus_planned => 'Geplant';
+
+  @override
+  String get trainingStatus_done => 'Erledigt';
+
+  @override
+  String get trainingStatus_cancelled => 'Ausgefallen';
+
+  @override
+  String get trainingFieldTitle => 'Titel';
+
+  @override
+  String get trainingFieldDate => 'Datum';
+
+  @override
+  String get trainingFieldForm => 'Trainingsform';
+
+  @override
+  String get trainingFieldFormNone => 'Keine Angabe';
+
+  @override
+  String get trainingFieldLevel => 'Intensität (Belastungsstufe)';
+
+  @override
+  String get trainingFieldDuration => 'Dauer';
+
+  @override
+  String get trainingFieldWarmup => 'Aufwärmen';
+
+  @override
+  String get trainingFieldWork => 'Arbeitsphase / Übungen';
+
+  @override
+  String get trainingFieldCooldown => 'Abwärmen';
+
+  @override
+  String get trainingFieldLinesHint => 'Eine Zeile pro Punkt';
+
+  @override
+  String get trainingFieldStatus => 'Status';
+
+  @override
+  String get trainingFieldRating => 'Wie lief es?';
+
+  @override
+  String trainingFieldRatingValue(int rating) {
+    return '$rating von 5';
+  }
+
+  @override
+  String get trainingFieldNotes => 'Notiz';
+
+  @override
+  String get trainingPinned => 'Fixiert – bleibt beim Neu-Verteilen';
+
+  @override
+  String get trainingCopy => 'Kopieren';
+
+  @override
+  String get trainingCopyTo => 'Kopieren auf …';
+
+  @override
+  String trainingCopied(String date) {
+    return 'Kopie am $date angelegt';
+  }
+
+  @override
+  String get trainingDeleteTitle => 'Einheit löschen?';
+
+  @override
+  String get trainingDeleteText => 'Die Einheit wird unwiderruflich gelöscht.';
+
+  @override
+  String get trainingWhyHere => 'Warum an diesem Tag?';
+
+  @override
+  String trainingReasonMinutes(String shift, int minutes) {
+    return '$shift$minutes min Stallzeit';
+  }
+
+  @override
+  String trainingReasonAssumed(int minutes) {
+    return 'Kein Dienstplan-Eintrag – $minutes min angenommen';
+  }
+
+  @override
+  String trainingReasonSinceIntensive(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tagen',
+      one: '1 Tag',
+    );
+    return 'letzte intensive Einheit vor $_temp0';
+  }
+
+  @override
+  String get trainingReasonNoIntensive =>
+      'keine intensive Einheit in den Tagen davor';
+
+  @override
+  String get trainingReasonIntensive =>
+      'intensiv – deshalb auf einen Tag mit viel Zeit gelegt';
+
+  @override
+  String get trainingReasonActivePause => 'Aktivpause statt Ruhetag';
+
+  @override
+  String get trainingReasonAfterNight => 'Tag nach Nachtschicht – nur locker';
+
+  @override
+  String get trainingReasonRecovery =>
+      'Tag nach einer Stufe-5-Einheit – bewusst leicht';
+
+  @override
+  String trainingReasonDowngraded(int from) {
+    return 'Stufe $from war geplant, aber keine passende Einheit (Zeit/Formen) – daher leichter';
+  }
+
+  @override
+  String get trainingReasonManual => 'Von Hand angelegt oder verschoben';
+
+  @override
+  String trainingPlanActive(String goal) {
+    return 'Aktueller Plan: $goal';
+  }
+
+  @override
+  String trainingPlanWeekOf(int week, int weeks, String end) {
+    return 'Woche $week von $weeks · bis $end';
+  }
+
+  @override
+  String get trainingPlanEnd => 'Plan beenden';
+
+  @override
+  String get trainingPlanEndTitle => 'Plan beenden?';
+
+  @override
+  String get trainingPlanEndText =>
+      'Künftige offene Einheiten dieses Plans werden entfernt. Erledigte und fixierte Einheiten bleiben.';
+
+  @override
+  String get trainingShiftChanged =>
+      'Dienstplan geändert – Plan ab heute neu verteilen?';
+
+  @override
+  String get trainingShiftChangedHint =>
+      'Nur künftige, offene Einheiten werden neu verteilt. Erledigte und verschobene (fixierte) Einheiten bleiben.';
+
+  @override
+  String get trainingRedistribute => 'Neu verteilen';
+
+  @override
+  String get trainingRedistributed => 'Plan ab heute neu verteilt';
+
+  @override
+  String get trainingGoal_muskelaufbau => 'Muskelaufbau';
+
+  @override
+  String get trainingGoal_muskelerhalt => 'Muskelerhalt';
+
+  @override
+  String get trainingGoal_kondition => 'Kondition';
+
+  @override
+  String get trainingGoal_wiedereinstieg => 'Wiedereinstieg nach Pause';
+
+  @override
+  String get trainingGoalHint_muskelaufbau =>
+      'Belastung steigt ca. 10 % pro Woche, jede 4. Woche Entlastung.';
+
+  @override
+  String get trainingGoalHint_muskelerhalt =>
+      'Gleichbleibende Belastung, 3–4 Einheiten pro Woche.';
+
+  @override
+  String get trainingGoalHint_kondition =>
+      'Mehr Gelände- und Intervalleinheiten, Intervalle werden länger.';
+
+  @override
+  String get trainingGoalHint_wiedereinstieg =>
+      'Nur nach Freigabe durch den Tierarzt! Woche 1–2 nur Schritt, langsame Steigerung.';
+
+  @override
+  String get generatorTitle => 'Trainingsplan erstellen';
+
+  @override
+  String get generatorGoal => 'Ziel';
+
+  @override
+  String generatorFitness(int value) {
+    return 'Aktueller Fitnessstand: $value von 5';
+  }
+
+  @override
+  String get generatorFitnessLow => 'wenig trainiert';
+
+  @override
+  String get generatorFitnessHigh => 'sehr fit';
+
+  @override
+  String generatorDays(int days) {
+    return 'Trainingstage pro Woche: $days';
+  }
+
+  @override
+  String get generatorWeeks => 'Planlänge';
+
+  @override
+  String generatorWeeksValue(int weeks) {
+    return '$weeks Wochen';
+  }
+
+  @override
+  String get generatorStart => 'Startdatum';
+
+  @override
+  String get generatorForms => 'Verfügbare Trainingsformen';
+
+  @override
+  String get generatorFormsNone =>
+      'Bitte mindestens eine Trainingsform wählen.';
+
+  @override
+  String get generatorExclusions => 'Ausschlüsse';
+
+  @override
+  String get generatorRestrictions => 'Einschränkungen (nur zur Info)';
+
+  @override
+  String get generatorRestrictionsHint =>
+      'z. B. „Sehne links – nur gerade Linien“';
+
+  @override
+  String generatorShare(String horse, int percent) {
+    return 'Anteil deiner Stallzeit für $horse: $percent %';
+  }
+
+  @override
+  String get generatorShareHint =>
+      'Bei mehreren Pferden teilt sich deine Stallzeit.';
+
+  @override
+  String generatorBuffer(int minutes) {
+    return 'Puffer für Putzen/Satteln: $minutes min';
+  }
+
+  @override
+  String generatorDefaultMinutes(int minutes) {
+    return 'Tage ohne Dienstplan-Eintrag: $minutes min annehmen';
+  }
+
+  @override
+  String get generatorPreview => 'Vorschau erstellen';
+
+  @override
+  String get generatorDisclaimerTitle => 'Bevor es losgeht';
+
+  @override
+  String get generatorDisclaimerOk => 'Verstanden';
+
+  @override
+  String get previewTitle => 'Vorschau';
+
+  @override
+  String get previewApply => 'Plan übernehmen';
+
+  @override
+  String get previewReplaceTitle => 'Aktuellen Plan ersetzen?';
+
+  @override
+  String get previewReplaceText =>
+      'Der bisherige Plan wird beendet. Seine künftigen offenen Einheiten werden entfernt, erledigte und fixierte bleiben.';
+
+  @override
+  String get previewReplace => 'Ersetzen';
+
+  @override
+  String get previewSaved => 'Trainingsplan übernommen';
+
+  @override
+  String previewWeek(int week) {
+    return 'Woche $week';
+  }
+
+  @override
+  String get previewDeload => 'Entlastungswoche';
+
+  @override
+  String get previewLoadCurve => 'Belastungskurve';
+
+  @override
+  String previewLoadCurveLabel(String min, String max) {
+    return 'Wochenbelastung von $min bis $max Punkten';
+  }
+
+  @override
+  String get previewSwap => 'Andere Übung';
+
+  @override
+  String get previewNoAlternative => 'Keine andere passende Einheit';
+
+  @override
+  String get previewRemove => 'Entfernen';
+
+  @override
+  String get previewRest_rest => 'Ruhetag';
+
+  @override
+  String get previewRest_covered => 'Beisteller/Reitbeteiligung übernimmt';
+
+  @override
+  String get previewRest_afterNight => 'Ruhetag (nach Nachtschicht)';
+
+  @override
+  String get previewRest_noTime => 'Ruhetag (zu wenig Zeit)';
+
+  @override
+  String get previewRest_beforeStart => '–';
+
+  @override
+  String previewWarning(int week, int achieved, int requested) {
+    return 'Woche $week: nur $achieved statt $requested Einheiten möglich';
+  }
+
+  @override
+  String get previewWarningNight => 'wegen Nachtschichten';
+
+  @override
+  String get previewWarningTime => 'wegen zu wenig Stallzeit';
+
+  @override
+  String get previewWarningCovered => 'wegen Beisteller-Tagen';
+
+  @override
+  String previewWarningShorter(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days weiteren Tagen',
+      one: '1 weiteren Tag',
+    );
+    return 'Tipp: Mit kürzeren Einheiten (ca. 15 min, z. B. Bodenarbeit) ginge an $_temp0 etwas.';
+  }
+
+  @override
+  String get previewFormRepeat =>
+      'Wenige Trainingsformen gewählt – manche Form kommt öfter als 2× pro Woche vor.';
+
+  @override
+  String get previewEmpty => 'In diesem Zeitraum ist keine Einheit möglich.';
 }

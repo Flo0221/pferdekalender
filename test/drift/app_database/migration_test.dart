@@ -9,6 +9,7 @@ import 'generated/schema_v1.dart' as v1;
 import 'generated/schema_v2.dart' as v2;
 import 'generated/schema_v3.dart' as v3;
 import 'generated/schema_v4.dart' as v4;
+import 'generated/schema_v5.dart' as v5;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -151,6 +152,49 @@ void main() {
         expect(e.repeatValue, 7);
         expect(await newDb.select(newDb.shiftTemplates).get(), isEmpty);
         expect(await newDb.select(newDb.shiftDays).get(), isEmpty);
+      },
+    );
+  });
+
+  test('v4 → v5 behält Dienstplan, Trainings-Tabellen leer', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 4,
+      newVersion: 5,
+      createOld: v4.DatabaseAtV4.new,
+      createNew: v5.DatabaseAtV5.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch
+          ..insert(
+            oldDb.shiftTemplates,
+            v4.ShiftTemplatesCompanion.insert(
+              id: 't1',
+              name: 'Früh',
+              shortCode: 'F',
+              color: 0xFFFFB300,
+              stableMinutes: 90,
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.shiftDays,
+            v4.ShiftDaysCompanion.insert(
+              date: '2026-12-01',
+              templateId: const Value('t1'),
+              overrideMinutes: const Value(20),
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          );
+      },
+      validateItems: (newDb) async {
+        final day = await newDb.select(newDb.shiftDays).getSingle();
+        expect(day.templateId, 't1');
+        expect(day.overrideMinutes, 20);
+        expect(await newDb.select(newDb.trainingPlans).get(), isEmpty);
+        expect(await newDb.select(newDb.trainingSessions).get(), isEmpty);
       },
     );
   });

@@ -31,6 +31,12 @@ class ShiftRepository {
     return q.watch().map((rows) => rows.map(_toTemplate).toList());
   }
 
+  /// Alle Schichten inkl. ausgeblendeter als Map (einmalige Abfrage).
+  Future<Map<String, ShiftTemplate>> getTemplateMap() async {
+    final rows = await _db.select(_db.shiftTemplates).get();
+    return {for (final r in rows) r.id: _toTemplate(r)};
+  }
+
   /// Neu (leere ID) oder ändern. Gibt die ID zurück.
   Future<String> saveTemplate(ShiftTemplate t) async {
     final isNew = t.id.isEmpty;
