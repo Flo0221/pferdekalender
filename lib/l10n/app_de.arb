@@ -1,0 +1,40 @@
+{
+  "@@locale": "de",
+  "appTitle": "Pferdekalender",
+
+  "tabPflege": "Pflege",
+  "tabTraining": "Training",
+  "tabFutter": "Futter",
+  "tabDienst": "Dienst",
+  "tabPferd": "Pferd",
+
+  "titlePflege": "Pflege-Kalender",
+  "titleTraining": "Training",
+  "titleFutter": "Futterplan",
+  "titleDienst": "Mein Dienstplan",
+  "titlePferd": "Pferd",
+  "titleSettings": "Einstellungen",
+
+  "actionSettings": "Einstellungen öffnen",
+
+  "emptyPflegeTitle": "Noch keine Pflegetermine",
+  "emptyPflegeMessage": "Hier erscheinen bald Hufe, Wurmkuren, Impfungen und Tierarzttermine.",
+  "emptyTrainingTitle": "Noch kein Training geplant",
+  "emptyTrainingMessage": "Hier erscheinen bald Trainingseinheiten und der Plan-Generator.",
+  "emptyFutterTitle": "Noch kein Futterplan",
+  "emptyFutterMessage": "Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.",
+  "emptyDienstTitle": "Noch keine Schichten",
+  "emptyDienstMessage": "Hier erscheinen bald deine Schichten und die Stallzeit pro Tag.",
+  "emptyPferdTitle": "Noch kein Pferd angelegt",
+  "emptyPferdMessage": "Hier legst du bald deine Pferde mit Profil und Fotos an.",
+
+  "settingsAppearance": "Darstellung",
+  "settingsThemeSystem": "Wie System",
+  "settingsThemeLight": "Hell",
+  "settingsThemeDark": "Dunkel",
+  "settingsNoticeTitle": "Hinweis",
+  "disclaimer": "Intervalle und Trainingsvorschläge ersetzen keine Absprache mit Tierarzt, Hufschmied oder Trainer.",
+  "settingsPrivacyTitle": "Datenschutz",
+  "settingsPrivacyText": "Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an der automatischen Android-Sicherung teil. Sichere deine Daten über den Export (folgt in einer späteren Version).",
+  "settingsAbout": "Über die App"
+}
