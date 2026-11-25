@@ -217,7 +217,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyDienstMessage.
   ///
   /// In de, this message translates to:
-  /// **'Lege Schichtvorlagen an – mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.'**
+  /// **'Lege deine Schichten an – Standard-Schichten mit einem Tipp oder eigene wie „Bereitschaft“ oder „Homeoffice“ – jeweils mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.'**
   String get emptyDienstMessage;
 
   /// No description provided for @emptyPferdTitle.
@@ -1723,7 +1723,7 @@ abstract class AppLocalizations {
   /// No description provided for @shiftCreateDefaults.
   ///
   /// In de, this message translates to:
-  /// **'Standard-Vorlagen anlegen'**
+  /// **'Standard-Schichten anlegen'**
   String get shiftCreateDefaults;
 
   /// No description provided for @shiftCreateDefaultsHint.
@@ -1735,19 +1735,19 @@ abstract class AppLocalizations {
   /// No description provided for @shiftTemplates.
   ///
   /// In de, this message translates to:
-  /// **'Schichtvorlagen'**
+  /// **'Meine Schichten'**
   String get shiftTemplates;
 
   /// No description provided for @shiftTemplateNew.
   ///
   /// In de, this message translates to:
-  /// **'Neue Vorlage'**
+  /// **'Eigene Schicht anlegen'**
   String get shiftTemplateNew;
 
   /// No description provided for @shiftTemplateEdit.
   ///
   /// In de, this message translates to:
-  /// **'Vorlage bearbeiten'**
+  /// **'Schicht bearbeiten'**
   String get shiftTemplateEdit;
 
   /// No description provided for @shiftTemplateName.
@@ -1825,13 +1825,13 @@ abstract class AppLocalizations {
   /// No description provided for @shiftTemplateRemoved.
   ///
   /// In de, this message translates to:
-  /// **'Vorlage gelöscht'**
+  /// **'Schicht gelöscht'**
   String get shiftTemplateRemoved;
 
   /// No description provided for @shiftTemplateArchived.
   ///
   /// In de, this message translates to:
-  /// **'Vorlage wird noch verwendet und wurde daher nur ausgeblendet.'**
+  /// **'Die Schicht wird noch verwendet und wurde daher nur ausgeblendet.'**
   String get shiftTemplateArchived;
 
   /// No description provided for @shiftTemplateRemoveTitle.
@@ -1843,7 +1843,7 @@ abstract class AppLocalizations {
   /// No description provided for @shiftTemplateRemoveText.
   ///
   /// In de, this message translates to:
-  /// **'Wird die Vorlage noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.'**
+  /// **'Wird die Schicht noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.'**
   String get shiftTemplateRemoveText;
 
   /// No description provided for @dayTime_morgens.
@@ -1885,7 +1885,7 @@ abstract class AppLocalizations {
   /// No description provided for @shiftQuickHint.
   ///
   /// In de, this message translates to:
-  /// **'Vorlage wählen, dann Tage antippen.'**
+  /// **'Schicht wählen, dann Tage antippen.'**
   String get shiftQuickHint;
 
   /// No description provided for @shiftQuickClear.
@@ -2107,7 +2107,7 @@ abstract class AppLocalizations {
   /// No description provided for @shiftNeedTemplates.
   ///
   /// In de, this message translates to:
-  /// **'Lege zuerst mindestens eine Schichtvorlage an.'**
+  /// **'Lege zuerst mindestens eine Schicht an.'**
   String get shiftNeedTemplates;
 
   /// No description provided for @shiftPatternDefaultName.
@@ -2115,6 +2115,18 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Rhythmus'**
   String get shiftPatternDefaultName;
+
+  /// No description provided for @shiftCustomAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Eigene Schicht'**
+  String get shiftCustomAdd;
+
+  /// No description provided for @shiftTemplatesHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl.'**
+  String get shiftTemplatesHint;
 }
 
 class _AppLocalizationsDelegate

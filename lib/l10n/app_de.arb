@@ -20,7 +20,7 @@
   "emptyFutterTitle": "Noch kein Futterplan",
   "emptyFutterMessage": "Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.",
   "emptyDienstTitle": "Noch keine Schichten",
-  "emptyDienstMessage": "Lege Schichtvorlagen an – mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.",
+  "emptyDienstMessage": "Lege deine Schichten an – Standard-Schichten mit einem Tipp oder eigene wie „Bereitschaft“ oder „Homeoffice“ – jeweils mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.",
   "emptyPferdTitle": "Noch kein Pferd angelegt",
   "emptyPferdMessage": "Lege dein Pferd mit Profil, Fotos, Gewicht und Kontakten an. Alle Bereiche der App beziehen sich dann auf das ausgewählte Pferd.",
   "settingsAppearance": "Darstellung",
@@ -542,11 +542,11 @@
       }
     }
   },
-  "shiftCreateDefaults": "Standard-Vorlagen anlegen",
+  "shiftCreateDefaults": "Standard-Schichten anlegen",
   "shiftCreateDefaultsHint": "Früh, Spät, Nacht, Frei, Urlaub – alles anpassbar",
-  "shiftTemplates": "Schichtvorlagen",
-  "shiftTemplateNew": "Neue Vorlage",
-  "shiftTemplateEdit": "Vorlage bearbeiten",
+  "shiftTemplates": "Meine Schichten",
+  "shiftTemplateNew": "Eigene Schicht anlegen",
+  "shiftTemplateEdit": "Schicht bearbeiten",
   "shiftTemplateName": "Name",
   "shiftTemplateShort": "Kürzel",
   "shiftTemplateShortHint": "1–3 Zeichen, z. B. F",
@@ -559,8 +559,8 @@
   "shiftTemplatePreferredNone": "Egal",
   "shiftTemplateNight": "Nachtschicht",
   "shiftTemplateNightHint": "Der Tag danach wird im Trainingsplan geschont.",
-  "shiftTemplateRemoved": "Vorlage gelöscht",
-  "shiftTemplateArchived": "Vorlage wird noch verwendet und wurde daher nur ausgeblendet.",
+  "shiftTemplateRemoved": "Schicht gelöscht",
+  "shiftTemplateArchived": "Die Schicht wird noch verwendet und wurde daher nur ausgeblendet.",
   "shiftTemplateRemoveTitle": "{name} entfernen?",
   "@shiftTemplateRemoveTitle": {
     "placeholders": {
@@ -569,7 +569,7 @@
       }
     }
   },
-  "shiftTemplateRemoveText": "Wird die Vorlage noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.",
+  "shiftTemplateRemoveText": "Wird die Schicht noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.",
   "dayTime_morgens": "Morgens",
   "dayTime_nachmittags": "Nachmittags",
   "dayTime_abends": "Abends",
@@ -583,7 +583,7 @@
   },
   "shiftQuickMode": "Schnell eintragen",
   "shiftQuickModeEnd": "Fertig",
-  "shiftQuickHint": "Vorlage wählen, dann Tage antippen.",
+  "shiftQuickHint": "Schicht wählen, dann Tage antippen.",
   "shiftQuickClear": "Leeren",
   "shiftNoShift": "Keine Schicht",
   "shiftDayEdit": "Tag bearbeiten",
@@ -682,6 +682,8 @@
   "shiftPatternDeleteText": "Sollen auch die vom Rhythmus eingetragenen Tage ab heute entfernt werden? Manuell geänderte Tage bleiben immer erhalten.",
   "shiftPatternDeleteKeepDays": "Nur Rhythmus löschen",
   "shiftPatternDeleteWithDays": "Mit Tagen ab heute",
-  "shiftNeedTemplates": "Lege zuerst mindestens eine Schichtvorlage an.",
-  "shiftPatternDefaultName": "Rhythmus"
+  "shiftNeedTemplates": "Lege zuerst mindestens eine Schicht an.",
+  "shiftPatternDefaultName": "Rhythmus",
+  "shiftCustomAdd": "Eigene Schicht",
+  "shiftTemplatesHint": "Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl."
 }

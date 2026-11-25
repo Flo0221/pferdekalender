@@ -10,6 +10,7 @@ import '../../../l10n/generated/app_localizations.dart';
 import '../domain/shift.dart';
 import '../domain/shift_logic.dart';
 import 'shift_providers.dart';
+import 'shift_templates_screen.dart' show AddShiftChip;
 
 /// Liste der Rhythmen.
 class ShiftPatternsScreen extends ConsumerWidget {
@@ -200,10 +201,15 @@ class _ShiftPatternEditScreenState
         ],
       ),
       body: templates.isEmpty
-          ? EmptyState(
-              icon: Icons.repeat,
-              title: l10n.shiftPatternNew,
-              message: l10n.shiftNeedTemplates,
+          ? ListView(
+              children: [
+                EmptyState(
+                  icon: Icons.repeat,
+                  title: l10n.shiftPatternNew,
+                  message: l10n.shiftNeedTemplates,
+                ),
+                Center(child: AddShiftChip(onCreated: (_) {})),
+              ],
             )
           : ListView(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
@@ -239,6 +245,9 @@ class _ShiftPatternEditScreenState
                     ActionChip(
                       label: Text('+ ${l10n.shiftNoShift}'),
                       onPressed: () => setState(() => _steps.add(null)),
+                    ),
+                    AddShiftChip(
+                      onCreated: (id) => setState(() => _steps.add(id)),
                     ),
                   ],
                 ),

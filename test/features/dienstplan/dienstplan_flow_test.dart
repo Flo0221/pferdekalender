@@ -14,7 +14,7 @@ void main() {
     await app.openTab(tester, 'Dienst');
 
     expect(find.text('Noch keine Schichten'), findsOneWidget);
-    await tester.tap(find.text('Standard-Vorlagen anlegen'));
+    await tester.tap(find.text('Standard-Schichten anlegen'));
     await tester.pumpAndSettle();
 
     // Kein Pferde-Umschalter im Dienstplan.
@@ -23,7 +23,7 @@ void main() {
     // Schnell-Modus: „Nacht“ wählen und heute antippen.
     await tester.tap(find.byTooltip('Schnell eintragen'));
     await tester.pumpAndSettle();
-    expect(find.text('Vorlage wählen, dann Tage antippen.'), findsOneWidget);
+    expect(find.text('Schicht wählen, dann Tage antippen.'), findsOneWidget);
     await tester.tap(find.widgetWithText(ChoiceChip, 'Nacht'));
     await tester.pumpAndSettle();
 
@@ -111,6 +111,54 @@ void main() {
       () => repo.getDays(start, start.addDays(55)),
     );
     expect(days, hasLength(56));
+
+    await app.dispose(tester);
+  });
+
+  testWidgets('Eigene Schicht im Schnell-Modus anlegen und eintragen', (
+    tester,
+  ) async {
+    final app = TestApp.create();
+    final repo = app.container.read(shiftRepositoryProvider);
+    await repo.createDefaultTemplates();
+    await app.pump(tester);
+    await app.openTab(tester, 'Dienst');
+
+    await tester.tap(find.byTooltip('Schnell eintragen'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(
+      find.widgetWithText(ActionChip, 'Eigene Schicht'),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ActionChip, 'Eigene Schicht'));
+    await tester.pumpAndSettle();
+    expect(find.text('Eigene Schicht anlegen'), findsOneWidget);
+
+    await tester.enterText(
+      find.widgetWithText(TextFormField, 'Name *'),
+      'Bereitschaft',
+    );
+    await tester.enterText(find.widgetWithText(TextFormField, 'Kürzel *'), 'B');
+    await tester.tap(find.widgetWithText(FilledButton, 'Speichern'));
+    await tester.pumpAndSettle();
+
+    // Neue Schicht ist direkt ausgewählt und wird eingetragen.
+    final chip = tester.widget<ChoiceChip>(
+      find.widgetWithText(ChoiceChip, 'Bereitschaft'),
+    );
+    expect(chip.selected, isTrue);
+    final today = LocalDate.today();
+    await tester.tap(find.text('${today.day}').first);
+    await tester.pumpAndSettle();
+
+    final templates = await app.read(tester, () => repo.watchTemplates().first);
+    final b = templates.firstWhere((t) => t.name == 'Bereitschaft');
+    expect(b.shortCode, 'B');
+    final day = (await app.read(
+      tester,
+      () => repo.getDays(today, today),
+    ))[today];
+    expect(day?.templateId, b.id);
 
     await app.dispose(tester);
   });

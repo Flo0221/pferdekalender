@@ -74,7 +74,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emptyDienstMessage =>
-      'Lege Schichtvorlagen an – mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.';
+      'Lege deine Schichten an – Standard-Schichten mit einem Tipp oder eigene wie „Bereitschaft“ oder „Homeoffice“ – jeweils mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.';
 
   @override
   String get emptyPferdTitle => 'Noch kein Pferd angelegt';
@@ -976,20 +976,20 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get shiftCreateDefaults => 'Standard-Vorlagen anlegen';
+  String get shiftCreateDefaults => 'Standard-Schichten anlegen';
 
   @override
   String get shiftCreateDefaultsHint =>
       'Früh, Spät, Nacht, Frei, Urlaub – alles anpassbar';
 
   @override
-  String get shiftTemplates => 'Schichtvorlagen';
+  String get shiftTemplates => 'Meine Schichten';
 
   @override
-  String get shiftTemplateNew => 'Neue Vorlage';
+  String get shiftTemplateNew => 'Eigene Schicht anlegen';
 
   @override
-  String get shiftTemplateEdit => 'Vorlage bearbeiten';
+  String get shiftTemplateEdit => 'Schicht bearbeiten';
 
   @override
   String get shiftTemplateName => 'Name';
@@ -1030,11 +1030,11 @@ class AppLocalizationsDe extends AppLocalizations {
       'Der Tag danach wird im Trainingsplan geschont.';
 
   @override
-  String get shiftTemplateRemoved => 'Vorlage gelöscht';
+  String get shiftTemplateRemoved => 'Schicht gelöscht';
 
   @override
   String get shiftTemplateArchived =>
-      'Vorlage wird noch verwendet und wurde daher nur ausgeblendet.';
+      'Die Schicht wird noch verwendet und wurde daher nur ausgeblendet.';
 
   @override
   String shiftTemplateRemoveTitle(String name) {
@@ -1043,7 +1043,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get shiftTemplateRemoveText =>
-      'Wird die Vorlage noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.';
+      'Wird die Schicht noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.';
 
   @override
   String get dayTime_morgens => 'Morgens';
@@ -1066,7 +1066,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shiftQuickModeEnd => 'Fertig';
 
   @override
-  String get shiftQuickHint => 'Vorlage wählen, dann Tage antippen.';
+  String get shiftQuickHint => 'Schicht wählen, dann Tage antippen.';
 
   @override
   String get shiftQuickClear => 'Leeren';
@@ -1221,9 +1221,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shiftPatternDeleteWithDays => 'Mit Tagen ab heute';
 
   @override
-  String get shiftNeedTemplates =>
-      'Lege zuerst mindestens eine Schichtvorlage an.';
+  String get shiftNeedTemplates => 'Lege zuerst mindestens eine Schicht an.';
 
   @override
   String get shiftPatternDefaultName => 'Rhythmus';
+
+  @override
+  String get shiftCustomAdd => 'Eigene Schicht';
+
+  @override
+  String get shiftTemplatesHint =>
+      'Lege beliebig viele eigene Schichten an, z. B. „Bereitschaft“, „Homeoffice“ oder „Kurzdienst“ – mit eigener Stallzeit. Sie stehen danach überall zur Auswahl.';
 }

@@ -29,6 +29,13 @@ class ShiftTemplatesScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.only(bottom: 96),
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+            child: Text(
+              l10n.shiftTemplatesHint,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
           if (templates.isEmpty)
             ListTile(
               leading: const Icon(Icons.auto_awesome_outlined),
@@ -91,7 +98,9 @@ String shiftTemplateSummary(AppLocalizations l10n, ShiftTemplate t) => [
   if (t.isNight) l10n.shiftTemplateNight,
 ].join(' · ');
 
-Future<void> editShiftTemplate(
+/// Öffnet den Dialog für eine neue ([template] == null) oder vorhandene
+/// Schicht. Gibt die ID der gespeicherten Schicht zurück (oder `null`).
+Future<String?> editShiftTemplate(
   BuildContext context,
   WidgetRef ref,
   ShiftTemplate? template,
@@ -100,8 +109,27 @@ Future<void> editShiftTemplate(
     context: context,
     builder: (_) => _TemplateDialog(template: template),
   );
-  if (result != null) {
-    await ref.read(shiftRepositoryProvider).saveTemplate(result);
+  if (result == null) return null;
+  return ref.read(shiftRepositoryProvider).saveTemplate(result);
+}
+
+/// Chip „+ Eigene Schicht“ für Auswahllisten; ruft [onCreated] mit der ID.
+class AddShiftChip extends ConsumerWidget {
+  const AddShiftChip({super.key, required this.onCreated});
+
+  final ValueChanged<String> onCreated;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    return ActionChip(
+      avatar: const Icon(Icons.add, size: 18),
+      label: Text(l10n.shiftCustomAdd),
+      onPressed: () async {
+        final id = await editShiftTemplate(context, ref, null);
+        if (id != null) onCreated(id);
+      },
+    );
   }
 }
 

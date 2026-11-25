@@ -244,6 +244,13 @@ class _DienstplanScreenState extends ConsumerState<DienstplanScreen> {
                         setState(() => _pick = const _PickClear()),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: AddShiftChip(
+                    onCreated: (id) =>
+                        setState(() => _pick = _PickTemplate(id)),
+                  ),
+                ),
               ],
             ),
           ),
@@ -414,6 +421,9 @@ class _DayEditorState extends ConsumerState<_DayEditor> {
                           selected: _templateId == t.id,
                           onSelected: (_) => setState(() => _templateId = t.id),
                         ),
+                      AddShiftChip(
+                        onCreated: (id) => setState(() => _templateId = id),
+                      ),
                     ],
                   ),
                   SwitchListTile(
