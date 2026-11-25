@@ -6,6 +6,10 @@ import '../../features/dienstplan/ui/dienstplan_screen.dart';
 import '../../features/dienstplan/ui/shift_patterns_screen.dart';
 import '../../features/dienstplan/ui/shift_templates_screen.dart';
 import '../../features/einstellungen/ui/settings_screen.dart';
+import '../../features/futter/ui/feed_items_screen.dart';
+import '../../features/futter/ui/feed_plan_edit_screen.dart';
+import '../../features/futter/ui/feed_supplements_screen.dart';
+import '../../features/futter/ui/feed_versions_screen.dart';
 import '../../features/futter/ui/futter_screen.dart';
 import '../../features/pferd/ui/horse_edit_screen.dart';
 import '../../features/pferd/ui/horse_list_screen.dart';
@@ -104,6 +108,32 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
               PreviewScreen(params: state.extra! as TrainingParams),
         ),
       ],
+    ),
+    GoRoute(
+      path: Routes.feedItems,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const FeedItemsScreen(),
+    ),
+    GoRoute(
+      path: Routes.feedVersions,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const FeedVersionsScreen(),
+    ),
+    GoRoute(
+      path: Routes.feedSupplements,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const FeedSupplementsScreen(),
+    ),
+    GoRoute(
+      path: Routes.feedPlanNew,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const FeedPlanEditScreen(),
+    ),
+    GoRoute(
+      path: '/futterplan/:id',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) =>
+          FeedPlanEditScreen(planId: state.pathParameters['id']),
     ),
     GoRoute(
       path: Routes.careNewBase,

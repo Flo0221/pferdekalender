@@ -137,6 +137,11 @@ test/                         spiegelt lib/
   `pinned`. „Dienstplan geändert“ = Setting `shift_changed_at` >
   `plan.distributedAt`. Hinweis beim ersten Plan: Setting
   `training_disclaimer_seen`.
+- **Futter:** reine Logik `futter/domain/feed_logic.dart` (`planOn` = Version
+  mit spätestem `validFrom` ≤ Datum, `rationFor`, `averageDailyUse`,
+  `copyPlanAsNewVersion`). Trainingstag = Einheit ab Stufe 2, nicht
+  ausgefallen (`trainingDaysProvider`). Planversionen werden beim Speichern
+  komplett ersetzt (Mahlzeiten neu). Keine Rationsberechnung/Empfehlungen.
 - **Tab-FABs** stehen in `HeroMode(enabled: false)` (IndexedStack, sonst
   Hero-Tag-Kollision).
 - **Kalender-Widget** `core/widgets/month_calendar.dart`: Punkte (`dotsFor`)
@@ -182,10 +187,12 @@ test/                         spiegelt lib/
 `distributed_at`), `training_sessions` (`plan_id` nullable, `template_key`,
 `form`, `level`, `duration_minutes`, `content` JSON, `status`, `rating`,
 `pinned`, `reason` JSON). Stallzeit-Anteil pro Pferd steht in
-`TrainingParams.sharePercent` (keine eigene Tabelle `horse_time_share`) · `feed_items` (+ `stock`,
-`low_stock_threshold`), `feed_plans` (valid_from), `feed_meals`,
-`feed_meal_items` (+ `variant`: immer/Trainingstag/Ruhetag),
-`feed_supplements_temporary`.
+`TrainingParams.sharePercent` (keine eigene Tabelle `horse_time_share`) · `feed_items` (für alle Pferde; + `stock`,
+`low_stock_threshold`, `archived`), `feed_plans` (Version je Pferd,
+`valid_from`), `feed_meals`, `feed_meal_items` (+ `variant`:
+always/training/rest), `feed_supplements_temporary` (`amount` nullable =
+laut Packungsangabe, `meal_name` statt FK, `source` manual/blood,
+`blood_test_id`).
 
 ### Migrationen
 
@@ -195,11 +202,12 @@ test/                         spiegelt lib/
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v5** (`settings`; `horses`, `horse_photos`,
+Aktueller Stand: **Schema v6** (`settings`; `horses`, `horse_photos`,
 `horse_weights`, `contacts`, `horse_contacts`; `care_event_types`,
 `care_interval_defaults`, `care_events`, `care_reminders`;
 `shift_templates`, `shift_patterns`, `shift_days`; `training_plans`,
-`training_sessions`). Migrationstest:
+`training_sessions`; `feed_items`, `feed_plans`, `feed_meals`,
+`feed_meal_items`, `feed_supplements_temporary`). Migrationstest:
 `test/drift/app_database/migration_test.dart` (je Version ein Datenerhalt-Test).
 
 **Startwerte** (eingebaute Eintragsarten, Standard-Intervalle) werden in
@@ -262,7 +270,8 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - [x] 3. Pflege-Kalender inkl. Wiederholungen, Folgetermine, Erinnerungen
 - [x] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
 - [x] 5. Training: Kalender, manuelle Einheiten, Generator + Tests, Neu-Verteilen
-- [ ] 6. Futterplan mit Versionen und temporären Zusätzen
+- [x] 6. Futterplan mit Versionen und temporären Zusätzen
+- [ ] 6b. Gesundheit: Blutbild mit Laboklin-Referenzwerten, Regel-Auswertung, Futter-Bausteine
 - [ ] 7. Export/Import, Einstellungen, Übersichtskarte, Feinschliff
 - [ ] 8. Release-Build Android (Icon, Splash, Signing, Permission-Prüfung)
 - [ ] 9. iOS (nur nach Freigabe)
@@ -277,8 +286,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - Optionale „Übersicht“ aller Kalender zusammen (Meilenstein 7).
 - Übersichtskarte im Pferd-Profil (nächster Termin, letzte Wurmkur …): Meilenstein 7.
 - Kontakte global verwalten (ohne Pferd, endgültig löschen): Meilenstein 7.
-- Beim endgültigen Löschen eines Pferdes müssen auch Futterdaten
-  mitgelöscht werden (FK mit `onDelete: cascade`; Pflege + Training erledigt).
+- „Vorrat wird knapp“ nur als Hinweis im Futter-Tab, keine Benachrichtigung.
 - Training: Einheiten per Ziehen verschieben (derzeit über Datum im Formular),
   Einheit aus Vorlage wählen beim manuellen Anlegen – optional.
 - Stallzeit bei mehreren Pferden wird je Plan als Prozent-Anteil gewählt; eine

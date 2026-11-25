@@ -9098,6 +9098,2763 @@ class TrainingSessionsCompanion extends UpdateCompanion<TrainingSessionRow> {
   }
 }
 
+class $FeedItemsTable extends FeedItems
+    with TableInfo<$FeedItemsTable, FeedItemRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
+  @override
+  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
+    'unit',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stockMeta = const VerificationMeta('stock');
+  @override
+  late final GeneratedColumn<double> stock = GeneratedColumn<double>(
+    'stock',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lowStockThresholdMeta = const VerificationMeta(
+    'lowStockThreshold',
+  );
+  @override
+  late final GeneratedColumn<double> lowStockThreshold =
+      GeneratedColumn<double>(
+        'low_stock_threshold',
+        aliasedName,
+        true,
+        type: DriftSqlType.double,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _archivedMeta = const VerificationMeta(
+    'archived',
+  );
+  @override
+  late final GeneratedColumn<bool> archived = GeneratedColumn<bool>(
+    'archived',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("archived" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    category,
+    unit,
+    notes,
+    stock,
+    lowStockThreshold,
+    archived,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_items';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FeedItemRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('unit')) {
+      context.handle(
+        _unitMeta,
+        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_unitMeta);
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('stock')) {
+      context.handle(
+        _stockMeta,
+        stock.isAcceptableOrUnknown(data['stock']!, _stockMeta),
+      );
+    }
+    if (data.containsKey('low_stock_threshold')) {
+      context.handle(
+        _lowStockThresholdMeta,
+        lowStockThreshold.isAcceptableOrUnknown(
+          data['low_stock_threshold']!,
+          _lowStockThresholdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('archived')) {
+      context.handle(
+        _archivedMeta,
+        archived.isAcceptableOrUnknown(data['archived']!, _archivedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FeedItemRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FeedItemRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      unit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}unit'],
+      )!,
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      stock: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}stock'],
+      ),
+      lowStockThreshold: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}low_stock_threshold'],
+      ),
+      archived: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}archived'],
+      )!,
+    );
+  }
+
+  @override
+  $FeedItemsTable createAlias(String alias) {
+    return $FeedItemsTable(attachedDatabase, alias);
+  }
+}
+
+class FeedItemRow extends DataClass implements Insertable<FeedItemRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String name;
+
+  /// Siehe `FeedCategory.key`.
+  final String category;
+
+  /// Siehe `FeedUnit.key`.
+  final String unit;
+  final String? notes;
+  final double? stock;
+  final double? lowStockThreshold;
+  final bool archived;
+  const FeedItemRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.name,
+    required this.category,
+    required this.unit,
+    this.notes,
+    this.stock,
+    this.lowStockThreshold,
+    required this.archived,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['category'] = Variable<String>(category);
+    map['unit'] = Variable<String>(unit);
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || stock != null) {
+      map['stock'] = Variable<double>(stock);
+    }
+    if (!nullToAbsent || lowStockThreshold != null) {
+      map['low_stock_threshold'] = Variable<double>(lowStockThreshold);
+    }
+    map['archived'] = Variable<bool>(archived);
+    return map;
+  }
+
+  FeedItemsCompanion toCompanion(bool nullToAbsent) {
+    return FeedItemsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      name: Value(name),
+      category: Value(category),
+      unit: Value(unit),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      stock: stock == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stock),
+      lowStockThreshold: lowStockThreshold == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lowStockThreshold),
+      archived: Value(archived),
+    );
+  }
+
+  factory FeedItemRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FeedItemRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      category: serializer.fromJson<String>(json['category']),
+      unit: serializer.fromJson<String>(json['unit']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      stock: serializer.fromJson<double?>(json['stock']),
+      lowStockThreshold: serializer.fromJson<double?>(
+        json['lowStockThreshold'],
+      ),
+      archived: serializer.fromJson<bool>(json['archived']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'category': serializer.toJson<String>(category),
+      'unit': serializer.toJson<String>(unit),
+      'notes': serializer.toJson<String?>(notes),
+      'stock': serializer.toJson<double?>(stock),
+      'lowStockThreshold': serializer.toJson<double?>(lowStockThreshold),
+      'archived': serializer.toJson<bool>(archived),
+    };
+  }
+
+  FeedItemRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? name,
+    String? category,
+    String? unit,
+    Value<String?> notes = const Value.absent(),
+    Value<double?> stock = const Value.absent(),
+    Value<double?> lowStockThreshold = const Value.absent(),
+    bool? archived,
+  }) => FeedItemRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    category: category ?? this.category,
+    unit: unit ?? this.unit,
+    notes: notes.present ? notes.value : this.notes,
+    stock: stock.present ? stock.value : this.stock,
+    lowStockThreshold: lowStockThreshold.present
+        ? lowStockThreshold.value
+        : this.lowStockThreshold,
+    archived: archived ?? this.archived,
+  );
+  FeedItemRow copyWithCompanion(FeedItemsCompanion data) {
+    return FeedItemRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      category: data.category.present ? data.category.value : this.category,
+      unit: data.unit.present ? data.unit.value : this.unit,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      stock: data.stock.present ? data.stock.value : this.stock,
+      lowStockThreshold: data.lowStockThreshold.present
+          ? data.lowStockThreshold.value
+          : this.lowStockThreshold,
+      archived: data.archived.present ? data.archived.value : this.archived,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedItemRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('category: $category, ')
+          ..write('unit: $unit, ')
+          ..write('notes: $notes, ')
+          ..write('stock: $stock, ')
+          ..write('lowStockThreshold: $lowStockThreshold, ')
+          ..write('archived: $archived')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    category,
+    unit,
+    notes,
+    stock,
+    lowStockThreshold,
+    archived,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FeedItemRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.category == this.category &&
+          other.unit == this.unit &&
+          other.notes == this.notes &&
+          other.stock == this.stock &&
+          other.lowStockThreshold == this.lowStockThreshold &&
+          other.archived == this.archived);
+}
+
+class FeedItemsCompanion extends UpdateCompanion<FeedItemRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> category;
+  final Value<String> unit;
+  final Value<String?> notes;
+  final Value<double?> stock;
+  final Value<double?> lowStockThreshold;
+  final Value<bool> archived;
+  final Value<int> rowid;
+  const FeedItemsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.category = const Value.absent(),
+    this.unit = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.stock = const Value.absent(),
+    this.lowStockThreshold = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedItemsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String category,
+    required String unit,
+    this.notes = const Value.absent(),
+    this.stock = const Value.absent(),
+    this.lowStockThreshold = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       category = Value(category),
+       unit = Value(unit);
+  static Insertable<FeedItemRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? category,
+    Expression<String>? unit,
+    Expression<String>? notes,
+    Expression<double>? stock,
+    Expression<double>? lowStockThreshold,
+    Expression<bool>? archived,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (category != null) 'category': category,
+      if (unit != null) 'unit': unit,
+      if (notes != null) 'notes': notes,
+      if (stock != null) 'stock': stock,
+      if (lowStockThreshold != null) 'low_stock_threshold': lowStockThreshold,
+      if (archived != null) 'archived': archived,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedItemsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? category,
+    Value<String>? unit,
+    Value<String?>? notes,
+    Value<double?>? stock,
+    Value<double?>? lowStockThreshold,
+    Value<bool>? archived,
+    Value<int>? rowid,
+  }) {
+    return FeedItemsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      unit: unit ?? this.unit,
+      notes: notes ?? this.notes,
+      stock: stock ?? this.stock,
+      lowStockThreshold: lowStockThreshold ?? this.lowStockThreshold,
+      archived: archived ?? this.archived,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (unit.present) {
+      map['unit'] = Variable<String>(unit.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (stock.present) {
+      map['stock'] = Variable<double>(stock.value);
+    }
+    if (lowStockThreshold.present) {
+      map['low_stock_threshold'] = Variable<double>(lowStockThreshold.value);
+    }
+    if (archived.present) {
+      map['archived'] = Variable<bool>(archived.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedItemsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('category: $category, ')
+          ..write('unit: $unit, ')
+          ..write('notes: $notes, ')
+          ..write('stock: $stock, ')
+          ..write('lowStockThreshold: $lowStockThreshold, ')
+          ..write('archived: $archived, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FeedPlansTable extends FeedPlans
+    with TableInfo<$FeedPlansTable, FeedPlanRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedPlansTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> validFrom =
+      GeneratedColumn<String>(
+        'valid_from',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($FeedPlansTable.$convertervalidFrom);
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    name,
+    validFrom,
+    notes,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_plans';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FeedPlanRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FeedPlanRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FeedPlanRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      validFrom: $FeedPlansTable.$convertervalidFrom.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}valid_from'],
+        )!,
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+    );
+  }
+
+  @override
+  $FeedPlansTable createAlias(String alias) {
+    return $FeedPlansTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $convertervalidFrom =
+      const LocalDateConverter();
+}
+
+class FeedPlanRow extends DataClass implements Insertable<FeedPlanRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String horseId;
+  final String name;
+  final LocalDate validFrom;
+  final String? notes;
+  const FeedPlanRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.horseId,
+    required this.name,
+    required this.validFrom,
+    this.notes,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['horse_id'] = Variable<String>(horseId);
+    map['name'] = Variable<String>(name);
+    {
+      map['valid_from'] = Variable<String>(
+        $FeedPlansTable.$convertervalidFrom.toSql(validFrom),
+      );
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    return map;
+  }
+
+  FeedPlansCompanion toCompanion(bool nullToAbsent) {
+    return FeedPlansCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      horseId: Value(horseId),
+      name: Value(name),
+      validFrom: Value(validFrom),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+    );
+  }
+
+  factory FeedPlanRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FeedPlanRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      name: serializer.fromJson<String>(json['name']),
+      validFrom: serializer.fromJson<LocalDate>(json['validFrom']),
+      notes: serializer.fromJson<String?>(json['notes']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'horseId': serializer.toJson<String>(horseId),
+      'name': serializer.toJson<String>(name),
+      'validFrom': serializer.toJson<LocalDate>(validFrom),
+      'notes': serializer.toJson<String?>(notes),
+    };
+  }
+
+  FeedPlanRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? horseId,
+    String? name,
+    LocalDate? validFrom,
+    Value<String?> notes = const Value.absent(),
+  }) => FeedPlanRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    horseId: horseId ?? this.horseId,
+    name: name ?? this.name,
+    validFrom: validFrom ?? this.validFrom,
+    notes: notes.present ? notes.value : this.notes,
+  );
+  FeedPlanRow copyWithCompanion(FeedPlansCompanion data) {
+    return FeedPlanRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      name: data.name.present ? data.name.value : this.name,
+      validFrom: data.validFrom.present ? data.validFrom.value : this.validFrom,
+      notes: data.notes.present ? data.notes.value : this.notes,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedPlanRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('name: $name, ')
+          ..write('validFrom: $validFrom, ')
+          ..write('notes: $notes')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, horseId, name, validFrom, notes);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FeedPlanRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.horseId == this.horseId &&
+          other.name == this.name &&
+          other.validFrom == this.validFrom &&
+          other.notes == this.notes);
+}
+
+class FeedPlansCompanion extends UpdateCompanion<FeedPlanRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> horseId;
+  final Value<String> name;
+  final Value<LocalDate> validFrom;
+  final Value<String?> notes;
+  final Value<int> rowid;
+  const FeedPlansCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.validFrom = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedPlansCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String horseId,
+    required String name,
+    required LocalDate validFrom,
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       horseId = Value(horseId),
+       name = Value(name),
+       validFrom = Value(validFrom);
+  static Insertable<FeedPlanRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? horseId,
+    Expression<String>? name,
+    Expression<String>? validFrom,
+    Expression<String>? notes,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (horseId != null) 'horse_id': horseId,
+      if (name != null) 'name': name,
+      if (validFrom != null) 'valid_from': validFrom,
+      if (notes != null) 'notes': notes,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedPlansCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? horseId,
+    Value<String>? name,
+    Value<LocalDate>? validFrom,
+    Value<String?>? notes,
+    Value<int>? rowid,
+  }) {
+    return FeedPlansCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      horseId: horseId ?? this.horseId,
+      name: name ?? this.name,
+      validFrom: validFrom ?? this.validFrom,
+      notes: notes ?? this.notes,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (validFrom.present) {
+      map['valid_from'] = Variable<String>(
+        $FeedPlansTable.$convertervalidFrom.toSql(validFrom.value),
+      );
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedPlansCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('name: $name, ')
+          ..write('validFrom: $validFrom, ')
+          ..write('notes: $notes, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FeedMealsTable extends FeedMeals
+    with TableInfo<$FeedMealsTable, FeedMealRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedMealsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _planIdMeta = const VerificationMeta('planId');
+  @override
+  late final GeneratedColumn<String> planId = GeneratedColumn<String>(
+    'plan_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES feed_plans (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _timeMinutesMeta = const VerificationMeta(
+    'timeMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> timeMinutes = GeneratedColumn<int>(
+    'time_minutes',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    planId,
+    name,
+    timeMinutes,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_meals';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FeedMealRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('plan_id')) {
+      context.handle(
+        _planIdMeta,
+        planId.isAcceptableOrUnknown(data['plan_id']!, _planIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_planIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('time_minutes')) {
+      context.handle(
+        _timeMinutesMeta,
+        timeMinutes.isAcceptableOrUnknown(
+          data['time_minutes']!,
+          _timeMinutesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FeedMealRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FeedMealRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      planId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}plan_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      timeMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}time_minutes'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+    );
+  }
+
+  @override
+  $FeedMealsTable createAlias(String alias) {
+    return $FeedMealsTable(attachedDatabase, alias);
+  }
+}
+
+class FeedMealRow extends DataClass implements Insertable<FeedMealRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String planId;
+  final String name;
+  final int? timeMinutes;
+  final int sortOrder;
+  const FeedMealRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.planId,
+    required this.name,
+    this.timeMinutes,
+    required this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['plan_id'] = Variable<String>(planId);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || timeMinutes != null) {
+      map['time_minutes'] = Variable<int>(timeMinutes);
+    }
+    map['sort_order'] = Variable<int>(sortOrder);
+    return map;
+  }
+
+  FeedMealsCompanion toCompanion(bool nullToAbsent) {
+    return FeedMealsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      planId: Value(planId),
+      name: Value(name),
+      timeMinutes: timeMinutes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(timeMinutes),
+      sortOrder: Value(sortOrder),
+    );
+  }
+
+  factory FeedMealRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FeedMealRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      planId: serializer.fromJson<String>(json['planId']),
+      name: serializer.fromJson<String>(json['name']),
+      timeMinutes: serializer.fromJson<int?>(json['timeMinutes']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'planId': serializer.toJson<String>(planId),
+      'name': serializer.toJson<String>(name),
+      'timeMinutes': serializer.toJson<int?>(timeMinutes),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+    };
+  }
+
+  FeedMealRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? planId,
+    String? name,
+    Value<int?> timeMinutes = const Value.absent(),
+    int? sortOrder,
+  }) => FeedMealRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    planId: planId ?? this.planId,
+    name: name ?? this.name,
+    timeMinutes: timeMinutes.present ? timeMinutes.value : this.timeMinutes,
+    sortOrder: sortOrder ?? this.sortOrder,
+  );
+  FeedMealRow copyWithCompanion(FeedMealsCompanion data) {
+    return FeedMealRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      planId: data.planId.present ? data.planId.value : this.planId,
+      name: data.name.present ? data.name.value : this.name,
+      timeMinutes: data.timeMinutes.present
+          ? data.timeMinutes.value
+          : this.timeMinutes,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedMealRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('planId: $planId, ')
+          ..write('name: $name, ')
+          ..write('timeMinutes: $timeMinutes, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    id,
+    planId,
+    name,
+    timeMinutes,
+    sortOrder,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FeedMealRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.planId == this.planId &&
+          other.name == this.name &&
+          other.timeMinutes == this.timeMinutes &&
+          other.sortOrder == this.sortOrder);
+}
+
+class FeedMealsCompanion extends UpdateCompanion<FeedMealRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> planId;
+  final Value<String> name;
+  final Value<int?> timeMinutes;
+  final Value<int> sortOrder;
+  final Value<int> rowid;
+  const FeedMealsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.planId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.timeMinutes = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedMealsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String planId,
+    required String name,
+    this.timeMinutes = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       planId = Value(planId),
+       name = Value(name);
+  static Insertable<FeedMealRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? planId,
+    Expression<String>? name,
+    Expression<int>? timeMinutes,
+    Expression<int>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (planId != null) 'plan_id': planId,
+      if (name != null) 'name': name,
+      if (timeMinutes != null) 'time_minutes': timeMinutes,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedMealsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? planId,
+    Value<String>? name,
+    Value<int?>? timeMinutes,
+    Value<int>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return FeedMealsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      planId: planId ?? this.planId,
+      name: name ?? this.name,
+      timeMinutes: timeMinutes ?? this.timeMinutes,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (planId.present) {
+      map['plan_id'] = Variable<String>(planId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (timeMinutes.present) {
+      map['time_minutes'] = Variable<int>(timeMinutes.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedMealsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('planId: $planId, ')
+          ..write('name: $name, ')
+          ..write('timeMinutes: $timeMinutes, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FeedMealItemsTable extends FeedMealItems
+    with TableInfo<$FeedMealItemsTable, FeedMealItemRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedMealItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _mealIdMeta = const VerificationMeta('mealId');
+  @override
+  late final GeneratedColumn<String> mealId = GeneratedColumn<String>(
+    'meal_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES feed_meals (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+    'item_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES feed_items (id)',
+    ),
+  );
+  static const VerificationMeta _amountMeta = const VerificationMeta('amount');
+  @override
+  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
+    'amount',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _variantMeta = const VerificationMeta(
+    'variant',
+  );
+  @override
+  late final GeneratedColumn<String> variant = GeneratedColumn<String>(
+    'variant',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('always'),
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    mealId,
+    itemId,
+    amount,
+    variant,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_meal_items';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FeedMealItemRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('meal_id')) {
+      context.handle(
+        _mealIdMeta,
+        mealId.isAcceptableOrUnknown(data['meal_id']!, _mealIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_mealIdMeta);
+    }
+    if (data.containsKey('item_id')) {
+      context.handle(
+        _itemIdMeta,
+        itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('amount')) {
+      context.handle(
+        _amountMeta,
+        amount.isAcceptableOrUnknown(data['amount']!, _amountMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMeta);
+    }
+    if (data.containsKey('variant')) {
+      context.handle(
+        _variantMeta,
+        variant.isAcceptableOrUnknown(data['variant']!, _variantMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FeedMealItemRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FeedMealItemRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      mealId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}meal_id'],
+      )!,
+      itemId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}item_id'],
+      )!,
+      amount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}amount'],
+      )!,
+      variant: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}variant'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+    );
+  }
+
+  @override
+  $FeedMealItemsTable createAlias(String alias) {
+    return $FeedMealItemsTable(attachedDatabase, alias);
+  }
+}
+
+class FeedMealItemRow extends DataClass implements Insertable<FeedMealItemRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String mealId;
+  final String itemId;
+  final double amount;
+
+  /// Siehe `FeedVariant.key` (always/training/rest).
+  final String variant;
+  final int sortOrder;
+  const FeedMealItemRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.mealId,
+    required this.itemId,
+    required this.amount,
+    required this.variant,
+    required this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['meal_id'] = Variable<String>(mealId);
+    map['item_id'] = Variable<String>(itemId);
+    map['amount'] = Variable<double>(amount);
+    map['variant'] = Variable<String>(variant);
+    map['sort_order'] = Variable<int>(sortOrder);
+    return map;
+  }
+
+  FeedMealItemsCompanion toCompanion(bool nullToAbsent) {
+    return FeedMealItemsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      mealId: Value(mealId),
+      itemId: Value(itemId),
+      amount: Value(amount),
+      variant: Value(variant),
+      sortOrder: Value(sortOrder),
+    );
+  }
+
+  factory FeedMealItemRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FeedMealItemRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      mealId: serializer.fromJson<String>(json['mealId']),
+      itemId: serializer.fromJson<String>(json['itemId']),
+      amount: serializer.fromJson<double>(json['amount']),
+      variant: serializer.fromJson<String>(json['variant']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'mealId': serializer.toJson<String>(mealId),
+      'itemId': serializer.toJson<String>(itemId),
+      'amount': serializer.toJson<double>(amount),
+      'variant': serializer.toJson<String>(variant),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+    };
+  }
+
+  FeedMealItemRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? mealId,
+    String? itemId,
+    double? amount,
+    String? variant,
+    int? sortOrder,
+  }) => FeedMealItemRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    mealId: mealId ?? this.mealId,
+    itemId: itemId ?? this.itemId,
+    amount: amount ?? this.amount,
+    variant: variant ?? this.variant,
+    sortOrder: sortOrder ?? this.sortOrder,
+  );
+  FeedMealItemRow copyWithCompanion(FeedMealItemsCompanion data) {
+    return FeedMealItemRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      mealId: data.mealId.present ? data.mealId.value : this.mealId,
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      amount: data.amount.present ? data.amount.value : this.amount,
+      variant: data.variant.present ? data.variant.value : this.variant,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedMealItemRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('mealId: $mealId, ')
+          ..write('itemId: $itemId, ')
+          ..write('amount: $amount, ')
+          ..write('variant: $variant, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    id,
+    mealId,
+    itemId,
+    amount,
+    variant,
+    sortOrder,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FeedMealItemRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.mealId == this.mealId &&
+          other.itemId == this.itemId &&
+          other.amount == this.amount &&
+          other.variant == this.variant &&
+          other.sortOrder == this.sortOrder);
+}
+
+class FeedMealItemsCompanion extends UpdateCompanion<FeedMealItemRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> mealId;
+  final Value<String> itemId;
+  final Value<double> amount;
+  final Value<String> variant;
+  final Value<int> sortOrder;
+  final Value<int> rowid;
+  const FeedMealItemsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.mealId = const Value.absent(),
+    this.itemId = const Value.absent(),
+    this.amount = const Value.absent(),
+    this.variant = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedMealItemsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String mealId,
+    required String itemId,
+    required double amount,
+    this.variant = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       mealId = Value(mealId),
+       itemId = Value(itemId),
+       amount = Value(amount);
+  static Insertable<FeedMealItemRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? mealId,
+    Expression<String>? itemId,
+    Expression<double>? amount,
+    Expression<String>? variant,
+    Expression<int>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (mealId != null) 'meal_id': mealId,
+      if (itemId != null) 'item_id': itemId,
+      if (amount != null) 'amount': amount,
+      if (variant != null) 'variant': variant,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedMealItemsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? mealId,
+    Value<String>? itemId,
+    Value<double>? amount,
+    Value<String>? variant,
+    Value<int>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return FeedMealItemsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      mealId: mealId ?? this.mealId,
+      itemId: itemId ?? this.itemId,
+      amount: amount ?? this.amount,
+      variant: variant ?? this.variant,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (mealId.present) {
+      map['meal_id'] = Variable<String>(mealId.value);
+    }
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (amount.present) {
+      map['amount'] = Variable<double>(amount.value);
+    }
+    if (variant.present) {
+      map['variant'] = Variable<String>(variant.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedMealItemsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('mealId: $mealId, ')
+          ..write('itemId: $itemId, ')
+          ..write('amount: $amount, ')
+          ..write('variant: $variant, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FeedSupplementsTemporaryTable extends FeedSupplementsTemporary
+    with TableInfo<$FeedSupplementsTemporaryTable, FeedSupplementRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedSupplementsTemporaryTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+    'item_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES feed_items (id)',
+    ),
+  );
+  static const VerificationMeta _amountMeta = const VerificationMeta('amount');
+  @override
+  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
+    'amount',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _mealNameMeta = const VerificationMeta(
+    'mealName',
+  );
+  @override
+  late final GeneratedColumn<String> mealName = GeneratedColumn<String>(
+    'meal_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> startDate =
+      GeneratedColumn<String>(
+        'start_date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>(
+        $FeedSupplementsTemporaryTable.$converterstartDate,
+      );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> endDate =
+      GeneratedColumn<String>(
+        'end_date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>(
+        $FeedSupplementsTemporaryTable.$converterendDate,
+      );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('manual'),
+  );
+  static const VerificationMeta _bloodTestIdMeta = const VerificationMeta(
+    'bloodTestId',
+  );
+  @override
+  late final GeneratedColumn<String> bloodTestId = GeneratedColumn<String>(
+    'blood_test_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    itemId,
+    amount,
+    mealName,
+    startDate,
+    endDate,
+    note,
+    source,
+    bloodTestId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_supplements_temporary';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FeedSupplementRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('item_id')) {
+      context.handle(
+        _itemIdMeta,
+        itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('amount')) {
+      context.handle(
+        _amountMeta,
+        amount.isAcceptableOrUnknown(data['amount']!, _amountMeta),
+      );
+    }
+    if (data.containsKey('meal_name')) {
+      context.handle(
+        _mealNameMeta,
+        mealName.isAcceptableOrUnknown(data['meal_name']!, _mealNameMeta),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('blood_test_id')) {
+      context.handle(
+        _bloodTestIdMeta,
+        bloodTestId.isAcceptableOrUnknown(
+          data['blood_test_id']!,
+          _bloodTestIdMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FeedSupplementRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FeedSupplementRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      itemId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}item_id'],
+      )!,
+      amount: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}amount'],
+      ),
+      mealName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}meal_name'],
+      ),
+      startDate: $FeedSupplementsTemporaryTable.$converterstartDate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}start_date'],
+        )!,
+      ),
+      endDate: $FeedSupplementsTemporaryTable.$converterendDate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}end_date'],
+        )!,
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      )!,
+      bloodTestId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}blood_test_id'],
+      ),
+    );
+  }
+
+  @override
+  $FeedSupplementsTemporaryTable createAlias(String alias) {
+    return $FeedSupplementsTemporaryTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterstartDate =
+      const LocalDateConverter();
+  static TypeConverter<LocalDate, String> $converterendDate =
+      const LocalDateConverter();
+}
+
+class FeedSupplementRow extends DataClass
+    implements Insertable<FeedSupplementRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String horseId;
+  final String itemId;
+
+  /// `null` = laut Packungsangabe.
+  final double? amount;
+
+  /// Name der Mahlzeit (Pläne haben Versionen – daher kein Fremdschlüssel).
+  final String? mealName;
+  final LocalDate startDate;
+  final LocalDate endDate;
+  final String? note;
+
+  /// Siehe `SupplementSource.key` (manual/blood).
+  final String source;
+
+  /// Bezug zum Blutbild (ab Schema v7), ohne Fremdschlüssel.
+  final String? bloodTestId;
+  const FeedSupplementRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.horseId,
+    required this.itemId,
+    this.amount,
+    this.mealName,
+    required this.startDate,
+    required this.endDate,
+    this.note,
+    required this.source,
+    this.bloodTestId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['horse_id'] = Variable<String>(horseId);
+    map['item_id'] = Variable<String>(itemId);
+    if (!nullToAbsent || amount != null) {
+      map['amount'] = Variable<double>(amount);
+    }
+    if (!nullToAbsent || mealName != null) {
+      map['meal_name'] = Variable<String>(mealName);
+    }
+    {
+      map['start_date'] = Variable<String>(
+        $FeedSupplementsTemporaryTable.$converterstartDate.toSql(startDate),
+      );
+    }
+    {
+      map['end_date'] = Variable<String>(
+        $FeedSupplementsTemporaryTable.$converterendDate.toSql(endDate),
+      );
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    map['source'] = Variable<String>(source);
+    if (!nullToAbsent || bloodTestId != null) {
+      map['blood_test_id'] = Variable<String>(bloodTestId);
+    }
+    return map;
+  }
+
+  FeedSupplementsTemporaryCompanion toCompanion(bool nullToAbsent) {
+    return FeedSupplementsTemporaryCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      horseId: Value(horseId),
+      itemId: Value(itemId),
+      amount: amount == null && nullToAbsent
+          ? const Value.absent()
+          : Value(amount),
+      mealName: mealName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mealName),
+      startDate: Value(startDate),
+      endDate: Value(endDate),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      source: Value(source),
+      bloodTestId: bloodTestId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bloodTestId),
+    );
+  }
+
+  factory FeedSupplementRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FeedSupplementRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      itemId: serializer.fromJson<String>(json['itemId']),
+      amount: serializer.fromJson<double?>(json['amount']),
+      mealName: serializer.fromJson<String?>(json['mealName']),
+      startDate: serializer.fromJson<LocalDate>(json['startDate']),
+      endDate: serializer.fromJson<LocalDate>(json['endDate']),
+      note: serializer.fromJson<String?>(json['note']),
+      source: serializer.fromJson<String>(json['source']),
+      bloodTestId: serializer.fromJson<String?>(json['bloodTestId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'horseId': serializer.toJson<String>(horseId),
+      'itemId': serializer.toJson<String>(itemId),
+      'amount': serializer.toJson<double?>(amount),
+      'mealName': serializer.toJson<String?>(mealName),
+      'startDate': serializer.toJson<LocalDate>(startDate),
+      'endDate': serializer.toJson<LocalDate>(endDate),
+      'note': serializer.toJson<String?>(note),
+      'source': serializer.toJson<String>(source),
+      'bloodTestId': serializer.toJson<String?>(bloodTestId),
+    };
+  }
+
+  FeedSupplementRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? horseId,
+    String? itemId,
+    Value<double?> amount = const Value.absent(),
+    Value<String?> mealName = const Value.absent(),
+    LocalDate? startDate,
+    LocalDate? endDate,
+    Value<String?> note = const Value.absent(),
+    String? source,
+    Value<String?> bloodTestId = const Value.absent(),
+  }) => FeedSupplementRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    horseId: horseId ?? this.horseId,
+    itemId: itemId ?? this.itemId,
+    amount: amount.present ? amount.value : this.amount,
+    mealName: mealName.present ? mealName.value : this.mealName,
+    startDate: startDate ?? this.startDate,
+    endDate: endDate ?? this.endDate,
+    note: note.present ? note.value : this.note,
+    source: source ?? this.source,
+    bloodTestId: bloodTestId.present ? bloodTestId.value : this.bloodTestId,
+  );
+  FeedSupplementRow copyWithCompanion(FeedSupplementsTemporaryCompanion data) {
+    return FeedSupplementRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      amount: data.amount.present ? data.amount.value : this.amount,
+      mealName: data.mealName.present ? data.mealName.value : this.mealName,
+      startDate: data.startDate.present ? data.startDate.value : this.startDate,
+      endDate: data.endDate.present ? data.endDate.value : this.endDate,
+      note: data.note.present ? data.note.value : this.note,
+      source: data.source.present ? data.source.value : this.source,
+      bloodTestId: data.bloodTestId.present
+          ? data.bloodTestId.value
+          : this.bloodTestId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedSupplementRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('itemId: $itemId, ')
+          ..write('amount: $amount, ')
+          ..write('mealName: $mealName, ')
+          ..write('startDate: $startDate, ')
+          ..write('endDate: $endDate, ')
+          ..write('note: $note, ')
+          ..write('source: $source, ')
+          ..write('bloodTestId: $bloodTestId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    itemId,
+    amount,
+    mealName,
+    startDate,
+    endDate,
+    note,
+    source,
+    bloodTestId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FeedSupplementRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.horseId == this.horseId &&
+          other.itemId == this.itemId &&
+          other.amount == this.amount &&
+          other.mealName == this.mealName &&
+          other.startDate == this.startDate &&
+          other.endDate == this.endDate &&
+          other.note == this.note &&
+          other.source == this.source &&
+          other.bloodTestId == this.bloodTestId);
+}
+
+class FeedSupplementsTemporaryCompanion
+    extends UpdateCompanion<FeedSupplementRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> horseId;
+  final Value<String> itemId;
+  final Value<double?> amount;
+  final Value<String?> mealName;
+  final Value<LocalDate> startDate;
+  final Value<LocalDate> endDate;
+  final Value<String?> note;
+  final Value<String> source;
+  final Value<String?> bloodTestId;
+  final Value<int> rowid;
+  const FeedSupplementsTemporaryCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.itemId = const Value.absent(),
+    this.amount = const Value.absent(),
+    this.mealName = const Value.absent(),
+    this.startDate = const Value.absent(),
+    this.endDate = const Value.absent(),
+    this.note = const Value.absent(),
+    this.source = const Value.absent(),
+    this.bloodTestId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedSupplementsTemporaryCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String horseId,
+    required String itemId,
+    this.amount = const Value.absent(),
+    this.mealName = const Value.absent(),
+    required LocalDate startDate,
+    required LocalDate endDate,
+    this.note = const Value.absent(),
+    this.source = const Value.absent(),
+    this.bloodTestId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       horseId = Value(horseId),
+       itemId = Value(itemId),
+       startDate = Value(startDate),
+       endDate = Value(endDate);
+  static Insertable<FeedSupplementRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? horseId,
+    Expression<String>? itemId,
+    Expression<double>? amount,
+    Expression<String>? mealName,
+    Expression<String>? startDate,
+    Expression<String>? endDate,
+    Expression<String>? note,
+    Expression<String>? source,
+    Expression<String>? bloodTestId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (horseId != null) 'horse_id': horseId,
+      if (itemId != null) 'item_id': itemId,
+      if (amount != null) 'amount': amount,
+      if (mealName != null) 'meal_name': mealName,
+      if (startDate != null) 'start_date': startDate,
+      if (endDate != null) 'end_date': endDate,
+      if (note != null) 'note': note,
+      if (source != null) 'source': source,
+      if (bloodTestId != null) 'blood_test_id': bloodTestId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedSupplementsTemporaryCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? horseId,
+    Value<String>? itemId,
+    Value<double?>? amount,
+    Value<String?>? mealName,
+    Value<LocalDate>? startDate,
+    Value<LocalDate>? endDate,
+    Value<String?>? note,
+    Value<String>? source,
+    Value<String?>? bloodTestId,
+    Value<int>? rowid,
+  }) {
+    return FeedSupplementsTemporaryCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      horseId: horseId ?? this.horseId,
+      itemId: itemId ?? this.itemId,
+      amount: amount ?? this.amount,
+      mealName: mealName ?? this.mealName,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
+      note: note ?? this.note,
+      source: source ?? this.source,
+      bloodTestId: bloodTestId ?? this.bloodTestId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (amount.present) {
+      map['amount'] = Variable<double>(amount.value);
+    }
+    if (mealName.present) {
+      map['meal_name'] = Variable<String>(mealName.value);
+    }
+    if (startDate.present) {
+      map['start_date'] = Variable<String>(
+        $FeedSupplementsTemporaryTable.$converterstartDate.toSql(
+          startDate.value,
+        ),
+      );
+    }
+    if (endDate.present) {
+      map['end_date'] = Variable<String>(
+        $FeedSupplementsTemporaryTable.$converterendDate.toSql(endDate.value),
+      );
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (bloodTestId.present) {
+      map['blood_test_id'] = Variable<String>(bloodTestId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedSupplementsTemporaryCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('itemId: $itemId, ')
+          ..write('amount: $amount, ')
+          ..write('mealName: $mealName, ')
+          ..write('startDate: $startDate, ')
+          ..write('endDate: $endDate, ')
+          ..write('note: $note, ')
+          ..write('source: $source, ')
+          ..write('bloodTestId: $bloodTestId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -9119,6 +11876,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $TrainingSessionsTable trainingSessions = $TrainingSessionsTable(
     this,
   );
+  late final $FeedItemsTable feedItems = $FeedItemsTable(this);
+  late final $FeedPlansTable feedPlans = $FeedPlansTable(this);
+  late final $FeedMealsTable feedMeals = $FeedMealsTable(this);
+  late final $FeedMealItemsTable feedMealItems = $FeedMealItemsTable(this);
+  late final $FeedSupplementsTemporaryTable feedSupplementsTemporary =
+      $FeedSupplementsTemporaryTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9139,6 +11902,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     shiftDays,
     trainingPlans,
     trainingSessions,
+    feedItems,
+    feedPlans,
+    feedMeals,
+    feedMealItems,
+    feedSupplementsTemporary,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -9225,6 +11993,36 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('training_sessions', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('feed_plans', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'feed_plans',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('feed_meals', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'feed_meals',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('feed_meal_items', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [
+        TableUpdate('feed_supplements_temporary', kind: UpdateKind.delete),
+      ],
     ),
   ]);
 }
@@ -9586,6 +12384,49 @@ final class $$HorsesTableReferences
       manager.$state.copyWith(prefetchedData: cache),
     );
   }
+
+  static MultiTypedResultKey<$FeedPlansTable, List<FeedPlanRow>>
+  _feedPlansRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.feedPlans,
+    aliasName: 'horses__id__feed_plans__horse_id',
+  );
+
+  $$FeedPlansTableProcessedTableManager get feedPlansRefs {
+    final manager = $$FeedPlansTableTableManager(
+      $_db,
+      $_db.feedPlans,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_feedPlansRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<
+    $FeedSupplementsTemporaryTable,
+    List<FeedSupplementRow>
+  >
+  _feedSupplementsTemporaryRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.feedSupplementsTemporary,
+        aliasName: 'horses__id__feed_supplements_temporary__horse_id',
+      );
+
+  $$FeedSupplementsTemporaryTableProcessedTableManager
+  get feedSupplementsTemporaryRefs {
+    final manager = $$FeedSupplementsTemporaryTableTableManager(
+      $_db,
+      $_db.feedSupplementsTemporary,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _feedSupplementsTemporaryRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
 }
 
 class $$HorsesTableFilterComposer
@@ -9875,6 +12716,58 @@ class $$HorsesTableFilterComposer
                 $removeJoinBuilderFromRootComposer,
           ),
     );
+    return f(composer);
+  }
+
+  Expression<bool> feedPlansRefs(
+    Expression<bool> Function($$FeedPlansTableFilterComposer f) f,
+  ) {
+    final $$FeedPlansTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedPlans,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedPlansTableFilterComposer(
+            $db: $db,
+            $table: $db.feedPlans,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> feedSupplementsTemporaryRefs(
+    Expression<bool> Function($$FeedSupplementsTemporaryTableFilterComposer f)
+    f,
+  ) {
+    final $$FeedSupplementsTemporaryTableFilterComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.feedSupplementsTemporary,
+          getReferencedColumn: (t) => t.horseId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$FeedSupplementsTemporaryTableFilterComposer(
+                $db: $db,
+                $table: $db.feedSupplementsTemporary,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
     return f(composer);
   }
 }
@@ -10275,6 +13168,58 @@ class $$HorsesTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> feedPlansRefs<T extends Object>(
+    Expression<T> Function($$FeedPlansTableAnnotationComposer a) f,
+  ) {
+    final $$FeedPlansTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedPlans,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedPlansTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedPlans,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> feedSupplementsTemporaryRefs<T extends Object>(
+    Expression<T> Function($$FeedSupplementsTemporaryTableAnnotationComposer a)
+    f,
+  ) {
+    final $$FeedSupplementsTemporaryTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.feedSupplementsTemporary,
+          getReferencedColumn: (t) => t.horseId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$FeedSupplementsTemporaryTableAnnotationComposer(
+                $db: $db,
+                $table: $db.feedSupplementsTemporary,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
 }
 
 class $$HorsesTableTableManager
@@ -10297,6 +13242,8 @@ class $$HorsesTableTableManager
             bool careEventsRefs,
             bool trainingPlansRefs,
             bool trainingSessionsRefs,
+            bool feedPlansRefs,
+            bool feedSupplementsTemporaryRefs,
           })
         > {
   $$HorsesTableTableManager(_$AppDatabase db, $HorsesTable table)
@@ -10442,6 +13389,8 @@ class $$HorsesTableTableManager
                 careEventsRefs = false,
                 trainingPlansRefs = false,
                 trainingSessionsRefs = false,
+                feedPlansRefs = false,
+                feedSupplementsTemporaryRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -10452,6 +13401,9 @@ class $$HorsesTableTableManager
                     if (careEventsRefs) db.careEvents,
                     if (trainingPlansRefs) db.trainingPlans,
                     if (trainingSessionsRefs) db.trainingSessions,
+                    if (feedPlansRefs) db.feedPlans,
+                    if (feedSupplementsTemporaryRefs)
+                      db.feedSupplementsTemporary,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -10576,6 +13528,46 @@ class $$HorsesTableTableManager
                           referencedColumn: 'horse_id',
                           typedResults: items,
                         ),
+                      if (feedPlansRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          FeedPlanRow,
+                          $FeedPlansTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._feedPlansRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).feedPlansRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
+                      if (feedSupplementsTemporaryRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          FeedSupplementRow,
+                          $FeedSupplementsTemporaryTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._feedSupplementsTemporaryRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).feedSupplementsTemporaryRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -10603,6 +13595,8 @@ typedef $$HorsesTableProcessedTableManager =
         bool careEventsRefs,
         bool trainingPlansRefs,
         bool trainingSessionsRefs,
+        bool feedPlansRefs,
+        bool feedSupplementsTemporaryRefs,
       })
     >;
 typedef $$HorsePhotosTableCreateCompanionBuilder =
@@ -16396,6 +19390,2425 @@ typedef $$TrainingSessionsTableProcessedTableManager =
       TrainingSessionRow,
       PrefetchHooks Function({bool planId, bool horseId})
     >;
+typedef $$FeedItemsTableCreateCompanionBuilder = FeedItemsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String name,
+  required String category,
+  required String unit,
+  Value<String?> notes,
+  Value<double?> stock,
+  Value<double?> lowStockThreshold,
+  Value<bool> archived,
+  Value<int> rowid,
+});
+typedef $$FeedItemsTableUpdateCompanionBuilder = FeedItemsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> name,
+  Value<String> category,
+  Value<String> unit,
+  Value<String?> notes,
+  Value<double?> stock,
+  Value<double?> lowStockThreshold,
+  Value<bool> archived,
+  Value<int> rowid,
+});
+
+final class $$FeedItemsTableReferences
+    extends BaseReferences<_$AppDatabase, $FeedItemsTable, FeedItemRow> {
+  $$FeedItemsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$FeedMealItemsTable, List<FeedMealItemRow>>
+  _feedMealItemsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.feedMealItems,
+    aliasName: 'feed_items__id__feed_meal_items__item_id',
+  );
+
+  $$FeedMealItemsTableProcessedTableManager get feedMealItemsRefs {
+    final manager = $$FeedMealItemsTableTableManager(
+      $_db,
+      $_db.feedMealItems,
+    ).filter((f) => f.itemId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_feedMealItemsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<
+    $FeedSupplementsTemporaryTable,
+    List<FeedSupplementRow>
+  >
+  _feedSupplementsTemporaryRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.feedSupplementsTemporary,
+        aliasName: 'feed_items__id__feed_supplements_temporary__item_id',
+      );
+
+  $$FeedSupplementsTemporaryTableProcessedTableManager
+  get feedSupplementsTemporaryRefs {
+    final manager = $$FeedSupplementsTemporaryTableTableManager(
+      $_db,
+      $_db.feedSupplementsTemporary,
+    ).filter((f) => f.itemId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _feedSupplementsTemporaryRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$FeedItemsTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedItemsTable> {
+  $$FeedItemsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get stock => $composableBuilder(
+    column: $table.stock,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get lowStockThreshold => $composableBuilder(
+    column: $table.lowStockThreshold,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> feedMealItemsRefs(
+    Expression<bool> Function($$FeedMealItemsTableFilterComposer f) f,
+  ) {
+    final $$FeedMealItemsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMealItems,
+      getReferencedColumn: (t) => t.itemId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealItemsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedMealItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> feedSupplementsTemporaryRefs(
+    Expression<bool> Function($$FeedSupplementsTemporaryTableFilterComposer f)
+    f,
+  ) {
+    final $$FeedSupplementsTemporaryTableFilterComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.feedSupplementsTemporary,
+          getReferencedColumn: (t) => t.itemId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$FeedSupplementsTemporaryTableFilterComposer(
+                $db: $db,
+                $table: $db.feedSupplementsTemporary,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$FeedItemsTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedItemsTable> {
+  $$FeedItemsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get stock => $composableBuilder(
+    column: $table.stock,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get lowStockThreshold => $composableBuilder(
+    column: $table.lowStockThreshold,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$FeedItemsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedItemsTable> {
+  $$FeedItemsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get unit =>
+      $composableBuilder(column: $table.unit, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<double> get stock =>
+      $composableBuilder(column: $table.stock, builder: (column) => column);
+
+  GeneratedColumn<double> get lowStockThreshold => $composableBuilder(
+    column: $table.lowStockThreshold,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get archived =>
+      $composableBuilder(column: $table.archived, builder: (column) => column);
+
+  Expression<T> feedMealItemsRefs<T extends Object>(
+    Expression<T> Function($$FeedMealItemsTableAnnotationComposer a) f,
+  ) {
+    final $$FeedMealItemsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMealItems,
+      getReferencedColumn: (t) => t.itemId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealItemsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedMealItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> feedSupplementsTemporaryRefs<T extends Object>(
+    Expression<T> Function($$FeedSupplementsTemporaryTableAnnotationComposer a)
+    f,
+  ) {
+    final $$FeedSupplementsTemporaryTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.feedSupplementsTemporary,
+          getReferencedColumn: (t) => t.itemId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$FeedSupplementsTemporaryTableAnnotationComposer(
+                $db: $db,
+                $table: $db.feedSupplementsTemporary,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$FeedItemsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedItemsTable,
+          FeedItemRow,
+          $$FeedItemsTableFilterComposer,
+          $$FeedItemsTableOrderingComposer,
+          $$FeedItemsTableAnnotationComposer,
+          $$FeedItemsTableCreateCompanionBuilder,
+          $$FeedItemsTableUpdateCompanionBuilder,
+          (FeedItemRow, $$FeedItemsTableReferences),
+          FeedItemRow,
+          PrefetchHooks Function({
+            bool feedMealItemsRefs,
+            bool feedSupplementsTemporaryRefs,
+          })
+        > {
+  $$FeedItemsTableTableManager(_$AppDatabase db, $FeedItemsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedItemsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedItemsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedItemsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> category = const Value.absent(),
+                Value<String> unit = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<double?> stock = const Value.absent(),
+                Value<double?> lowStockThreshold = const Value.absent(),
+                Value<bool> archived = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedItemsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                category: category,
+                unit: unit,
+                notes: notes,
+                stock: stock,
+                lowStockThreshold: lowStockThreshold,
+                archived: archived,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String category,
+                required String unit,
+                Value<String?> notes = const Value.absent(),
+                Value<double?> stock = const Value.absent(),
+                Value<double?> lowStockThreshold = const Value.absent(),
+                Value<bool> archived = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedItemsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                category: category,
+                unit: unit,
+                notes: notes,
+                stock: stock,
+                lowStockThreshold: lowStockThreshold,
+                archived: archived,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$FeedItemsTable, FeedItemRow>(table),
+                  $$FeedItemsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                feedMealItemsRefs = false,
+                feedSupplementsTemporaryRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (feedMealItemsRefs) db.feedMealItems,
+                    if (feedSupplementsTemporaryRefs)
+                      db.feedSupplementsTemporary,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (feedMealItemsRefs)
+                        await $_getPrefetchedDataByColumns<
+                          FeedItemRow,
+                          $FeedItemsTable,
+                          FeedMealItemRow,
+                          $FeedMealItemsTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$FeedItemsTableReferences
+                              ._feedMealItemsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$FeedItemsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).feedMealItemsRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'item_id',
+                          typedResults: items,
+                        ),
+                      if (feedSupplementsTemporaryRefs)
+                        await $_getPrefetchedDataByColumns<
+                          FeedItemRow,
+                          $FeedItemsTable,
+                          FeedSupplementRow,
+                          $FeedSupplementsTemporaryTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$FeedItemsTableReferences
+                              ._feedSupplementsTemporaryRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$FeedItemsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).feedSupplementsTemporaryRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'item_id',
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$FeedItemsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedItemsTable,
+      FeedItemRow,
+      $$FeedItemsTableFilterComposer,
+      $$FeedItemsTableOrderingComposer,
+      $$FeedItemsTableAnnotationComposer,
+      $$FeedItemsTableCreateCompanionBuilder,
+      $$FeedItemsTableUpdateCompanionBuilder,
+      (FeedItemRow, $$FeedItemsTableReferences),
+      FeedItemRow,
+      PrefetchHooks Function({
+        bool feedMealItemsRefs,
+        bool feedSupplementsTemporaryRefs,
+      })
+    >;
+typedef $$FeedPlansTableCreateCompanionBuilder = FeedPlansCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String horseId,
+  required String name,
+  required LocalDate validFrom,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+typedef $$FeedPlansTableUpdateCompanionBuilder = FeedPlansCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> horseId,
+  Value<String> name,
+  Value<LocalDate> validFrom,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+
+final class $$FeedPlansTableReferences
+    extends BaseReferences<_$AppDatabase, $FeedPlansTable, FeedPlanRow> {
+  $$FeedPlansTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('feed_plans__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$FeedMealsTable, List<FeedMealRow>>
+  _feedMealsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.feedMeals,
+    aliasName: 'feed_plans__id__feed_meals__plan_id',
+  );
+
+  $$FeedMealsTableProcessedTableManager get feedMealsRefs {
+    final manager = $$FeedMealsTableTableManager(
+      $_db,
+      $_db.feedMeals,
+    ).filter((f) => f.planId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_feedMealsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$FeedPlansTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedPlansTable> {
+  $$FeedPlansTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get validFrom =>
+      $composableBuilder(
+        column: $table.validFrom,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> feedMealsRefs(
+    Expression<bool> Function($$FeedMealsTableFilterComposer f) f,
+  ) {
+    final $$FeedMealsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMeals,
+      getReferencedColumn: (t) => t.planId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedMeals,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$FeedPlansTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedPlansTable> {
+  $$FeedPlansTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get validFrom => $composableBuilder(
+    column: $table.validFrom,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedPlansTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedPlansTable> {
+  $$FeedPlansTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get validFrom =>
+      $composableBuilder(column: $table.validFrom, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> feedMealsRefs<T extends Object>(
+    Expression<T> Function($$FeedMealsTableAnnotationComposer a) f,
+  ) {
+    final $$FeedMealsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMeals,
+      getReferencedColumn: (t) => t.planId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedMeals,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$FeedPlansTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedPlansTable,
+          FeedPlanRow,
+          $$FeedPlansTableFilterComposer,
+          $$FeedPlansTableOrderingComposer,
+          $$FeedPlansTableAnnotationComposer,
+          $$FeedPlansTableCreateCompanionBuilder,
+          $$FeedPlansTableUpdateCompanionBuilder,
+          (FeedPlanRow, $$FeedPlansTableReferences),
+          FeedPlanRow,
+          PrefetchHooks Function({bool horseId, bool feedMealsRefs})
+        > {
+  $$FeedPlansTableTableManager(_$AppDatabase db, $FeedPlansTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedPlansTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedPlansTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedPlansTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<LocalDate> validFrom = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedPlansCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                name: name,
+                validFrom: validFrom,
+                notes: notes,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String horseId,
+                required String name,
+                required LocalDate validFrom,
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedPlansCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                name: name,
+                validFrom: validFrom,
+                notes: notes,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$FeedPlansTable, FeedPlanRow>(table),
+                  $$FeedPlansTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false, feedMealsRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (feedMealsRefs) db.feedMeals],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable: $$FeedPlansTableReferences
+                            ._horseIdTable(db),
+                        referencedColumn: $$FeedPlansTableReferences
+                            ._horseIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (feedMealsRefs)
+                    await $_getPrefetchedDataByColumns<
+                      FeedPlanRow,
+                      $FeedPlansTable,
+                      FeedMealRow,
+                      $FeedMealsTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$FeedPlansTableReferences
+                          ._feedMealsRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$FeedPlansTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).feedMealsRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'plan_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$FeedPlansTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedPlansTable,
+      FeedPlanRow,
+      $$FeedPlansTableFilterComposer,
+      $$FeedPlansTableOrderingComposer,
+      $$FeedPlansTableAnnotationComposer,
+      $$FeedPlansTableCreateCompanionBuilder,
+      $$FeedPlansTableUpdateCompanionBuilder,
+      (FeedPlanRow, $$FeedPlansTableReferences),
+      FeedPlanRow,
+      PrefetchHooks Function({bool horseId, bool feedMealsRefs})
+    >;
+typedef $$FeedMealsTableCreateCompanionBuilder = FeedMealsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String planId,
+  required String name,
+  Value<int?> timeMinutes,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
+typedef $$FeedMealsTableUpdateCompanionBuilder = FeedMealsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> planId,
+  Value<String> name,
+  Value<int?> timeMinutes,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
+
+final class $$FeedMealsTableReferences
+    extends BaseReferences<_$AppDatabase, $FeedMealsTable, FeedMealRow> {
+  $$FeedMealsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $FeedPlansTable _planIdTable(_$AppDatabase db) =>
+      db.feedPlans.createAlias('feed_meals__plan_id__feed_plans__id');
+
+  $$FeedPlansTableProcessedTableManager get planId {
+    final $_column = $_itemColumn<String>('plan_id')!;
+
+    final manager = $$FeedPlansTableTableManager(
+      $_db,
+      $_db.feedPlans,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_planIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$FeedMealItemsTable, List<FeedMealItemRow>>
+  _feedMealItemsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.feedMealItems,
+    aliasName: 'feed_meals__id__feed_meal_items__meal_id',
+  );
+
+  $$FeedMealItemsTableProcessedTableManager get feedMealItemsRefs {
+    final manager = $$FeedMealItemsTableTableManager(
+      $_db,
+      $_db.feedMealItems,
+    ).filter((f) => f.mealId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_feedMealItemsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$FeedMealsTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedMealsTable> {
+  $$FeedMealsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get timeMinutes => $composableBuilder(
+    column: $table.timeMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$FeedPlansTableFilterComposer get planId {
+    final $$FeedPlansTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.planId,
+      referencedTable: $db.feedPlans,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedPlansTableFilterComposer(
+            $db: $db,
+            $table: $db.feedPlans,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> feedMealItemsRefs(
+    Expression<bool> Function($$FeedMealItemsTableFilterComposer f) f,
+  ) {
+    final $$FeedMealItemsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMealItems,
+      getReferencedColumn: (t) => t.mealId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealItemsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedMealItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$FeedMealsTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedMealsTable> {
+  $$FeedMealsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get timeMinutes => $composableBuilder(
+    column: $table.timeMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$FeedPlansTableOrderingComposer get planId {
+    final $$FeedPlansTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.planId,
+      referencedTable: $db.feedPlans,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedPlansTableOrderingComposer(
+            $db: $db,
+            $table: $db.feedPlans,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedMealsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedMealsTable> {
+  $$FeedMealsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<int> get timeMinutes => $composableBuilder(
+    column: $table.timeMinutes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  $$FeedPlansTableAnnotationComposer get planId {
+    final $$FeedPlansTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.planId,
+      referencedTable: $db.feedPlans,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedPlansTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedPlans,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> feedMealItemsRefs<T extends Object>(
+    Expression<T> Function($$FeedMealItemsTableAnnotationComposer a) f,
+  ) {
+    final $$FeedMealItemsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.feedMealItems,
+      getReferencedColumn: (t) => t.mealId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealItemsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedMealItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$FeedMealsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedMealsTable,
+          FeedMealRow,
+          $$FeedMealsTableFilterComposer,
+          $$FeedMealsTableOrderingComposer,
+          $$FeedMealsTableAnnotationComposer,
+          $$FeedMealsTableCreateCompanionBuilder,
+          $$FeedMealsTableUpdateCompanionBuilder,
+          (FeedMealRow, $$FeedMealsTableReferences),
+          FeedMealRow,
+          PrefetchHooks Function({bool planId, bool feedMealItemsRefs})
+        > {
+  $$FeedMealsTableTableManager(_$AppDatabase db, $FeedMealsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedMealsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedMealsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedMealsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> planId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<int?> timeMinutes = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedMealsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                planId: planId,
+                name: name,
+                timeMinutes: timeMinutes,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String planId,
+                required String name,
+                Value<int?> timeMinutes = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedMealsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                planId: planId,
+                name: name,
+                timeMinutes: timeMinutes,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$FeedMealsTable, FeedMealRow>(table),
+                  $$FeedMealsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({planId = false, feedMealItemsRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (feedMealItemsRefs) db.feedMealItems,
+              ],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (planId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.planId,
+                        referencedTable: $$FeedMealsTableReferences
+                            ._planIdTable(db),
+                        referencedColumn: $$FeedMealsTableReferences
+                            ._planIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (feedMealItemsRefs)
+                    await $_getPrefetchedDataByColumns<
+                      FeedMealRow,
+                      $FeedMealsTable,
+                      FeedMealItemRow,
+                      $FeedMealItemsTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$FeedMealsTableReferences
+                          ._feedMealItemsRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$FeedMealsTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).feedMealItemsRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'meal_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$FeedMealsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedMealsTable,
+      FeedMealRow,
+      $$FeedMealsTableFilterComposer,
+      $$FeedMealsTableOrderingComposer,
+      $$FeedMealsTableAnnotationComposer,
+      $$FeedMealsTableCreateCompanionBuilder,
+      $$FeedMealsTableUpdateCompanionBuilder,
+      (FeedMealRow, $$FeedMealsTableReferences),
+      FeedMealRow,
+      PrefetchHooks Function({bool planId, bool feedMealItemsRefs})
+    >;
+typedef $$FeedMealItemsTableCreateCompanionBuilder =
+    FeedMealItemsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String mealId,
+      required String itemId,
+      required double amount,
+      Value<String> variant,
+      Value<int> sortOrder,
+      Value<int> rowid,
+    });
+typedef $$FeedMealItemsTableUpdateCompanionBuilder =
+    FeedMealItemsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> mealId,
+      Value<String> itemId,
+      Value<double> amount,
+      Value<String> variant,
+      Value<int> sortOrder,
+      Value<int> rowid,
+    });
+
+final class $$FeedMealItemsTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $FeedMealItemsTable, FeedMealItemRow> {
+  $$FeedMealItemsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $FeedMealsTable _mealIdTable(_$AppDatabase db) =>
+      db.feedMeals.createAlias('feed_meal_items__meal_id__feed_meals__id');
+
+  $$FeedMealsTableProcessedTableManager get mealId {
+    final $_column = $_itemColumn<String>('meal_id')!;
+
+    final manager = $$FeedMealsTableTableManager(
+      $_db,
+      $_db.feedMeals,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_mealIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $FeedItemsTable _itemIdTable(_$AppDatabase db) =>
+      db.feedItems.createAlias('feed_meal_items__item_id__feed_items__id');
+
+  $$FeedItemsTableProcessedTableManager get itemId {
+    final $_column = $_itemColumn<String>('item_id')!;
+
+    final manager = $$FeedItemsTableTableManager(
+      $_db,
+      $_db.feedItems,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_itemIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$FeedMealItemsTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedMealItemsTable> {
+  $$FeedMealItemsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get variant => $composableBuilder(
+    column: $table.variant,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$FeedMealsTableFilterComposer get mealId {
+    final $$FeedMealsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.mealId,
+      referencedTable: $db.feedMeals,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedMeals,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableFilterComposer get itemId {
+    final $$FeedItemsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedMealItemsTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedMealItemsTable> {
+  $$FeedMealItemsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get variant => $composableBuilder(
+    column: $table.variant,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$FeedMealsTableOrderingComposer get mealId {
+    final $$FeedMealsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.mealId,
+      referencedTable: $db.feedMeals,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealsTableOrderingComposer(
+            $db: $db,
+            $table: $db.feedMeals,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableOrderingComposer get itemId {
+    final $$FeedItemsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableOrderingComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedMealItemsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedMealItemsTable> {
+  $$FeedMealItemsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<double> get amount =>
+      $composableBuilder(column: $table.amount, builder: (column) => column);
+
+  GeneratedColumn<String> get variant =>
+      $composableBuilder(column: $table.variant, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  $$FeedMealsTableAnnotationComposer get mealId {
+    final $$FeedMealsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.mealId,
+      referencedTable: $db.feedMeals,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedMealsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedMeals,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableAnnotationComposer get itemId {
+    final $$FeedItemsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedMealItemsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedMealItemsTable,
+          FeedMealItemRow,
+          $$FeedMealItemsTableFilterComposer,
+          $$FeedMealItemsTableOrderingComposer,
+          $$FeedMealItemsTableAnnotationComposer,
+          $$FeedMealItemsTableCreateCompanionBuilder,
+          $$FeedMealItemsTableUpdateCompanionBuilder,
+          (FeedMealItemRow, $$FeedMealItemsTableReferences),
+          FeedMealItemRow,
+          PrefetchHooks Function({bool mealId, bool itemId})
+        > {
+  $$FeedMealItemsTableTableManager(_$AppDatabase db, $FeedMealItemsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedMealItemsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedMealItemsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedMealItemsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> mealId = const Value.absent(),
+                Value<String> itemId = const Value.absent(),
+                Value<double> amount = const Value.absent(),
+                Value<String> variant = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedMealItemsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                mealId: mealId,
+                itemId: itemId,
+                amount: amount,
+                variant: variant,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String mealId,
+                required String itemId,
+                required double amount,
+                Value<String> variant = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedMealItemsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                mealId: mealId,
+                itemId: itemId,
+                amount: amount,
+                variant: variant,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$FeedMealItemsTable, FeedMealItemRow>(table),
+                  $$FeedMealItemsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({mealId = false, itemId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (mealId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.mealId,
+                        referencedTable: $$FeedMealItemsTableReferences
+                            ._mealIdTable(db),
+                        referencedColumn: $$FeedMealItemsTableReferences
+                            ._mealIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+                    if (itemId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.itemId,
+                        referencedTable: $$FeedMealItemsTableReferences
+                            ._itemIdTable(db),
+                        referencedColumn: $$FeedMealItemsTableReferences
+                            ._itemIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$FeedMealItemsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedMealItemsTable,
+      FeedMealItemRow,
+      $$FeedMealItemsTableFilterComposer,
+      $$FeedMealItemsTableOrderingComposer,
+      $$FeedMealItemsTableAnnotationComposer,
+      $$FeedMealItemsTableCreateCompanionBuilder,
+      $$FeedMealItemsTableUpdateCompanionBuilder,
+      (FeedMealItemRow, $$FeedMealItemsTableReferences),
+      FeedMealItemRow,
+      PrefetchHooks Function({bool mealId, bool itemId})
+    >;
+typedef $$FeedSupplementsTemporaryTableCreateCompanionBuilder =
+    FeedSupplementsTemporaryCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String horseId,
+      required String itemId,
+      Value<double?> amount,
+      Value<String?> mealName,
+      required LocalDate startDate,
+      required LocalDate endDate,
+      Value<String?> note,
+      Value<String> source,
+      Value<String?> bloodTestId,
+      Value<int> rowid,
+    });
+typedef $$FeedSupplementsTemporaryTableUpdateCompanionBuilder =
+    FeedSupplementsTemporaryCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> horseId,
+      Value<String> itemId,
+      Value<double?> amount,
+      Value<String?> mealName,
+      Value<LocalDate> startDate,
+      Value<LocalDate> endDate,
+      Value<String?> note,
+      Value<String> source,
+      Value<String?> bloodTestId,
+      Value<int> rowid,
+    });
+
+final class $$FeedSupplementsTemporaryTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $FeedSupplementsTemporaryTable,
+          FeedSupplementRow
+        > {
+  $$FeedSupplementsTemporaryTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('feed_supplements_temporary__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $FeedItemsTable _itemIdTable(_$AppDatabase db) => db.feedItems
+      .createAlias('feed_supplements_temporary__item_id__feed_items__id');
+
+  $$FeedItemsTableProcessedTableManager get itemId {
+    final $_column = $_itemColumn<String>('item_id')!;
+
+    final manager = $$FeedItemsTableTableManager(
+      $_db,
+      $_db.feedItems,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_itemIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$FeedSupplementsTemporaryTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedSupplementsTemporaryTable> {
+  $$FeedSupplementsTemporaryTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mealName => $composableBuilder(
+    column: $table.mealName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get startDate =>
+      $composableBuilder(
+        column: $table.startDate,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get endDate =>
+      $composableBuilder(
+        column: $table.endDate,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bloodTestId => $composableBuilder(
+    column: $table.bloodTestId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableFilterComposer get itemId {
+    final $$FeedItemsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableFilterComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedSupplementsTemporaryTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedSupplementsTemporaryTable> {
+  $$FeedSupplementsTemporaryTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get amount => $composableBuilder(
+    column: $table.amount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mealName => $composableBuilder(
+    column: $table.mealName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get endDate => $composableBuilder(
+    column: $table.endDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bloodTestId => $composableBuilder(
+    column: $table.bloodTestId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableOrderingComposer get itemId {
+    final $$FeedItemsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableOrderingComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedSupplementsTemporaryTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedSupplementsTemporaryTable> {
+  $$FeedSupplementsTemporaryTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<double> get amount =>
+      $composableBuilder(column: $table.amount, builder: (column) => column);
+
+  GeneratedColumn<String> get mealName =>
+      $composableBuilder(column: $table.mealName, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get startDate =>
+      $composableBuilder(column: $table.startDate, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get endDate =>
+      $composableBuilder(column: $table.endDate, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get bloodTestId => $composableBuilder(
+    column: $table.bloodTestId,
+    builder: (column) => column,
+  );
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$FeedItemsTableAnnotationComposer get itemId {
+    final $$FeedItemsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.itemId,
+      referencedTable: $db.feedItems,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FeedItemsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.feedItems,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FeedSupplementsTemporaryTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedSupplementsTemporaryTable,
+          FeedSupplementRow,
+          $$FeedSupplementsTemporaryTableFilterComposer,
+          $$FeedSupplementsTemporaryTableOrderingComposer,
+          $$FeedSupplementsTemporaryTableAnnotationComposer,
+          $$FeedSupplementsTemporaryTableCreateCompanionBuilder,
+          $$FeedSupplementsTemporaryTableUpdateCompanionBuilder,
+          (FeedSupplementRow, $$FeedSupplementsTemporaryTableReferences),
+          FeedSupplementRow,
+          PrefetchHooks Function({bool horseId, bool itemId})
+        > {
+  $$FeedSupplementsTemporaryTableTableManager(
+    _$AppDatabase db,
+    $FeedSupplementsTemporaryTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedSupplementsTemporaryTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$FeedSupplementsTemporaryTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$FeedSupplementsTemporaryTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<String> itemId = const Value.absent(),
+                Value<double?> amount = const Value.absent(),
+                Value<String?> mealName = const Value.absent(),
+                Value<LocalDate> startDate = const Value.absent(),
+                Value<LocalDate> endDate = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String> source = const Value.absent(),
+                Value<String?> bloodTestId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedSupplementsTemporaryCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                itemId: itemId,
+                amount: amount,
+                mealName: mealName,
+                startDate: startDate,
+                endDate: endDate,
+                note: note,
+                source: source,
+                bloodTestId: bloodTestId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String horseId,
+                required String itemId,
+                Value<double?> amount = const Value.absent(),
+                Value<String?> mealName = const Value.absent(),
+                required LocalDate startDate,
+                required LocalDate endDate,
+                Value<String?> note = const Value.absent(),
+                Value<String> source = const Value.absent(),
+                Value<String?> bloodTestId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedSupplementsTemporaryCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                itemId: itemId,
+                amount: amount,
+                mealName: mealName,
+                startDate: startDate,
+                endDate: endDate,
+                note: note,
+                source: source,
+                bloodTestId: bloodTestId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<
+                    $FeedSupplementsTemporaryTable,
+                    FeedSupplementRow
+                  >(table),
+                  $$FeedSupplementsTemporaryTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false, itemId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable:
+                            $$FeedSupplementsTemporaryTableReferences
+                                ._horseIdTable(db),
+                        referencedColumn:
+                            $$FeedSupplementsTemporaryTableReferences
+                                ._horseIdTable(db)
+                                .id,
+                      ) as T;
+                    }
+                    if (itemId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.itemId,
+                        referencedTable:
+                            $$FeedSupplementsTemporaryTableReferences
+                                ._itemIdTable(db),
+                        referencedColumn:
+                            $$FeedSupplementsTemporaryTableReferences
+                                ._itemIdTable(db)
+                                .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$FeedSupplementsTemporaryTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedSupplementsTemporaryTable,
+      FeedSupplementRow,
+      $$FeedSupplementsTemporaryTableFilterComposer,
+      $$FeedSupplementsTemporaryTableOrderingComposer,
+      $$FeedSupplementsTemporaryTableAnnotationComposer,
+      $$FeedSupplementsTemporaryTableCreateCompanionBuilder,
+      $$FeedSupplementsTemporaryTableUpdateCompanionBuilder,
+      (FeedSupplementRow, $$FeedSupplementsTemporaryTableReferences),
+      FeedSupplementRow,
+      PrefetchHooks Function({bool horseId, bool itemId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -16430,4 +21843,17 @@ class $AppDatabaseManager {
       $$TrainingPlansTableTableManager(_db, _db.trainingPlans);
   $$TrainingSessionsTableTableManager get trainingSessions =>
       $$TrainingSessionsTableTableManager(_db, _db.trainingSessions);
+  $$FeedItemsTableTableManager get feedItems =>
+      $$FeedItemsTableTableManager(_db, _db.feedItems);
+  $$FeedPlansTableTableManager get feedPlans =>
+      $$FeedPlansTableTableManager(_db, _db.feedPlans);
+  $$FeedMealsTableTableManager get feedMeals =>
+      $$FeedMealsTableTableManager(_db, _db.feedMeals);
+  $$FeedMealItemsTableTableManager get feedMealItems =>
+      $$FeedMealItemsTableTableManager(_db, _db.feedMealItems);
+  $$FeedSupplementsTemporaryTableTableManager get feedSupplementsTemporary =>
+      $$FeedSupplementsTemporaryTableTableManager(
+        _db,
+        _db.feedSupplementsTemporary,
+      );
 }

@@ -10,6 +10,7 @@ import 'generated/schema_v2.dart' as v2;
 import 'generated/schema_v3.dart' as v3;
 import 'generated/schema_v4.dart' as v4;
 import 'generated/schema_v5.dart' as v5;
+import 'generated/schema_v6.dart' as v6;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -195,6 +196,49 @@ void main() {
         expect(day.overrideMinutes, 20);
         expect(await newDb.select(newDb.trainingPlans).get(), isEmpty);
         expect(await newDb.select(newDb.trainingSessions).get(), isEmpty);
+      },
+    );
+  });
+
+  test('v5 → v6 behält Trainingseinheiten, Futter-Tabellen leer', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 5,
+      newVersion: 6,
+      createOld: v5.DatabaseAtV5.new,
+      createNew: v6.DatabaseAtV6.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch
+          ..insert(
+            oldDb.horses,
+            v5.HorsesCompanion.insert(
+              id: 'h1',
+              name: 'Amigo',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.trainingSessions,
+            v5.TrainingSessionsCompanion.insert(
+              id: 's1',
+              horseId: 'h1',
+              date: '2026-12-01',
+              title: 'Longe',
+              level: 3,
+              durationMinutes: 30,
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          );
+      },
+      validateItems: (newDb) async {
+        final s = await newDb.select(newDb.trainingSessions).getSingle();
+        expect(s.title, 'Longe');
+        expect(s.level, 3);
+        expect(await newDb.select(newDb.feedItems).get(), isEmpty);
+        expect(await newDb.select(newDb.feedPlans).get(), isEmpty);
       },
     );
   });

@@ -25,4 +25,9 @@ abstract final class Routes {
   static String trainingEdit(String id) => '/training-einheit/$id';
   static const trainingGenerator = '/training-generator';
   static const trainingPreview = '/training-generator/vorschau';
+  static const feedItems = '/futtermittel';
+  static const feedVersions = '/futterplan-versionen';
+  static const feedSupplements = '/futter-zusaetze';
+  static const feedPlanNew = '/futterplan/neu';
+  static String feedPlanEdit(String id) => '/futterplan/$id';
 }

@@ -67,7 +67,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emptyFutterMessage =>
-      'Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.';
+      'Lege einen Futterplan mit Mahlzeiten an. Änderungen speicherst du als neue Version – die alte bleibt in der Historie.';
 
   @override
   String get emptyDienstTitle => 'Noch keine Schichten';
@@ -1648,4 +1648,320 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get previewEmpty => 'In diesem Zeitraum ist keine Einheit möglich.';
+
+  @override
+  String get feedNoHorse => 'Lege zuerst im Tab „Pferd“ ein Pferd an.';
+
+  @override
+  String get feedCreatePlan => 'Futterplan anlegen';
+
+  @override
+  String get feedDefaultPlanName => 'Futterplan';
+
+  @override
+  String get feedDefaultMealMorning => 'Morgens';
+
+  @override
+  String get feedDefaultMealEvening => 'Abends';
+
+  @override
+  String feedPlanValidSince(String name, String date) {
+    return '$name · gültig seit $date';
+  }
+
+  @override
+  String feedNoPlanOnDay(String date) {
+    return 'Für diesen Tag gilt noch kein Futterplan (erste Version ab $date).';
+  }
+
+  @override
+  String get feedTrainingDay => 'Trainingstag';
+
+  @override
+  String get feedRestDay => 'Ruhetag';
+
+  @override
+  String get feedDayTotal => 'Tagessumme';
+
+  @override
+  String get feedDaily => 'Täglich (Zusätze)';
+
+  @override
+  String get feedAsDirected => 'laut Packungsangabe';
+
+  @override
+  String get feedTemporary => 'Zusatz';
+
+  @override
+  String get feedVariantOnlyTraining => 'nur an Trainingstagen';
+
+  @override
+  String get feedVariantOnlyRest => 'nur an Ruhetagen';
+
+  @override
+  String get feedVariant_always => 'Immer';
+
+  @override
+  String get feedVariant_training => 'Trainingstag';
+
+  @override
+  String get feedVariant_rest => 'Ruhetag';
+
+  @override
+  String get feedMealEmpty => 'Keine Futtermittel';
+
+  @override
+  String feedLowStock(String item) {
+    return 'Vorrat wird knapp: $item';
+  }
+
+  @override
+  String feedStockDays(String item, int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage',
+      one: '1 Tag',
+      zero: 'weniger als 1 Tag',
+    );
+    return 'Vorrat $item: reicht noch ca. $_temp0';
+  }
+
+  @override
+  String get feedEditPlan => 'Plan bearbeiten';
+
+  @override
+  String get feedItems => 'Futtermittel';
+
+  @override
+  String get feedVersions => 'Versionen';
+
+  @override
+  String get feedSupplements => 'Zeitlich begrenzte Zusätze';
+
+  @override
+  String get feedPreviousDay => 'Vorheriger Tag';
+
+  @override
+  String get feedNextDay => 'Nächster Tag';
+
+  @override
+  String get feedToday => 'Heute';
+
+  @override
+  String get feedItemNew => 'Neues Futtermittel';
+
+  @override
+  String get feedItemEdit => 'Futtermittel bearbeiten';
+
+  @override
+  String get feedItemName => 'Name';
+
+  @override
+  String get feedItemCategory => 'Kategorie';
+
+  @override
+  String get feedItemUnit => 'Einheit';
+
+  @override
+  String get feedItemNotes => 'Notiz';
+
+  @override
+  String get feedItemStock => 'Vorrat (optional)';
+
+  @override
+  String get feedItemThreshold => '„Vorrat wird knapp“ ab (optional)';
+
+  @override
+  String get feedItemsEmpty => 'Noch keine Futtermittel';
+
+  @override
+  String get feedItemRemoved => 'Futtermittel gelöscht';
+
+  @override
+  String get feedItemArchived =>
+      'Wird noch verwendet und wurde daher nur ausgeblendet.';
+
+  @override
+  String feedItemRemoveTitle(String name) {
+    return '$name entfernen?';
+  }
+
+  @override
+  String get feedItemRemoveText =>
+      'Wird das Futtermittel noch in Plänen verwendet, wird es nur ausgeblendet.';
+
+  @override
+  String get feedItemStockUpdate => 'Vorrat aktualisieren';
+
+  @override
+  String get feedCategory_raufutter => 'Raufutter';
+
+  @override
+  String get feedCategory_kraftfutter => 'Kraftfutter';
+
+  @override
+  String get feedCategory_mineralfutter => 'Mineralfutter';
+
+  @override
+  String get feedCategory_ergaenzung => 'Ergänzung';
+
+  @override
+  String get feedCategory_oel => 'Öl';
+
+  @override
+  String get feedCategory_leckerli => 'Leckerli';
+
+  @override
+  String get feedCategory_medikament => 'Medikament';
+
+  @override
+  String get feedUnit_kg => 'kg';
+
+  @override
+  String get feedUnit_g => 'g';
+
+  @override
+  String get feedUnit_ml => 'ml';
+
+  @override
+  String get feedUnit_messbecher => 'Messbecher';
+
+  @override
+  String get feedUnit_stueck => 'Stück';
+
+  @override
+  String get feedUnit_liter => 'Liter';
+
+  @override
+  String get feedPlanEditTitle => 'Futterplan bearbeiten';
+
+  @override
+  String get feedPlanName => 'Name der Version';
+
+  @override
+  String get feedPlanNameHint => 'z. B. Winter-Ration';
+
+  @override
+  String get feedPlanValidFrom => 'Gültig ab';
+
+  @override
+  String get feedPlanNotes => 'Notiz';
+
+  @override
+  String get feedMeals => 'Mahlzeiten';
+
+  @override
+  String get feedMealAdd => 'Mahlzeit hinzufügen';
+
+  @override
+  String get feedMealName => 'Mahlzeit';
+
+  @override
+  String get feedMealTime => 'Uhrzeit';
+
+  @override
+  String get feedMealRemove => 'Mahlzeit entfernen';
+
+  @override
+  String get feedEntryAdd => 'Futtermittel hinzufügen';
+
+  @override
+  String get feedEntryItem => 'Futtermittel';
+
+  @override
+  String get feedEntryAmount => 'Menge';
+
+  @override
+  String get feedEntryRemove => 'Position entfernen';
+
+  @override
+  String get feedNeedItems => 'Lege zuerst Futtermittel an.';
+
+  @override
+  String get feedVersionNew => 'Neue Version';
+
+  @override
+  String get feedVersionNewTitle => 'Neue Version ab wann?';
+
+  @override
+  String get feedVersionNewHint =>
+      'Die aktuelle Version wird kopiert; du kannst sie danach anpassen. Die bisherige Version bleibt in der Historie.';
+
+  @override
+  String get feedVersionCurrent => 'aktuell';
+
+  @override
+  String feedVersionFuture(String date) {
+    return 'ab $date';
+  }
+
+  @override
+  String get feedVersionDeleteTitle => 'Version löschen?';
+
+  @override
+  String get feedVersionDeleteText =>
+      'Diese Version des Futterplans wird unwiderruflich gelöscht.';
+
+  @override
+  String get feedSupplementNew => 'Zusatz hinzufügen';
+
+  @override
+  String get feedSupplementEdit => 'Zusatz bearbeiten';
+
+  @override
+  String get feedSupplementAmountAsDirected => 'Menge laut Packungsangabe';
+
+  @override
+  String get feedSupplementMeal => 'Zu welcher Mahlzeit?';
+
+  @override
+  String get feedSupplementMealDaily => 'einmal täglich';
+
+  @override
+  String get feedSupplementStart => 'Beginn';
+
+  @override
+  String get feedSupplementEnd => 'Ende';
+
+  @override
+  String get feedSupplementDuration => 'Dauer';
+
+  @override
+  String feedSupplementWeeks(int weeks) {
+    return '$weeks Wochen';
+  }
+
+  @override
+  String get feedSupplementNote => 'Notiz (z. B. Kur, Grund)';
+
+  @override
+  String get feedSupplementsEmpty => 'Keine Zusätze';
+
+  @override
+  String get feedSupplementActive => 'Aktiv';
+
+  @override
+  String get feedSupplementUpcoming => 'Geplant';
+
+  @override
+  String get feedSupplementPast => 'Abgelaufen';
+
+  @override
+  String feedSupplementRange(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String get feedSupplementFromBlood => 'aus Blutbild-Auswertung';
+
+  @override
+  String get feedSupplementDeleteTitle => 'Zusatz löschen?';
+
+  @override
+  String get feedDisclaimer =>
+      'Nur Dokumentation – keine Rationsberechnung. Mengen bitte mit Tierarzt oder Futterberatung abstimmen.';
+
+  @override
+  String get feedItemStockLabel => 'Vorrat';
 }

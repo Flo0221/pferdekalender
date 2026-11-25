@@ -18,7 +18,7 @@
   "emptyTrainingTitle": "Noch kein Training geplant",
   "emptyTrainingMessage": "Trage Einheiten von Hand ein oder lass dir mit dem Plan-Generator einen Trainingsplan passend zu deinem Dienstplan erstellen.",
   "emptyFutterTitle": "Noch kein Futterplan",
-  "emptyFutterMessage": "Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.",
+  "emptyFutterMessage": "Lege einen Futterplan mit Mahlzeiten an. Änderungen speicherst du als neue Version – die alte bleibt in der Historie.",
   "emptyDienstTitle": "Noch keine Schichten",
   "emptyDienstMessage": "Lege deine Schichten an – Standard-Schichten mit einem Tipp oder eigene wie „Bereitschaft“ oder „Homeoffice“ – jeweils mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.",
   "emptyPferdTitle": "Noch kein Pferd angelegt",
@@ -978,5 +978,166 @@
     }
   },
   "previewFormRepeat": "Wenige Trainingsformen gewählt – manche Form kommt öfter als 2× pro Woche vor.",
-  "previewEmpty": "In diesem Zeitraum ist keine Einheit möglich."
+  "previewEmpty": "In diesem Zeitraum ist keine Einheit möglich.",
+  "feedNoHorse": "Lege zuerst im Tab „Pferd“ ein Pferd an.",
+  "feedCreatePlan": "Futterplan anlegen",
+  "feedDefaultPlanName": "Futterplan",
+  "feedDefaultMealMorning": "Morgens",
+  "feedDefaultMealEvening": "Abends",
+  "feedPlanValidSince": "{name} · gültig seit {date}",
+  "@feedPlanValidSince": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "feedNoPlanOnDay": "Für diesen Tag gilt noch kein Futterplan (erste Version ab {date}).",
+  "@feedNoPlanOnDay": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "feedTrainingDay": "Trainingstag",
+  "feedRestDay": "Ruhetag",
+  "feedDayTotal": "Tagessumme",
+  "feedDaily": "Täglich (Zusätze)",
+  "feedAsDirected": "laut Packungsangabe",
+  "feedTemporary": "Zusatz",
+  "feedVariantOnlyTraining": "nur an Trainingstagen",
+  "feedVariantOnlyRest": "nur an Ruhetagen",
+  "feedVariant_always": "Immer",
+  "feedVariant_training": "Trainingstag",
+  "feedVariant_rest": "Ruhetag",
+  "feedMealEmpty": "Keine Futtermittel",
+  "feedLowStock": "Vorrat wird knapp: {item}",
+  "@feedLowStock": {
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "feedStockDays": "Vorrat {item}: reicht noch ca. {days, plural, =0{weniger als 1 Tag} =1{1 Tag} other{{days} Tage}}",
+  "@feedStockDays": {
+    "placeholders": {
+      "item": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "feedEditPlan": "Plan bearbeiten",
+  "feedItems": "Futtermittel",
+  "feedVersions": "Versionen",
+  "feedSupplements": "Zeitlich begrenzte Zusätze",
+  "feedPreviousDay": "Vorheriger Tag",
+  "feedNextDay": "Nächster Tag",
+  "feedToday": "Heute",
+  "feedItemNew": "Neues Futtermittel",
+  "feedItemEdit": "Futtermittel bearbeiten",
+  "feedItemName": "Name",
+  "feedItemCategory": "Kategorie",
+  "feedItemUnit": "Einheit",
+  "feedItemNotes": "Notiz",
+  "feedItemStock": "Vorrat (optional)",
+  "feedItemThreshold": "„Vorrat wird knapp“ ab (optional)",
+  "feedItemsEmpty": "Noch keine Futtermittel",
+  "feedItemRemoved": "Futtermittel gelöscht",
+  "feedItemArchived": "Wird noch verwendet und wurde daher nur ausgeblendet.",
+  "feedItemRemoveTitle": "{name} entfernen?",
+  "@feedItemRemoveTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "feedItemRemoveText": "Wird das Futtermittel noch in Plänen verwendet, wird es nur ausgeblendet.",
+  "feedItemStockUpdate": "Vorrat aktualisieren",
+  "feedCategory_raufutter": "Raufutter",
+  "feedCategory_kraftfutter": "Kraftfutter",
+  "feedCategory_mineralfutter": "Mineralfutter",
+  "feedCategory_ergaenzung": "Ergänzung",
+  "feedCategory_oel": "Öl",
+  "feedCategory_leckerli": "Leckerli",
+  "feedCategory_medikament": "Medikament",
+  "feedUnit_kg": "kg",
+  "feedUnit_g": "g",
+  "feedUnit_ml": "ml",
+  "feedUnit_messbecher": "Messbecher",
+  "feedUnit_stueck": "Stück",
+  "feedUnit_liter": "Liter",
+  "feedPlanEditTitle": "Futterplan bearbeiten",
+  "feedPlanName": "Name der Version",
+  "feedPlanNameHint": "z. B. Winter-Ration",
+  "feedPlanValidFrom": "Gültig ab",
+  "feedPlanNotes": "Notiz",
+  "feedMeals": "Mahlzeiten",
+  "feedMealAdd": "Mahlzeit hinzufügen",
+  "feedMealName": "Mahlzeit",
+  "feedMealTime": "Uhrzeit",
+  "feedMealRemove": "Mahlzeit entfernen",
+  "feedEntryAdd": "Futtermittel hinzufügen",
+  "feedEntryItem": "Futtermittel",
+  "feedEntryAmount": "Menge",
+  "feedEntryRemove": "Position entfernen",
+  "feedNeedItems": "Lege zuerst Futtermittel an.",
+  "feedVersionNew": "Neue Version",
+  "feedVersionNewTitle": "Neue Version ab wann?",
+  "feedVersionNewHint": "Die aktuelle Version wird kopiert; du kannst sie danach anpassen. Die bisherige Version bleibt in der Historie.",
+  "feedVersionCurrent": "aktuell",
+  "feedVersionFuture": "ab {date}",
+  "@feedVersionFuture": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "feedVersionDeleteTitle": "Version löschen?",
+  "feedVersionDeleteText": "Diese Version des Futterplans wird unwiderruflich gelöscht.",
+  "feedSupplementNew": "Zusatz hinzufügen",
+  "feedSupplementEdit": "Zusatz bearbeiten",
+  "feedSupplementAmountAsDirected": "Menge laut Packungsangabe",
+  "feedSupplementMeal": "Zu welcher Mahlzeit?",
+  "feedSupplementMealDaily": "einmal täglich",
+  "feedSupplementStart": "Beginn",
+  "feedSupplementEnd": "Ende",
+  "feedSupplementDuration": "Dauer",
+  "feedSupplementWeeks": "{weeks} Wochen",
+  "@feedSupplementWeeks": {
+    "placeholders": {
+      "weeks": {
+        "type": "int"
+      }
+    }
+  },
+  "feedSupplementNote": "Notiz (z. B. Kur, Grund)",
+  "feedSupplementsEmpty": "Keine Zusätze",
+  "feedSupplementActive": "Aktiv",
+  "feedSupplementUpcoming": "Geplant",
+  "feedSupplementPast": "Abgelaufen",
+  "feedSupplementRange": "{from} – {to}",
+  "@feedSupplementRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "feedSupplementFromBlood": "aus Blutbild-Auswertung",
+  "feedSupplementDeleteTitle": "Zusatz löschen?",
+  "feedDisclaimer": "Nur Dokumentation – keine Rationsberechnung. Mengen bitte mit Tierarzt oder Futterberatung abstimmen.",
+  "feedItemStockLabel": "Vorrat"
 }

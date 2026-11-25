@@ -205,7 +205,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyFutterMessage.
   ///
   /// In de, this message translates to:
-  /// **'Hier erscheinen bald Futtermittel, Mahlzeiten und Rationen.'**
+  /// **'Lege einen Futterplan mit Mahlzeiten an. Änderungen speicherst du als neue Version – die alte bleibt in der Historie.'**
   String get emptyFutterMessage;
 
   /// No description provided for @emptyDienstTitle.
@@ -2817,6 +2817,582 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'In diesem Zeitraum ist keine Einheit möglich.'**
   String get previewEmpty;
+
+  /// No description provided for @feedNoHorse.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege zuerst im Tab „Pferd“ ein Pferd an.'**
+  String get feedNoHorse;
+
+  /// No description provided for @feedCreatePlan.
+  ///
+  /// In de, this message translates to:
+  /// **'Futterplan anlegen'**
+  String get feedCreatePlan;
+
+  /// No description provided for @feedDefaultPlanName.
+  ///
+  /// In de, this message translates to:
+  /// **'Futterplan'**
+  String get feedDefaultPlanName;
+
+  /// No description provided for @feedDefaultMealMorning.
+  ///
+  /// In de, this message translates to:
+  /// **'Morgens'**
+  String get feedDefaultMealMorning;
+
+  /// No description provided for @feedDefaultMealEvening.
+  ///
+  /// In de, this message translates to:
+  /// **'Abends'**
+  String get feedDefaultMealEvening;
+
+  /// No description provided for @feedPlanValidSince.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} · gültig seit {date}'**
+  String feedPlanValidSince(String name, String date);
+
+  /// No description provided for @feedNoPlanOnDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Für diesen Tag gilt noch kein Futterplan (erste Version ab {date}).'**
+  String feedNoPlanOnDay(String date);
+
+  /// No description provided for @feedTrainingDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingstag'**
+  String get feedTrainingDay;
+
+  /// No description provided for @feedRestDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag'**
+  String get feedRestDay;
+
+  /// No description provided for @feedDayTotal.
+  ///
+  /// In de, this message translates to:
+  /// **'Tagessumme'**
+  String get feedDayTotal;
+
+  /// No description provided for @feedDaily.
+  ///
+  /// In de, this message translates to:
+  /// **'Täglich (Zusätze)'**
+  String get feedDaily;
+
+  /// No description provided for @feedAsDirected.
+  ///
+  /// In de, this message translates to:
+  /// **'laut Packungsangabe'**
+  String get feedAsDirected;
+
+  /// No description provided for @feedTemporary.
+  ///
+  /// In de, this message translates to:
+  /// **'Zusatz'**
+  String get feedTemporary;
+
+  /// No description provided for @feedVariantOnlyTraining.
+  ///
+  /// In de, this message translates to:
+  /// **'nur an Trainingstagen'**
+  String get feedVariantOnlyTraining;
+
+  /// No description provided for @feedVariantOnlyRest.
+  ///
+  /// In de, this message translates to:
+  /// **'nur an Ruhetagen'**
+  String get feedVariantOnlyRest;
+
+  /// No description provided for @feedVariant_always.
+  ///
+  /// In de, this message translates to:
+  /// **'Immer'**
+  String get feedVariant_always;
+
+  /// No description provided for @feedVariant_training.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainingstag'**
+  String get feedVariant_training;
+
+  /// No description provided for @feedVariant_rest.
+  ///
+  /// In de, this message translates to:
+  /// **'Ruhetag'**
+  String get feedVariant_rest;
+
+  /// No description provided for @feedMealEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Futtermittel'**
+  String get feedMealEmpty;
+
+  /// No description provided for @feedLowStock.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorrat wird knapp: {item}'**
+  String feedLowStock(String item);
+
+  /// No description provided for @feedStockDays.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorrat {item}: reicht noch ca. {days, plural, =0{weniger als 1 Tag} =1{1 Tag} other{{days} Tage}}'**
+  String feedStockDays(String item, int days);
+
+  /// No description provided for @feedEditPlan.
+  ///
+  /// In de, this message translates to:
+  /// **'Plan bearbeiten'**
+  String get feedEditPlan;
+
+  /// No description provided for @feedItems.
+  ///
+  /// In de, this message translates to:
+  /// **'Futtermittel'**
+  String get feedItems;
+
+  /// No description provided for @feedVersions.
+  ///
+  /// In de, this message translates to:
+  /// **'Versionen'**
+  String get feedVersions;
+
+  /// No description provided for @feedSupplements.
+  ///
+  /// In de, this message translates to:
+  /// **'Zeitlich begrenzte Zusätze'**
+  String get feedSupplements;
+
+  /// No description provided for @feedPreviousDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorheriger Tag'**
+  String get feedPreviousDay;
+
+  /// No description provided for @feedNextDay.
+  ///
+  /// In de, this message translates to:
+  /// **'Nächster Tag'**
+  String get feedNextDay;
+
+  /// No description provided for @feedToday.
+  ///
+  /// In de, this message translates to:
+  /// **'Heute'**
+  String get feedToday;
+
+  /// No description provided for @feedItemNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neues Futtermittel'**
+  String get feedItemNew;
+
+  /// No description provided for @feedItemEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Futtermittel bearbeiten'**
+  String get feedItemEdit;
+
+  /// No description provided for @feedItemName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get feedItemName;
+
+  /// No description provided for @feedItemCategory.
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorie'**
+  String get feedItemCategory;
+
+  /// No description provided for @feedItemUnit.
+  ///
+  /// In de, this message translates to:
+  /// **'Einheit'**
+  String get feedItemUnit;
+
+  /// No description provided for @feedItemNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get feedItemNotes;
+
+  /// No description provided for @feedItemStock.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorrat (optional)'**
+  String get feedItemStock;
+
+  /// No description provided for @feedItemThreshold.
+  ///
+  /// In de, this message translates to:
+  /// **'„Vorrat wird knapp“ ab (optional)'**
+  String get feedItemThreshold;
+
+  /// No description provided for @feedItemsEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Futtermittel'**
+  String get feedItemsEmpty;
+
+  /// No description provided for @feedItemRemoved.
+  ///
+  /// In de, this message translates to:
+  /// **'Futtermittel gelöscht'**
+  String get feedItemRemoved;
+
+  /// No description provided for @feedItemArchived.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird noch verwendet und wurde daher nur ausgeblendet.'**
+  String get feedItemArchived;
+
+  /// No description provided for @feedItemRemoveTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} entfernen?'**
+  String feedItemRemoveTitle(String name);
+
+  /// No description provided for @feedItemRemoveText.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird das Futtermittel noch in Plänen verwendet, wird es nur ausgeblendet.'**
+  String get feedItemRemoveText;
+
+  /// No description provided for @feedItemStockUpdate.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorrat aktualisieren'**
+  String get feedItemStockUpdate;
+
+  /// No description provided for @feedCategory_raufutter.
+  ///
+  /// In de, this message translates to:
+  /// **'Raufutter'**
+  String get feedCategory_raufutter;
+
+  /// No description provided for @feedCategory_kraftfutter.
+  ///
+  /// In de, this message translates to:
+  /// **'Kraftfutter'**
+  String get feedCategory_kraftfutter;
+
+  /// No description provided for @feedCategory_mineralfutter.
+  ///
+  /// In de, this message translates to:
+  /// **'Mineralfutter'**
+  String get feedCategory_mineralfutter;
+
+  /// No description provided for @feedCategory_ergaenzung.
+  ///
+  /// In de, this message translates to:
+  /// **'Ergänzung'**
+  String get feedCategory_ergaenzung;
+
+  /// No description provided for @feedCategory_oel.
+  ///
+  /// In de, this message translates to:
+  /// **'Öl'**
+  String get feedCategory_oel;
+
+  /// No description provided for @feedCategory_leckerli.
+  ///
+  /// In de, this message translates to:
+  /// **'Leckerli'**
+  String get feedCategory_leckerli;
+
+  /// No description provided for @feedCategory_medikament.
+  ///
+  /// In de, this message translates to:
+  /// **'Medikament'**
+  String get feedCategory_medikament;
+
+  /// No description provided for @feedUnit_kg.
+  ///
+  /// In de, this message translates to:
+  /// **'kg'**
+  String get feedUnit_kg;
+
+  /// No description provided for @feedUnit_g.
+  ///
+  /// In de, this message translates to:
+  /// **'g'**
+  String get feedUnit_g;
+
+  /// No description provided for @feedUnit_ml.
+  ///
+  /// In de, this message translates to:
+  /// **'ml'**
+  String get feedUnit_ml;
+
+  /// No description provided for @feedUnit_messbecher.
+  ///
+  /// In de, this message translates to:
+  /// **'Messbecher'**
+  String get feedUnit_messbecher;
+
+  /// No description provided for @feedUnit_stueck.
+  ///
+  /// In de, this message translates to:
+  /// **'Stück'**
+  String get feedUnit_stueck;
+
+  /// No description provided for @feedUnit_liter.
+  ///
+  /// In de, this message translates to:
+  /// **'Liter'**
+  String get feedUnit_liter;
+
+  /// No description provided for @feedPlanEditTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Futterplan bearbeiten'**
+  String get feedPlanEditTitle;
+
+  /// No description provided for @feedPlanName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name der Version'**
+  String get feedPlanName;
+
+  /// No description provided for @feedPlanNameHint.
+  ///
+  /// In de, this message translates to:
+  /// **'z. B. Winter-Ration'**
+  String get feedPlanNameHint;
+
+  /// No description provided for @feedPlanValidFrom.
+  ///
+  /// In de, this message translates to:
+  /// **'Gültig ab'**
+  String get feedPlanValidFrom;
+
+  /// No description provided for @feedPlanNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get feedPlanNotes;
+
+  /// No description provided for @feedMeals.
+  ///
+  /// In de, this message translates to:
+  /// **'Mahlzeiten'**
+  String get feedMeals;
+
+  /// No description provided for @feedMealAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Mahlzeit hinzufügen'**
+  String get feedMealAdd;
+
+  /// No description provided for @feedMealName.
+  ///
+  /// In de, this message translates to:
+  /// **'Mahlzeit'**
+  String get feedMealName;
+
+  /// No description provided for @feedMealTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Uhrzeit'**
+  String get feedMealTime;
+
+  /// No description provided for @feedMealRemove.
+  ///
+  /// In de, this message translates to:
+  /// **'Mahlzeit entfernen'**
+  String get feedMealRemove;
+
+  /// No description provided for @feedEntryAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Futtermittel hinzufügen'**
+  String get feedEntryAdd;
+
+  /// No description provided for @feedEntryItem.
+  ///
+  /// In de, this message translates to:
+  /// **'Futtermittel'**
+  String get feedEntryItem;
+
+  /// No description provided for @feedEntryAmount.
+  ///
+  /// In de, this message translates to:
+  /// **'Menge'**
+  String get feedEntryAmount;
+
+  /// No description provided for @feedEntryRemove.
+  ///
+  /// In de, this message translates to:
+  /// **'Position entfernen'**
+  String get feedEntryRemove;
+
+  /// No description provided for @feedNeedItems.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege zuerst Futtermittel an.'**
+  String get feedNeedItems;
+
+  /// No description provided for @feedVersionNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Version'**
+  String get feedVersionNew;
+
+  /// No description provided for @feedVersionNewTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Version ab wann?'**
+  String get feedVersionNewTitle;
+
+  /// No description provided for @feedVersionNewHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Die aktuelle Version wird kopiert; du kannst sie danach anpassen. Die bisherige Version bleibt in der Historie.'**
+  String get feedVersionNewHint;
+
+  /// No description provided for @feedVersionCurrent.
+  ///
+  /// In de, this message translates to:
+  /// **'aktuell'**
+  String get feedVersionCurrent;
+
+  /// No description provided for @feedVersionFuture.
+  ///
+  /// In de, this message translates to:
+  /// **'ab {date}'**
+  String feedVersionFuture(String date);
+
+  /// No description provided for @feedVersionDeleteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Version löschen?'**
+  String get feedVersionDeleteTitle;
+
+  /// No description provided for @feedVersionDeleteText.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Version des Futterplans wird unwiderruflich gelöscht.'**
+  String get feedVersionDeleteText;
+
+  /// No description provided for @feedSupplementNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Zusatz hinzufügen'**
+  String get feedSupplementNew;
+
+  /// No description provided for @feedSupplementEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Zusatz bearbeiten'**
+  String get feedSupplementEdit;
+
+  /// No description provided for @feedSupplementAmountAsDirected.
+  ///
+  /// In de, this message translates to:
+  /// **'Menge laut Packungsangabe'**
+  String get feedSupplementAmountAsDirected;
+
+  /// No description provided for @feedSupplementMeal.
+  ///
+  /// In de, this message translates to:
+  /// **'Zu welcher Mahlzeit?'**
+  String get feedSupplementMeal;
+
+  /// No description provided for @feedSupplementMealDaily.
+  ///
+  /// In de, this message translates to:
+  /// **'einmal täglich'**
+  String get feedSupplementMealDaily;
+
+  /// No description provided for @feedSupplementStart.
+  ///
+  /// In de, this message translates to:
+  /// **'Beginn'**
+  String get feedSupplementStart;
+
+  /// No description provided for @feedSupplementEnd.
+  ///
+  /// In de, this message translates to:
+  /// **'Ende'**
+  String get feedSupplementEnd;
+
+  /// No description provided for @feedSupplementDuration.
+  ///
+  /// In de, this message translates to:
+  /// **'Dauer'**
+  String get feedSupplementDuration;
+
+  /// No description provided for @feedSupplementWeeks.
+  ///
+  /// In de, this message translates to:
+  /// **'{weeks} Wochen'**
+  String feedSupplementWeeks(int weeks);
+
+  /// No description provided for @feedSupplementNote.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz (z. B. Kur, Grund)'**
+  String get feedSupplementNote;
+
+  /// No description provided for @feedSupplementsEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Zusätze'**
+  String get feedSupplementsEmpty;
+
+  /// No description provided for @feedSupplementActive.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktiv'**
+  String get feedSupplementActive;
+
+  /// No description provided for @feedSupplementUpcoming.
+  ///
+  /// In de, this message translates to:
+  /// **'Geplant'**
+  String get feedSupplementUpcoming;
+
+  /// No description provided for @feedSupplementPast.
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelaufen'**
+  String get feedSupplementPast;
+
+  /// No description provided for @feedSupplementRange.
+  ///
+  /// In de, this message translates to:
+  /// **'{from} – {to}'**
+  String feedSupplementRange(String from, String to);
+
+  /// No description provided for @feedSupplementFromBlood.
+  ///
+  /// In de, this message translates to:
+  /// **'aus Blutbild-Auswertung'**
+  String get feedSupplementFromBlood;
+
+  /// No description provided for @feedSupplementDeleteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Zusatz löschen?'**
+  String get feedSupplementDeleteTitle;
+
+  /// No description provided for @feedDisclaimer.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur Dokumentation – keine Rationsberechnung. Mengen bitte mit Tierarzt oder Futterberatung abstimmen.'**
+  String get feedDisclaimer;
+
+  /// No description provided for @feedItemStockLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorrat'**
+  String get feedItemStockLabel;
 }
 
 class _AppLocalizationsDelegate

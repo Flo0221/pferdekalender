@@ -3,6 +3,7 @@ import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../features/dienstplan/data/shift_tables.dart';
+import '../../features/futter/data/feed_tables.dart';
 import '../../features/pferd/data/horse_tables.dart';
 import '../../features/pflege/data/care_seed.dart';
 import '../../features/pflege/data/care_tables.dart';
@@ -37,6 +38,11 @@ part 'app_database.g.dart';
     ShiftDays,
     TrainingPlans,
     TrainingSessions,
+    FeedItems,
+    FeedPlans,
+    FeedMeals,
+    FeedMealItems,
+    FeedSupplementsTemporary,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -53,7 +59,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -80,6 +86,13 @@ class AppDatabase extends _$AppDatabase {
       from4To5: (m, schema) async {
         await m.createTable(schema.trainingPlans);
         await m.createTable(schema.trainingSessions);
+      },
+      from5To6: (m, schema) async {
+        await m.createTable(schema.feedItems);
+        await m.createTable(schema.feedPlans);
+        await m.createTable(schema.feedMeals);
+        await m.createTable(schema.feedMealItems);
+        await m.createTable(schema.feedSupplementsTemporary);
       },
     ),
     beforeOpen: (details) async {
