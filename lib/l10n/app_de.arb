@@ -1,22 +1,18 @@
 {
   "@@locale": "de",
   "appTitle": "Pferdekalender",
-
   "tabPflege": "Pflege",
   "tabTraining": "Training",
   "tabFutter": "Futter",
   "tabDienst": "Dienst",
   "tabPferd": "Pferd",
-
   "titlePflege": "Pflege-Kalender",
   "titleTraining": "Training",
   "titleFutter": "Futterplan",
   "titleDienst": "Mein Dienstplan",
   "titlePferd": "Pferd",
   "titleSettings": "Einstellungen",
-
   "actionSettings": "Einstellungen öffnen",
-
   "emptyPflegeTitle": "Noch keine Pflegetermine",
   "emptyPflegeMessage": "Hier erscheinen bald Hufe, Wurmkuren, Impfungen und Tierarzttermine.",
   "emptyTrainingTitle": "Noch kein Training geplant",
@@ -26,8 +22,7 @@
   "emptyDienstTitle": "Noch keine Schichten",
   "emptyDienstMessage": "Hier erscheinen bald deine Schichten und die Stallzeit pro Tag.",
   "emptyPferdTitle": "Noch kein Pferd angelegt",
-  "emptyPferdMessage": "Hier legst du bald deine Pferde mit Profil und Fotos an.",
-
+  "emptyPferdMessage": "Lege dein Pferd mit Profil, Fotos, Gewicht und Kontakten an. Alle Bereiche der App beziehen sich dann auf das ausgewählte Pferd.",
   "settingsAppearance": "Darstellung",
   "settingsThemeSystem": "Wie System",
   "settingsThemeLight": "Hell",
@@ -36,5 +31,239 @@
   "disclaimer": "Intervalle und Trainingsvorschläge ersetzen keine Absprache mit Tierarzt, Hufschmied oder Trainer.",
   "settingsPrivacyTitle": "Datenschutz",
   "settingsPrivacyText": "Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an der automatischen Android-Sicherung teil. Sichere deine Daten über den Export (folgt in einer späteren Version).",
-  "settingsAbout": "Über die App"
+  "settingsAbout": "Über die App",
+  "actionSave": "Speichern",
+  "actionCancel": "Abbrechen",
+  "actionDelete": "Löschen",
+  "actionEdit": "Bearbeiten",
+  "actionAdd": "Hinzufügen",
+  "actionClose": "Schließen",
+  "actionRemove": "Entfernen",
+  "fieldRequired": "Bitte ausfüllen",
+  "fieldInvalidNumber": "Bitte eine gültige Zahl eingeben",
+  "notSet": "Nicht angegeben",
+  "emptyPferdAction": "Erstes Pferd anlegen",
+  "horseSwitcherTooltip": "Pferd wechseln",
+  "horseSwitcherManage": "Pferde verwalten",
+  "horseListTitle": "Meine Pferde",
+  "horseListActive": "Aktiv",
+  "horseListArchived": "Archiviert",
+  "horseListEmptyArchived": "Keine archivierten Pferde",
+  "horseAdd": "Pferd anlegen",
+  "horseNew": "Neues Pferd",
+  "horseEditTitle": "Pferd bearbeiten",
+  "horseArchive": "Archivieren",
+  "horseUnarchive": "Wiederherstellen",
+  "horseArchiveConfirmTitle": "{name} archivieren?",
+  "@horseArchiveConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "horseArchiveConfirmText": "Das Pferd wird ausgeblendet. Alle Daten bleiben erhalten und du kannst es jederzeit wiederherstellen.",
+  "horseDeleteForever": "Endgültig löschen",
+  "horseDeleteConfirmTitle": "{name} endgültig löschen?",
+  "@horseDeleteConfirmTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "horseDeleteConfirmText": "Alle Daten dieses Pferdes (Fotos, Gewichte, Kontakt-Zuordnungen und später auch Termine, Trainings- und Futterpläne) werden unwiderruflich gelöscht. Das kann nicht rückgängig gemacht werden.",
+  "horseDeleteConfirmContinue": "Weiter",
+  "horseDeleteTypeName": "Zur Bestätigung den Namen „{name}“ eingeben",
+  "@horseDeleteTypeName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "horseDeleted": "{name} wurde gelöscht",
+  "@horseDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "horseArchived": "{name} wurde archiviert",
+  "@horseArchived": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "horseSectionGeneral": "Allgemein",
+  "horseSectionIdentification": "Identifikation",
+  "horseSectionPedigree": "Abstammung",
+  "horseSectionKeeping": "Haltung & Besitz",
+  "horseSectionHealth": "Gesundheit",
+  "horseSectionNotes": "Notizen",
+  "horseSectionContacts": "Kontakte",
+  "horseSectionWeight": "Gewicht",
+  "horseSectionPhotos": "Fotos",
+  "horseFieldName": "Name",
+  "horseFieldCallName": "Rufname",
+  "horseFieldBirthDate": "Geburtstag",
+  "horseFieldSex": "Geschlecht",
+  "horseFieldBreed": "Rasse",
+  "horseFieldColor": "Farbe / Abzeichen",
+  "horseFieldHeight": "Stockmaß (cm)",
+  "horseFieldUeln": "UELN / Lebensnummer",
+  "horseFieldChip": "Chipnummer",
+  "horseFieldPassport": "Equidenpass-Nummer",
+  "horseFieldSire": "Vater",
+  "horseFieldDam": "Mutter",
+  "horseFieldStable": "Stall / Standort",
+  "horseFieldKeeping": "Haltungsform",
+  "horseFieldKeepingHint": "z. B. Offenstall, Box mit Paddock, Weide",
+  "horseFieldOwner": "Besitzer",
+  "horseFieldInsurance": "Versicherung",
+  "horseFieldIntolerances": "Unverträglichkeiten",
+  "horseFieldMedicalHistory": "Vorerkrankungen",
+  "horseFieldNotes": "Notizen",
+  "horseSexStute": "Stute",
+  "horseSexWallach": "Wallach",
+  "horseSexHengst": "Hengst",
+  "horseHeightValue": "{cm} cm",
+  "@horseHeightValue": {
+    "placeholders": {
+      "cm": {
+        "type": "int"
+      }
+    }
+  },
+  "ageYears": "{years, plural, =1{1 Jahr} other{{years} Jahre}}",
+  "@ageYears": {
+    "placeholders": {
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "ageMonths": "{months, plural, =0{unter 1 Monat} =1{1 Monat} other{{months} Monate}}",
+  "@ageMonths": {
+    "placeholders": {
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "ageBirthday": "{age} (geb. {date})",
+  "@ageBirthday": {
+    "placeholders": {
+      "age": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "dateClear": "Datum entfernen",
+  "datePick": "Datum wählen",
+  "profileNoData": "Noch keine weiteren Angaben. Tippe auf den Stift, um das Profil zu ergänzen.",
+  "photoAdd": "Foto hinzufügen",
+  "photoFromGallery": "Aus Galerie wählen",
+  "photoFromCamera": "Mit Kamera aufnehmen",
+  "photoSetProfile": "Als Profilbild",
+  "photoIsProfile": "Profilbild",
+  "photoDeleteConfirm": "Foto löschen?",
+  "photoDeleteConfirmText": "Das Foto wird aus der App gelöscht. Das Original in deiner Galerie bleibt erhalten.",
+  "photoError": "Foto konnte nicht übernommen werden.",
+  "photoOf": "Foto von {name}",
+  "@photoOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "photosEmpty": "Noch keine Fotos",
+  "weightAdd": "Gewicht eintragen",
+  "weightKg": "Gewicht (kg)",
+  "weightValue": "{kg} kg",
+  "@weightValue": {
+    "placeholders": {
+      "kg": {
+        "type": "String"
+      }
+    }
+  },
+  "weightDate": "Datum",
+  "weightNote": "Notiz (optional)",
+  "weightEmpty": "Noch kein Gewicht eingetragen",
+  "weightLatest": "Zuletzt {kg} kg am {date}",
+  "@weightLatest": {
+    "placeholders": {
+      "kg": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "weightChartLabel": "Gewichtsverlauf von {from} bis {to}, zwischen {min} und {max} kg",
+  "@weightChartLabel": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "weightShowAll": "Alle {count} Einträge anzeigen",
+  "@weightShowAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "weightDeleteConfirm": "Gewichtseintrag löschen?",
+  "contactAdd": "Kontakt hinzufügen",
+  "contactNew": "Neuer Kontakt",
+  "contactEdit": "Kontakt bearbeiten",
+  "contactExisting": "Vorhandenen Kontakt zuordnen",
+  "contactName": "Name",
+  "contactRole": "Rolle",
+  "contactPhone": "Telefon",
+  "contactEmail": "E-Mail",
+  "contactNotes": "Notiz",
+  "contactSharedHint": "Änderungen gelten für alle Pferde mit diesem Kontakt.",
+  "contactCall": "{name} anrufen",
+  "@contactCall": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "contactUnlink": "Von diesem Pferd entfernen",
+  "contactsEmpty": "Noch keine Kontakte",
+  "contactCallFailed": "Telefon-App konnte nicht geöffnet werden.",
+  "contactRole_tierarzt": "Tierarzt",
+  "contactRole_hufschmied": "Hufschmied / Hufpfleger",
+  "contactRole_zahnarzt": "Pferdezahnarzt",
+  "contactRole_physio": "Osteopath / Physio",
+  "contactRole_sattler": "Sattler",
+  "contactRole_trainer": "Trainer",
+  "contactRole_stall": "Stall",
+  "contactRole_besitzer": "Besitzer",
+  "contactRole_notfall": "Notfallkontakt",
+  "contactRole_sonstige": "Sonstige"
 }

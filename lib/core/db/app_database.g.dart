@@ -310,15 +310,3125 @@ class SettingsCompanion extends UpdateCompanion<SettingRow> {
   }
 }
 
+class $HorsesTable extends Horses with TableInfo<$HorsesTable, HorseRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $HorsesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _callNameMeta = const VerificationMeta(
+    'callName',
+  );
+  @override
+  late final GeneratedColumn<String> callName = GeneratedColumn<String>(
+    'call_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate?, String> birthDate =
+      GeneratedColumn<String>(
+        'birth_date',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      ).withConverter<LocalDate?>($HorsesTable.$converterbirthDaten);
+  static const VerificationMeta _birthdayReminderMeta = const VerificationMeta(
+    'birthdayReminder',
+  );
+  @override
+  late final GeneratedColumn<bool> birthdayReminder = GeneratedColumn<bool>(
+    'birthday_reminder',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("birthday_reminder" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _sexMeta = const VerificationMeta('sex');
+  @override
+  late final GeneratedColumn<String> sex = GeneratedColumn<String>(
+    'sex',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _breedMeta = const VerificationMeta('breed');
+  @override
+  late final GeneratedColumn<String> breed = GeneratedColumn<String>(
+    'breed',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _colorMarkingsMeta = const VerificationMeta(
+    'colorMarkings',
+  );
+  @override
+  late final GeneratedColumn<String> colorMarkings = GeneratedColumn<String>(
+    'color_markings',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _heightCmMeta = const VerificationMeta(
+    'heightCm',
+  );
+  @override
+  late final GeneratedColumn<int> heightCm = GeneratedColumn<int>(
+    'height_cm',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _uelnMeta = const VerificationMeta('ueln');
+  @override
+  late final GeneratedColumn<String> ueln = GeneratedColumn<String>(
+    'ueln',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _chipNumberMeta = const VerificationMeta(
+    'chipNumber',
+  );
+  @override
+  late final GeneratedColumn<String> chipNumber = GeneratedColumn<String>(
+    'chip_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _passportNumberMeta = const VerificationMeta(
+    'passportNumber',
+  );
+  @override
+  late final GeneratedColumn<String> passportNumber = GeneratedColumn<String>(
+    'passport_number',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sireMeta = const VerificationMeta('sire');
+  @override
+  late final GeneratedColumn<String> sire = GeneratedColumn<String>(
+    'sire',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _damMeta = const VerificationMeta('dam');
+  @override
+  late final GeneratedColumn<String> dam = GeneratedColumn<String>(
+    'dam',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stableLocationMeta = const VerificationMeta(
+    'stableLocation',
+  );
+  @override
+  late final GeneratedColumn<String> stableLocation = GeneratedColumn<String>(
+    'stable_location',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _keepingTypeMeta = const VerificationMeta(
+    'keepingType',
+  );
+  @override
+  late final GeneratedColumn<String> keepingType = GeneratedColumn<String>(
+    'keeping_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ownerMeta = const VerificationMeta('owner');
+  @override
+  late final GeneratedColumn<String> owner = GeneratedColumn<String>(
+    'owner',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _insuranceMeta = const VerificationMeta(
+    'insurance',
+  );
+  @override
+  late final GeneratedColumn<String> insurance = GeneratedColumn<String>(
+    'insurance',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _intolerancesMeta = const VerificationMeta(
+    'intolerances',
+  );
+  @override
+  late final GeneratedColumn<String> intolerances = GeneratedColumn<String>(
+    'intolerances',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _medicalHistoryMeta = const VerificationMeta(
+    'medicalHistory',
+  );
+  @override
+  late final GeneratedColumn<String> medicalHistory = GeneratedColumn<String>(
+    'medical_history',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _profilePhotoIdMeta = const VerificationMeta(
+    'profilePhotoId',
+  );
+  @override
+  late final GeneratedColumn<String> profilePhotoId = GeneratedColumn<String>(
+    'profile_photo_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _archivedAtMeta = const VerificationMeta(
+    'archivedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> archivedAt = GeneratedColumn<DateTime>(
+    'archived_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    callName,
+    birthDate,
+    birthdayReminder,
+    sex,
+    breed,
+    colorMarkings,
+    heightCm,
+    ueln,
+    chipNumber,
+    passportNumber,
+    sire,
+    dam,
+    stableLocation,
+    keepingType,
+    owner,
+    insurance,
+    intolerances,
+    medicalHistory,
+    notes,
+    profilePhotoId,
+    archivedAt,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'horses';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<HorseRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('call_name')) {
+      context.handle(
+        _callNameMeta,
+        callName.isAcceptableOrUnknown(data['call_name']!, _callNameMeta),
+      );
+    }
+    if (data.containsKey('birthday_reminder')) {
+      context.handle(
+        _birthdayReminderMeta,
+        birthdayReminder.isAcceptableOrUnknown(
+          data['birthday_reminder']!,
+          _birthdayReminderMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sex')) {
+      context.handle(
+        _sexMeta,
+        sex.isAcceptableOrUnknown(data['sex']!, _sexMeta),
+      );
+    }
+    if (data.containsKey('breed')) {
+      context.handle(
+        _breedMeta,
+        breed.isAcceptableOrUnknown(data['breed']!, _breedMeta),
+      );
+    }
+    if (data.containsKey('color_markings')) {
+      context.handle(
+        _colorMarkingsMeta,
+        colorMarkings.isAcceptableOrUnknown(
+          data['color_markings']!,
+          _colorMarkingsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('height_cm')) {
+      context.handle(
+        _heightCmMeta,
+        heightCm.isAcceptableOrUnknown(data['height_cm']!, _heightCmMeta),
+      );
+    }
+    if (data.containsKey('ueln')) {
+      context.handle(
+        _uelnMeta,
+        ueln.isAcceptableOrUnknown(data['ueln']!, _uelnMeta),
+      );
+    }
+    if (data.containsKey('chip_number')) {
+      context.handle(
+        _chipNumberMeta,
+        chipNumber.isAcceptableOrUnknown(data['chip_number']!, _chipNumberMeta),
+      );
+    }
+    if (data.containsKey('passport_number')) {
+      context.handle(
+        _passportNumberMeta,
+        passportNumber.isAcceptableOrUnknown(
+          data['passport_number']!,
+          _passportNumberMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sire')) {
+      context.handle(
+        _sireMeta,
+        sire.isAcceptableOrUnknown(data['sire']!, _sireMeta),
+      );
+    }
+    if (data.containsKey('dam')) {
+      context.handle(
+        _damMeta,
+        dam.isAcceptableOrUnknown(data['dam']!, _damMeta),
+      );
+    }
+    if (data.containsKey('stable_location')) {
+      context.handle(
+        _stableLocationMeta,
+        stableLocation.isAcceptableOrUnknown(
+          data['stable_location']!,
+          _stableLocationMeta,
+        ),
+      );
+    }
+    if (data.containsKey('keeping_type')) {
+      context.handle(
+        _keepingTypeMeta,
+        keepingType.isAcceptableOrUnknown(
+          data['keeping_type']!,
+          _keepingTypeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('owner')) {
+      context.handle(
+        _ownerMeta,
+        owner.isAcceptableOrUnknown(data['owner']!, _ownerMeta),
+      );
+    }
+    if (data.containsKey('insurance')) {
+      context.handle(
+        _insuranceMeta,
+        insurance.isAcceptableOrUnknown(data['insurance']!, _insuranceMeta),
+      );
+    }
+    if (data.containsKey('intolerances')) {
+      context.handle(
+        _intolerancesMeta,
+        intolerances.isAcceptableOrUnknown(
+          data['intolerances']!,
+          _intolerancesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('medical_history')) {
+      context.handle(
+        _medicalHistoryMeta,
+        medicalHistory.isAcceptableOrUnknown(
+          data['medical_history']!,
+          _medicalHistoryMeta,
+        ),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('profile_photo_id')) {
+      context.handle(
+        _profilePhotoIdMeta,
+        profilePhotoId.isAcceptableOrUnknown(
+          data['profile_photo_id']!,
+          _profilePhotoIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('archived_at')) {
+      context.handle(
+        _archivedAtMeta,
+        archivedAt.isAcceptableOrUnknown(data['archived_at']!, _archivedAtMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  HorseRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return HorseRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      callName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}call_name'],
+      ),
+      birthDate: $HorsesTable.$converterbirthDaten.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}birth_date'],
+        ),
+      ),
+      birthdayReminder: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}birthday_reminder'],
+      )!,
+      sex: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sex'],
+      ),
+      breed: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}breed'],
+      ),
+      colorMarkings: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}color_markings'],
+      ),
+      heightCm: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}height_cm'],
+      ),
+      ueln: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ueln'],
+      ),
+      chipNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}chip_number'],
+      ),
+      passportNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}passport_number'],
+      ),
+      sire: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sire'],
+      ),
+      dam: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}dam'],
+      ),
+      stableLocation: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}stable_location'],
+      ),
+      keepingType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}keeping_type'],
+      ),
+      owner: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner'],
+      ),
+      insurance: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}insurance'],
+      ),
+      intolerances: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}intolerances'],
+      ),
+      medicalHistory: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}medical_history'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      profilePhotoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}profile_photo_id'],
+      ),
+      archivedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}archived_at'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+    );
+  }
+
+  @override
+  $HorsesTable createAlias(String alias) {
+    return $HorsesTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterbirthDate =
+      const LocalDateConverter();
+  static TypeConverter<LocalDate?, String?> $converterbirthDaten =
+      NullAwareTypeConverter.wrap($converterbirthDate);
+}
+
+class HorseRow extends DataClass implements Insertable<HorseRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String name;
+  final String? callName;
+  final LocalDate? birthDate;
+  final bool birthdayReminder;
+
+  /// `stute` | `wallach` | `hengst`
+  final String? sex;
+  final String? breed;
+  final String? colorMarkings;
+  final int? heightCm;
+  final String? ueln;
+  final String? chipNumber;
+  final String? passportNumber;
+  final String? sire;
+  final String? dam;
+  final String? stableLocation;
+  final String? keepingType;
+  final String? owner;
+  final String? insurance;
+  final String? intolerances;
+  final String? medicalHistory;
+  final String? notes;
+
+  /// Kein Fremdschlüssel (Zyklus mit horse_photos); wird im Repository gepflegt.
+  final String? profilePhotoId;
+  final DateTime? archivedAt;
+  final int sortOrder;
+  const HorseRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.name,
+    this.callName,
+    this.birthDate,
+    required this.birthdayReminder,
+    this.sex,
+    this.breed,
+    this.colorMarkings,
+    this.heightCm,
+    this.ueln,
+    this.chipNumber,
+    this.passportNumber,
+    this.sire,
+    this.dam,
+    this.stableLocation,
+    this.keepingType,
+    this.owner,
+    this.insurance,
+    this.intolerances,
+    this.medicalHistory,
+    this.notes,
+    this.profilePhotoId,
+    this.archivedAt,
+    required this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || callName != null) {
+      map['call_name'] = Variable<String>(callName);
+    }
+    if (!nullToAbsent || birthDate != null) {
+      map['birth_date'] = Variable<String>(
+        $HorsesTable.$converterbirthDaten.toSql(birthDate),
+      );
+    }
+    map['birthday_reminder'] = Variable<bool>(birthdayReminder);
+    if (!nullToAbsent || sex != null) {
+      map['sex'] = Variable<String>(sex);
+    }
+    if (!nullToAbsent || breed != null) {
+      map['breed'] = Variable<String>(breed);
+    }
+    if (!nullToAbsent || colorMarkings != null) {
+      map['color_markings'] = Variable<String>(colorMarkings);
+    }
+    if (!nullToAbsent || heightCm != null) {
+      map['height_cm'] = Variable<int>(heightCm);
+    }
+    if (!nullToAbsent || ueln != null) {
+      map['ueln'] = Variable<String>(ueln);
+    }
+    if (!nullToAbsent || chipNumber != null) {
+      map['chip_number'] = Variable<String>(chipNumber);
+    }
+    if (!nullToAbsent || passportNumber != null) {
+      map['passport_number'] = Variable<String>(passportNumber);
+    }
+    if (!nullToAbsent || sire != null) {
+      map['sire'] = Variable<String>(sire);
+    }
+    if (!nullToAbsent || dam != null) {
+      map['dam'] = Variable<String>(dam);
+    }
+    if (!nullToAbsent || stableLocation != null) {
+      map['stable_location'] = Variable<String>(stableLocation);
+    }
+    if (!nullToAbsent || keepingType != null) {
+      map['keeping_type'] = Variable<String>(keepingType);
+    }
+    if (!nullToAbsent || owner != null) {
+      map['owner'] = Variable<String>(owner);
+    }
+    if (!nullToAbsent || insurance != null) {
+      map['insurance'] = Variable<String>(insurance);
+    }
+    if (!nullToAbsent || intolerances != null) {
+      map['intolerances'] = Variable<String>(intolerances);
+    }
+    if (!nullToAbsent || medicalHistory != null) {
+      map['medical_history'] = Variable<String>(medicalHistory);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || profilePhotoId != null) {
+      map['profile_photo_id'] = Variable<String>(profilePhotoId);
+    }
+    if (!nullToAbsent || archivedAt != null) {
+      map['archived_at'] = Variable<DateTime>(archivedAt);
+    }
+    map['sort_order'] = Variable<int>(sortOrder);
+    return map;
+  }
+
+  HorsesCompanion toCompanion(bool nullToAbsent) {
+    return HorsesCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      name: Value(name),
+      callName: callName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(callName),
+      birthDate: birthDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(birthDate),
+      birthdayReminder: Value(birthdayReminder),
+      sex: sex == null && nullToAbsent ? const Value.absent() : Value(sex),
+      breed: breed == null && nullToAbsent
+          ? const Value.absent()
+          : Value(breed),
+      colorMarkings: colorMarkings == null && nullToAbsent
+          ? const Value.absent()
+          : Value(colorMarkings),
+      heightCm: heightCm == null && nullToAbsent
+          ? const Value.absent()
+          : Value(heightCm),
+      ueln: ueln == null && nullToAbsent ? const Value.absent() : Value(ueln),
+      chipNumber: chipNumber == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chipNumber),
+      passportNumber: passportNumber == null && nullToAbsent
+          ? const Value.absent()
+          : Value(passportNumber),
+      sire: sire == null && nullToAbsent ? const Value.absent() : Value(sire),
+      dam: dam == null && nullToAbsent ? const Value.absent() : Value(dam),
+      stableLocation: stableLocation == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stableLocation),
+      keepingType: keepingType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(keepingType),
+      owner: owner == null && nullToAbsent
+          ? const Value.absent()
+          : Value(owner),
+      insurance: insurance == null && nullToAbsent
+          ? const Value.absent()
+          : Value(insurance),
+      intolerances: intolerances == null && nullToAbsent
+          ? const Value.absent()
+          : Value(intolerances),
+      medicalHistory: medicalHistory == null && nullToAbsent
+          ? const Value.absent()
+          : Value(medicalHistory),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      profilePhotoId: profilePhotoId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(profilePhotoId),
+      archivedAt: archivedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(archivedAt),
+      sortOrder: Value(sortOrder),
+    );
+  }
+
+  factory HorseRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return HorseRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      callName: serializer.fromJson<String?>(json['callName']),
+      birthDate: serializer.fromJson<LocalDate?>(json['birthDate']),
+      birthdayReminder: serializer.fromJson<bool>(json['birthdayReminder']),
+      sex: serializer.fromJson<String?>(json['sex']),
+      breed: serializer.fromJson<String?>(json['breed']),
+      colorMarkings: serializer.fromJson<String?>(json['colorMarkings']),
+      heightCm: serializer.fromJson<int?>(json['heightCm']),
+      ueln: serializer.fromJson<String?>(json['ueln']),
+      chipNumber: serializer.fromJson<String?>(json['chipNumber']),
+      passportNumber: serializer.fromJson<String?>(json['passportNumber']),
+      sire: serializer.fromJson<String?>(json['sire']),
+      dam: serializer.fromJson<String?>(json['dam']),
+      stableLocation: serializer.fromJson<String?>(json['stableLocation']),
+      keepingType: serializer.fromJson<String?>(json['keepingType']),
+      owner: serializer.fromJson<String?>(json['owner']),
+      insurance: serializer.fromJson<String?>(json['insurance']),
+      intolerances: serializer.fromJson<String?>(json['intolerances']),
+      medicalHistory: serializer.fromJson<String?>(json['medicalHistory']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      profilePhotoId: serializer.fromJson<String?>(json['profilePhotoId']),
+      archivedAt: serializer.fromJson<DateTime?>(json['archivedAt']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'callName': serializer.toJson<String?>(callName),
+      'birthDate': serializer.toJson<LocalDate?>(birthDate),
+      'birthdayReminder': serializer.toJson<bool>(birthdayReminder),
+      'sex': serializer.toJson<String?>(sex),
+      'breed': serializer.toJson<String?>(breed),
+      'colorMarkings': serializer.toJson<String?>(colorMarkings),
+      'heightCm': serializer.toJson<int?>(heightCm),
+      'ueln': serializer.toJson<String?>(ueln),
+      'chipNumber': serializer.toJson<String?>(chipNumber),
+      'passportNumber': serializer.toJson<String?>(passportNumber),
+      'sire': serializer.toJson<String?>(sire),
+      'dam': serializer.toJson<String?>(dam),
+      'stableLocation': serializer.toJson<String?>(stableLocation),
+      'keepingType': serializer.toJson<String?>(keepingType),
+      'owner': serializer.toJson<String?>(owner),
+      'insurance': serializer.toJson<String?>(insurance),
+      'intolerances': serializer.toJson<String?>(intolerances),
+      'medicalHistory': serializer.toJson<String?>(medicalHistory),
+      'notes': serializer.toJson<String?>(notes),
+      'profilePhotoId': serializer.toJson<String?>(profilePhotoId),
+      'archivedAt': serializer.toJson<DateTime?>(archivedAt),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+    };
+  }
+
+  HorseRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? name,
+    Value<String?> callName = const Value.absent(),
+    Value<LocalDate?> birthDate = const Value.absent(),
+    bool? birthdayReminder,
+    Value<String?> sex = const Value.absent(),
+    Value<String?> breed = const Value.absent(),
+    Value<String?> colorMarkings = const Value.absent(),
+    Value<int?> heightCm = const Value.absent(),
+    Value<String?> ueln = const Value.absent(),
+    Value<String?> chipNumber = const Value.absent(),
+    Value<String?> passportNumber = const Value.absent(),
+    Value<String?> sire = const Value.absent(),
+    Value<String?> dam = const Value.absent(),
+    Value<String?> stableLocation = const Value.absent(),
+    Value<String?> keepingType = const Value.absent(),
+    Value<String?> owner = const Value.absent(),
+    Value<String?> insurance = const Value.absent(),
+    Value<String?> intolerances = const Value.absent(),
+    Value<String?> medicalHistory = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    Value<String?> profilePhotoId = const Value.absent(),
+    Value<DateTime?> archivedAt = const Value.absent(),
+    int? sortOrder,
+  }) => HorseRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    callName: callName.present ? callName.value : this.callName,
+    birthDate: birthDate.present ? birthDate.value : this.birthDate,
+    birthdayReminder: birthdayReminder ?? this.birthdayReminder,
+    sex: sex.present ? sex.value : this.sex,
+    breed: breed.present ? breed.value : this.breed,
+    colorMarkings: colorMarkings.present
+        ? colorMarkings.value
+        : this.colorMarkings,
+    heightCm: heightCm.present ? heightCm.value : this.heightCm,
+    ueln: ueln.present ? ueln.value : this.ueln,
+    chipNumber: chipNumber.present ? chipNumber.value : this.chipNumber,
+    passportNumber: passportNumber.present
+        ? passportNumber.value
+        : this.passportNumber,
+    sire: sire.present ? sire.value : this.sire,
+    dam: dam.present ? dam.value : this.dam,
+    stableLocation: stableLocation.present
+        ? stableLocation.value
+        : this.stableLocation,
+    keepingType: keepingType.present ? keepingType.value : this.keepingType,
+    owner: owner.present ? owner.value : this.owner,
+    insurance: insurance.present ? insurance.value : this.insurance,
+    intolerances: intolerances.present ? intolerances.value : this.intolerances,
+    medicalHistory: medicalHistory.present
+        ? medicalHistory.value
+        : this.medicalHistory,
+    notes: notes.present ? notes.value : this.notes,
+    profilePhotoId: profilePhotoId.present
+        ? profilePhotoId.value
+        : this.profilePhotoId,
+    archivedAt: archivedAt.present ? archivedAt.value : this.archivedAt,
+    sortOrder: sortOrder ?? this.sortOrder,
+  );
+  HorseRow copyWithCompanion(HorsesCompanion data) {
+    return HorseRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      callName: data.callName.present ? data.callName.value : this.callName,
+      birthDate: data.birthDate.present ? data.birthDate.value : this.birthDate,
+      birthdayReminder: data.birthdayReminder.present
+          ? data.birthdayReminder.value
+          : this.birthdayReminder,
+      sex: data.sex.present ? data.sex.value : this.sex,
+      breed: data.breed.present ? data.breed.value : this.breed,
+      colorMarkings: data.colorMarkings.present
+          ? data.colorMarkings.value
+          : this.colorMarkings,
+      heightCm: data.heightCm.present ? data.heightCm.value : this.heightCm,
+      ueln: data.ueln.present ? data.ueln.value : this.ueln,
+      chipNumber: data.chipNumber.present
+          ? data.chipNumber.value
+          : this.chipNumber,
+      passportNumber: data.passportNumber.present
+          ? data.passportNumber.value
+          : this.passportNumber,
+      sire: data.sire.present ? data.sire.value : this.sire,
+      dam: data.dam.present ? data.dam.value : this.dam,
+      stableLocation: data.stableLocation.present
+          ? data.stableLocation.value
+          : this.stableLocation,
+      keepingType: data.keepingType.present
+          ? data.keepingType.value
+          : this.keepingType,
+      owner: data.owner.present ? data.owner.value : this.owner,
+      insurance: data.insurance.present ? data.insurance.value : this.insurance,
+      intolerances: data.intolerances.present
+          ? data.intolerances.value
+          : this.intolerances,
+      medicalHistory: data.medicalHistory.present
+          ? data.medicalHistory.value
+          : this.medicalHistory,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      profilePhotoId: data.profilePhotoId.present
+          ? data.profilePhotoId.value
+          : this.profilePhotoId,
+      archivedAt: data.archivedAt.present
+          ? data.archivedAt.value
+          : this.archivedAt,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorseRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('callName: $callName, ')
+          ..write('birthDate: $birthDate, ')
+          ..write('birthdayReminder: $birthdayReminder, ')
+          ..write('sex: $sex, ')
+          ..write('breed: $breed, ')
+          ..write('colorMarkings: $colorMarkings, ')
+          ..write('heightCm: $heightCm, ')
+          ..write('ueln: $ueln, ')
+          ..write('chipNumber: $chipNumber, ')
+          ..write('passportNumber: $passportNumber, ')
+          ..write('sire: $sire, ')
+          ..write('dam: $dam, ')
+          ..write('stableLocation: $stableLocation, ')
+          ..write('keepingType: $keepingType, ')
+          ..write('owner: $owner, ')
+          ..write('insurance: $insurance, ')
+          ..write('intolerances: $intolerances, ')
+          ..write('medicalHistory: $medicalHistory, ')
+          ..write('notes: $notes, ')
+          ..write('profilePhotoId: $profilePhotoId, ')
+          ..write('archivedAt: $archivedAt, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    callName,
+    birthDate,
+    birthdayReminder,
+    sex,
+    breed,
+    colorMarkings,
+    heightCm,
+    ueln,
+    chipNumber,
+    passportNumber,
+    sire,
+    dam,
+    stableLocation,
+    keepingType,
+    owner,
+    insurance,
+    intolerances,
+    medicalHistory,
+    notes,
+    profilePhotoId,
+    archivedAt,
+    sortOrder,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is HorseRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.callName == this.callName &&
+          other.birthDate == this.birthDate &&
+          other.birthdayReminder == this.birthdayReminder &&
+          other.sex == this.sex &&
+          other.breed == this.breed &&
+          other.colorMarkings == this.colorMarkings &&
+          other.heightCm == this.heightCm &&
+          other.ueln == this.ueln &&
+          other.chipNumber == this.chipNumber &&
+          other.passportNumber == this.passportNumber &&
+          other.sire == this.sire &&
+          other.dam == this.dam &&
+          other.stableLocation == this.stableLocation &&
+          other.keepingType == this.keepingType &&
+          other.owner == this.owner &&
+          other.insurance == this.insurance &&
+          other.intolerances == this.intolerances &&
+          other.medicalHistory == this.medicalHistory &&
+          other.notes == this.notes &&
+          other.profilePhotoId == this.profilePhotoId &&
+          other.archivedAt == this.archivedAt &&
+          other.sortOrder == this.sortOrder);
+}
+
+class HorsesCompanion extends UpdateCompanion<HorseRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String?> callName;
+  final Value<LocalDate?> birthDate;
+  final Value<bool> birthdayReminder;
+  final Value<String?> sex;
+  final Value<String?> breed;
+  final Value<String?> colorMarkings;
+  final Value<int?> heightCm;
+  final Value<String?> ueln;
+  final Value<String?> chipNumber;
+  final Value<String?> passportNumber;
+  final Value<String?> sire;
+  final Value<String?> dam;
+  final Value<String?> stableLocation;
+  final Value<String?> keepingType;
+  final Value<String?> owner;
+  final Value<String?> insurance;
+  final Value<String?> intolerances;
+  final Value<String?> medicalHistory;
+  final Value<String?> notes;
+  final Value<String?> profilePhotoId;
+  final Value<DateTime?> archivedAt;
+  final Value<int> sortOrder;
+  final Value<int> rowid;
+  const HorsesCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.callName = const Value.absent(),
+    this.birthDate = const Value.absent(),
+    this.birthdayReminder = const Value.absent(),
+    this.sex = const Value.absent(),
+    this.breed = const Value.absent(),
+    this.colorMarkings = const Value.absent(),
+    this.heightCm = const Value.absent(),
+    this.ueln = const Value.absent(),
+    this.chipNumber = const Value.absent(),
+    this.passportNumber = const Value.absent(),
+    this.sire = const Value.absent(),
+    this.dam = const Value.absent(),
+    this.stableLocation = const Value.absent(),
+    this.keepingType = const Value.absent(),
+    this.owner = const Value.absent(),
+    this.insurance = const Value.absent(),
+    this.intolerances = const Value.absent(),
+    this.medicalHistory = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.profilePhotoId = const Value.absent(),
+    this.archivedAt = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  HorsesCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String name,
+    this.callName = const Value.absent(),
+    this.birthDate = const Value.absent(),
+    this.birthdayReminder = const Value.absent(),
+    this.sex = const Value.absent(),
+    this.breed = const Value.absent(),
+    this.colorMarkings = const Value.absent(),
+    this.heightCm = const Value.absent(),
+    this.ueln = const Value.absent(),
+    this.chipNumber = const Value.absent(),
+    this.passportNumber = const Value.absent(),
+    this.sire = const Value.absent(),
+    this.dam = const Value.absent(),
+    this.stableLocation = const Value.absent(),
+    this.keepingType = const Value.absent(),
+    this.owner = const Value.absent(),
+    this.insurance = const Value.absent(),
+    this.intolerances = const Value.absent(),
+    this.medicalHistory = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.profilePhotoId = const Value.absent(),
+    this.archivedAt = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name);
+  static Insertable<HorseRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? callName,
+    Expression<String>? birthDate,
+    Expression<bool>? birthdayReminder,
+    Expression<String>? sex,
+    Expression<String>? breed,
+    Expression<String>? colorMarkings,
+    Expression<int>? heightCm,
+    Expression<String>? ueln,
+    Expression<String>? chipNumber,
+    Expression<String>? passportNumber,
+    Expression<String>? sire,
+    Expression<String>? dam,
+    Expression<String>? stableLocation,
+    Expression<String>? keepingType,
+    Expression<String>? owner,
+    Expression<String>? insurance,
+    Expression<String>? intolerances,
+    Expression<String>? medicalHistory,
+    Expression<String>? notes,
+    Expression<String>? profilePhotoId,
+    Expression<DateTime>? archivedAt,
+    Expression<int>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (callName != null) 'call_name': callName,
+      if (birthDate != null) 'birth_date': birthDate,
+      if (birthdayReminder != null) 'birthday_reminder': birthdayReminder,
+      if (sex != null) 'sex': sex,
+      if (breed != null) 'breed': breed,
+      if (colorMarkings != null) 'color_markings': colorMarkings,
+      if (heightCm != null) 'height_cm': heightCm,
+      if (ueln != null) 'ueln': ueln,
+      if (chipNumber != null) 'chip_number': chipNumber,
+      if (passportNumber != null) 'passport_number': passportNumber,
+      if (sire != null) 'sire': sire,
+      if (dam != null) 'dam': dam,
+      if (stableLocation != null) 'stable_location': stableLocation,
+      if (keepingType != null) 'keeping_type': keepingType,
+      if (owner != null) 'owner': owner,
+      if (insurance != null) 'insurance': insurance,
+      if (intolerances != null) 'intolerances': intolerances,
+      if (medicalHistory != null) 'medical_history': medicalHistory,
+      if (notes != null) 'notes': notes,
+      if (profilePhotoId != null) 'profile_photo_id': profilePhotoId,
+      if (archivedAt != null) 'archived_at': archivedAt,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  HorsesCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String?>? callName,
+    Value<LocalDate?>? birthDate,
+    Value<bool>? birthdayReminder,
+    Value<String?>? sex,
+    Value<String?>? breed,
+    Value<String?>? colorMarkings,
+    Value<int?>? heightCm,
+    Value<String?>? ueln,
+    Value<String?>? chipNumber,
+    Value<String?>? passportNumber,
+    Value<String?>? sire,
+    Value<String?>? dam,
+    Value<String?>? stableLocation,
+    Value<String?>? keepingType,
+    Value<String?>? owner,
+    Value<String?>? insurance,
+    Value<String?>? intolerances,
+    Value<String?>? medicalHistory,
+    Value<String?>? notes,
+    Value<String?>? profilePhotoId,
+    Value<DateTime?>? archivedAt,
+    Value<int>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return HorsesCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      callName: callName ?? this.callName,
+      birthDate: birthDate ?? this.birthDate,
+      birthdayReminder: birthdayReminder ?? this.birthdayReminder,
+      sex: sex ?? this.sex,
+      breed: breed ?? this.breed,
+      colorMarkings: colorMarkings ?? this.colorMarkings,
+      heightCm: heightCm ?? this.heightCm,
+      ueln: ueln ?? this.ueln,
+      chipNumber: chipNumber ?? this.chipNumber,
+      passportNumber: passportNumber ?? this.passportNumber,
+      sire: sire ?? this.sire,
+      dam: dam ?? this.dam,
+      stableLocation: stableLocation ?? this.stableLocation,
+      keepingType: keepingType ?? this.keepingType,
+      owner: owner ?? this.owner,
+      insurance: insurance ?? this.insurance,
+      intolerances: intolerances ?? this.intolerances,
+      medicalHistory: medicalHistory ?? this.medicalHistory,
+      notes: notes ?? this.notes,
+      profilePhotoId: profilePhotoId ?? this.profilePhotoId,
+      archivedAt: archivedAt ?? this.archivedAt,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (callName.present) {
+      map['call_name'] = Variable<String>(callName.value);
+    }
+    if (birthDate.present) {
+      map['birth_date'] = Variable<String>(
+        $HorsesTable.$converterbirthDaten.toSql(birthDate.value),
+      );
+    }
+    if (birthdayReminder.present) {
+      map['birthday_reminder'] = Variable<bool>(birthdayReminder.value);
+    }
+    if (sex.present) {
+      map['sex'] = Variable<String>(sex.value);
+    }
+    if (breed.present) {
+      map['breed'] = Variable<String>(breed.value);
+    }
+    if (colorMarkings.present) {
+      map['color_markings'] = Variable<String>(colorMarkings.value);
+    }
+    if (heightCm.present) {
+      map['height_cm'] = Variable<int>(heightCm.value);
+    }
+    if (ueln.present) {
+      map['ueln'] = Variable<String>(ueln.value);
+    }
+    if (chipNumber.present) {
+      map['chip_number'] = Variable<String>(chipNumber.value);
+    }
+    if (passportNumber.present) {
+      map['passport_number'] = Variable<String>(passportNumber.value);
+    }
+    if (sire.present) {
+      map['sire'] = Variable<String>(sire.value);
+    }
+    if (dam.present) {
+      map['dam'] = Variable<String>(dam.value);
+    }
+    if (stableLocation.present) {
+      map['stable_location'] = Variable<String>(stableLocation.value);
+    }
+    if (keepingType.present) {
+      map['keeping_type'] = Variable<String>(keepingType.value);
+    }
+    if (owner.present) {
+      map['owner'] = Variable<String>(owner.value);
+    }
+    if (insurance.present) {
+      map['insurance'] = Variable<String>(insurance.value);
+    }
+    if (intolerances.present) {
+      map['intolerances'] = Variable<String>(intolerances.value);
+    }
+    if (medicalHistory.present) {
+      map['medical_history'] = Variable<String>(medicalHistory.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (profilePhotoId.present) {
+      map['profile_photo_id'] = Variable<String>(profilePhotoId.value);
+    }
+    if (archivedAt.present) {
+      map['archived_at'] = Variable<DateTime>(archivedAt.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorsesCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('callName: $callName, ')
+          ..write('birthDate: $birthDate, ')
+          ..write('birthdayReminder: $birthdayReminder, ')
+          ..write('sex: $sex, ')
+          ..write('breed: $breed, ')
+          ..write('colorMarkings: $colorMarkings, ')
+          ..write('heightCm: $heightCm, ')
+          ..write('ueln: $ueln, ')
+          ..write('chipNumber: $chipNumber, ')
+          ..write('passportNumber: $passportNumber, ')
+          ..write('sire: $sire, ')
+          ..write('dam: $dam, ')
+          ..write('stableLocation: $stableLocation, ')
+          ..write('keepingType: $keepingType, ')
+          ..write('owner: $owner, ')
+          ..write('insurance: $insurance, ')
+          ..write('intolerances: $intolerances, ')
+          ..write('medicalHistory: $medicalHistory, ')
+          ..write('notes: $notes, ')
+          ..write('profilePhotoId: $profilePhotoId, ')
+          ..write('archivedAt: $archivedAt, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $HorsePhotosTable extends HorsePhotos
+    with TableInfo<$HorsePhotosTable, HorsePhotoRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $HorsePhotosTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _relativePathMeta = const VerificationMeta(
+    'relativePath',
+  );
+  @override
+  late final GeneratedColumn<String> relativePath = GeneratedColumn<String>(
+    'relative_path',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    relativePath,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'horse_photos';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<HorsePhotoRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('relative_path')) {
+      context.handle(
+        _relativePathMeta,
+        relativePath.isAcceptableOrUnknown(
+          data['relative_path']!,
+          _relativePathMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_relativePathMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  HorsePhotoRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return HorsePhotoRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      relativePath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}relative_path'],
+      )!,
+    );
+  }
+
+  @override
+  $HorsePhotosTable createAlias(String alias) {
+    return $HorsePhotosTable(attachedDatabase, alias);
+  }
+}
+
+class HorsePhotoRow extends DataClass implements Insertable<HorsePhotoRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String horseId;
+
+  /// Relativ zum App-Dokumentenverzeichnis, z. B. `photos/<uuid>.jpg`.
+  final String relativePath;
+  const HorsePhotoRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.horseId,
+    required this.relativePath,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['horse_id'] = Variable<String>(horseId);
+    map['relative_path'] = Variable<String>(relativePath);
+    return map;
+  }
+
+  HorsePhotosCompanion toCompanion(bool nullToAbsent) {
+    return HorsePhotosCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      horseId: Value(horseId),
+      relativePath: Value(relativePath),
+    );
+  }
+
+  factory HorsePhotoRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return HorsePhotoRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      relativePath: serializer.fromJson<String>(json['relativePath']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'horseId': serializer.toJson<String>(horseId),
+      'relativePath': serializer.toJson<String>(relativePath),
+    };
+  }
+
+  HorsePhotoRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? horseId,
+    String? relativePath,
+  }) => HorsePhotoRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    horseId: horseId ?? this.horseId,
+    relativePath: relativePath ?? this.relativePath,
+  );
+  HorsePhotoRow copyWithCompanion(HorsePhotosCompanion data) {
+    return HorsePhotoRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      relativePath: data.relativePath.present
+          ? data.relativePath.value
+          : this.relativePath,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorsePhotoRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('relativePath: $relativePath')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, horseId, relativePath);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is HorsePhotoRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.horseId == this.horseId &&
+          other.relativePath == this.relativePath);
+}
+
+class HorsePhotosCompanion extends UpdateCompanion<HorsePhotoRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> horseId;
+  final Value<String> relativePath;
+  final Value<int> rowid;
+  const HorsePhotosCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.relativePath = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  HorsePhotosCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String horseId,
+    required String relativePath,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       horseId = Value(horseId),
+       relativePath = Value(relativePath);
+  static Insertable<HorsePhotoRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? horseId,
+    Expression<String>? relativePath,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (horseId != null) 'horse_id': horseId,
+      if (relativePath != null) 'relative_path': relativePath,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  HorsePhotosCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? horseId,
+    Value<String>? relativePath,
+    Value<int>? rowid,
+  }) {
+    return HorsePhotosCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      horseId: horseId ?? this.horseId,
+      relativePath: relativePath ?? this.relativePath,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (relativePath.present) {
+      map['relative_path'] = Variable<String>(relativePath.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorsePhotosCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('relativePath: $relativePath, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $HorseWeightsTable extends HorseWeights
+    with TableInfo<$HorseWeightsTable, HorseWeightRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $HorseWeightsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> date =
+      GeneratedColumn<String>(
+        'date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($HorseWeightsTable.$converterdate);
+  static const VerificationMeta _weightKgMeta = const VerificationMeta(
+    'weightKg',
+  );
+  @override
+  late final GeneratedColumn<double> weightKg = GeneratedColumn<double>(
+    'weight_kg',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    date,
+    weightKg,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'horse_weights';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<HorseWeightRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('weight_kg')) {
+      context.handle(
+        _weightKgMeta,
+        weightKg.isAcceptableOrUnknown(data['weight_kg']!, _weightKgMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_weightKgMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  HorseWeightRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return HorseWeightRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      date: $HorseWeightsTable.$converterdate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}date'],
+        )!,
+      ),
+      weightKg: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}weight_kg'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $HorseWeightsTable createAlias(String alias) {
+    return $HorseWeightsTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterdate =
+      const LocalDateConverter();
+}
+
+class HorseWeightRow extends DataClass implements Insertable<HorseWeightRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String horseId;
+  final LocalDate date;
+  final double weightKg;
+  final String? note;
+  const HorseWeightRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.horseId,
+    required this.date,
+    required this.weightKg,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['horse_id'] = Variable<String>(horseId);
+    {
+      map['date'] = Variable<String>(
+        $HorseWeightsTable.$converterdate.toSql(date),
+      );
+    }
+    map['weight_kg'] = Variable<double>(weightKg);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  HorseWeightsCompanion toCompanion(bool nullToAbsent) {
+    return HorseWeightsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      horseId: Value(horseId),
+      date: Value(date),
+      weightKg: Value(weightKg),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory HorseWeightRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return HorseWeightRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      date: serializer.fromJson<LocalDate>(json['date']),
+      weightKg: serializer.fromJson<double>(json['weightKg']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'horseId': serializer.toJson<String>(horseId),
+      'date': serializer.toJson<LocalDate>(date),
+      'weightKg': serializer.toJson<double>(weightKg),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  HorseWeightRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? horseId,
+    LocalDate? date,
+    double? weightKg,
+    Value<String?> note = const Value.absent(),
+  }) => HorseWeightRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    horseId: horseId ?? this.horseId,
+    date: date ?? this.date,
+    weightKg: weightKg ?? this.weightKg,
+    note: note.present ? note.value : this.note,
+  );
+  HorseWeightRow copyWithCompanion(HorseWeightsCompanion data) {
+    return HorseWeightRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      date: data.date.present ? data.date.value : this.date,
+      weightKg: data.weightKg.present ? data.weightKg.value : this.weightKg,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorseWeightRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('date: $date, ')
+          ..write('weightKg: $weightKg, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, horseId, date, weightKg, note);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is HorseWeightRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.horseId == this.horseId &&
+          other.date == this.date &&
+          other.weightKg == this.weightKg &&
+          other.note == this.note);
+}
+
+class HorseWeightsCompanion extends UpdateCompanion<HorseWeightRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> horseId;
+  final Value<LocalDate> date;
+  final Value<double> weightKg;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const HorseWeightsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.date = const Value.absent(),
+    this.weightKg = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  HorseWeightsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String horseId,
+    required LocalDate date,
+    required double weightKg,
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       horseId = Value(horseId),
+       date = Value(date),
+       weightKg = Value(weightKg);
+  static Insertable<HorseWeightRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? horseId,
+    Expression<String>? date,
+    Expression<double>? weightKg,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (horseId != null) 'horse_id': horseId,
+      if (date != null) 'date': date,
+      if (weightKg != null) 'weight_kg': weightKg,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  HorseWeightsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? horseId,
+    Value<LocalDate>? date,
+    Value<double>? weightKg,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return HorseWeightsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      horseId: horseId ?? this.horseId,
+      date: date ?? this.date,
+      weightKg: weightKg ?? this.weightKg,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (date.present) {
+      map['date'] = Variable<String>(
+        $HorseWeightsTable.$converterdate.toSql(date.value),
+      );
+    }
+    if (weightKg.present) {
+      map['weight_kg'] = Variable<double>(weightKg.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorseWeightsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('date: $date, ')
+          ..write('weightKg: $weightKg, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ContactsTable extends Contacts
+    with TableInfo<$ContactsTable, ContactRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ContactsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _roleMeta = const VerificationMeta('role');
+  @override
+  late final GeneratedColumn<String> role = GeneratedColumn<String>(
+    'role',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+    'phone',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+    'email',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    role,
+    phone,
+    email,
+    notes,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'contacts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ContactRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('role')) {
+      context.handle(
+        _roleMeta,
+        role.isAcceptableOrUnknown(data['role']!, _roleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_roleMeta);
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+        _phoneMeta,
+        phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta),
+      );
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['email']!, _emailMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ContactRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ContactRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      role: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}role'],
+      )!,
+      phone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone'],
+      ),
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}email'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+    );
+  }
+
+  @override
+  $ContactsTable createAlias(String alias) {
+    return $ContactsTable(attachedDatabase, alias);
+  }
+}
+
+class ContactRow extends DataClass implements Insertable<ContactRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String name;
+
+  /// Siehe `ContactRole.key`.
+  final String role;
+  final String? phone;
+  final String? email;
+  final String? notes;
+  const ContactRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.name,
+    required this.role,
+    this.phone,
+    this.email,
+    this.notes,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['role'] = Variable<String>(role);
+    if (!nullToAbsent || phone != null) {
+      map['phone'] = Variable<String>(phone);
+    }
+    if (!nullToAbsent || email != null) {
+      map['email'] = Variable<String>(email);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    return map;
+  }
+
+  ContactsCompanion toCompanion(bool nullToAbsent) {
+    return ContactsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      name: Value(name),
+      role: Value(role),
+      phone: phone == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phone),
+      email: email == null && nullToAbsent
+          ? const Value.absent()
+          : Value(email),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+    );
+  }
+
+  factory ContactRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ContactRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      role: serializer.fromJson<String>(json['role']),
+      phone: serializer.fromJson<String?>(json['phone']),
+      email: serializer.fromJson<String?>(json['email']),
+      notes: serializer.fromJson<String?>(json['notes']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'role': serializer.toJson<String>(role),
+      'phone': serializer.toJson<String?>(phone),
+      'email': serializer.toJson<String?>(email),
+      'notes': serializer.toJson<String?>(notes),
+    };
+  }
+
+  ContactRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? name,
+    String? role,
+    Value<String?> phone = const Value.absent(),
+    Value<String?> email = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+  }) => ContactRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    role: role ?? this.role,
+    phone: phone.present ? phone.value : this.phone,
+    email: email.present ? email.value : this.email,
+    notes: notes.present ? notes.value : this.notes,
+  );
+  ContactRow copyWithCompanion(ContactsCompanion data) {
+    return ContactRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      role: data.role.present ? data.role.value : this.role,
+      phone: data.phone.present ? data.phone.value : this.phone,
+      email: data.email.present ? data.email.value : this.email,
+      notes: data.notes.present ? data.notes.value : this.notes,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ContactRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('role: $role, ')
+          ..write('phone: $phone, ')
+          ..write('email: $email, ')
+          ..write('notes: $notes')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, name, role, phone, email, notes);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ContactRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.role == this.role &&
+          other.phone == this.phone &&
+          other.email == this.email &&
+          other.notes == this.notes);
+}
+
+class ContactsCompanion extends UpdateCompanion<ContactRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> role;
+  final Value<String?> phone;
+  final Value<String?> email;
+  final Value<String?> notes;
+  final Value<int> rowid;
+  const ContactsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.role = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.email = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ContactsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String role,
+    this.phone = const Value.absent(),
+    this.email = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       role = Value(role);
+  static Insertable<ContactRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? role,
+    Expression<String>? phone,
+    Expression<String>? email,
+    Expression<String>? notes,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (role != null) 'role': role,
+      if (phone != null) 'phone': phone,
+      if (email != null) 'email': email,
+      if (notes != null) 'notes': notes,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ContactsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? role,
+    Value<String?>? phone,
+    Value<String?>? email,
+    Value<String?>? notes,
+    Value<int>? rowid,
+  }) {
+    return ContactsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      role: role ?? this.role,
+      phone: phone ?? this.phone,
+      email: email ?? this.email,
+      notes: notes ?? this.notes,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (role.present) {
+      map['role'] = Variable<String>(role.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ContactsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('role: $role, ')
+          ..write('phone: $phone, ')
+          ..write('email: $email, ')
+          ..write('notes: $notes, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $HorseContactsTable extends HorseContacts
+    with TableInfo<$HorseContactsTable, HorseContactRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $HorseContactsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES contacts (id) ON DELETE CASCADE',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    horseId,
+    contactId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'horse_contacts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<HorseContactRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_contactIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {horseId, contactId};
+  @override
+  HorseContactRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return HorseContactRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      )!,
+    );
+  }
+
+  @override
+  $HorseContactsTable createAlias(String alias) {
+    return $HorseContactsTable(attachedDatabase, alias);
+  }
+}
+
+class HorseContactRow extends DataClass implements Insertable<HorseContactRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String horseId;
+  final String contactId;
+  const HorseContactRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.horseId,
+    required this.contactId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['horse_id'] = Variable<String>(horseId);
+    map['contact_id'] = Variable<String>(contactId);
+    return map;
+  }
+
+  HorseContactsCompanion toCompanion(bool nullToAbsent) {
+    return HorseContactsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      horseId: Value(horseId),
+      contactId: Value(contactId),
+    );
+  }
+
+  factory HorseContactRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return HorseContactRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      contactId: serializer.fromJson<String>(json['contactId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'horseId': serializer.toJson<String>(horseId),
+      'contactId': serializer.toJson<String>(contactId),
+    };
+  }
+
+  HorseContactRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? horseId,
+    String? contactId,
+  }) => HorseContactRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    horseId: horseId ?? this.horseId,
+    contactId: contactId ?? this.contactId,
+  );
+  HorseContactRow copyWithCompanion(HorseContactsCompanion data) {
+    return HorseContactRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorseContactRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('horseId: $horseId, ')
+          ..write('contactId: $contactId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(createdAt, updatedAt, horseId, contactId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is HorseContactRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.horseId == this.horseId &&
+          other.contactId == this.contactId);
+}
+
+class HorseContactsCompanion extends UpdateCompanion<HorseContactRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> horseId;
+  final Value<String> contactId;
+  final Value<int> rowid;
+  const HorseContactsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  HorseContactsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String horseId,
+    required String contactId,
+    this.rowid = const Value.absent(),
+  }) : horseId = Value(horseId),
+       contactId = Value(contactId);
+  static Insertable<HorseContactRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? horseId,
+    Expression<String>? contactId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (horseId != null) 'horse_id': horseId,
+      if (contactId != null) 'contact_id': contactId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  HorseContactsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? horseId,
+    Value<String>? contactId,
+    Value<int>? rowid,
+  }) {
+    return HorseContactsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      horseId: horseId ?? this.horseId,
+      contactId: contactId ?? this.contactId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('HorseContactsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('horseId: $horseId, ')
+          ..write('contactId: $contactId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $SettingsTable settings = $SettingsTable(this);
+  late final $HorsesTable horses = $HorsesTable(this);
+  late final $HorsePhotosTable horsePhotos = $HorsePhotosTable(this);
+  late final $HorseWeightsTable horseWeights = $HorseWeightsTable(this);
+  late final $ContactsTable contacts = $ContactsTable(this);
+  late final $HorseContactsTable horseContacts = $HorseContactsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [settings];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+    settings,
+    horses,
+    horsePhotos,
+    horseWeights,
+    contacts,
+    horseContacts,
+  ];
+  @override
+  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('horse_photos', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('horse_weights', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('horse_contacts', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'contacts',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('horse_contacts', kind: UpdateKind.delete)],
+    ),
+  ]);
 }
 
 typedef $$SettingsTableCreateCompanionBuilder = SettingsCompanion Function({
@@ -506,10 +3616,2347 @@ typedef $$SettingsTableProcessedTableManager =
       SettingRow,
       PrefetchHooks Function()
     >;
+typedef $$HorsesTableCreateCompanionBuilder = HorsesCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String name,
+  Value<String?> callName,
+  Value<LocalDate?> birthDate,
+  Value<bool> birthdayReminder,
+  Value<String?> sex,
+  Value<String?> breed,
+  Value<String?> colorMarkings,
+  Value<int?> heightCm,
+  Value<String?> ueln,
+  Value<String?> chipNumber,
+  Value<String?> passportNumber,
+  Value<String?> sire,
+  Value<String?> dam,
+  Value<String?> stableLocation,
+  Value<String?> keepingType,
+  Value<String?> owner,
+  Value<String?> insurance,
+  Value<String?> intolerances,
+  Value<String?> medicalHistory,
+  Value<String?> notes,
+  Value<String?> profilePhotoId,
+  Value<DateTime?> archivedAt,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
+typedef $$HorsesTableUpdateCompanionBuilder = HorsesCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> name,
+  Value<String?> callName,
+  Value<LocalDate?> birthDate,
+  Value<bool> birthdayReminder,
+  Value<String?> sex,
+  Value<String?> breed,
+  Value<String?> colorMarkings,
+  Value<int?> heightCm,
+  Value<String?> ueln,
+  Value<String?> chipNumber,
+  Value<String?> passportNumber,
+  Value<String?> sire,
+  Value<String?> dam,
+  Value<String?> stableLocation,
+  Value<String?> keepingType,
+  Value<String?> owner,
+  Value<String?> insurance,
+  Value<String?> intolerances,
+  Value<String?> medicalHistory,
+  Value<String?> notes,
+  Value<String?> profilePhotoId,
+  Value<DateTime?> archivedAt,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
+
+final class $$HorsesTableReferences
+    extends BaseReferences<_$AppDatabase, $HorsesTable, HorseRow> {
+  $$HorsesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$HorsePhotosTable, List<HorsePhotoRow>>
+  _horsePhotosRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.horsePhotos,
+    aliasName: 'horses__id__horse_photos__horse_id',
+  );
+
+  $$HorsePhotosTableProcessedTableManager get horsePhotosRefs {
+    final manager = $$HorsePhotosTableTableManager(
+      $_db,
+      $_db.horsePhotos,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_horsePhotosRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$HorseWeightsTable, List<HorseWeightRow>>
+  _horseWeightsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.horseWeights,
+    aliasName: 'horses__id__horse_weights__horse_id',
+  );
+
+  $$HorseWeightsTableProcessedTableManager get horseWeightsRefs {
+    final manager = $$HorseWeightsTableTableManager(
+      $_db,
+      $_db.horseWeights,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_horseWeightsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$HorseContactsTable, List<HorseContactRow>>
+  _horseContactsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.horseContacts,
+    aliasName: 'horses__id__horse_contacts__horse_id',
+  );
+
+  $$HorseContactsTableProcessedTableManager get horseContactsRefs {
+    final manager = $$HorseContactsTableTableManager(
+      $_db,
+      $_db.horseContacts,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_horseContactsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$HorsesTableFilterComposer
+    extends Composer<_$AppDatabase, $HorsesTable> {
+  $$HorsesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get callName => $composableBuilder(
+    column: $table.callName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate?, LocalDate, String> get birthDate =>
+      $composableBuilder(
+        column: $table.birthDate,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<bool> get birthdayReminder => $composableBuilder(
+    column: $table.birthdayReminder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get breed => $composableBuilder(
+    column: $table.breed,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get colorMarkings => $composableBuilder(
+    column: $table.colorMarkings,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get heightCm => $composableBuilder(
+    column: $table.heightCm,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ueln => $composableBuilder(
+    column: $table.ueln,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chipNumber => $composableBuilder(
+    column: $table.chipNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get passportNumber => $composableBuilder(
+    column: $table.passportNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sire => $composableBuilder(
+    column: $table.sire,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get dam => $composableBuilder(
+    column: $table.dam,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get stableLocation => $composableBuilder(
+    column: $table.stableLocation,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get keepingType => $composableBuilder(
+    column: $table.keepingType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get owner => $composableBuilder(
+    column: $table.owner,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get insurance => $composableBuilder(
+    column: $table.insurance,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get intolerances => $composableBuilder(
+    column: $table.intolerances,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get medicalHistory => $composableBuilder(
+    column: $table.medicalHistory,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get profilePhotoId => $composableBuilder(
+    column: $table.profilePhotoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> horsePhotosRefs(
+    Expression<bool> Function($$HorsePhotosTableFilterComposer f) f,
+  ) {
+    final $$HorsePhotosTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horsePhotos,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsePhotosTableFilterComposer(
+            $db: $db,
+            $table: $db.horsePhotos,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> horseWeightsRefs(
+    Expression<bool> Function($$HorseWeightsTableFilterComposer f) f,
+  ) {
+    final $$HorseWeightsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseWeights,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseWeightsTableFilterComposer(
+            $db: $db,
+            $table: $db.horseWeights,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> horseContactsRefs(
+    Expression<bool> Function($$HorseContactsTableFilterComposer f) f,
+  ) {
+    final $$HorseContactsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseContacts,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseContactsTableFilterComposer(
+            $db: $db,
+            $table: $db.horseContacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$HorsesTableOrderingComposer
+    extends Composer<_$AppDatabase, $HorsesTable> {
+  $$HorsesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get callName => $composableBuilder(
+    column: $table.callName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get birthDate => $composableBuilder(
+    column: $table.birthDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get birthdayReminder => $composableBuilder(
+    column: $table.birthdayReminder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get breed => $composableBuilder(
+    column: $table.breed,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get colorMarkings => $composableBuilder(
+    column: $table.colorMarkings,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get heightCm => $composableBuilder(
+    column: $table.heightCm,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ueln => $composableBuilder(
+    column: $table.ueln,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chipNumber => $composableBuilder(
+    column: $table.chipNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get passportNumber => $composableBuilder(
+    column: $table.passportNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sire => $composableBuilder(
+    column: $table.sire,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get dam => $composableBuilder(
+    column: $table.dam,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get stableLocation => $composableBuilder(
+    column: $table.stableLocation,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get keepingType => $composableBuilder(
+    column: $table.keepingType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get owner => $composableBuilder(
+    column: $table.owner,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get insurance => $composableBuilder(
+    column: $table.insurance,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get intolerances => $composableBuilder(
+    column: $table.intolerances,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get medicalHistory => $composableBuilder(
+    column: $table.medicalHistory,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get profilePhotoId => $composableBuilder(
+    column: $table.profilePhotoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$HorsesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $HorsesTable> {
+  $$HorsesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get callName =>
+      $composableBuilder(column: $table.callName, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate?, String> get birthDate =>
+      $composableBuilder(column: $table.birthDate, builder: (column) => column);
+
+  GeneratedColumn<bool> get birthdayReminder => $composableBuilder(
+    column: $table.birthdayReminder,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get sex =>
+      $composableBuilder(column: $table.sex, builder: (column) => column);
+
+  GeneratedColumn<String> get breed =>
+      $composableBuilder(column: $table.breed, builder: (column) => column);
+
+  GeneratedColumn<String> get colorMarkings => $composableBuilder(
+    column: $table.colorMarkings,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get heightCm =>
+      $composableBuilder(column: $table.heightCm, builder: (column) => column);
+
+  GeneratedColumn<String> get ueln =>
+      $composableBuilder(column: $table.ueln, builder: (column) => column);
+
+  GeneratedColumn<String> get chipNumber => $composableBuilder(
+    column: $table.chipNumber,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get passportNumber => $composableBuilder(
+    column: $table.passportNumber,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get sire =>
+      $composableBuilder(column: $table.sire, builder: (column) => column);
+
+  GeneratedColumn<String> get dam =>
+      $composableBuilder(column: $table.dam, builder: (column) => column);
+
+  GeneratedColumn<String> get stableLocation => $composableBuilder(
+    column: $table.stableLocation,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get keepingType => $composableBuilder(
+    column: $table.keepingType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get owner =>
+      $composableBuilder(column: $table.owner, builder: (column) => column);
+
+  GeneratedColumn<String> get insurance =>
+      $composableBuilder(column: $table.insurance, builder: (column) => column);
+
+  GeneratedColumn<String> get intolerances => $composableBuilder(
+    column: $table.intolerances,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get medicalHistory => $composableBuilder(
+    column: $table.medicalHistory,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get profilePhotoId => $composableBuilder(
+    column: $table.profilePhotoId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  Expression<T> horsePhotosRefs<T extends Object>(
+    Expression<T> Function($$HorsePhotosTableAnnotationComposer a) f,
+  ) {
+    final $$HorsePhotosTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horsePhotos,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsePhotosTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horsePhotos,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> horseWeightsRefs<T extends Object>(
+    Expression<T> Function($$HorseWeightsTableAnnotationComposer a) f,
+  ) {
+    final $$HorseWeightsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseWeights,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseWeightsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horseWeights,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> horseContactsRefs<T extends Object>(
+    Expression<T> Function($$HorseContactsTableAnnotationComposer a) f,
+  ) {
+    final $$HorseContactsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseContacts,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseContactsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horseContacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$HorsesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $HorsesTable,
+          HorseRow,
+          $$HorsesTableFilterComposer,
+          $$HorsesTableOrderingComposer,
+          $$HorsesTableAnnotationComposer,
+          $$HorsesTableCreateCompanionBuilder,
+          $$HorsesTableUpdateCompanionBuilder,
+          (HorseRow, $$HorsesTableReferences),
+          HorseRow,
+          PrefetchHooks Function({
+            bool horsePhotosRefs,
+            bool horseWeightsRefs,
+            bool horseContactsRefs,
+          })
+        > {
+  $$HorsesTableTableManager(_$AppDatabase db, $HorsesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$HorsesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$HorsesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$HorsesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> callName = const Value.absent(),
+                Value<LocalDate?> birthDate = const Value.absent(),
+                Value<bool> birthdayReminder = const Value.absent(),
+                Value<String?> sex = const Value.absent(),
+                Value<String?> breed = const Value.absent(),
+                Value<String?> colorMarkings = const Value.absent(),
+                Value<int?> heightCm = const Value.absent(),
+                Value<String?> ueln = const Value.absent(),
+                Value<String?> chipNumber = const Value.absent(),
+                Value<String?> passportNumber = const Value.absent(),
+                Value<String?> sire = const Value.absent(),
+                Value<String?> dam = const Value.absent(),
+                Value<String?> stableLocation = const Value.absent(),
+                Value<String?> keepingType = const Value.absent(),
+                Value<String?> owner = const Value.absent(),
+                Value<String?> insurance = const Value.absent(),
+                Value<String?> intolerances = const Value.absent(),
+                Value<String?> medicalHistory = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> profilePhotoId = const Value.absent(),
+                Value<DateTime?> archivedAt = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorsesCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                callName: callName,
+                birthDate: birthDate,
+                birthdayReminder: birthdayReminder,
+                sex: sex,
+                breed: breed,
+                colorMarkings: colorMarkings,
+                heightCm: heightCm,
+                ueln: ueln,
+                chipNumber: chipNumber,
+                passportNumber: passportNumber,
+                sire: sire,
+                dam: dam,
+                stableLocation: stableLocation,
+                keepingType: keepingType,
+                owner: owner,
+                insurance: insurance,
+                intolerances: intolerances,
+                medicalHistory: medicalHistory,
+                notes: notes,
+                profilePhotoId: profilePhotoId,
+                archivedAt: archivedAt,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String name,
+                Value<String?> callName = const Value.absent(),
+                Value<LocalDate?> birthDate = const Value.absent(),
+                Value<bool> birthdayReminder = const Value.absent(),
+                Value<String?> sex = const Value.absent(),
+                Value<String?> breed = const Value.absent(),
+                Value<String?> colorMarkings = const Value.absent(),
+                Value<int?> heightCm = const Value.absent(),
+                Value<String?> ueln = const Value.absent(),
+                Value<String?> chipNumber = const Value.absent(),
+                Value<String?> passportNumber = const Value.absent(),
+                Value<String?> sire = const Value.absent(),
+                Value<String?> dam = const Value.absent(),
+                Value<String?> stableLocation = const Value.absent(),
+                Value<String?> keepingType = const Value.absent(),
+                Value<String?> owner = const Value.absent(),
+                Value<String?> insurance = const Value.absent(),
+                Value<String?> intolerances = const Value.absent(),
+                Value<String?> medicalHistory = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> profilePhotoId = const Value.absent(),
+                Value<DateTime?> archivedAt = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorsesCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                callName: callName,
+                birthDate: birthDate,
+                birthdayReminder: birthdayReminder,
+                sex: sex,
+                breed: breed,
+                colorMarkings: colorMarkings,
+                heightCm: heightCm,
+                ueln: ueln,
+                chipNumber: chipNumber,
+                passportNumber: passportNumber,
+                sire: sire,
+                dam: dam,
+                stableLocation: stableLocation,
+                keepingType: keepingType,
+                owner: owner,
+                insurance: insurance,
+                intolerances: intolerances,
+                medicalHistory: medicalHistory,
+                notes: notes,
+                profilePhotoId: profilePhotoId,
+                archivedAt: archivedAt,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$HorsesTable, HorseRow>(table),
+                  $$HorsesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                horsePhotosRefs = false,
+                horseWeightsRefs = false,
+                horseContactsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (horsePhotosRefs) db.horsePhotos,
+                    if (horseWeightsRefs) db.horseWeights,
+                    if (horseContactsRefs) db.horseContacts,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (horsePhotosRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          HorsePhotoRow,
+                          $HorsePhotosTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._horsePhotosRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).horsePhotosRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
+                      if (horseWeightsRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          HorseWeightRow,
+                          $HorseWeightsTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._horseWeightsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).horseWeightsRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
+                      if (horseContactsRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          HorseContactRow,
+                          $HorseContactsTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._horseContactsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).horseContactsRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$HorsesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $HorsesTable,
+      HorseRow,
+      $$HorsesTableFilterComposer,
+      $$HorsesTableOrderingComposer,
+      $$HorsesTableAnnotationComposer,
+      $$HorsesTableCreateCompanionBuilder,
+      $$HorsesTableUpdateCompanionBuilder,
+      (HorseRow, $$HorsesTableReferences),
+      HorseRow,
+      PrefetchHooks Function({
+        bool horsePhotosRefs,
+        bool horseWeightsRefs,
+        bool horseContactsRefs,
+      })
+    >;
+typedef $$HorsePhotosTableCreateCompanionBuilder =
+    HorsePhotosCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String horseId,
+      required String relativePath,
+      Value<int> rowid,
+    });
+typedef $$HorsePhotosTableUpdateCompanionBuilder =
+    HorsePhotosCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> horseId,
+      Value<String> relativePath,
+      Value<int> rowid,
+    });
+
+final class $$HorsePhotosTableReferences
+    extends BaseReferences<_$AppDatabase, $HorsePhotosTable, HorsePhotoRow> {
+  $$HorsePhotosTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('horse_photos__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$HorsePhotosTableFilterComposer
+    extends Composer<_$AppDatabase, $HorsePhotosTable> {
+  $$HorsePhotosTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get relativePath => $composableBuilder(
+    column: $table.relativePath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorsePhotosTableOrderingComposer
+    extends Composer<_$AppDatabase, $HorsePhotosTable> {
+  $$HorsePhotosTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get relativePath => $composableBuilder(
+    column: $table.relativePath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorsePhotosTableAnnotationComposer
+    extends Composer<_$AppDatabase, $HorsePhotosTable> {
+  $$HorsePhotosTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get relativePath => $composableBuilder(
+    column: $table.relativePath,
+    builder: (column) => column,
+  );
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorsePhotosTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $HorsePhotosTable,
+          HorsePhotoRow,
+          $$HorsePhotosTableFilterComposer,
+          $$HorsePhotosTableOrderingComposer,
+          $$HorsePhotosTableAnnotationComposer,
+          $$HorsePhotosTableCreateCompanionBuilder,
+          $$HorsePhotosTableUpdateCompanionBuilder,
+          (HorsePhotoRow, $$HorsePhotosTableReferences),
+          HorsePhotoRow,
+          PrefetchHooks Function({bool horseId})
+        > {
+  $$HorsePhotosTableTableManager(_$AppDatabase db, $HorsePhotosTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$HorsePhotosTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$HorsePhotosTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$HorsePhotosTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<String> relativePath = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorsePhotosCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                relativePath: relativePath,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String horseId,
+                required String relativePath,
+                Value<int> rowid = const Value.absent(),
+              }) => HorsePhotosCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                relativePath: relativePath,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$HorsePhotosTable, HorsePhotoRow>(table),
+                  $$HorsePhotosTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable: $$HorsePhotosTableReferences
+                            ._horseIdTable(db),
+                        referencedColumn: $$HorsePhotosTableReferences
+                            ._horseIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$HorsePhotosTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $HorsePhotosTable,
+      HorsePhotoRow,
+      $$HorsePhotosTableFilterComposer,
+      $$HorsePhotosTableOrderingComposer,
+      $$HorsePhotosTableAnnotationComposer,
+      $$HorsePhotosTableCreateCompanionBuilder,
+      $$HorsePhotosTableUpdateCompanionBuilder,
+      (HorsePhotoRow, $$HorsePhotosTableReferences),
+      HorsePhotoRow,
+      PrefetchHooks Function({bool horseId})
+    >;
+typedef $$HorseWeightsTableCreateCompanionBuilder =
+    HorseWeightsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String horseId,
+      required LocalDate date,
+      required double weightKg,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+typedef $$HorseWeightsTableUpdateCompanionBuilder =
+    HorseWeightsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> horseId,
+      Value<LocalDate> date,
+      Value<double> weightKg,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+
+final class $$HorseWeightsTableReferences
+    extends BaseReferences<_$AppDatabase, $HorseWeightsTable, HorseWeightRow> {
+  $$HorseWeightsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('horse_weights__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$HorseWeightsTableFilterComposer
+    extends Composer<_$AppDatabase, $HorseWeightsTable> {
+  $$HorseWeightsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get date =>
+      $composableBuilder(
+        column: $table.date,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<double> get weightKg => $composableBuilder(
+    column: $table.weightKg,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseWeightsTableOrderingComposer
+    extends Composer<_$AppDatabase, $HorseWeightsTable> {
+  $$HorseWeightsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get weightKg => $composableBuilder(
+    column: $table.weightKg,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseWeightsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $HorseWeightsTable> {
+  $$HorseWeightsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<double> get weightKg =>
+      $composableBuilder(column: $table.weightKg, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseWeightsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $HorseWeightsTable,
+          HorseWeightRow,
+          $$HorseWeightsTableFilterComposer,
+          $$HorseWeightsTableOrderingComposer,
+          $$HorseWeightsTableAnnotationComposer,
+          $$HorseWeightsTableCreateCompanionBuilder,
+          $$HorseWeightsTableUpdateCompanionBuilder,
+          (HorseWeightRow, $$HorseWeightsTableReferences),
+          HorseWeightRow,
+          PrefetchHooks Function({bool horseId})
+        > {
+  $$HorseWeightsTableTableManager(_$AppDatabase db, $HorseWeightsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$HorseWeightsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$HorseWeightsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$HorseWeightsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<LocalDate> date = const Value.absent(),
+                Value<double> weightKg = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorseWeightsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                date: date,
+                weightKg: weightKg,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String horseId,
+                required LocalDate date,
+                required double weightKg,
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorseWeightsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                date: date,
+                weightKg: weightKg,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$HorseWeightsTable, HorseWeightRow>(table),
+                  $$HorseWeightsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable: $$HorseWeightsTableReferences
+                            ._horseIdTable(db),
+                        referencedColumn: $$HorseWeightsTableReferences
+                            ._horseIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$HorseWeightsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $HorseWeightsTable,
+      HorseWeightRow,
+      $$HorseWeightsTableFilterComposer,
+      $$HorseWeightsTableOrderingComposer,
+      $$HorseWeightsTableAnnotationComposer,
+      $$HorseWeightsTableCreateCompanionBuilder,
+      $$HorseWeightsTableUpdateCompanionBuilder,
+      (HorseWeightRow, $$HorseWeightsTableReferences),
+      HorseWeightRow,
+      PrefetchHooks Function({bool horseId})
+    >;
+typedef $$ContactsTableCreateCompanionBuilder = ContactsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String name,
+  required String role,
+  Value<String?> phone,
+  Value<String?> email,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+typedef $$ContactsTableUpdateCompanionBuilder = ContactsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> name,
+  Value<String> role,
+  Value<String?> phone,
+  Value<String?> email,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+
+final class $$ContactsTableReferences
+    extends BaseReferences<_$AppDatabase, $ContactsTable, ContactRow> {
+  $$ContactsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$HorseContactsTable, List<HorseContactRow>>
+  _horseContactsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.horseContacts,
+    aliasName: 'contacts__id__horse_contacts__contact_id',
+  );
+
+  $$HorseContactsTableProcessedTableManager get horseContactsRefs {
+    final manager = $$HorseContactsTableTableManager(
+      $_db,
+      $_db.horseContacts,
+    ).filter((f) => f.contactId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_horseContactsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$ContactsTableFilterComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get role => $composableBuilder(
+    column: $table.role,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> horseContactsRefs(
+    Expression<bool> Function($$HorseContactsTableFilterComposer f) f,
+  ) {
+    final $$HorseContactsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseContacts,
+      getReferencedColumn: (t) => t.contactId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseContactsTableFilterComposer(
+            $db: $db,
+            $table: $db.horseContacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ContactsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get role => $composableBuilder(
+    column: $table.role,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ContactsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get role =>
+      $composableBuilder(column: $table.role, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  Expression<T> horseContactsRefs<T extends Object>(
+    Expression<T> Function($$HorseContactsTableAnnotationComposer a) f,
+  ) {
+    final $$HorseContactsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.horseContacts,
+      getReferencedColumn: (t) => t.contactId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorseContactsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horseContacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ContactsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ContactsTable,
+          ContactRow,
+          $$ContactsTableFilterComposer,
+          $$ContactsTableOrderingComposer,
+          $$ContactsTableAnnotationComposer,
+          $$ContactsTableCreateCompanionBuilder,
+          $$ContactsTableUpdateCompanionBuilder,
+          (ContactRow, $$ContactsTableReferences),
+          ContactRow,
+          PrefetchHooks Function({bool horseContactsRefs})
+        > {
+  $$ContactsTableTableManager(_$AppDatabase db, $ContactsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ContactsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ContactsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ContactsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> role = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ContactsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                role: role,
+                phone: phone,
+                email: email,
+                notes: notes,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String role,
+                Value<String?> phone = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ContactsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                role: role,
+                phone: phone,
+                email: email,
+                notes: notes,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ContactsTable, ContactRow>(table),
+                  $$ContactsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseContactsRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (horseContactsRefs) db.horseContacts,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (horseContactsRefs)
+                    await $_getPrefetchedDataByColumns<
+                      ContactRow,
+                      $ContactsTable,
+                      HorseContactRow,
+                      $HorseContactsTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$ContactsTableReferences
+                          ._horseContactsRefsTable(db),
+                      managerFromTypedResult: (p0) => $$ContactsTableReferences(
+                        db,
+                        table,
+                        p0,
+                      ).horseContactsRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'contact_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ContactsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ContactsTable,
+      ContactRow,
+      $$ContactsTableFilterComposer,
+      $$ContactsTableOrderingComposer,
+      $$ContactsTableAnnotationComposer,
+      $$ContactsTableCreateCompanionBuilder,
+      $$ContactsTableUpdateCompanionBuilder,
+      (ContactRow, $$ContactsTableReferences),
+      ContactRow,
+      PrefetchHooks Function({bool horseContactsRefs})
+    >;
+typedef $$HorseContactsTableCreateCompanionBuilder =
+    HorseContactsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String horseId,
+      required String contactId,
+      Value<int> rowid,
+    });
+typedef $$HorseContactsTableUpdateCompanionBuilder =
+    HorseContactsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> horseId,
+      Value<String> contactId,
+      Value<int> rowid,
+    });
+
+final class $$HorseContactsTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $HorseContactsTable, HorseContactRow> {
+  $$HorseContactsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('horse_contacts__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $ContactsTable _contactIdTable(_$AppDatabase db) =>
+      db.contacts.createAlias('horse_contacts__contact_id__contacts__id');
+
+  $$ContactsTableProcessedTableManager get contactId {
+    final $_column = $_itemColumn<String>('contact_id')!;
+
+    final manager = $$ContactsTableTableManager(
+      $_db,
+      $_db.contacts,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_contactIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$HorseContactsTableFilterComposer
+    extends Composer<_$AppDatabase, $HorseContactsTable> {
+  $$HorseContactsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ContactsTableFilterComposer get contactId {
+    final $$ContactsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.contactId,
+      referencedTable: $db.contacts,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ContactsTableFilterComposer(
+            $db: $db,
+            $table: $db.contacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseContactsTableOrderingComposer
+    extends Composer<_$AppDatabase, $HorseContactsTable> {
+  $$HorseContactsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ContactsTableOrderingComposer get contactId {
+    final $$ContactsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.contactId,
+      referencedTable: $db.contacts,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ContactsTableOrderingComposer(
+            $db: $db,
+            $table: $db.contacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseContactsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $HorseContactsTable> {
+  $$HorseContactsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ContactsTableAnnotationComposer get contactId {
+    final $$ContactsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.contactId,
+      referencedTable: $db.contacts,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ContactsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.contacts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$HorseContactsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $HorseContactsTable,
+          HorseContactRow,
+          $$HorseContactsTableFilterComposer,
+          $$HorseContactsTableOrderingComposer,
+          $$HorseContactsTableAnnotationComposer,
+          $$HorseContactsTableCreateCompanionBuilder,
+          $$HorseContactsTableUpdateCompanionBuilder,
+          (HorseContactRow, $$HorseContactsTableReferences),
+          HorseContactRow,
+          PrefetchHooks Function({bool horseId, bool contactId})
+        > {
+  $$HorseContactsTableTableManager(_$AppDatabase db, $HorseContactsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$HorseContactsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$HorseContactsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$HorseContactsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<String> contactId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => HorseContactsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                horseId: horseId,
+                contactId: contactId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String horseId,
+                required String contactId,
+                Value<int> rowid = const Value.absent(),
+              }) => HorseContactsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                horseId: horseId,
+                contactId: contactId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$HorseContactsTable, HorseContactRow>(table),
+                  $$HorseContactsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false, contactId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable: $$HorseContactsTableReferences
+                            ._horseIdTable(db),
+                        referencedColumn: $$HorseContactsTableReferences
+                            ._horseIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+                    if (contactId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.contactId,
+                        referencedTable: $$HorseContactsTableReferences
+                            ._contactIdTable(db),
+                        referencedColumn: $$HorseContactsTableReferences
+                            ._contactIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$HorseContactsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $HorseContactsTable,
+      HorseContactRow,
+      $$HorseContactsTableFilterComposer,
+      $$HorseContactsTableOrderingComposer,
+      $$HorseContactsTableAnnotationComposer,
+      $$HorseContactsTableCreateCompanionBuilder,
+      $$HorseContactsTableUpdateCompanionBuilder,
+      (HorseContactRow, $$HorseContactsTableReferences),
+      HorseContactRow,
+      PrefetchHooks Function({bool horseId, bool contactId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
   $AppDatabaseManager(this._db);
   $$SettingsTableTableManager get settings =>
       $$SettingsTableTableManager(_db, _db.settings);
+  $$HorsesTableTableManager get horses =>
+      $$HorsesTableTableManager(_db, _db.horses);
+  $$HorsePhotosTableTableManager get horsePhotos =>
+      $$HorsePhotosTableTableManager(_db, _db.horsePhotos);
+  $$HorseWeightsTableTableManager get horseWeights =>
+      $$HorseWeightsTableTableManager(_db, _db.horseWeights);
+  $$ContactsTableTableManager get contacts =>
+      $$ContactsTableTableManager(_db, _db.contacts);
+  $$HorseContactsTableTableManager get horseContacts =>
+      $$HorseContactsTableTableManager(_db, _db.horseContacts);
 }

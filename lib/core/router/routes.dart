@@ -6,4 +6,7 @@ abstract final class Routes {
   static const dienst = '/dienst';
   static const pferd = '/pferd';
   static const settings = '/einstellungen';
+  static const horseList = '/pferde';
+  static const horseNew = '/pferde/neu';
+  static String horseEdit(String id) => '/pferde/$id/bearbeiten';
 }

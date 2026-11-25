@@ -43,8 +43,10 @@ flutter run                            # auf Emulator/Gerät
 Schema-Änderung (siehe unten): `dart run drift_dev make-migrations`.
 
 Release (ab Meilenstein 8): `flutter build apk --release`,
-`flutter build appbundle`, danach Permissions prüfen mit
-`aapt dump permissions build/app/outputs/flutter-apk/app-release.apk`.
+`flutter build appbundle`, danach **immer** prüfen:
+`tool/check_release_permissions.sh` (aapt: keine INTERNET-Permission, Backup aus).
+Einzige erwartete Permission: `…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`
+(intern von androidx, signaturgeschützt, kein Netzwerk).
 
 ## Qualitätsregeln (vor jedem Commit)
 
@@ -68,7 +70,10 @@ lib/
     router/                   go_router, StatefulShellRoute (5 Tabs), Routes
     theme/                    Material-3-Theme hell/dunkel
     time/                     LocalDate (reines Dart)
-    widgets/                  gemeinsame Widgets (TabScaffold, EmptyState)
+    files/                    App-Dokumentenverzeichnis-Provider
+    format/                   deutsche Datums-/Zahlenformate (Fmt)
+    widgets/                  TabScaffold (mit Pferde-Umschalter), EmptyState,
+                              DateField, Bestätigungsdialoge
   features/<bereich>/         pflege, training, futter, dienstplan, pferd,
                               einstellungen, backup
     data/                     Drift-Tabellen, Repositories
@@ -91,6 +96,14 @@ test/                         spiegelt lib/
 - **`domain/` und `core/time/` dürfen weder Flutter, material_ui, Riverpod noch
   Drift importieren** (geprüft durch `test/core/architecture_test.dart`).
   So braucht iOS später nur Plattform-Konfiguration.
+- **Ausgewähltes Pferd:** `selectedHorseProvider` (lib/features/pferd/ui/
+  horse_providers.dart), gespeichert unter Setting `selected_horse_id`.
+  Pferdebezogene Bereiche filtern immer danach. `TabScaffold` zeigt den
+  Umschalter; der Dienstplan setzt `showHorseSwitcher: false`.
+- **Widget-Tests mit Drift:** DB-Schreibzugriffe direkt im Test (nicht in
+  `tester.runAsync`, das hängt); am Ende `pumpWidget(SizedBox.shrink())`,
+  `pump(1s)`, dann `tester.runAsync(db.close)`. Dokumentenordner über
+  `documentsDirProvider` überschreiben.
 - **App-Version** steht doppelt: `pubspec.yaml` und `lib/core/app_info.dart`
   (Test prüft Gleichheit). Bewusst kein `package_info_plus`.
 
@@ -129,21 +142,38 @@ test/                         spiegelt lib/
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v1** (nur `settings`).
+Aktueller Stand: **Schema v2** (`settings`; `horses`, `horse_photos`,
+`horse_weights`, `contacts`, `horse_contacts`). Migrationstest:
+`test/drift/app_database/migration_test.dart`.
 
 ## Build-Hinweise
 
 - `sqlite3` 3.x lädt beim **Bauen** (nicht zur Laufzeit) eine vorkompilierte
   SQLite-Bibliothek über einen Build-Hook herunter. Die App selbst hat
   weiterhin keinen Netzwerkzugriff.
-- Im Cloud-Container ist dl.google.com gesperrt → kein Android-SDK, also
-  kein APK-Build hier. Gebaut/getestet wird lokal beim Nutzer.
+- Cloud-Umgebung „pferdekalender“ erlaubt zusätzlich dl.google.com und
+  downloads.gradle.org. Android-SDK liegt unter `/opt/sdk/android`
+  (`ANDROID_HOME`), Flutter unter `/opt/sdk/flutter`. Beides ist nicht
+  persistent – bei neuem Container neu installieren.
+- Maven Central antwortet gelegentlich mit 429 → Build einfach wiederholen.
+
+## Geprüfte Pakete (Netzwerk/Telemetrie)
+
+| Paket | Zweck | Befund |
+|---|---|---|
+| drift, drift_flutter, sqlite3 | Datenbank | kein Netzwerk zur Laufzeit; sqlite3-Hook lädt beim Bauen |
+| flutter_riverpod, go_router, intl, uuid, path, path_provider | Basis | kein Netzwerk |
+| image_picker | Fotos | zieht `http` transitiv nur für die Web-Variante (`picked_file/html.dart`); auf Android nicht einkompiliert. Keine Manifest-Permissions. |
+| url_launcher | `tel:`-Links | keine Permissions; `<queries>` für `tel` im Manifest |
+
+Bewusst **nicht** verwendet: `package_info_plus`, Diagramm-Bibliotheken
+(Gewichtsverlauf ist ein eigener `CustomPainter`).
 
 ## Meilensteine
 
 - [x] 1. Gerüst: Projekt, Ordner, Theme, Lokalisierung, 5 Tabs, Drift v1,
       Manifest-Härtung, CLAUDE.md
-- [ ] 2. Pferd: Liste, Profil, Fotos, Pferde-Umschalter in der AppBar
+- [x] 2. Pferd: Liste, Profil, Fotos, Gewicht, Kontakte, Pferde-Umschalter
 - [ ] 3. Pflege-Kalender inkl. Wiederholungen, Folgetermine, Erinnerungen
 - [ ] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
 - [ ] 5. Training: Kalender, manuelle Einheiten, Generator + Tests, Neu-Verteilen
@@ -156,7 +186,11 @@ Aktueller Stand: **Schema v1** (nur `settings`).
 
 - Einstellungen: Erinnerungs-Defaults, Export/Import, Intervall-Defaults,
   Pflege-Eintragsarten (Meilensteine 3 und 7).
-- Pferde-Umschalter in `TabScaffold` (Meilenstein 2).
-- Release-Manifest-Prüfung (`aapt dump permissions`) noch nicht ausgeführt –
-  braucht Android-SDK (Meilenstein 8, lokal).
+- Geburtstagserinnerung: Spalte `horses.birthday_reminder` existiert, Schalter
+  und Benachrichtigung folgen mit den Erinnerungen in Meilenstein 3.
+- Übersichtskarte im Pferd-Profil (nächster Termin, letzte Wurmkur …): Meilenstein 7.
+- Kontakte global verwalten (ohne Pferd, endgültig löschen): Meilenstein 7.
+- Beim endgültigen Löschen eines Pferdes müssen ab M3 auch Pflege-,
+  Trainings- und Futterdaten mitgelöscht werden (FK mit `onDelete: cascade`).
+- Release-Signierung: APK ist derzeit mit dem Debug-Key signiert (Meilenstein 8).
 - iOS-Projekt ist nur generiert, nicht angepasst (Meilenstein 9).

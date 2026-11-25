@@ -229,7 +229,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyPferdMessage.
   ///
   /// In de, this message translates to:
-  /// **'Hier legst du bald deine Pferde mit Profil und Fotos an.'**
+  /// **'Lege dein Pferd mit Profil, Fotos, Gewicht und Kontakten an. Alle Bereiche der App beziehen sich dann auf das ausgewählte Pferd.'**
   String get emptyPferdMessage;
 
   /// No description provided for @settingsAppearance.
@@ -285,6 +285,690 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Über die App'**
   String get settingsAbout;
+
+  /// No description provided for @actionSave.
+  ///
+  /// In de, this message translates to:
+  /// **'Speichern'**
+  String get actionSave;
+
+  /// No description provided for @actionCancel.
+  ///
+  /// In de, this message translates to:
+  /// **'Abbrechen'**
+  String get actionCancel;
+
+  /// No description provided for @actionDelete.
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get actionDelete;
+
+  /// No description provided for @actionEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Bearbeiten'**
+  String get actionEdit;
+
+  /// No description provided for @actionAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Hinzufügen'**
+  String get actionAdd;
+
+  /// No description provided for @actionClose.
+  ///
+  /// In de, this message translates to:
+  /// **'Schließen'**
+  String get actionClose;
+
+  /// No description provided for @actionRemove.
+  ///
+  /// In de, this message translates to:
+  /// **'Entfernen'**
+  String get actionRemove;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte ausfüllen'**
+  String get fieldRequired;
+
+  /// No description provided for @fieldInvalidNumber.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte eine gültige Zahl eingeben'**
+  String get fieldInvalidNumber;
+
+  /// No description provided for @notSet.
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht angegeben'**
+  String get notSet;
+
+  /// No description provided for @emptyPferdAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Erstes Pferd anlegen'**
+  String get emptyPferdAction;
+
+  /// No description provided for @horseSwitcherTooltip.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferd wechseln'**
+  String get horseSwitcherTooltip;
+
+  /// No description provided for @horseSwitcherManage.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferde verwalten'**
+  String get horseSwitcherManage;
+
+  /// No description provided for @horseListTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Meine Pferde'**
+  String get horseListTitle;
+
+  /// No description provided for @horseListActive.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktiv'**
+  String get horseListActive;
+
+  /// No description provided for @horseListArchived.
+  ///
+  /// In de, this message translates to:
+  /// **'Archiviert'**
+  String get horseListArchived;
+
+  /// No description provided for @horseListEmptyArchived.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine archivierten Pferde'**
+  String get horseListEmptyArchived;
+
+  /// No description provided for @horseAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferd anlegen'**
+  String get horseAdd;
+
+  /// No description provided for @horseNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neues Pferd'**
+  String get horseNew;
+
+  /// No description provided for @horseEditTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferd bearbeiten'**
+  String get horseEditTitle;
+
+  /// No description provided for @horseArchive.
+  ///
+  /// In de, this message translates to:
+  /// **'Archivieren'**
+  String get horseArchive;
+
+  /// No description provided for @horseUnarchive.
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederherstellen'**
+  String get horseUnarchive;
+
+  /// No description provided for @horseArchiveConfirmTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} archivieren?'**
+  String horseArchiveConfirmTitle(String name);
+
+  /// No description provided for @horseArchiveConfirmText.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Pferd wird ausgeblendet. Alle Daten bleiben erhalten und du kannst es jederzeit wiederherstellen.'**
+  String get horseArchiveConfirmText;
+
+  /// No description provided for @horseDeleteForever.
+  ///
+  /// In de, this message translates to:
+  /// **'Endgültig löschen'**
+  String get horseDeleteForever;
+
+  /// No description provided for @horseDeleteConfirmTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} endgültig löschen?'**
+  String horseDeleteConfirmTitle(String name);
+
+  /// No description provided for @horseDeleteConfirmText.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Daten dieses Pferdes (Fotos, Gewichte, Kontakt-Zuordnungen und später auch Termine, Trainings- und Futterpläne) werden unwiderruflich gelöscht. Das kann nicht rückgängig gemacht werden.'**
+  String get horseDeleteConfirmText;
+
+  /// No description provided for @horseDeleteConfirmContinue.
+  ///
+  /// In de, this message translates to:
+  /// **'Weiter'**
+  String get horseDeleteConfirmContinue;
+
+  /// No description provided for @horseDeleteTypeName.
+  ///
+  /// In de, this message translates to:
+  /// **'Zur Bestätigung den Namen „{name}“ eingeben'**
+  String horseDeleteTypeName(String name);
+
+  /// No description provided for @horseDeleted.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} wurde gelöscht'**
+  String horseDeleted(String name);
+
+  /// No description provided for @horseArchived.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} wurde archiviert'**
+  String horseArchived(String name);
+
+  /// No description provided for @horseSectionGeneral.
+  ///
+  /// In de, this message translates to:
+  /// **'Allgemein'**
+  String get horseSectionGeneral;
+
+  /// No description provided for @horseSectionIdentification.
+  ///
+  /// In de, this message translates to:
+  /// **'Identifikation'**
+  String get horseSectionIdentification;
+
+  /// No description provided for @horseSectionPedigree.
+  ///
+  /// In de, this message translates to:
+  /// **'Abstammung'**
+  String get horseSectionPedigree;
+
+  /// No description provided for @horseSectionKeeping.
+  ///
+  /// In de, this message translates to:
+  /// **'Haltung & Besitz'**
+  String get horseSectionKeeping;
+
+  /// No description provided for @horseSectionHealth.
+  ///
+  /// In de, this message translates to:
+  /// **'Gesundheit'**
+  String get horseSectionHealth;
+
+  /// No description provided for @horseSectionNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notizen'**
+  String get horseSectionNotes;
+
+  /// No description provided for @horseSectionContacts.
+  ///
+  /// In de, this message translates to:
+  /// **'Kontakte'**
+  String get horseSectionContacts;
+
+  /// No description provided for @horseSectionWeight.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewicht'**
+  String get horseSectionWeight;
+
+  /// No description provided for @horseSectionPhotos.
+  ///
+  /// In de, this message translates to:
+  /// **'Fotos'**
+  String get horseSectionPhotos;
+
+  /// No description provided for @horseFieldName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get horseFieldName;
+
+  /// No description provided for @horseFieldCallName.
+  ///
+  /// In de, this message translates to:
+  /// **'Rufname'**
+  String get horseFieldCallName;
+
+  /// No description provided for @horseFieldBirthDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Geburtstag'**
+  String get horseFieldBirthDate;
+
+  /// No description provided for @horseFieldSex.
+  ///
+  /// In de, this message translates to:
+  /// **'Geschlecht'**
+  String get horseFieldSex;
+
+  /// No description provided for @horseFieldBreed.
+  ///
+  /// In de, this message translates to:
+  /// **'Rasse'**
+  String get horseFieldBreed;
+
+  /// No description provided for @horseFieldColor.
+  ///
+  /// In de, this message translates to:
+  /// **'Farbe / Abzeichen'**
+  String get horseFieldColor;
+
+  /// No description provided for @horseFieldHeight.
+  ///
+  /// In de, this message translates to:
+  /// **'Stockmaß (cm)'**
+  String get horseFieldHeight;
+
+  /// No description provided for @horseFieldUeln.
+  ///
+  /// In de, this message translates to:
+  /// **'UELN / Lebensnummer'**
+  String get horseFieldUeln;
+
+  /// No description provided for @horseFieldChip.
+  ///
+  /// In de, this message translates to:
+  /// **'Chipnummer'**
+  String get horseFieldChip;
+
+  /// No description provided for @horseFieldPassport.
+  ///
+  /// In de, this message translates to:
+  /// **'Equidenpass-Nummer'**
+  String get horseFieldPassport;
+
+  /// No description provided for @horseFieldSire.
+  ///
+  /// In de, this message translates to:
+  /// **'Vater'**
+  String get horseFieldSire;
+
+  /// No description provided for @horseFieldDam.
+  ///
+  /// In de, this message translates to:
+  /// **'Mutter'**
+  String get horseFieldDam;
+
+  /// No description provided for @horseFieldStable.
+  ///
+  /// In de, this message translates to:
+  /// **'Stall / Standort'**
+  String get horseFieldStable;
+
+  /// No description provided for @horseFieldKeeping.
+  ///
+  /// In de, this message translates to:
+  /// **'Haltungsform'**
+  String get horseFieldKeeping;
+
+  /// No description provided for @horseFieldKeepingHint.
+  ///
+  /// In de, this message translates to:
+  /// **'z. B. Offenstall, Box mit Paddock, Weide'**
+  String get horseFieldKeepingHint;
+
+  /// No description provided for @horseFieldOwner.
+  ///
+  /// In de, this message translates to:
+  /// **'Besitzer'**
+  String get horseFieldOwner;
+
+  /// No description provided for @horseFieldInsurance.
+  ///
+  /// In de, this message translates to:
+  /// **'Versicherung'**
+  String get horseFieldInsurance;
+
+  /// No description provided for @horseFieldIntolerances.
+  ///
+  /// In de, this message translates to:
+  /// **'Unverträglichkeiten'**
+  String get horseFieldIntolerances;
+
+  /// No description provided for @horseFieldMedicalHistory.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorerkrankungen'**
+  String get horseFieldMedicalHistory;
+
+  /// No description provided for @horseFieldNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notizen'**
+  String get horseFieldNotes;
+
+  /// No description provided for @horseSexStute.
+  ///
+  /// In de, this message translates to:
+  /// **'Stute'**
+  String get horseSexStute;
+
+  /// No description provided for @horseSexWallach.
+  ///
+  /// In de, this message translates to:
+  /// **'Wallach'**
+  String get horseSexWallach;
+
+  /// No description provided for @horseSexHengst.
+  ///
+  /// In de, this message translates to:
+  /// **'Hengst'**
+  String get horseSexHengst;
+
+  /// No description provided for @horseHeightValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{cm} cm'**
+  String horseHeightValue(int cm);
+
+  /// No description provided for @ageYears.
+  ///
+  /// In de, this message translates to:
+  /// **'{years, plural, =1{1 Jahr} other{{years} Jahre}}'**
+  String ageYears(int years);
+
+  /// No description provided for @ageMonths.
+  ///
+  /// In de, this message translates to:
+  /// **'{months, plural, =0{unter 1 Monat} =1{1 Monat} other{{months} Monate}}'**
+  String ageMonths(int months);
+
+  /// No description provided for @ageBirthday.
+  ///
+  /// In de, this message translates to:
+  /// **'{age} (geb. {date})'**
+  String ageBirthday(String age, String date);
+
+  /// No description provided for @dateClear.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum entfernen'**
+  String get dateClear;
+
+  /// No description provided for @datePick.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum wählen'**
+  String get datePick;
+
+  /// No description provided for @profileNoData.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine weiteren Angaben. Tippe auf den Stift, um das Profil zu ergänzen.'**
+  String get profileNoData;
+
+  /// No description provided for @photoAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Foto hinzufügen'**
+  String get photoAdd;
+
+  /// No description provided for @photoFromGallery.
+  ///
+  /// In de, this message translates to:
+  /// **'Aus Galerie wählen'**
+  String get photoFromGallery;
+
+  /// No description provided for @photoFromCamera.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Kamera aufnehmen'**
+  String get photoFromCamera;
+
+  /// No description provided for @photoSetProfile.
+  ///
+  /// In de, this message translates to:
+  /// **'Als Profilbild'**
+  String get photoSetProfile;
+
+  /// No description provided for @photoIsProfile.
+  ///
+  /// In de, this message translates to:
+  /// **'Profilbild'**
+  String get photoIsProfile;
+
+  /// No description provided for @photoDeleteConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Foto löschen?'**
+  String get photoDeleteConfirm;
+
+  /// No description provided for @photoDeleteConfirmText.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Foto wird aus der App gelöscht. Das Original in deiner Galerie bleibt erhalten.'**
+  String get photoDeleteConfirmText;
+
+  /// No description provided for @photoError.
+  ///
+  /// In de, this message translates to:
+  /// **'Foto konnte nicht übernommen werden.'**
+  String get photoError;
+
+  /// No description provided for @photoOf.
+  ///
+  /// In de, this message translates to:
+  /// **'Foto von {name}'**
+  String photoOf(String name);
+
+  /// No description provided for @photosEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Fotos'**
+  String get photosEmpty;
+
+  /// No description provided for @weightAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewicht eintragen'**
+  String get weightAdd;
+
+  /// No description provided for @weightKg.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewicht (kg)'**
+  String get weightKg;
+
+  /// No description provided for @weightValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{kg} kg'**
+  String weightValue(String kg);
+
+  /// No description provided for @weightDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum'**
+  String get weightDate;
+
+  /// No description provided for @weightNote.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz (optional)'**
+  String get weightNote;
+
+  /// No description provided for @weightEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch kein Gewicht eingetragen'**
+  String get weightEmpty;
+
+  /// No description provided for @weightLatest.
+  ///
+  /// In de, this message translates to:
+  /// **'Zuletzt {kg} kg am {date}'**
+  String weightLatest(String kg, String date);
+
+  /// No description provided for @weightChartLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewichtsverlauf von {from} bis {to}, zwischen {min} und {max} kg'**
+  String weightChartLabel(String from, String to, String min, String max);
+
+  /// No description provided for @weightShowAll.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle {count} Einträge anzeigen'**
+  String weightShowAll(int count);
+
+  /// No description provided for @weightDeleteConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Gewichtseintrag löschen?'**
+  String get weightDeleteConfirm;
+
+  /// No description provided for @contactAdd.
+  ///
+  /// In de, this message translates to:
+  /// **'Kontakt hinzufügen'**
+  String get contactAdd;
+
+  /// No description provided for @contactNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neuer Kontakt'**
+  String get contactNew;
+
+  /// No description provided for @contactEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Kontakt bearbeiten'**
+  String get contactEdit;
+
+  /// No description provided for @contactExisting.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorhandenen Kontakt zuordnen'**
+  String get contactExisting;
+
+  /// No description provided for @contactName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get contactName;
+
+  /// No description provided for @contactRole.
+  ///
+  /// In de, this message translates to:
+  /// **'Rolle'**
+  String get contactRole;
+
+  /// No description provided for @contactPhone.
+  ///
+  /// In de, this message translates to:
+  /// **'Telefon'**
+  String get contactPhone;
+
+  /// No description provided for @contactEmail.
+  ///
+  /// In de, this message translates to:
+  /// **'E-Mail'**
+  String get contactEmail;
+
+  /// No description provided for @contactNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get contactNotes;
+
+  /// No description provided for @contactSharedHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Änderungen gelten für alle Pferde mit diesem Kontakt.'**
+  String get contactSharedHint;
+
+  /// No description provided for @contactCall.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} anrufen'**
+  String contactCall(String name);
+
+  /// No description provided for @contactUnlink.
+  ///
+  /// In de, this message translates to:
+  /// **'Von diesem Pferd entfernen'**
+  String get contactUnlink;
+
+  /// No description provided for @contactsEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Kontakte'**
+  String get contactsEmpty;
+
+  /// No description provided for @contactCallFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Telefon-App konnte nicht geöffnet werden.'**
+  String get contactCallFailed;
+
+  /// No description provided for @contactRole_tierarzt.
+  ///
+  /// In de, this message translates to:
+  /// **'Tierarzt'**
+  String get contactRole_tierarzt;
+
+  /// No description provided for @contactRole_hufschmied.
+  ///
+  /// In de, this message translates to:
+  /// **'Hufschmied / Hufpfleger'**
+  String get contactRole_hufschmied;
+
+  /// No description provided for @contactRole_zahnarzt.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferdezahnarzt'**
+  String get contactRole_zahnarzt;
+
+  /// No description provided for @contactRole_physio.
+  ///
+  /// In de, this message translates to:
+  /// **'Osteopath / Physio'**
+  String get contactRole_physio;
+
+  /// No description provided for @contactRole_sattler.
+  ///
+  /// In de, this message translates to:
+  /// **'Sattler'**
+  String get contactRole_sattler;
+
+  /// No description provided for @contactRole_trainer.
+  ///
+  /// In de, this message translates to:
+  /// **'Trainer'**
+  String get contactRole_trainer;
+
+  /// No description provided for @contactRole_stall.
+  ///
+  /// In de, this message translates to:
+  /// **'Stall'**
+  String get contactRole_stall;
+
+  /// No description provided for @contactRole_besitzer.
+  ///
+  /// In de, this message translates to:
+  /// **'Besitzer'**
+  String get contactRole_besitzer;
+
+  /// No description provided for @contactRole_notfall.
+  ///
+  /// In de, this message translates to:
+  /// **'Notfallkontakt'**
+  String get contactRole_notfall;
+
+  /// No description provided for @contactRole_sonstige.
+  ///
+  /// In de, this message translates to:
+  /// **'Sonstige'**
+  String get contactRole_sonstige;
 }
 
 class _AppLocalizationsDelegate

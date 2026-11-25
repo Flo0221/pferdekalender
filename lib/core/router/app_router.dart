@@ -5,6 +5,8 @@ import 'package:material_ui/material_ui.dart';
 import '../../features/dienstplan/ui/dienstplan_screen.dart';
 import '../../features/einstellungen/ui/settings_screen.dart';
 import '../../features/futter/ui/futter_screen.dart';
+import '../../features/pferd/ui/horse_edit_screen.dart';
+import '../../features/pferd/ui/horse_list_screen.dart';
 import '../../features/pferd/ui/pferd_screen.dart';
 import '../../features/pflege/ui/pflege_screen.dart';
 import '../../features/training/ui/training_screen.dart';
@@ -31,6 +33,24 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
       path: Routes.settings,
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: Routes.horseList,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const HorseListScreen(),
+      routes: [
+        GoRoute(
+          path: 'neu',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const HorseEditScreen(),
+        ),
+        GoRoute(
+          path: ':id/bearbeiten',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) =>
+              HorseEditScreen(horseId: state.pathParameters['id']),
+        ),
+      ],
     ),
   ],
 );

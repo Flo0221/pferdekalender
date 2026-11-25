@@ -12,6 +12,7 @@ class DienstplanScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return TabScaffold(
       title: l10n.titleDienst,
+      showHorseSwitcher: false,
       body: EmptyState(
         icon: Icons.work_history_outlined,
         title: l10n.emptyDienstTitle,

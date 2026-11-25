@@ -11,11 +11,14 @@ void main() {
   setUp(() => db = AppDatabase(NativeDatabase.memory()));
   tearDown(() => db.close());
 
-  test('Datenbank öffnet mit Schema-Version 1', () async {
-    expect(db.schemaVersion, 1);
-    final rows = await db.customSelect('PRAGMA foreign_keys').getSingle();
-    expect(rows.data.values.single, 1);
-  });
+  test(
+    'Datenbank öffnet mit aktueller Schema-Version und Fremdschlüsseln',
+    () async {
+      expect(db.schemaVersion, 2);
+      final rows = await db.customSelect('PRAGMA foreign_keys').getSingle();
+      expect(rows.data.values.single, 1);
+    },
+  );
 
   test('LocalDate wird als Text ohne Zeitzone gespeichert', () async {
     const converter = LocalDateConverter();
