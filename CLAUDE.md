@@ -164,6 +164,16 @@ test/                         spiegelt lib/
   iOS hält max. 64 geplante Benachrichtigungen → `NotificationGateway.maxPending`
   (iOS 60). „Pünktliche Erinnerungen“ nur auf Android sichtbar
   (`exactAlarmsSupported`). Konfiguration geprüft in `test/core/ios_config_test.dart`.
+- **Datensicherung:** `features/backup`. Format in `backup/domain/backup_format.dart`
+  (ZIP: `manifest.json` mit `kind`, `format_version`, `schema_version`;
+  `data/<tabelle>.json` mit SQL-Rohwerten; `photos/<datei>`). Android und Web
+  identisch. `BackupService` exportiert alle Tabellen aus `backupTables`
+  (neue Tabellen dort eintragen – Test prüft Vollständigkeit) und importiert
+  mit „alles ersetzen“: nur Spalten, die es im aktuellen Schema gibt; ältere
+  Sicherungen erlaubt, neuere abgelehnt. Vor jedem Import automatische
+  Sicherung (Android: `<Dokumente>/backups`, letzte 3; Web: wird geteilt).
+  Export-Erinnerung (`ExportReminderBanner` in `TabScaffold`) nach 7 Tagen,
+  „Später“ = 1 Tag. Datei-Zugriff über `BackupFiles` (Tests: `FakeBackupFiles`).
 - **Tab-FABs** stehen in `HeroMode(enabled: false)` (IndexedStack, sonst
   Hero-Tag-Kollision).
 - **Kalender-Widget** `core/widgets/month_calendar.dart`: Punkte (`dotsFor`)
@@ -177,7 +187,8 @@ test/                         spiegelt lib/
   `pumpAndSettle` (sonst Timeout). Trainingsvorlagen werden in Tests aus der
   Datei gelesen (`testCatalog`), nicht über `rootBundle`. In der App für
   einmalige Abfragen Repository-`get…`-Methoden statt `provider.future` von
-  Stream-Providern nutzen.
+  Stream-Providern nutzen. Echte Datei-I/O im Test nur in `tester.runAsync`;
+  `TestApp` hat einen eigenen Temp-Dokumentenordner je Test.
   Bottom-Sheets: Aktionsknöpfe außerhalb des Scrollbereichs anordnen.
 - **App-Version** steht doppelt: `pubspec.yaml` und `lib/core/app_info.dart`
   (Test prüft Gleichheit). Bewusst kein `package_info_plus`.
@@ -281,6 +292,9 @@ Vorher immer prüfen, ob per Name genutzte Ressourcen im APK sind:
 | flutter_local_notifications | Erinnerungen | kein Netzwerk; Permissions POST_NOTIFICATIONS, VIBRATE; braucht Desugaring + compileSdk 37 |
 | timezone | Zeitzonen | **nur `data/latest.dart`** (eingebettet). `standalone.dart`/`browser.dart` laden per `http` – verboten, per Test geprüft |
 | flutter_timezone | Gerätezeitzone | kein Netzwerk, keine Permissions |
+| archive | ZIP für Export/Import | reines Dart, kein Netzwerk |
+| share_plus | Sicherung teilen/„In Dateien sichern“ | keine Permissions (nur eigener FileProvider); Web: `navigator.share`, Fallback Download; `mailto`-Fallback abgeschaltet |
+| file_picker | ZIP für Import wählen | keine Permissions; Web liest nur lokale Blob-URLs (`fetch` auf `blob:`) |
 
 Verworfen: `table_calendar` (nutzt noch `flutter/material`, bricht mit
 `material_ui`) → eigener Kalender `core/widgets/month_calendar.dart`
@@ -305,7 +319,6 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 
 ## TODO / offen
 
-- Einstellungen: Export/Import (Meilenstein 7).
 - Antippen einer Benachrichtigung öffnet nur die App, nicht den Eintrag
   (payload `care:<id>` / `birthday:<id>` ist vorhanden) – Meilenstein 7.
 - Erinnerungen auf echtem Gerät testen: auch nach Neustart und mit

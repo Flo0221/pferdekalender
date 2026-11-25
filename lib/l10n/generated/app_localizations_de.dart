@@ -107,7 +107,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsPrivacyText =>
-      'Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an der automatischen Android-Sicherung teil. Sichere deine Daten über den Export (folgt in einer späteren Version).';
+      'Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an automatischen Cloud-Sicherungen teil. Sichere deine Daten regelmäßig über „Daten exportieren“.';
 
   @override
   String get settingsAbout => 'Über die App';
@@ -2167,4 +2167,127 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get bloodSource => 'Quelle der Referenzwerte';
+
+  @override
+  String get backupTitle => 'Datensicherung';
+
+  @override
+  String get backupExport => 'Daten exportieren';
+
+  @override
+  String get backupExportHint =>
+      'Alle Daten und Fotos als ZIP-Datei sichern – z. B. auf USB, PC oder „In Dateien sichern“.';
+
+  @override
+  String get backupImport => 'Daten importieren';
+
+  @override
+  String get backupImportHint =>
+      'Ersetzt alle Daten durch eine Sicherung. Vorher wird der aktuelle Stand automatisch gesichert.';
+
+  @override
+  String backupLastExport(String date) {
+    return 'Letzte Sicherung: $date';
+  }
+
+  @override
+  String get backupNever => 'Noch keine Sicherung erstellt';
+
+  @override
+  String get backupExporting => 'Sicherung wird erstellt …';
+
+  @override
+  String backupExportDone(int photos) {
+    return 'Sicherung erstellt ($photos Fotos)';
+  }
+
+  @override
+  String get backupShareSubject => 'Pferdekalender-Sicherung';
+
+  @override
+  String get backupImportConfirmTitle => 'Alle Daten ersetzen?';
+
+  @override
+  String backupImportConfirmText(
+    String date,
+    String platform,
+    String version,
+    int horses,
+    int photos,
+  ) {
+    String _temp0 = intl.Intl.pluralLogic(
+      horses,
+      locale: localeName,
+      other: '$horses Pferde',
+      one: '1 Pferd',
+    );
+    return 'Sicherung vom $date ($platform, App-Version $version): $_temp0, $photos Fotos.\n\nAlle aktuellen Daten auf diesem Gerät werden durch die Sicherung ersetzt. Der aktuelle Stand wird vorher automatisch gesichert.';
+  }
+
+  @override
+  String get backupImportConfirm => 'Ersetzen';
+
+  @override
+  String get backupAutoSaved => 'Aktueller Stand wurde vorher gesichert.';
+
+  @override
+  String get backupAutoShareTitle => 'Zuerst aktuellen Stand sichern';
+
+  @override
+  String get backupAutoShareText =>
+      'Bevor die Daten ersetzt werden, wird der aktuelle Stand als Datei gesichert. Bitte im nächsten Schritt speichern (z. B. „In Dateien sichern“).';
+
+  @override
+  String get backupAutoShareContinue => 'Sichern und fortfahren';
+
+  @override
+  String backupImportDone(int rows, int photos) {
+    return 'Import abgeschlossen: $rows Einträge, $photos Fotos';
+  }
+
+  @override
+  String get backupErrorNotABackup =>
+      'Diese Datei ist keine Pferdekalender-Sicherung.';
+
+  @override
+  String get backupErrorTooNew =>
+      'Diese Sicherung stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren.';
+
+  @override
+  String get backupErrorCorrupt =>
+      'Die Sicherung ist beschädigt und konnte nicht gelesen werden.';
+
+  @override
+  String get backupRestoreAuto =>
+      'Stand vor dem letzten Import wiederherstellen';
+
+  @override
+  String backupRestoreAutoHint(String date) {
+    return 'Automatische Sicherung vom $date';
+  }
+
+  @override
+  String backupReminder(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tagen',
+      one: '1 Tag',
+    );
+    return 'Letzte Sicherung vor $_temp0 – jetzt sichern?';
+  }
+
+  @override
+  String get backupReminderNever =>
+      'Noch keine Datensicherung – jetzt sichern?';
+
+  @override
+  String get backupReminderAction => 'Sichern';
+
+  @override
+  String get backupReminderLater => 'Später';
+
+  @override
+  String get backupDataWarning =>
+      'Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten.';
 }

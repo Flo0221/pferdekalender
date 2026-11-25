@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../../core/app_info.dart';
 import '../../../core/router/routes.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../backup/ui/backup_section.dart';
 import '../domain/app_theme_mode.dart';
 import 'reminder_settings_section.dart';
 import 'settings_providers.dart';
@@ -50,6 +51,9 @@ class SettingsScreen extends ConsumerWidget {
                   .setThemeMode(selection.single),
             ),
           ),
+          const Divider(height: 32),
+          _SectionHeader(l10n.backupTitle),
+          const BackupSection(),
           const Divider(height: 32),
           _SectionHeader(l10n.settingsReminders),
           const ReminderSettingsSection(),

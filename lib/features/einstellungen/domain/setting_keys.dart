@@ -22,4 +22,10 @@ abstract final class SettingKeys {
 
   /// `"true"`, sobald der Hinweis beim ersten Trainingsplan bestätigt wurde.
   static const trainingDisclaimerSeen = 'training_disclaimer_seen';
+
+  /// Zeitpunkt (ISO-8601, UTC) der letzten Datensicherung (Export/Import).
+  static const lastExportAt = 'last_export_at';
+
+  /// Export-Erinnerung bis zu diesem Zeitpunkt (ISO-8601, UTC) ausblenden.
+  static const exportSnoozedUntil = 'export_snoozed_until';
 }

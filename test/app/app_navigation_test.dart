@@ -97,6 +97,8 @@ void main() {
     );
 
     await tester.scrollUntilVisible(find.text('Dunkel'), -300);
+    await tester.ensureVisible(find.text('Dunkel'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Dunkel'));
     await tester.pumpAndSettle();
     final app = tester.widget<MaterialApp>(find.byType(MaterialApp));

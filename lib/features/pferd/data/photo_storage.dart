@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:path/path.dart' as p;
 
@@ -32,5 +33,23 @@ class PhotoStorage {
   Future<void> deleteFile(String relativePath) async {
     final file = await resolve(relativePath);
     if (await file.exists()) await file.delete();
+  }
+
+  Future<Uint8List?> readBytes(String relativePath) async {
+    final file = await resolve(relativePath);
+    return await file.exists() ? file.readAsBytes() : null;
+  }
+
+  Future<void> writeBytes(String relativePath, Uint8List bytes) async {
+    final file = await resolve(relativePath);
+    await file.parent.create(recursive: true);
+    await file.writeAsBytes(bytes, flush: true);
+  }
+
+  /// Löscht alle Fotos (vor einem Import).
+  Future<void> deleteAll() async {
+    final base = await _baseDir();
+    final dir = Directory(p.join(base.path, folder));
+    if (await dir.exists()) await dir.delete(recursive: true);
   }
 }

@@ -30,7 +30,7 @@
   "settingsNoticeTitle": "Hinweis",
   "disclaimer": "Intervalle und Trainingsvorschläge ersetzen keine Absprache mit Tierarzt, Hufschmied oder Trainer.",
   "settingsPrivacyTitle": "Datenschutz",
-  "settingsPrivacyText": "Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an der automatischen Android-Sicherung teil. Sichere deine Daten über den Export (folgt in einer späteren Version).",
+  "settingsPrivacyText": "Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an automatischen Cloud-Sicherungen teil. Sichere deine Daten regelmäßig über „Daten exportieren“.",
   "settingsAbout": "Über die App",
   "actionSave": "Speichern",
   "actionCancel": "Abbrechen",
@@ -1290,5 +1290,90 @@
       }
     }
   },
-  "bloodSource": "Quelle der Referenzwerte"
+  "bloodSource": "Quelle der Referenzwerte",
+  "backupTitle": "Datensicherung",
+  "backupExport": "Daten exportieren",
+  "backupExportHint": "Alle Daten und Fotos als ZIP-Datei sichern – z. B. auf USB, PC oder „In Dateien sichern“.",
+  "backupImport": "Daten importieren",
+  "backupImportHint": "Ersetzt alle Daten durch eine Sicherung. Vorher wird der aktuelle Stand automatisch gesichert.",
+  "backupLastExport": "Letzte Sicherung: {date}",
+  "@backupLastExport": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "backupNever": "Noch keine Sicherung erstellt",
+  "backupExporting": "Sicherung wird erstellt …",
+  "backupExportDone": "Sicherung erstellt ({photos} Fotos)",
+  "@backupExportDone": {
+    "placeholders": {
+      "photos": {
+        "type": "int"
+      }
+    }
+  },
+  "backupShareSubject": "Pferdekalender-Sicherung",
+  "backupImportConfirmTitle": "Alle Daten ersetzen?",
+  "backupImportConfirmText": "Sicherung vom {date} ({platform}, App-Version {version}): {horses, plural, =1{1 Pferd} other{{horses} Pferde}}, {photos} Fotos.\n\nAlle aktuellen Daten auf diesem Gerät werden durch die Sicherung ersetzt. Der aktuelle Stand wird vorher automatisch gesichert.",
+  "@backupImportConfirmText": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "platform": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      },
+      "horses": {
+        "type": "int"
+      },
+      "photos": {
+        "type": "int"
+      }
+    }
+  },
+  "backupImportConfirm": "Ersetzen",
+  "backupAutoSaved": "Aktueller Stand wurde vorher gesichert.",
+  "backupAutoShareTitle": "Zuerst aktuellen Stand sichern",
+  "backupAutoShareText": "Bevor die Daten ersetzt werden, wird der aktuelle Stand als Datei gesichert. Bitte im nächsten Schritt speichern (z. B. „In Dateien sichern“).",
+  "backupAutoShareContinue": "Sichern und fortfahren",
+  "backupImportDone": "Import abgeschlossen: {rows} Einträge, {photos} Fotos",
+  "@backupImportDone": {
+    "placeholders": {
+      "rows": {
+        "type": "int"
+      },
+      "photos": {
+        "type": "int"
+      }
+    }
+  },
+  "backupErrorNotABackup": "Diese Datei ist keine Pferdekalender-Sicherung.",
+  "backupErrorTooNew": "Diese Sicherung stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren.",
+  "backupErrorCorrupt": "Die Sicherung ist beschädigt und konnte nicht gelesen werden.",
+  "backupRestoreAuto": "Stand vor dem letzten Import wiederherstellen",
+  "backupRestoreAutoHint": "Automatische Sicherung vom {date}",
+  "@backupRestoreAutoHint": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "backupReminder": "Letzte Sicherung vor {days, plural, =1{1 Tag} other{{days} Tagen}} – jetzt sichern?",
+  "@backupReminder": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "backupReminderNever": "Noch keine Datensicherung – jetzt sichern?",
+  "backupReminderAction": "Sichern",
+  "backupReminderLater": "Später",
+  "backupDataWarning": "Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten."
 }

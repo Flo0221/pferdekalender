@@ -18,10 +18,19 @@ void main() {
     unawaited(app.container.read(routerProvider).push(Routes.settings));
     await tester.pumpAndSettle();
 
+    await tester.scrollUntilVisible(find.text('Uhrzeit der Erinnerungen'), 200);
     expect(find.text('Uhrzeit der Erinnerungen'), findsOneWidget);
     expect(find.text('09:00'), findsOneWidget);
 
     // „7 Tage vorher“ zusätzlich zur Standard-Vorbelegung „1 Tag vorher“.
+    await tester.scrollUntilVisible(
+      find.widgetWithText(FilterChip, '7 Tage vorher'),
+      200,
+    );
+    await tester.ensureVisible(
+      find.widgetWithText(FilterChip, '7 Tage vorher'),
+    );
+    await tester.pumpAndSettle();
     await tester.tap(find.widgetWithText(FilterChip, '7 Tage vorher'));
     await tester.pumpAndSettle();
     expect(

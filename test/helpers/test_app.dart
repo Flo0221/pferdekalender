@@ -11,37 +11,44 @@ import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
 import 'package:pferdekalender/core/files/documents_dir_provider.dart';
 import 'package:pferdekalender/core/notifications/notification_providers.dart';
+import 'package:pferdekalender/features/backup/ui/backup_files.dart';
 import 'package:pferdekalender/features/gesundheit/domain/blood.dart';
 import 'package:pferdekalender/features/gesundheit/ui/blood_providers.dart';
 import 'package:pferdekalender/features/training/domain/training_catalog.dart';
 import 'package:pferdekalender/features/training/ui/training_providers.dart';
 
+import 'fake_backup_files.dart';
 import 'fake_notifications.dart';
 
 /// Laufende Test-App mit In-Memory-Datenbank und gefälschten Benachrichtigungen.
 class TestApp {
-  TestApp(this.db, this.container, this.notifications);
+  TestApp(this.db, this.container, this.notifications, this.backupFiles);
 
   final AppDatabase db;
   final ProviderContainer container;
   final FakeNotificationGateway notifications;
+  final FakeBackupFiles backupFiles;
 
   /// Erzeugt Datenbank und Container (vor dem Pumpen, um Daten anzulegen).
   static TestApp create() {
     driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
     final db = AppDatabase(NativeDatabase.memory());
+    final docs = Directory.systemTemp.createTempSync('pferdekalender_test');
     final notifications = FakeNotificationGateway();
+    final backupFiles = FakeBackupFiles();
     final container = ProviderContainer(
       overrides: [
         databaseProvider.overrideWithValue(db),
-        documentsDirProvider.overrideWith((ref) async => Directory.systemTemp),
+        // Eigener Ordner je Test (Import räumt dort Fotos auf).
+        documentsDirProvider.overrideWith((ref) async => docs),
         notificationGatewayProvider.overrideWithValue(notifications),
+        backupFilesProvider.overrideWithValue(backupFiles),
         // rootBundle lädt in der Testzeit nicht – Vorlagen direkt lesen.
         trainingCatalogProvider.overrideWithValue(AsyncData(testCatalog)),
         bloodCatalogProvider.overrideWithValue(AsyncData(testBloodCatalog)),
       ],
     );
-    return TestApp(db, container, notifications);
+    return TestApp(db, container, notifications, backupFiles);
   }
 
   Future<void> pump(WidgetTester tester) async {

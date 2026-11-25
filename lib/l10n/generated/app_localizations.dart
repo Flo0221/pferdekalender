@@ -277,7 +277,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsPrivacyText.
   ///
   /// In de, this message translates to:
-  /// **'Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an der automatischen Android-Sicherung teil. Sichere deine Daten über den Export (folgt in einer späteren Version).'**
+  /// **'Alle Daten bleiben auf diesem Gerät. Die App hat keinen Internetzugriff und nimmt nicht an automatischen Cloud-Sicherungen teil. Sichere deine Daten regelmäßig über „Daten exportieren“.'**
   String get settingsPrivacyText;
 
   /// No description provided for @settingsAbout.
@@ -3705,6 +3705,180 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Quelle der Referenzwerte'**
   String get bloodSource;
+
+  /// No description provided for @backupTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Datensicherung'**
+  String get backupTitle;
+
+  /// No description provided for @backupExport.
+  ///
+  /// In de, this message translates to:
+  /// **'Daten exportieren'**
+  String get backupExport;
+
+  /// No description provided for @backupExportHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Daten und Fotos als ZIP-Datei sichern – z. B. auf USB, PC oder „In Dateien sichern“.'**
+  String get backupExportHint;
+
+  /// No description provided for @backupImport.
+  ///
+  /// In de, this message translates to:
+  /// **'Daten importieren'**
+  String get backupImport;
+
+  /// No description provided for @backupImportHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Ersetzt alle Daten durch eine Sicherung. Vorher wird der aktuelle Stand automatisch gesichert.'**
+  String get backupImportHint;
+
+  /// No description provided for @backupLastExport.
+  ///
+  /// In de, this message translates to:
+  /// **'Letzte Sicherung: {date}'**
+  String backupLastExport(String date);
+
+  /// No description provided for @backupNever.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Sicherung erstellt'**
+  String get backupNever;
+
+  /// No description provided for @backupExporting.
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherung wird erstellt …'**
+  String get backupExporting;
+
+  /// No description provided for @backupExportDone.
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherung erstellt ({photos} Fotos)'**
+  String backupExportDone(int photos);
+
+  /// No description provided for @backupShareSubject.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferdekalender-Sicherung'**
+  String get backupShareSubject;
+
+  /// No description provided for @backupImportConfirmTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Daten ersetzen?'**
+  String get backupImportConfirmTitle;
+
+  /// No description provided for @backupImportConfirmText.
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherung vom {date} ({platform}, App-Version {version}): {horses, plural, =1{1 Pferd} other{{horses} Pferde}}, {photos} Fotos.\n\nAlle aktuellen Daten auf diesem Gerät werden durch die Sicherung ersetzt. Der aktuelle Stand wird vorher automatisch gesichert.'**
+  String backupImportConfirmText(
+    String date,
+    String platform,
+    String version,
+    int horses,
+    int photos,
+  );
+
+  /// No description provided for @backupImportConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Ersetzen'**
+  String get backupImportConfirm;
+
+  /// No description provided for @backupAutoSaved.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktueller Stand wurde vorher gesichert.'**
+  String get backupAutoSaved;
+
+  /// No description provided for @backupAutoShareTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Zuerst aktuellen Stand sichern'**
+  String get backupAutoShareTitle;
+
+  /// No description provided for @backupAutoShareText.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevor die Daten ersetzt werden, wird der aktuelle Stand als Datei gesichert. Bitte im nächsten Schritt speichern (z. B. „In Dateien sichern“).'**
+  String get backupAutoShareText;
+
+  /// No description provided for @backupAutoShareContinue.
+  ///
+  /// In de, this message translates to:
+  /// **'Sichern und fortfahren'**
+  String get backupAutoShareContinue;
+
+  /// No description provided for @backupImportDone.
+  ///
+  /// In de, this message translates to:
+  /// **'Import abgeschlossen: {rows} Einträge, {photos} Fotos'**
+  String backupImportDone(int rows, int photos);
+
+  /// No description provided for @backupErrorNotABackup.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Datei ist keine Pferdekalender-Sicherung.'**
+  String get backupErrorNotABackup;
+
+  /// No description provided for @backupErrorTooNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Sicherung stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren.'**
+  String get backupErrorTooNew;
+
+  /// No description provided for @backupErrorCorrupt.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Sicherung ist beschädigt und konnte nicht gelesen werden.'**
+  String get backupErrorCorrupt;
+
+  /// No description provided for @backupRestoreAuto.
+  ///
+  /// In de, this message translates to:
+  /// **'Stand vor dem letzten Import wiederherstellen'**
+  String get backupRestoreAuto;
+
+  /// No description provided for @backupRestoreAutoHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Automatische Sicherung vom {date}'**
+  String backupRestoreAutoHint(String date);
+
+  /// No description provided for @backupReminder.
+  ///
+  /// In de, this message translates to:
+  /// **'Letzte Sicherung vor {days, plural, =1{1 Tag} other{{days} Tagen}} – jetzt sichern?'**
+  String backupReminder(int days);
+
+  /// No description provided for @backupReminderNever.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Datensicherung – jetzt sichern?'**
+  String get backupReminderNever;
+
+  /// No description provided for @backupReminderAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Sichern'**
+  String get backupReminderAction;
+
+  /// No description provided for @backupReminderLater.
+  ///
+  /// In de, this message translates to:
+  /// **'Später'**
+  String get backupReminderLater;
+
+  /// No description provided for @backupDataWarning.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten.'**
+  String get backupDataWarning;
 }
 
 class _AppLocalizationsDelegate

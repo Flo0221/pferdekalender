@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../features/backup/ui/backup_section.dart';
 import '../../features/pferd/ui/widgets/horse_switcher.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../router/routes.dart';
@@ -43,7 +44,13 @@ class TabScaffold extends StatelessWidget {
           ),
         ],
       ),
-      body: body,
+      body: Column(
+        children: [
+          // Erinnerung an die Datensicherung (nach 7 Tagen).
+          const ExportReminderBanner(),
+          Expanded(child: body),
+        ],
+      ),
       // Alle Tabs liegen gleichzeitig im Baum (IndexedStack) – ohne HeroMode
       // kollidieren die Standard-Hero-Tags der FABs beim Seitenwechsel.
       floatingActionButton: floatingActionButton == null

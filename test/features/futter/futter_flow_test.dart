@@ -58,6 +58,11 @@ void main() {
     await app.settle(tester);
 
     expect(find.text('Futterplan · gültig seit ${_today()}'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Tagessumme'),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('Tagessumme'), findsOneWidget);
     expect(find.text('4 kg'), findsWidgets);
 
@@ -90,6 +95,11 @@ void main() {
       ),
     );
     await app.settle(tester);
+    await tester.scrollUntilVisible(
+      find.text('Ruhetag'),
+      -200,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('Ruhetag'), findsOneWidget);
     expect(find.text('Hafer'), findsNothing);
 
