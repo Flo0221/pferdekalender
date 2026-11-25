@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -172,7 +173,8 @@ class _HorseEditScreenState extends ConsumerState<HorseEditScreen> {
                     lastDate: LocalDate.today(),
                     onChanged: (d) => setState(() => _birthDate = d),
                   ),
-                  if (_birthDate != null)
+                  // Geburtstagserinnerung nur mit Benachrichtigungen (nicht Web).
+                  if (_birthDate != null && !kIsWeb)
                     SwitchListTile(
                       contentPadding: EdgeInsets.zero,
                       secondary: const Icon(Icons.cake_outlined),

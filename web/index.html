@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!--
+    base href wird beim Build über --base-href gesetzt (GitHub Pages: /pferdekalender/).
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Pferdekalender – Pflege, Training, Futter und Dienstplan. Alle Daten bleiben auf deinem Gerät.">
+  <meta name="theme-color" content="#7A5230">
+
+  <!-- iOS: als Web-App vom Home-Bildschirm -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Pferdekalender">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <title>Pferdekalender</title>
+
+  <style>
+    :root { --bg: #FFF8F4; --fg: #2D2016; --accent: #7A5230; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1A120C; --fg: #F0DFD3; }
+    }
+    html, body {
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      background: var(--bg); color: var(--fg);
+      font-family: -apple-system, system-ui, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+    /* Flutter wird in diesen Rahmen gesetzt: Abstand zu Notch, Statusleiste
+       und Home-Indikator (viewport-fit=cover). */
+    #app {
+      position: fixed;
+      top: env(safe-area-inset-top, 0px);
+      right: env(safe-area-inset-right, 0px);
+      bottom: env(safe-area-inset-bottom, 0px);
+      left: env(safe-area-inset-left, 0px);
+    }
+    /* iOS zoomt bei Eingabefeldern < 16 px – Flutters versteckte Felder
+       daher immer 16 px. */
+    input, textarea, select { font-size: 16px !important; }
+    /* Ladebildschirm bis zum ersten Flutter-Bild */
+    #loading {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+      background: var(--bg); z-index: 10; transition: opacity .3s;
+    }
+    #loading img { width: 96px; height: 96px; border-radius: 22px; }
+    #loading p { margin: 0; font-size: 16px; }
+    #loading .bar { width: 160px; height: 4px; border-radius: 2px; overflow: hidden;
+      background: rgba(122, 82, 48, .2); }
+    #loading .bar::after { content: ""; display: block; width: 40%; height: 100%;
+      background: var(--accent); animation: slide 1.1s ease-in-out infinite; }
+    @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+  </style>
+</head>
+<body>
+  <div id="loading" role="status" aria-live="polite">
+    <img src="icons/Icon-192.png" alt="">
+    <p>Pferdekalender wird geladen …</p>
+    <div class="bar"></div>
+  </div>
+  <div id="app"></div>
+
+  <script>
+    // Ladebildschirm entfernen, sobald Flutter das erste Bild zeigt.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('loading');
+      if (!el) return;
+      el.style.opacity = '0';
+      setTimeout(function () { el.remove(); }, 350);
+    });
+
+    // Eigener Service Worker (offline + Update-Hinweis). Neue Versionen
+    // werden NICHT automatisch aktiviert: die App zeigt „Neue Version
+    // verfügbar – jetzt neu laden“ und ruft erst dann pkApplyUpdate() auf.
+    window.pkUpdateAvailable = false;
+    window.pkApplyUpdate = function () {
+      var reg = window.pkRegistration;
+      if (reg && reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      } else {
+        window.location.reload();
+      }
+    };
+    function pkMarkUpdate() {
+      window.pkUpdateAvailable = true;
+      window.dispatchEvent(new Event('pk-update-available'));
+    }
+    if ('serviceWorker' in navigator) {
+      var reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (reloading) return;
+        reloading = true;
+        window.location.reload();
+      });
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+          .then(function (reg) {
+            window.pkRegistration = reg;
+            if (reg.waiting && navigator.serviceWorker.controller) pkMarkUpdate();
+            reg.addEventListener('updatefound', function () {
+              var sw = reg.installing;
+              if (!sw) return;
+              sw.addEventListener('statechange', function () {
+                if (sw.state === 'installed' && navigator.serviceWorker.controller) pkMarkUpdate();
+              });
+            });
+            // Beim Zurückkehren in die App nach Updates sehen.
+            document.addEventListener('visibilitychange', function () {
+              if (document.visibilityState === 'visible') reg.update();
+            });
+          })
+          .catch(function (e) { console.warn('Service Worker nicht registriert:', e); });
+      });
+    }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

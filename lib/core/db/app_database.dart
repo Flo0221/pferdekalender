@@ -6,6 +6,7 @@ import '../../features/dienstplan/data/shift_tables.dart';
 import '../../features/futter/data/feed_tables.dart';
 import '../../features/gesundheit/data/blood_tables.dart';
 import '../../features/pferd/data/horse_tables.dart';
+import '../../features/pferd/data/photo_blob_tables.dart';
 import '../../features/pflege/data/care_seed.dart';
 import '../../features/pflege/data/care_tables.dart';
 import '../../features/training/data/training_tables.dart';
@@ -46,6 +47,7 @@ part 'app_database.g.dart';
     FeedSupplementsTemporary,
     BloodTests,
     BloodValues,
+    PhotoBlobs,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -58,11 +60,17 @@ class AppDatabase extends _$AppDatabase {
       native: const DriftNativeOptions(
         databaseDirectory: getApplicationDocumentsDirectory,
       ),
+      // Web: SQLite als WebAssembly mit Drift-Worker, beides lokal in web/
+      // (kein CDN). Speicher: OPFS, wenn verfügbar, sonst IndexedDB.
+      web: DriftWebOptions(
+        sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+        driftWorker: Uri.parse('drift_worker.js'),
+      ),
     ),
   );
 
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -100,6 +108,9 @@ class AppDatabase extends _$AppDatabase {
       from6To7: (m, schema) async {
         await m.createTable(schema.bloodTests);
         await m.createTable(schema.bloodValues);
+      },
+      from7To8: (m, schema) async {
+        await m.createTable(schema.photoBlobs);
       },
     ),
     beforeOpen: (details) async {

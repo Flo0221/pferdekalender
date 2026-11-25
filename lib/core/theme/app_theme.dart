@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 
 /// Material-3-Theme. Grundfarbe: warmes Braun (Sattel/Leder).
@@ -14,6 +15,8 @@ abstract final class AppTheme {
     );
     return ThemeData(
       useMaterial3: true,
+      // Web: gebündelte Schrift (sonst lädt Flutter Roboto von Google).
+      fontFamily: kIsWeb ? 'Roboto' : null,
       colorScheme: scheme,
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,

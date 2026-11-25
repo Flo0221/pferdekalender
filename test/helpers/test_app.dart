@@ -11,6 +11,7 @@ import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
 import 'package:pferdekalender/core/files/documents_dir_provider.dart';
 import 'package:pferdekalender/core/notifications/notification_providers.dart';
+import 'package:pferdekalender/core/platform/web_env.dart';
 import 'package:pferdekalender/features/backup/ui/backup_files.dart';
 import 'package:pferdekalender/features/gesundheit/domain/blood.dart';
 import 'package:pferdekalender/features/gesundheit/ui/blood_providers.dart';
@@ -30,7 +31,7 @@ class TestApp {
   final FakeBackupFiles backupFiles;
 
   /// Erzeugt Datenbank und Container (vor dem Pumpen, um Daten anzulegen).
-  static TestApp create() {
+  static TestApp create({WebEnv? webEnv}) {
     driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
     final db = AppDatabase(NativeDatabase.memory());
     final docs = Directory.systemTemp.createTempSync('pferdekalender_test');
@@ -43,6 +44,7 @@ class TestApp {
         documentsDirProvider.overrideWith((ref) async => docs),
         notificationGatewayProvider.overrideWithValue(notifications),
         backupFilesProvider.overrideWithValue(backupFiles),
+        if (webEnv != null) webEnvProvider.overrideWithValue(webEnv),
         // rootBundle lädt in der Testzeit nicht – Vorlagen direkt lesen.
         trainingCatalogProvider.overrideWithValue(AsyncData(testCatalog)),
         bloodCatalogProvider.overrideWithValue(AsyncData(testBloodCatalog)),

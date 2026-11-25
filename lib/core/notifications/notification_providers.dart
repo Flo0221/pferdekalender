@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -11,6 +12,7 @@ final appL10nProvider = Provider<AppLocalizations>(
 
 /// Zugang zu den System-Benachrichtigungen. In Tests überschreiben.
 final notificationGatewayProvider = Provider<NotificationGateway>((ref) {
+  if (kIsWeb) return const UnsupportedNotificationGateway();
   final l10n = ref.watch(appL10nProvider);
   return LocalNotificationGateway(
     channelName: l10n.notificationChannelName,

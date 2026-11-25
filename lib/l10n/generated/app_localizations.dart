@@ -3879,6 +3879,126 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten.'**
   String get backupDataWarning;
+
+  /// No description provided for @settingsReminderWebOnly.
+  ///
+  /// In de, this message translates to:
+  /// **'Benachrichtigungen gibt es nur in der Android-App. In der Web-App kannst du Termine stattdessen in den iPhone-Kalender übernehmen (mit Erinnerung); Uhrzeit und Vorlaufzeit unten gelten dafür.'**
+  String get settingsReminderWebOnly;
+
+  /// No description provided for @webStorageTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Speicher im Browser'**
+  String get webStorageTitle;
+
+  /// No description provided for @webStoragePersisted.
+  ///
+  /// In de, this message translates to:
+  /// **'Speicher dauerhaft: {value}'**
+  String webStoragePersisted(String value);
+
+  /// No description provided for @webStorageYes.
+  ///
+  /// In de, this message translates to:
+  /// **'ja'**
+  String get webStorageYes;
+
+  /// No description provided for @webStorageNo.
+  ///
+  /// In de, this message translates to:
+  /// **'nein'**
+  String get webStorageNo;
+
+  /// No description provided for @webStoragePersistHint.
+  ///
+  /// In de, this message translates to:
+  /// **'„Nein“ heißt: Der Browser darf die Daten bei Speichermangel oder nach längerer Nichtbenutzung löschen. Als App vom Home-Bildschirm wird der Speicher meist dauerhaft.'**
+  String get webStoragePersistHint;
+
+  /// No description provided for @webStorageRequest.
+  ///
+  /// In de, this message translates to:
+  /// **'Dauerhaften Speicher anfordern'**
+  String get webStorageRequest;
+
+  /// No description provided for @webStorageUsage.
+  ///
+  /// In de, this message translates to:
+  /// **'Belegt: {used} von etwa {quota}'**
+  String webStorageUsage(String used, String quota);
+
+  /// No description provided for @webStorageUnknown.
+  ///
+  /// In de, this message translates to:
+  /// **'Speicherbelegung unbekannt'**
+  String get webStorageUnknown;
+
+  /// No description provided for @webDataLossWarning.
+  ///
+  /// In de, this message translates to:
+  /// **'Achtung: Löschst du die Website-Daten im Browser (z. B. Safari → Verlauf und Websitedaten löschen) oder entfernst die App vom Home-Bildschirm, sind alle Daten unwiderruflich weg. Sichere regelmäßig per Export.'**
+  String get webDataLossWarning;
+
+  /// No description provided for @webInstallBanner.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte zuerst über Teilen → Zum Home-Bildschirm installieren und nur dort Daten eintragen.'**
+  String get webInstallBanner;
+
+  /// No description provided for @webInstallHow.
+  ///
+  /// In de, this message translates to:
+  /// **'So geht’s'**
+  String get webInstallHow;
+
+  /// No description provided for @webInstallTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Als App installieren'**
+  String get webInstallTitle;
+
+  /// No description provided for @webInstallStep1.
+  ///
+  /// In de, this message translates to:
+  /// **'Unten in Safari auf „Teilen“ tippen (Quadrat mit Pfeil nach oben).'**
+  String get webInstallStep1;
+
+  /// No description provided for @webInstallStep2.
+  ///
+  /// In de, this message translates to:
+  /// **'„Zum Home-Bildschirm“ wählen (ggf. nach unten scrollen) und „Hinzufügen“ tippen.'**
+  String get webInstallStep2;
+
+  /// No description provided for @webInstallStep3.
+  ///
+  /// In de, this message translates to:
+  /// **'Pferdekalender über das neue Symbol auf dem Home-Bildschirm öffnen und nur dort Daten eintragen.'**
+  String get webInstallStep3;
+
+  /// No description provided for @webInstallWhy.
+  ///
+  /// In de, this message translates to:
+  /// **'Browser-Tab und installierte App haben getrennte Speicher. Daten, die du hier im Browser-Tab einträgst, siehst du in der installierten App nicht.'**
+  String get webInstallWhy;
+
+  /// No description provided for @webInstallOtherBrowser.
+  ///
+  /// In de, this message translates to:
+  /// **'In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.'**
+  String get webInstallOtherBrowser;
+
+  /// No description provided for @webUpdateAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Version verfügbar – jetzt neu laden'**
+  String get webUpdateAvailable;
+
+  /// No description provided for @webUpdateReload.
+  ///
+  /// In de, this message translates to:
+  /// **'Neu laden'**
+  String get webUpdateReload;
 }
 
 class _AppLocalizationsDelegate

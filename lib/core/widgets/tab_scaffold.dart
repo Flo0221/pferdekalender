@@ -5,6 +5,7 @@ import '../../features/backup/ui/backup_section.dart';
 import '../../features/pferd/ui/widgets/horse_switcher.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../router/routes.dart';
+import 'web_banners.dart';
 
 /// Gemeinsames Gerüst der fünf Haupt-Tabs: AppBar mit Pferde-Umschalter
 /// (bzw. Titel) und Zahnrad für die Einstellungen.
@@ -46,6 +47,8 @@ class TabScaffold extends StatelessWidget {
       ),
       body: Column(
         children: [
+          // Web: neue Version / bitte als App installieren.
+          const WebBanners(),
           // Erinnerung an die Datensicherung (nach 7 Tagen).
           const ExportReminderBanner(),
           Expanded(child: body),

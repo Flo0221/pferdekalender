@@ -14,7 +14,11 @@ class NotificationPermissionState {
     required this.notificationsAllowed,
     required this.exactAlarmsAllowed,
     this.exactAlarmsSupported = true,
+    this.supported = true,
   });
+
+  /// Web: keine lokal geplanten Benachrichtigungen möglich.
+  final bool supported;
 
   final bool notificationsAllowed;
   final bool exactAlarmsAllowed;
@@ -46,6 +50,43 @@ abstract interface class NotificationGateway {
   Future<bool> requestExactAlarms();
 
   Future<void> showTest(String title, String body);
+}
+
+/// Web-App: Benachrichtigungen gibt es nicht (Web-Push bräuchte einen
+/// Server). Alles ist ein stiller No-op; Ersatz: Kalender-Export (.ics) und
+/// die Übersichtskarte im Pflege-Tab.
+class UnsupportedNotificationGateway implements NotificationGateway {
+  const UnsupportedNotificationGateway();
+
+  @override
+  int get maxPending => 0;
+
+  @override
+  Future<void> init() async {}
+
+  @override
+  Future<void> replaceAll(
+    List<PlannedNotification> notifications, {
+    required bool exact,
+  }) async {}
+
+  @override
+  Future<NotificationPermissionState> permissionState() async =>
+      const NotificationPermissionState(
+        notificationsAllowed: false,
+        exactAlarmsAllowed: false,
+        exactAlarmsSupported: false,
+        supported: false,
+      );
+
+  @override
+  Future<bool> requestNotifications() async => false;
+
+  @override
+  Future<bool> requestExactAlarms() async => false;
+
+  @override
+  Future<void> showTest(String title, String body) async {}
 }
 
 /// Echte Umsetzung mit flutter_local_notifications. Alles bleibt lokal.

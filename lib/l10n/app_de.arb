@@ -1375,5 +1375,42 @@
   "backupReminderNever": "Noch keine Datensicherung – jetzt sichern?",
   "backupReminderAction": "Sichern",
   "backupReminderLater": "Später",
-  "backupDataWarning": "Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten."
+  "backupDataWarning": "Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten.",
+  "settingsReminderWebOnly": "Benachrichtigungen gibt es nur in der Android-App. In der Web-App kannst du Termine stattdessen in den iPhone-Kalender übernehmen (mit Erinnerung); Uhrzeit und Vorlaufzeit unten gelten dafür.",
+  "webStorageTitle": "Speicher im Browser",
+  "webStoragePersisted": "Speicher dauerhaft: {value}",
+  "@webStoragePersisted": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "webStorageYes": "ja",
+  "webStorageNo": "nein",
+  "webStoragePersistHint": "„Nein“ heißt: Der Browser darf die Daten bei Speichermangel oder nach längerer Nichtbenutzung löschen. Als App vom Home-Bildschirm wird der Speicher meist dauerhaft.",
+  "webStorageRequest": "Dauerhaften Speicher anfordern",
+  "webStorageUsage": "Belegt: {used} von etwa {quota}",
+  "@webStorageUsage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "quota": {
+        "type": "String"
+      }
+    }
+  },
+  "webStorageUnknown": "Speicherbelegung unbekannt",
+  "webDataLossWarning": "Achtung: Löschst du die Website-Daten im Browser (z. B. Safari → Verlauf und Websitedaten löschen) oder entfernst die App vom Home-Bildschirm, sind alle Daten unwiderruflich weg. Sichere regelmäßig per Export.",
+  "webInstallBanner": "Bitte zuerst über Teilen → Zum Home-Bildschirm installieren und nur dort Daten eintragen.",
+  "webInstallHow": "So geht’s",
+  "webInstallTitle": "Als App installieren",
+  "webInstallStep1": "Unten in Safari auf „Teilen“ tippen (Quadrat mit Pfeil nach oben).",
+  "webInstallStep2": "„Zum Home-Bildschirm“ wählen (ggf. nach unten scrollen) und „Hinzufügen“ tippen.",
+  "webInstallStep3": "Pferdekalender über das neue Symbol auf dem Home-Bildschirm öffnen und nur dort Daten eintragen.",
+  "webInstallWhy": "Browser-Tab und installierte App haben getrennte Speicher. Daten, die du hier im Browser-Tab einträgst, siehst du in der installierten App nicht.",
+  "webInstallOtherBrowser": "In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.",
+  "webUpdateAvailable": "Neue Version verfügbar – jetzt neu laden",
+  "webUpdateReload": "Neu laden"
 }

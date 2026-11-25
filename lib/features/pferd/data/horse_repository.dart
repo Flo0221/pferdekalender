@@ -1,11 +1,12 @@
 import 'package:drift/drift.dart';
+
 import 'package:uuid/uuid.dart';
 
 import '../../../core/db/app_database.dart';
 import '../../../core/time/local_date.dart';
 import '../domain/contact.dart';
 import '../domain/horse.dart';
-import 'photo_storage.dart';
+import 'photo_store.dart';
 
 /// Zugriff auf Pferde, Fotos, Gewichte und Kontakte.
 class HorseRepository {
@@ -13,7 +14,7 @@ class HorseRepository {
     : _uuid = uuid ?? const Uuid();
 
   final AppDatabase _db;
-  final PhotoStorage _photos;
+  final PhotoStore _photos;
   final Uuid _uuid;
 
   // ---------------------------------------------------------------- Pferde
@@ -91,9 +92,21 @@ class HorseRepository {
 
   /// Kopiert die Datei [sourcePath] ins App-Verzeichnis und speichert sie als
   /// Foto. Das erste Foto eines Pferdes wird automatisch Profilbild.
-  Future<String> addPhoto(String horseId, String sourcePath) async {
+  ///
+  /// Android/iOS: [sourcePath] (Datei wird kopiert); Web: [bytes].
+  Future<String> addPhoto(
+    String horseId,
+    String? sourcePath, {
+    Uint8List? bytes,
+    String extension = '.jpg',
+  }) async {
     final id = _uuid.v4();
-    final relativePath = await _photos.importFile(sourcePath, id);
+    final relativePath = await _photos.importPhoto(
+      id,
+      sourcePath: sourcePath,
+      bytes: bytes,
+      extension: extension,
+    );
     await _db.transaction(() async {
       await _db
           .into(_db.horsePhotos)

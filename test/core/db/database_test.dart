@@ -14,7 +14,7 @@ void main() {
   test(
     'Datenbank öffnet mit aktueller Schema-Version und Fremdschlüsseln',
     () async {
-      expect(db.schemaVersion, 7);
+      expect(db.schemaVersion, 8);
       final rows = await db.customSelect('PRAGMA foreign_keys').getSingle();
       expect(rows.data.values.single, 1);
     },

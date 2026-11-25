@@ -28,6 +28,7 @@ dependencies:
   timezone: ^0.11.2
   url_launcher: ^6.3.3
   uuid: ^4.6.0
+  web: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -42,3 +43,12 @@ flutter:
   assets:
     - assets/training_templates.json
     - assets/blood_reference.json
+  # Im Web gebündelt, damit keine Schriften von Google-Servern geladen werden.
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700

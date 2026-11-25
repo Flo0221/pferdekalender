@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_ui/material_ui.dart';
@@ -69,14 +70,26 @@ class PhotosSection extends ConsumerWidget {
     );
     if (source == null) return;
     try {
+      // Web: kleiner speichern (kein Dateisystem, Speicher im Browser
+      // begrenzt) – längste Seite 1600 px, JPEG ~80 %.
       final picked = await ImagePicker().pickImage(
         source: source,
-        maxWidth: 2400,
-        maxHeight: 2400,
-        imageQuality: 85,
+        maxWidth: kIsWeb ? 1600 : 2400,
+        maxHeight: kIsWeb ? 1600 : 2400,
+        imageQuality: kIsWeb ? 80 : 85,
       );
       if (picked == null) return;
-      await ref.read(horseRepositoryProvider).addPhoto(horse.id, picked.path);
+      final repo = ref.read(horseRepositoryProvider);
+      if (kIsWeb) {
+        await repo.addPhoto(
+          horse.id,
+          null,
+          bytes: await picked.readAsBytes(),
+          extension: '.jpg',
+        );
+      } else {
+        await repo.addPhoto(horse.id, picked.path);
+      }
     } on Exception {
       messenger.showSnackBar(SnackBar(content: Text(l10n.photoError)));
     }
@@ -93,7 +106,7 @@ class _Thumb extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final file = ref.watch(photoFileProvider(photo.relativePath));
+    final image = ref.watch(photoImageProvider(photo.relativePath));
     final isProfile = horse.profilePhotoId == photo.id;
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
@@ -116,12 +129,11 @@ class _Thumb extends ConsumerWidget {
                   : null,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: file == null
+            child: image == null
                 ? null
-                : Image.file(
-                    file,
+                : Image(
+                    image: ResizeImage(image, width: 312),
                     fit: BoxFit.cover,
-                    cacheWidth: 312,
                     errorBuilder: (_, _, _) =>
                         const Icon(Icons.broken_image_outlined),
                   ),
@@ -133,7 +145,7 @@ class _Thumb extends ConsumerWidget {
 
   Future<void> _open(BuildContext context, WidgetRef ref) async {
     final l10n = AppLocalizations.of(context);
-    final file = ref.read(photoFileProvider(photo.relativePath));
+    final image = ref.read(photoImageProvider(photo.relativePath));
     final repo = ref.read(horseRepositoryProvider);
     final isProfile = horse.profilePhotoId == photo.id;
     await showDialog<void>(
@@ -143,11 +155,11 @@ class _Thumb extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (file != null)
+            if (image != null)
               Flexible(
                 child: InteractiveViewer(
-                  child: Image.file(
-                    file,
+                  child: Image(
+                    image: image,
                     semanticLabel: l10n.photoOf(horse.displayName),
                   ),
                 ),

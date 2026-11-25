@@ -12,6 +12,7 @@ import 'generated/schema_v4.dart' as v4;
 import 'generated/schema_v5.dart' as v5;
 import 'generated/schema_v6.dart' as v6;
 import 'generated/schema_v7.dart' as v7;
+import 'generated/schema_v8.dart' as v8;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -280,6 +281,44 @@ void main() {
         expect(p.name, 'Winter');
         expect(p.validFrom, '2026-11-01');
         expect(await newDb.select(newDb.bloodTests).get(), isEmpty);
+      },
+    );
+  });
+
+  test('v7 → v8 behält Pferdefotos, Foto-Speicher (Web) leer', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 7,
+      newVersion: 8,
+      createOld: v7.DatabaseAtV7.new,
+      createNew: v8.DatabaseAtV8.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch
+          ..insert(
+            oldDb.horses,
+            v7.HorsesCompanion.insert(
+              id: 'h1',
+              name: 'Amigo',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.horsePhotos,
+            v7.HorsePhotosCompanion.insert(
+              id: 'f1',
+              horseId: 'h1',
+              relativePath: 'photos/f1.jpg',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          );
+      },
+      validateItems: (newDb) async {
+        final f = await newDb.select(newDb.horsePhotos).getSingle();
+        expect(f.relativePath, 'photos/f1.jpg');
+        expect(await newDb.select(newDb.photoBlobs).get(), isEmpty);
       },
     );
   });

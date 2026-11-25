@@ -13,7 +13,7 @@ class HorseAvatar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final file = ref.watch(profilePhotoFileProvider(horse));
+    final image = ref.watch(profilePhotoImageProvider(horse));
     final scheme = Theme.of(context).colorScheme;
     final initial = horse.displayName.isEmpty
         ? '?'
@@ -23,14 +23,14 @@ class HorseAvatar extends ConsumerWidget {
         radius: radius,
         backgroundColor: scheme.primaryContainer,
         foregroundColor: scheme.onPrimaryContainer,
-        foregroundImage: file == null
+        foregroundImage: image == null
             ? null
             : ResizeImage(
-                FileImage(file),
+                image,
                 width: (radius * 2 * MediaQuery.devicePixelRatioOf(context))
                     .round(),
               ),
-        onForegroundImageError: file == null ? null : (_, _) {},
+        onForegroundImageError: image == null ? null : (_, _) {},
         child: Text(initial, style: TextStyle(fontSize: radius * 0.9)),
       ),
     );

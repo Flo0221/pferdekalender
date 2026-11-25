@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/painting.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 
@@ -9,13 +12,36 @@ import '../../einstellungen/domain/setting_keys.dart';
 import '../../einstellungen/ui/settings_providers.dart';
 import '../data/horse_repository.dart';
 import '../data/photo_storage.dart';
+import '../data/photo_store.dart';
 import '../domain/contact.dart';
 import '../domain/horse.dart';
 import '../domain/horse_logic.dart';
 
-final photoStorageProvider = Provider<PhotoStorage>(
-  (ref) => PhotoStorage(() => ref.read(documentsDirProvider.future)),
+/// Foto-Ablage: Dateien (Android/iOS) bzw. Datenbank-Blobs (Web).
+final photoStorageProvider = Provider<PhotoStore>(
+  (ref) => kIsWeb
+      ? DbPhotoStore(ref.watch(databaseProvider))
+      : PhotoStorage(() => ref.read(documentsDirProvider.future)),
 );
+
+/// Foto-Inhalt (nur Web benötigt; Android zeigt Dateien direkt an).
+final photoBytesProvider = FutureProvider.family<Uint8List?, String>(
+  (ref, relativePath) =>
+      ref.watch(photoStorageProvider).readBytes(relativePath),
+);
+
+/// Bildquelle für ein Foto: `FileImage` (Android/iOS) bzw. `MemoryImage` (Web).
+final photoImageProvider = Provider.family<ImageProvider?, String>((
+  ref,
+  relativePath,
+) {
+  if (kIsWeb) {
+    final bytes = ref.watch(photoBytesProvider(relativePath)).value;
+    return bytes == null ? null : MemoryImage(bytes);
+  }
+  final file = ref.watch(photoFileProvider(relativePath));
+  return file == null ? null : FileImage(file);
+});
 
 final horseRepositoryProvider = Provider<HorseRepository>(
   (ref) => HorseRepository(
@@ -83,17 +109,21 @@ final allContactsProvider = StreamProvider<List<Contact>>(
 
 /// Absoluter Pfad eines Fotos, sobald das App-Verzeichnis bekannt ist.
 final photoFileProvider = Provider.family<File?, String>((ref, relativePath) {
+  if (kIsWeb) return null;
   final dir = ref.watch(documentsDirProvider).value;
   if (dir == null) return null;
   return File(p.joinAll([dir.path, ...p.posix.split(relativePath)]));
 });
 
-/// Profilbild-Datei eines Pferdes oder `null`.
-final profilePhotoFileProvider = Provider.family<File?, Horse>((ref, horse) {
+/// Profilbild eines Pferdes oder `null`.
+final profilePhotoImageProvider = Provider.family<ImageProvider?, Horse>((
+  ref,
+  horse,
+) {
   final photos = ref.watch(horsePhotosProvider(horse.id)).value ?? const [];
   for (final photo in photos) {
     if (photo.id == horse.profilePhotoId) {
-      return ref.watch(photoFileProvider(photo.relativePath));
+      return ref.watch(photoImageProvider(photo.relativePath));
     }
   }
   return null;

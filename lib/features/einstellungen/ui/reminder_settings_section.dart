@@ -34,10 +34,16 @@ class ReminderSettingsSection extends ConsumerWidget {
     final repo = ref.read(settingsRepositoryProvider);
     final gateway = ref.read(notificationGatewayProvider);
 
+    final supported = permission?.supported ?? true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (permission != null && !permission.notificationsAllowed)
+        if (!supported)
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: Text(l10n.settingsReminderWebOnly),
+          ),
+        if (supported && permission != null && !permission.notificationsAllowed)
           ListTile(
             leading: Icon(
               Icons.notifications_off_outlined,
@@ -118,20 +124,21 @@ class ReminderSettingsSection extends ConsumerWidget {
               await repo.setValue(SettingKeys.exactReminders, '$on');
             },
           ),
-        ListTile(
-          leading: const Icon(Icons.notifications_active_outlined),
-          title: Text(l10n.settingsReminderTest),
-          onTap: () async {
-            if (permission != null && !permission.notificationsAllowed) {
-              await gateway.requestNotifications();
-              ref.invalidate(_permissionProvider);
-            }
-            await gateway.showTest(
-              l10n.notificationTestTitle,
-              l10n.notificationTestBody,
-            );
-          },
-        ),
+        if (supported)
+          ListTile(
+            leading: const Icon(Icons.notifications_active_outlined),
+            title: Text(l10n.settingsReminderTest),
+            onTap: () async {
+              if (permission != null && !permission.notificationsAllowed) {
+                await gateway.requestNotifications();
+                ref.invalidate(_permissionProvider);
+              }
+              await gateway.showTest(
+                l10n.notificationTestTitle,
+                l10n.notificationTestBody,
+              );
+            },
+          ),
       ],
     );
   }

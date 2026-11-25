@@ -2290,4 +2290,77 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get backupDataWarning =>
       'Wird die App deinstalliert (bzw. im Web die Website-Daten gelöscht oder die App vom Home-Bildschirm entfernt), sind alle Daten weg. Nur eine exportierte Sicherung bleibt erhalten.';
+
+  @override
+  String get settingsReminderWebOnly =>
+      'Benachrichtigungen gibt es nur in der Android-App. In der Web-App kannst du Termine stattdessen in den iPhone-Kalender übernehmen (mit Erinnerung); Uhrzeit und Vorlaufzeit unten gelten dafür.';
+
+  @override
+  String get webStorageTitle => 'Speicher im Browser';
+
+  @override
+  String webStoragePersisted(String value) {
+    return 'Speicher dauerhaft: $value';
+  }
+
+  @override
+  String get webStorageYes => 'ja';
+
+  @override
+  String get webStorageNo => 'nein';
+
+  @override
+  String get webStoragePersistHint =>
+      '„Nein“ heißt: Der Browser darf die Daten bei Speichermangel oder nach längerer Nichtbenutzung löschen. Als App vom Home-Bildschirm wird der Speicher meist dauerhaft.';
+
+  @override
+  String get webStorageRequest => 'Dauerhaften Speicher anfordern';
+
+  @override
+  String webStorageUsage(String used, String quota) {
+    return 'Belegt: $used von etwa $quota';
+  }
+
+  @override
+  String get webStorageUnknown => 'Speicherbelegung unbekannt';
+
+  @override
+  String get webDataLossWarning =>
+      'Achtung: Löschst du die Website-Daten im Browser (z. B. Safari → Verlauf und Websitedaten löschen) oder entfernst die App vom Home-Bildschirm, sind alle Daten unwiderruflich weg. Sichere regelmäßig per Export.';
+
+  @override
+  String get webInstallBanner =>
+      'Bitte zuerst über Teilen → Zum Home-Bildschirm installieren und nur dort Daten eintragen.';
+
+  @override
+  String get webInstallHow => 'So geht’s';
+
+  @override
+  String get webInstallTitle => 'Als App installieren';
+
+  @override
+  String get webInstallStep1 =>
+      'Unten in Safari auf „Teilen“ tippen (Quadrat mit Pfeil nach oben).';
+
+  @override
+  String get webInstallStep2 =>
+      '„Zum Home-Bildschirm“ wählen (ggf. nach unten scrollen) und „Hinzufügen“ tippen.';
+
+  @override
+  String get webInstallStep3 =>
+      'Pferdekalender über das neue Symbol auf dem Home-Bildschirm öffnen und nur dort Daten eintragen.';
+
+  @override
+  String get webInstallWhy =>
+      'Browser-Tab und installierte App haben getrennte Speicher. Daten, die du hier im Browser-Tab einträgst, siehst du in der installierten App nicht.';
+
+  @override
+  String get webInstallOtherBrowser =>
+      'In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.';
+
+  @override
+  String get webUpdateAvailable => 'Neue Version verfügbar – jetzt neu laden';
+
+  @override
+  String get webUpdateReload => 'Neu laden';
 }

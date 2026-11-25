@@ -5,7 +5,7 @@ import 'package:drift/drift.dart';
 
 import '../../../core/db/app_database.dart';
 import '../../einstellungen/domain/setting_keys.dart';
-import '../../pferd/data/photo_storage.dart';
+import '../../pferd/data/photo_store.dart';
 import '../../pflege/data/care_seed.dart';
 import '../domain/backup_format.dart';
 
@@ -58,7 +58,7 @@ class BackupService {
   }) : _clock = clock ?? DateTime.now;
 
   final AppDatabase _db;
-  final PhotoStorage _photos;
+  final PhotoStore _photos;
   final String appVersion;
   final String platform;
   final DateTime Function() _clock;

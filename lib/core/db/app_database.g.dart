@@ -12776,6 +12776,316 @@ class BloodValuesCompanion extends UpdateCompanion<BloodValueRow> {
   }
 }
 
+class $PhotoBlobsTable extends PhotoBlobs
+    with TableInfo<$PhotoBlobsTable, PhotoBlobRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PhotoBlobsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _pathMeta = const VerificationMeta('path');
+  @override
+  late final GeneratedColumn<String> path = GeneratedColumn<String>(
+    'path',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dataMeta = const VerificationMeta('data');
+  @override
+  late final GeneratedColumn<Uint8List> data = GeneratedColumn<Uint8List>(
+    'data',
+    aliasedName,
+    false,
+    type: DriftSqlType.blob,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [createdAt, updatedAt, path, data];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'photo_blobs';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PhotoBlobRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('path')) {
+      context.handle(
+        _pathMeta,
+        path.isAcceptableOrUnknown(data['path']!, _pathMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_pathMeta);
+    }
+    if (data.containsKey('data')) {
+      context.handle(
+        _dataMeta,
+        this.data.isAcceptableOrUnknown(data['data']!, _dataMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dataMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {path};
+  @override
+  PhotoBlobRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PhotoBlobRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      path: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}path'],
+      )!,
+      data: attachedDatabase.typeMapping.read(
+        DriftSqlType.blob,
+        data['${effectivePrefix}data'],
+      )!,
+    );
+  }
+
+  @override
+  $PhotoBlobsTable createAlias(String alias) {
+    return $PhotoBlobsTable(attachedDatabase, alias);
+  }
+}
+
+class PhotoBlobRow extends DataClass implements Insertable<PhotoBlobRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  /// Wie `horse_photos.relative_path`, z. B. `photos/<uuid>.jpg`.
+  final String path;
+  final Uint8List data;
+  const PhotoBlobRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.path,
+    required this.data,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['path'] = Variable<String>(path);
+    map['data'] = Variable<Uint8List>(data);
+    return map;
+  }
+
+  PhotoBlobsCompanion toCompanion(bool nullToAbsent) {
+    return PhotoBlobsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      path: Value(path),
+      data: Value(data),
+    );
+  }
+
+  factory PhotoBlobRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PhotoBlobRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      path: serializer.fromJson<String>(json['path']),
+      data: serializer.fromJson<Uint8List>(json['data']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'path': serializer.toJson<String>(path),
+      'data': serializer.toJson<Uint8List>(data),
+    };
+  }
+
+  PhotoBlobRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? path,
+    Uint8List? data,
+  }) => PhotoBlobRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    path: path ?? this.path,
+    data: data ?? this.data,
+  );
+  PhotoBlobRow copyWithCompanion(PhotoBlobsCompanion data) {
+    return PhotoBlobRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      path: data.path.present ? data.path.value : this.path,
+      data: data.data.present ? data.data.value : this.data,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PhotoBlobRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('path: $path, ')
+          ..write('data: $data')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, path, $driftBlobEquality.hash(data));
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PhotoBlobRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.path == this.path &&
+          $driftBlobEquality.equals(other.data, this.data));
+}
+
+class PhotoBlobsCompanion extends UpdateCompanion<PhotoBlobRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> path;
+  final Value<Uint8List> data;
+  final Value<int> rowid;
+  const PhotoBlobsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.path = const Value.absent(),
+    this.data = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PhotoBlobsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String path,
+    required Uint8List data,
+    this.rowid = const Value.absent(),
+  }) : path = Value(path),
+       data = Value(data);
+  static Insertable<PhotoBlobRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? path,
+    Expression<Uint8List>? data,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (path != null) 'path': path,
+      if (data != null) 'data': data,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PhotoBlobsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? path,
+    Value<Uint8List>? data,
+    Value<int>? rowid,
+  }) {
+    return PhotoBlobsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      path: path ?? this.path,
+      data: data ?? this.data,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (path.present) {
+      map['path'] = Variable<String>(path.value);
+    }
+    if (data.present) {
+      map['data'] = Variable<Uint8List>(data.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PhotoBlobsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('path: $path, ')
+          ..write('data: $data, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -12805,6 +13115,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $FeedSupplementsTemporaryTable(this);
   late final $BloodTestsTable bloodTests = $BloodTestsTable(this);
   late final $BloodValuesTable bloodValues = $BloodValuesTable(this);
+  late final $PhotoBlobsTable photoBlobs = $PhotoBlobsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -12832,6 +13143,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     feedSupplementsTemporary,
     bloodTests,
     bloodValues,
+    photoBlobs,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -23634,6 +23946,194 @@ typedef $$BloodValuesTableProcessedTableManager =
       BloodValueRow,
       PrefetchHooks Function({bool testId})
     >;
+typedef $$PhotoBlobsTableCreateCompanionBuilder = PhotoBlobsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String path,
+  required Uint8List data,
+  Value<int> rowid,
+});
+typedef $$PhotoBlobsTableUpdateCompanionBuilder = PhotoBlobsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> path,
+  Value<Uint8List> data,
+  Value<int> rowid,
+});
+
+class $$PhotoBlobsTableFilterComposer
+    extends Composer<_$AppDatabase, $PhotoBlobsTable> {
+  $$PhotoBlobsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get path => $composableBuilder(
+    column: $table.path,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<Uint8List> get data => $composableBuilder(
+    column: $table.data,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PhotoBlobsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PhotoBlobsTable> {
+  $$PhotoBlobsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get path => $composableBuilder(
+    column: $table.path,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<Uint8List> get data => $composableBuilder(
+    column: $table.data,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PhotoBlobsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PhotoBlobsTable> {
+  $$PhotoBlobsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get path =>
+      $composableBuilder(column: $table.path, builder: (column) => column);
+
+  GeneratedColumn<Uint8List> get data =>
+      $composableBuilder(column: $table.data, builder: (column) => column);
+}
+
+class $$PhotoBlobsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PhotoBlobsTable,
+          PhotoBlobRow,
+          $$PhotoBlobsTableFilterComposer,
+          $$PhotoBlobsTableOrderingComposer,
+          $$PhotoBlobsTableAnnotationComposer,
+          $$PhotoBlobsTableCreateCompanionBuilder,
+          $$PhotoBlobsTableUpdateCompanionBuilder,
+          (
+            PhotoBlobRow,
+            BaseReferences<_$AppDatabase, $PhotoBlobsTable, PhotoBlobRow>,
+          ),
+          PhotoBlobRow,
+          PrefetchHooks Function()
+        > {
+  $$PhotoBlobsTableTableManager(_$AppDatabase db, $PhotoBlobsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PhotoBlobsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PhotoBlobsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PhotoBlobsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> path = const Value.absent(),
+                Value<Uint8List> data = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PhotoBlobsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                path: path,
+                data: data,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String path,
+                required Uint8List data,
+                Value<int> rowid = const Value.absent(),
+              }) => PhotoBlobsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                path: path,
+                data: data,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PhotoBlobsTable, PhotoBlobRow>(table),
+                  BaseReferences<_$AppDatabase, $PhotoBlobsTable, PhotoBlobRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PhotoBlobsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PhotoBlobsTable,
+      PhotoBlobRow,
+      $$PhotoBlobsTableFilterComposer,
+      $$PhotoBlobsTableOrderingComposer,
+      $$PhotoBlobsTableAnnotationComposer,
+      $$PhotoBlobsTableCreateCompanionBuilder,
+      $$PhotoBlobsTableUpdateCompanionBuilder,
+      (
+        PhotoBlobRow,
+        BaseReferences<_$AppDatabase, $PhotoBlobsTable, PhotoBlobRow>,
+      ),
+      PhotoBlobRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -23685,4 +24185,6 @@ class $AppDatabaseManager {
       $$BloodTestsTableTableManager(_db, _db.bloodTests);
   $$BloodValuesTableTableManager get bloodValues =>
       $$BloodValuesTableTableManager(_db, _db.bloodValues);
+  $$PhotoBlobsTableTableManager get photoBlobs =>
+      $$PhotoBlobsTableTableManager(_db, _db.photoBlobs);
 }

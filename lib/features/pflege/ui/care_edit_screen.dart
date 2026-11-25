@@ -261,7 +261,8 @@ class _CareEditScreenState extends ConsumerState<CareEditScreen> {
     final gateway = ref.read(notificationGatewayProvider);
     try {
       final state = await gateway.permissionState();
-      if (state.notificationsAllowed) return;
+      // Web: keine Benachrichtigungen – kein Hinweis nötig.
+      if (!state.supported || state.notificationsAllowed) return;
       final granted = await gateway.requestNotifications();
       if (!granted) {
         messenger.showSnackBar(
