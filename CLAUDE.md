@@ -157,6 +157,17 @@ Aktueller Stand: **Schema v2** (`settings`; `horses`, `horse_photos`,
   persistent – bei neuem Container neu installieren.
 - Maven Central antwortet gelegentlich mit 429 → Build einfach wiederholen.
 
+## Test-APK für das Handy (Branch `apk`)
+
+GitHub-Releases sind aus der Cloud-Sitzung nicht erlaubt (403). Testversionen
+liegen deshalb auf dem verwaisten Branch `apk` (nur `pferdekalender.apk` +
+`README.md`, keine Verbindung zur `main`-Historie). **Nie APKs auf `main`
+committen.** Neue Testversion:
+`flutter build apk --release --split-per-abi --target-platform android-arm64`,
+`tool/check_release_permissions.sh build/app/outputs/flutter-apk/app-arm64-v8a-release.apk`,
+dann den Branch `apk` mit einem neuen orphan-Commit ersetzen (Force-Push), damit
+sich alte APKs nicht ansammeln; Version im README des Branches anpassen.
+
 ## Geprüfte Pakete (Netzwerk/Telemetrie)
 
 | Paket | Zweck | Befund |
