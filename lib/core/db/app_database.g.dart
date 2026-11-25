@@ -5730,6 +5730,1810 @@ class CareRemindersCompanion extends UpdateCompanion<CareReminderRow> {
   }
 }
 
+class $ShiftTemplatesTable extends ShiftTemplates
+    with TableInfo<$ShiftTemplatesTable, ShiftTemplateRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShiftTemplatesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _shortCodeMeta = const VerificationMeta(
+    'shortCode',
+  );
+  @override
+  late final GeneratedColumn<String> shortCode = GeneratedColumn<String>(
+    'short_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _colorMeta = const VerificationMeta('color');
+  @override
+  late final GeneratedColumn<int> color = GeneratedColumn<int>(
+    'color',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _startMinutesMeta = const VerificationMeta(
+    'startMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> startMinutes = GeneratedColumn<int>(
+    'start_minutes',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _endMinutesMeta = const VerificationMeta(
+    'endMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> endMinutes = GeneratedColumn<int>(
+    'end_minutes',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stableMinutesMeta = const VerificationMeta(
+    'stableMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> stableMinutes = GeneratedColumn<int>(
+    'stable_minutes',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _preferredTimeMeta = const VerificationMeta(
+    'preferredTime',
+  );
+  @override
+  late final GeneratedColumn<String> preferredTime = GeneratedColumn<String>(
+    'preferred_time',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _isNightMeta = const VerificationMeta(
+    'isNight',
+  );
+  @override
+  late final GeneratedColumn<bool> isNight = GeneratedColumn<bool>(
+    'is_night',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_night" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _archivedMeta = const VerificationMeta(
+    'archived',
+  );
+  @override
+  late final GeneratedColumn<bool> archived = GeneratedColumn<bool>(
+    'archived',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("archived" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    shortCode,
+    color,
+    startMinutes,
+    endMinutes,
+    stableMinutes,
+    preferredTime,
+    isNight,
+    archived,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shift_templates';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShiftTemplateRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('short_code')) {
+      context.handle(
+        _shortCodeMeta,
+        shortCode.isAcceptableOrUnknown(data['short_code']!, _shortCodeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_shortCodeMeta);
+    }
+    if (data.containsKey('color')) {
+      context.handle(
+        _colorMeta,
+        color.isAcceptableOrUnknown(data['color']!, _colorMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_colorMeta);
+    }
+    if (data.containsKey('start_minutes')) {
+      context.handle(
+        _startMinutesMeta,
+        startMinutes.isAcceptableOrUnknown(
+          data['start_minutes']!,
+          _startMinutesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('end_minutes')) {
+      context.handle(
+        _endMinutesMeta,
+        endMinutes.isAcceptableOrUnknown(data['end_minutes']!, _endMinutesMeta),
+      );
+    }
+    if (data.containsKey('stable_minutes')) {
+      context.handle(
+        _stableMinutesMeta,
+        stableMinutes.isAcceptableOrUnknown(
+          data['stable_minutes']!,
+          _stableMinutesMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_stableMinutesMeta);
+    }
+    if (data.containsKey('preferred_time')) {
+      context.handle(
+        _preferredTimeMeta,
+        preferredTime.isAcceptableOrUnknown(
+          data['preferred_time']!,
+          _preferredTimeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('is_night')) {
+      context.handle(
+        _isNightMeta,
+        isNight.isAcceptableOrUnknown(data['is_night']!, _isNightMeta),
+      );
+    }
+    if (data.containsKey('archived')) {
+      context.handle(
+        _archivedMeta,
+        archived.isAcceptableOrUnknown(data['archived']!, _archivedMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShiftTemplateRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShiftTemplateRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      shortCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}short_code'],
+      )!,
+      color: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}color'],
+      )!,
+      startMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}start_minutes'],
+      ),
+      endMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}end_minutes'],
+      ),
+      stableMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}stable_minutes'],
+      )!,
+      preferredTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}preferred_time'],
+      ),
+      isNight: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_night'],
+      )!,
+      archived: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}archived'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+    );
+  }
+
+  @override
+  $ShiftTemplatesTable createAlias(String alias) {
+    return $ShiftTemplatesTable(attachedDatabase, alias);
+  }
+}
+
+class ShiftTemplateRow extends DataClass
+    implements Insertable<ShiftTemplateRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String name;
+  final String shortCode;
+  final int color;
+  final int? startMinutes;
+  final int? endMinutes;
+
+  /// Stallzeit an diesem Tag (Minuten).
+  final int stableMinutes;
+
+  /// Siehe `DayTime.key`.
+  final String? preferredTime;
+  final bool isNight;
+  final bool archived;
+  final int sortOrder;
+  const ShiftTemplateRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.name,
+    required this.shortCode,
+    required this.color,
+    this.startMinutes,
+    this.endMinutes,
+    required this.stableMinutes,
+    this.preferredTime,
+    required this.isNight,
+    required this.archived,
+    required this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['short_code'] = Variable<String>(shortCode);
+    map['color'] = Variable<int>(color);
+    if (!nullToAbsent || startMinutes != null) {
+      map['start_minutes'] = Variable<int>(startMinutes);
+    }
+    if (!nullToAbsent || endMinutes != null) {
+      map['end_minutes'] = Variable<int>(endMinutes);
+    }
+    map['stable_minutes'] = Variable<int>(stableMinutes);
+    if (!nullToAbsent || preferredTime != null) {
+      map['preferred_time'] = Variable<String>(preferredTime);
+    }
+    map['is_night'] = Variable<bool>(isNight);
+    map['archived'] = Variable<bool>(archived);
+    map['sort_order'] = Variable<int>(sortOrder);
+    return map;
+  }
+
+  ShiftTemplatesCompanion toCompanion(bool nullToAbsent) {
+    return ShiftTemplatesCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      name: Value(name),
+      shortCode: Value(shortCode),
+      color: Value(color),
+      startMinutes: startMinutes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(startMinutes),
+      endMinutes: endMinutes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endMinutes),
+      stableMinutes: Value(stableMinutes),
+      preferredTime: preferredTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(preferredTime),
+      isNight: Value(isNight),
+      archived: Value(archived),
+      sortOrder: Value(sortOrder),
+    );
+  }
+
+  factory ShiftTemplateRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShiftTemplateRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      shortCode: serializer.fromJson<String>(json['shortCode']),
+      color: serializer.fromJson<int>(json['color']),
+      startMinutes: serializer.fromJson<int?>(json['startMinutes']),
+      endMinutes: serializer.fromJson<int?>(json['endMinutes']),
+      stableMinutes: serializer.fromJson<int>(json['stableMinutes']),
+      preferredTime: serializer.fromJson<String?>(json['preferredTime']),
+      isNight: serializer.fromJson<bool>(json['isNight']),
+      archived: serializer.fromJson<bool>(json['archived']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'shortCode': serializer.toJson<String>(shortCode),
+      'color': serializer.toJson<int>(color),
+      'startMinutes': serializer.toJson<int?>(startMinutes),
+      'endMinutes': serializer.toJson<int?>(endMinutes),
+      'stableMinutes': serializer.toJson<int>(stableMinutes),
+      'preferredTime': serializer.toJson<String?>(preferredTime),
+      'isNight': serializer.toJson<bool>(isNight),
+      'archived': serializer.toJson<bool>(archived),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+    };
+  }
+
+  ShiftTemplateRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? name,
+    String? shortCode,
+    int? color,
+    Value<int?> startMinutes = const Value.absent(),
+    Value<int?> endMinutes = const Value.absent(),
+    int? stableMinutes,
+    Value<String?> preferredTime = const Value.absent(),
+    bool? isNight,
+    bool? archived,
+    int? sortOrder,
+  }) => ShiftTemplateRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    shortCode: shortCode ?? this.shortCode,
+    color: color ?? this.color,
+    startMinutes: startMinutes.present ? startMinutes.value : this.startMinutes,
+    endMinutes: endMinutes.present ? endMinutes.value : this.endMinutes,
+    stableMinutes: stableMinutes ?? this.stableMinutes,
+    preferredTime: preferredTime.present
+        ? preferredTime.value
+        : this.preferredTime,
+    isNight: isNight ?? this.isNight,
+    archived: archived ?? this.archived,
+    sortOrder: sortOrder ?? this.sortOrder,
+  );
+  ShiftTemplateRow copyWithCompanion(ShiftTemplatesCompanion data) {
+    return ShiftTemplateRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      shortCode: data.shortCode.present ? data.shortCode.value : this.shortCode,
+      color: data.color.present ? data.color.value : this.color,
+      startMinutes: data.startMinutes.present
+          ? data.startMinutes.value
+          : this.startMinutes,
+      endMinutes: data.endMinutes.present
+          ? data.endMinutes.value
+          : this.endMinutes,
+      stableMinutes: data.stableMinutes.present
+          ? data.stableMinutes.value
+          : this.stableMinutes,
+      preferredTime: data.preferredTime.present
+          ? data.preferredTime.value
+          : this.preferredTime,
+      isNight: data.isNight.present ? data.isNight.value : this.isNight,
+      archived: data.archived.present ? data.archived.value : this.archived,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftTemplateRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('shortCode: $shortCode, ')
+          ..write('color: $color, ')
+          ..write('startMinutes: $startMinutes, ')
+          ..write('endMinutes: $endMinutes, ')
+          ..write('stableMinutes: $stableMinutes, ')
+          ..write('preferredTime: $preferredTime, ')
+          ..write('isNight: $isNight, ')
+          ..write('archived: $archived, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    shortCode,
+    color,
+    startMinutes,
+    endMinutes,
+    stableMinutes,
+    preferredTime,
+    isNight,
+    archived,
+    sortOrder,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShiftTemplateRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.shortCode == this.shortCode &&
+          other.color == this.color &&
+          other.startMinutes == this.startMinutes &&
+          other.endMinutes == this.endMinutes &&
+          other.stableMinutes == this.stableMinutes &&
+          other.preferredTime == this.preferredTime &&
+          other.isNight == this.isNight &&
+          other.archived == this.archived &&
+          other.sortOrder == this.sortOrder);
+}
+
+class ShiftTemplatesCompanion extends UpdateCompanion<ShiftTemplateRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> shortCode;
+  final Value<int> color;
+  final Value<int?> startMinutes;
+  final Value<int?> endMinutes;
+  final Value<int> stableMinutes;
+  final Value<String?> preferredTime;
+  final Value<bool> isNight;
+  final Value<bool> archived;
+  final Value<int> sortOrder;
+  final Value<int> rowid;
+  const ShiftTemplatesCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.shortCode = const Value.absent(),
+    this.color = const Value.absent(),
+    this.startMinutes = const Value.absent(),
+    this.endMinutes = const Value.absent(),
+    this.stableMinutes = const Value.absent(),
+    this.preferredTime = const Value.absent(),
+    this.isNight = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShiftTemplatesCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String shortCode,
+    required int color,
+    this.startMinutes = const Value.absent(),
+    this.endMinutes = const Value.absent(),
+    required int stableMinutes,
+    this.preferredTime = const Value.absent(),
+    this.isNight = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       shortCode = Value(shortCode),
+       color = Value(color),
+       stableMinutes = Value(stableMinutes);
+  static Insertable<ShiftTemplateRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? shortCode,
+    Expression<int>? color,
+    Expression<int>? startMinutes,
+    Expression<int>? endMinutes,
+    Expression<int>? stableMinutes,
+    Expression<String>? preferredTime,
+    Expression<bool>? isNight,
+    Expression<bool>? archived,
+    Expression<int>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (shortCode != null) 'short_code': shortCode,
+      if (color != null) 'color': color,
+      if (startMinutes != null) 'start_minutes': startMinutes,
+      if (endMinutes != null) 'end_minutes': endMinutes,
+      if (stableMinutes != null) 'stable_minutes': stableMinutes,
+      if (preferredTime != null) 'preferred_time': preferredTime,
+      if (isNight != null) 'is_night': isNight,
+      if (archived != null) 'archived': archived,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShiftTemplatesCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? shortCode,
+    Value<int>? color,
+    Value<int?>? startMinutes,
+    Value<int?>? endMinutes,
+    Value<int>? stableMinutes,
+    Value<String?>? preferredTime,
+    Value<bool>? isNight,
+    Value<bool>? archived,
+    Value<int>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return ShiftTemplatesCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      shortCode: shortCode ?? this.shortCode,
+      color: color ?? this.color,
+      startMinutes: startMinutes ?? this.startMinutes,
+      endMinutes: endMinutes ?? this.endMinutes,
+      stableMinutes: stableMinutes ?? this.stableMinutes,
+      preferredTime: preferredTime ?? this.preferredTime,
+      isNight: isNight ?? this.isNight,
+      archived: archived ?? this.archived,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (shortCode.present) {
+      map['short_code'] = Variable<String>(shortCode.value);
+    }
+    if (color.present) {
+      map['color'] = Variable<int>(color.value);
+    }
+    if (startMinutes.present) {
+      map['start_minutes'] = Variable<int>(startMinutes.value);
+    }
+    if (endMinutes.present) {
+      map['end_minutes'] = Variable<int>(endMinutes.value);
+    }
+    if (stableMinutes.present) {
+      map['stable_minutes'] = Variable<int>(stableMinutes.value);
+    }
+    if (preferredTime.present) {
+      map['preferred_time'] = Variable<String>(preferredTime.value);
+    }
+    if (isNight.present) {
+      map['is_night'] = Variable<bool>(isNight.value);
+    }
+    if (archived.present) {
+      map['archived'] = Variable<bool>(archived.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftTemplatesCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('shortCode: $shortCode, ')
+          ..write('color: $color, ')
+          ..write('startMinutes: $startMinutes, ')
+          ..write('endMinutes: $endMinutes, ')
+          ..write('stableMinutes: $stableMinutes, ')
+          ..write('preferredTime: $preferredTime, ')
+          ..write('isNight: $isNight, ')
+          ..write('archived: $archived, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShiftPatternsTable extends ShiftPatterns
+    with TableInfo<$ShiftPatternsTable, ShiftPatternRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShiftPatternsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stepsMeta = const VerificationMeta('steps');
+  @override
+  late final GeneratedColumn<String> steps = GeneratedColumn<String>(
+    'steps',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> startDate =
+      GeneratedColumn<String>(
+        'start_date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($ShiftPatternsTable.$converterstartDate);
+  static const VerificationMeta _weeksMeta = const VerificationMeta('weeks');
+  @override
+  late final GeneratedColumn<int> weeks = GeneratedColumn<int>(
+    'weeks',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    name,
+    steps,
+    startDate,
+    weeks,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shift_patterns';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShiftPatternRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('steps')) {
+      context.handle(
+        _stepsMeta,
+        steps.isAcceptableOrUnknown(data['steps']!, _stepsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stepsMeta);
+    }
+    if (data.containsKey('weeks')) {
+      context.handle(
+        _weeksMeta,
+        weeks.isAcceptableOrUnknown(data['weeks']!, _weeksMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_weeksMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShiftPatternRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShiftPatternRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      steps: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}steps'],
+      )!,
+      startDate: $ShiftPatternsTable.$converterstartDate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}start_date'],
+        )!,
+      ),
+      weeks: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}weeks'],
+      )!,
+    );
+  }
+
+  @override
+  $ShiftPatternsTable createAlias(String alias) {
+    return $ShiftPatternsTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterstartDate =
+      const LocalDateConverter();
+}
+
+class ShiftPatternRow extends DataClass implements Insertable<ShiftPatternRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String name;
+
+  /// JSON-Liste von Vorlagen-IDs bzw. `null` (Tag ohne Schicht).
+  final String steps;
+  final LocalDate startDate;
+  final int weeks;
+  const ShiftPatternRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.name,
+    required this.steps,
+    required this.startDate,
+    required this.weeks,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['steps'] = Variable<String>(steps);
+    {
+      map['start_date'] = Variable<String>(
+        $ShiftPatternsTable.$converterstartDate.toSql(startDate),
+      );
+    }
+    map['weeks'] = Variable<int>(weeks);
+    return map;
+  }
+
+  ShiftPatternsCompanion toCompanion(bool nullToAbsent) {
+    return ShiftPatternsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      name: Value(name),
+      steps: Value(steps),
+      startDate: Value(startDate),
+      weeks: Value(weeks),
+    );
+  }
+
+  factory ShiftPatternRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShiftPatternRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      steps: serializer.fromJson<String>(json['steps']),
+      startDate: serializer.fromJson<LocalDate>(json['startDate']),
+      weeks: serializer.fromJson<int>(json['weeks']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'steps': serializer.toJson<String>(steps),
+      'startDate': serializer.toJson<LocalDate>(startDate),
+      'weeks': serializer.toJson<int>(weeks),
+    };
+  }
+
+  ShiftPatternRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? name,
+    String? steps,
+    LocalDate? startDate,
+    int? weeks,
+  }) => ShiftPatternRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    steps: steps ?? this.steps,
+    startDate: startDate ?? this.startDate,
+    weeks: weeks ?? this.weeks,
+  );
+  ShiftPatternRow copyWithCompanion(ShiftPatternsCompanion data) {
+    return ShiftPatternRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      steps: data.steps.present ? data.steps.value : this.steps,
+      startDate: data.startDate.present ? data.startDate.value : this.startDate,
+      weeks: data.weeks.present ? data.weeks.value : this.weeks,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftPatternRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('steps: $steps, ')
+          ..write('startDate: $startDate, ')
+          ..write('weeks: $weeks')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, name, steps, startDate, weeks);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShiftPatternRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.steps == this.steps &&
+          other.startDate == this.startDate &&
+          other.weeks == this.weeks);
+}
+
+class ShiftPatternsCompanion extends UpdateCompanion<ShiftPatternRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> steps;
+  final Value<LocalDate> startDate;
+  final Value<int> weeks;
+  final Value<int> rowid;
+  const ShiftPatternsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.steps = const Value.absent(),
+    this.startDate = const Value.absent(),
+    this.weeks = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShiftPatternsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String steps,
+    required LocalDate startDate,
+    required int weeks,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       name = Value(name),
+       steps = Value(steps),
+       startDate = Value(startDate),
+       weeks = Value(weeks);
+  static Insertable<ShiftPatternRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? steps,
+    Expression<String>? startDate,
+    Expression<int>? weeks,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (steps != null) 'steps': steps,
+      if (startDate != null) 'start_date': startDate,
+      if (weeks != null) 'weeks': weeks,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShiftPatternsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? steps,
+    Value<LocalDate>? startDate,
+    Value<int>? weeks,
+    Value<int>? rowid,
+  }) {
+    return ShiftPatternsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      steps: steps ?? this.steps,
+      startDate: startDate ?? this.startDate,
+      weeks: weeks ?? this.weeks,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (steps.present) {
+      map['steps'] = Variable<String>(steps.value);
+    }
+    if (startDate.present) {
+      map['start_date'] = Variable<String>(
+        $ShiftPatternsTable.$converterstartDate.toSql(startDate.value),
+      );
+    }
+    if (weeks.present) {
+      map['weeks'] = Variable<int>(weeks.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftPatternsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('steps: $steps, ')
+          ..write('startDate: $startDate, ')
+          ..write('weeks: $weeks, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShiftDaysTable extends ShiftDays
+    with TableInfo<$ShiftDaysTable, ShiftDayRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShiftDaysTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> date =
+      GeneratedColumn<String>(
+        'date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($ShiftDaysTable.$converterdate);
+  static const VerificationMeta _templateIdMeta = const VerificationMeta(
+    'templateId',
+  );
+  @override
+  late final GeneratedColumn<String> templateId = GeneratedColumn<String>(
+    'template_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES shift_templates (id) ON DELETE SET NULL',
+    ),
+  );
+  static const VerificationMeta _overrideMinutesMeta = const VerificationMeta(
+    'overrideMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> overrideMinutes = GeneratedColumn<int>(
+    'override_minutes',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _otherPersonCoversMeta = const VerificationMeta(
+    'otherPersonCovers',
+  );
+  @override
+  late final GeneratedColumn<bool> otherPersonCovers = GeneratedColumn<bool>(
+    'other_person_covers',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("other_person_covers" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('manual'),
+  );
+  static const VerificationMeta _patternIdMeta = const VerificationMeta(
+    'patternId',
+  );
+  @override
+  late final GeneratedColumn<String> patternId = GeneratedColumn<String>(
+    'pattern_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES shift_patterns (id) ON DELETE SET NULL',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    date,
+    templateId,
+    overrideMinutes,
+    otherPersonCovers,
+    note,
+    source,
+    patternId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shift_days';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShiftDayRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('template_id')) {
+      context.handle(
+        _templateIdMeta,
+        templateId.isAcceptableOrUnknown(data['template_id']!, _templateIdMeta),
+      );
+    }
+    if (data.containsKey('override_minutes')) {
+      context.handle(
+        _overrideMinutesMeta,
+        overrideMinutes.isAcceptableOrUnknown(
+          data['override_minutes']!,
+          _overrideMinutesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('other_person_covers')) {
+      context.handle(
+        _otherPersonCoversMeta,
+        otherPersonCovers.isAcceptableOrUnknown(
+          data['other_person_covers']!,
+          _otherPersonCoversMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('pattern_id')) {
+      context.handle(
+        _patternIdMeta,
+        patternId.isAcceptableOrUnknown(data['pattern_id']!, _patternIdMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {date};
+  @override
+  ShiftDayRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShiftDayRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      date: $ShiftDaysTable.$converterdate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}date'],
+        )!,
+      ),
+      templateId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}template_id'],
+      ),
+      overrideMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}override_minutes'],
+      ),
+      otherPersonCovers: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}other_person_covers'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      )!,
+      patternId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pattern_id'],
+      ),
+    );
+  }
+
+  @override
+  $ShiftDaysTable createAlias(String alias) {
+    return $ShiftDaysTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterdate =
+      const LocalDateConverter();
+}
+
+class ShiftDayRow extends DataClass implements Insertable<ShiftDayRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  /// Ein Eintrag pro Kalendertag.
+  final LocalDate date;
+  final String? templateId;
+  final int? overrideMinutes;
+  final bool otherPersonCovers;
+  final String? note;
+
+  /// Siehe `ShiftSource.key`.
+  final String source;
+  final String? patternId;
+  const ShiftDayRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.date,
+    this.templateId,
+    this.overrideMinutes,
+    required this.otherPersonCovers,
+    this.note,
+    required this.source,
+    this.patternId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    {
+      map['date'] = Variable<String>(
+        $ShiftDaysTable.$converterdate.toSql(date),
+      );
+    }
+    if (!nullToAbsent || templateId != null) {
+      map['template_id'] = Variable<String>(templateId);
+    }
+    if (!nullToAbsent || overrideMinutes != null) {
+      map['override_minutes'] = Variable<int>(overrideMinutes);
+    }
+    map['other_person_covers'] = Variable<bool>(otherPersonCovers);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    map['source'] = Variable<String>(source);
+    if (!nullToAbsent || patternId != null) {
+      map['pattern_id'] = Variable<String>(patternId);
+    }
+    return map;
+  }
+
+  ShiftDaysCompanion toCompanion(bool nullToAbsent) {
+    return ShiftDaysCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      date: Value(date),
+      templateId: templateId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(templateId),
+      overrideMinutes: overrideMinutes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(overrideMinutes),
+      otherPersonCovers: Value(otherPersonCovers),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      source: Value(source),
+      patternId: patternId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(patternId),
+    );
+  }
+
+  factory ShiftDayRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShiftDayRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      date: serializer.fromJson<LocalDate>(json['date']),
+      templateId: serializer.fromJson<String?>(json['templateId']),
+      overrideMinutes: serializer.fromJson<int?>(json['overrideMinutes']),
+      otherPersonCovers: serializer.fromJson<bool>(json['otherPersonCovers']),
+      note: serializer.fromJson<String?>(json['note']),
+      source: serializer.fromJson<String>(json['source']),
+      patternId: serializer.fromJson<String?>(json['patternId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'date': serializer.toJson<LocalDate>(date),
+      'templateId': serializer.toJson<String?>(templateId),
+      'overrideMinutes': serializer.toJson<int?>(overrideMinutes),
+      'otherPersonCovers': serializer.toJson<bool>(otherPersonCovers),
+      'note': serializer.toJson<String?>(note),
+      'source': serializer.toJson<String>(source),
+      'patternId': serializer.toJson<String?>(patternId),
+    };
+  }
+
+  ShiftDayRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    LocalDate? date,
+    Value<String?> templateId = const Value.absent(),
+    Value<int?> overrideMinutes = const Value.absent(),
+    bool? otherPersonCovers,
+    Value<String?> note = const Value.absent(),
+    String? source,
+    Value<String?> patternId = const Value.absent(),
+  }) => ShiftDayRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    date: date ?? this.date,
+    templateId: templateId.present ? templateId.value : this.templateId,
+    overrideMinutes: overrideMinutes.present
+        ? overrideMinutes.value
+        : this.overrideMinutes,
+    otherPersonCovers: otherPersonCovers ?? this.otherPersonCovers,
+    note: note.present ? note.value : this.note,
+    source: source ?? this.source,
+    patternId: patternId.present ? patternId.value : this.patternId,
+  );
+  ShiftDayRow copyWithCompanion(ShiftDaysCompanion data) {
+    return ShiftDayRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      date: data.date.present ? data.date.value : this.date,
+      templateId: data.templateId.present
+          ? data.templateId.value
+          : this.templateId,
+      overrideMinutes: data.overrideMinutes.present
+          ? data.overrideMinutes.value
+          : this.overrideMinutes,
+      otherPersonCovers: data.otherPersonCovers.present
+          ? data.otherPersonCovers.value
+          : this.otherPersonCovers,
+      note: data.note.present ? data.note.value : this.note,
+      source: data.source.present ? data.source.value : this.source,
+      patternId: data.patternId.present ? data.patternId.value : this.patternId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftDayRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('date: $date, ')
+          ..write('templateId: $templateId, ')
+          ..write('overrideMinutes: $overrideMinutes, ')
+          ..write('otherPersonCovers: $otherPersonCovers, ')
+          ..write('note: $note, ')
+          ..write('source: $source, ')
+          ..write('patternId: $patternId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    date,
+    templateId,
+    overrideMinutes,
+    otherPersonCovers,
+    note,
+    source,
+    patternId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShiftDayRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.date == this.date &&
+          other.templateId == this.templateId &&
+          other.overrideMinutes == this.overrideMinutes &&
+          other.otherPersonCovers == this.otherPersonCovers &&
+          other.note == this.note &&
+          other.source == this.source &&
+          other.patternId == this.patternId);
+}
+
+class ShiftDaysCompanion extends UpdateCompanion<ShiftDayRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<LocalDate> date;
+  final Value<String?> templateId;
+  final Value<int?> overrideMinutes;
+  final Value<bool> otherPersonCovers;
+  final Value<String?> note;
+  final Value<String> source;
+  final Value<String?> patternId;
+  final Value<int> rowid;
+  const ShiftDaysCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.date = const Value.absent(),
+    this.templateId = const Value.absent(),
+    this.overrideMinutes = const Value.absent(),
+    this.otherPersonCovers = const Value.absent(),
+    this.note = const Value.absent(),
+    this.source = const Value.absent(),
+    this.patternId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShiftDaysCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required LocalDate date,
+    this.templateId = const Value.absent(),
+    this.overrideMinutes = const Value.absent(),
+    this.otherPersonCovers = const Value.absent(),
+    this.note = const Value.absent(),
+    this.source = const Value.absent(),
+    this.patternId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : date = Value(date);
+  static Insertable<ShiftDayRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? date,
+    Expression<String>? templateId,
+    Expression<int>? overrideMinutes,
+    Expression<bool>? otherPersonCovers,
+    Expression<String>? note,
+    Expression<String>? source,
+    Expression<String>? patternId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (date != null) 'date': date,
+      if (templateId != null) 'template_id': templateId,
+      if (overrideMinutes != null) 'override_minutes': overrideMinutes,
+      if (otherPersonCovers != null) 'other_person_covers': otherPersonCovers,
+      if (note != null) 'note': note,
+      if (source != null) 'source': source,
+      if (patternId != null) 'pattern_id': patternId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShiftDaysCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<LocalDate>? date,
+    Value<String?>? templateId,
+    Value<int?>? overrideMinutes,
+    Value<bool>? otherPersonCovers,
+    Value<String?>? note,
+    Value<String>? source,
+    Value<String?>? patternId,
+    Value<int>? rowid,
+  }) {
+    return ShiftDaysCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      date: date ?? this.date,
+      templateId: templateId ?? this.templateId,
+      overrideMinutes: overrideMinutes ?? this.overrideMinutes,
+      otherPersonCovers: otherPersonCovers ?? this.otherPersonCovers,
+      note: note ?? this.note,
+      source: source ?? this.source,
+      patternId: patternId ?? this.patternId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (date.present) {
+      map['date'] = Variable<String>(
+        $ShiftDaysTable.$converterdate.toSql(date.value),
+      );
+    }
+    if (templateId.present) {
+      map['template_id'] = Variable<String>(templateId.value);
+    }
+    if (overrideMinutes.present) {
+      map['override_minutes'] = Variable<int>(overrideMinutes.value);
+    }
+    if (otherPersonCovers.present) {
+      map['other_person_covers'] = Variable<bool>(otherPersonCovers.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (patternId.present) {
+      map['pattern_id'] = Variable<String>(patternId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShiftDaysCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('date: $date, ')
+          ..write('templateId: $templateId, ')
+          ..write('overrideMinutes: $overrideMinutes, ')
+          ..write('otherPersonCovers: $otherPersonCovers, ')
+          ..write('note: $note, ')
+          ..write('source: $source, ')
+          ..write('patternId: $patternId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -5744,6 +7548,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $CareIntervalDefaultsTable(this);
   late final $CareEventsTable careEvents = $CareEventsTable(this);
   late final $CareRemindersTable careReminders = $CareRemindersTable(this);
+  late final $ShiftTemplatesTable shiftTemplates = $ShiftTemplatesTable(this);
+  late final $ShiftPatternsTable shiftPatterns = $ShiftPatternsTable(this);
+  late final $ShiftDaysTable shiftDays = $ShiftDaysTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -5759,6 +7566,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     careIntervalDefaults,
     careEvents,
     careReminders,
+    shiftTemplates,
+    shiftPatterns,
+    shiftDays,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -5810,6 +7620,20 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('care_reminders', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'shift_templates',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('shift_days', kind: UpdateKind.update)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'shift_patterns',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('shift_days', kind: UpdateKind.update)],
     ),
   ]);
 }
@@ -10343,6 +12167,1301 @@ typedef $$CareRemindersTableProcessedTableManager =
       CareReminderRow,
       PrefetchHooks Function({bool eventId})
     >;
+typedef $$ShiftTemplatesTableCreateCompanionBuilder =
+    ShiftTemplatesCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String name,
+      required String shortCode,
+      required int color,
+      Value<int?> startMinutes,
+      Value<int?> endMinutes,
+      required int stableMinutes,
+      Value<String?> preferredTime,
+      Value<bool> isNight,
+      Value<bool> archived,
+      Value<int> sortOrder,
+      Value<int> rowid,
+    });
+typedef $$ShiftTemplatesTableUpdateCompanionBuilder =
+    ShiftTemplatesCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> shortCode,
+      Value<int> color,
+      Value<int?> startMinutes,
+      Value<int?> endMinutes,
+      Value<int> stableMinutes,
+      Value<String?> preferredTime,
+      Value<bool> isNight,
+      Value<bool> archived,
+      Value<int> sortOrder,
+      Value<int> rowid,
+    });
+
+final class $$ShiftTemplatesTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $ShiftTemplatesTable, ShiftTemplateRow> {
+  $$ShiftTemplatesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<$ShiftDaysTable, List<ShiftDayRow>>
+  _shiftDaysRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.shiftDays,
+    aliasName: 'shift_templates__id__shift_days__template_id',
+  );
+
+  $$ShiftDaysTableProcessedTableManager get shiftDaysRefs {
+    final manager = $$ShiftDaysTableTableManager(
+      $_db,
+      $_db.shiftDays,
+    ).filter((f) => f.templateId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_shiftDaysRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$ShiftTemplatesTableFilterComposer
+    extends Composer<_$AppDatabase, $ShiftTemplatesTable> {
+  $$ShiftTemplatesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get shortCode => $composableBuilder(
+    column: $table.shortCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get color => $composableBuilder(
+    column: $table.color,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get startMinutes => $composableBuilder(
+    column: $table.startMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get endMinutes => $composableBuilder(
+    column: $table.endMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get stableMinutes => $composableBuilder(
+    column: $table.stableMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get preferredTime => $composableBuilder(
+    column: $table.preferredTime,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isNight => $composableBuilder(
+    column: $table.isNight,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> shiftDaysRefs(
+    Expression<bool> Function($$ShiftDaysTableFilterComposer f) f,
+  ) {
+    final $$ShiftDaysTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shiftDays,
+      getReferencedColumn: (t) => t.templateId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftDaysTableFilterComposer(
+            $db: $db,
+            $table: $db.shiftDays,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ShiftTemplatesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShiftTemplatesTable> {
+  $$ShiftTemplatesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get shortCode => $composableBuilder(
+    column: $table.shortCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get color => $composableBuilder(
+    column: $table.color,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get startMinutes => $composableBuilder(
+    column: $table.startMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get endMinutes => $composableBuilder(
+    column: $table.endMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get stableMinutes => $composableBuilder(
+    column: $table.stableMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get preferredTime => $composableBuilder(
+    column: $table.preferredTime,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isNight => $composableBuilder(
+    column: $table.isNight,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShiftTemplatesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShiftTemplatesTable> {
+  $$ShiftTemplatesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get shortCode =>
+      $composableBuilder(column: $table.shortCode, builder: (column) => column);
+
+  GeneratedColumn<int> get color =>
+      $composableBuilder(column: $table.color, builder: (column) => column);
+
+  GeneratedColumn<int> get startMinutes => $composableBuilder(
+    column: $table.startMinutes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get endMinutes => $composableBuilder(
+    column: $table.endMinutes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get stableMinutes => $composableBuilder(
+    column: $table.stableMinutes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get preferredTime => $composableBuilder(
+    column: $table.preferredTime,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get isNight =>
+      $composableBuilder(column: $table.isNight, builder: (column) => column);
+
+  GeneratedColumn<bool> get archived =>
+      $composableBuilder(column: $table.archived, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  Expression<T> shiftDaysRefs<T extends Object>(
+    Expression<T> Function($$ShiftDaysTableAnnotationComposer a) f,
+  ) {
+    final $$ShiftDaysTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shiftDays,
+      getReferencedColumn: (t) => t.templateId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftDaysTableAnnotationComposer(
+            $db: $db,
+            $table: $db.shiftDays,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ShiftTemplatesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShiftTemplatesTable,
+          ShiftTemplateRow,
+          $$ShiftTemplatesTableFilterComposer,
+          $$ShiftTemplatesTableOrderingComposer,
+          $$ShiftTemplatesTableAnnotationComposer,
+          $$ShiftTemplatesTableCreateCompanionBuilder,
+          $$ShiftTemplatesTableUpdateCompanionBuilder,
+          (ShiftTemplateRow, $$ShiftTemplatesTableReferences),
+          ShiftTemplateRow,
+          PrefetchHooks Function({bool shiftDaysRefs})
+        > {
+  $$ShiftTemplatesTableTableManager(
+    _$AppDatabase db,
+    $ShiftTemplatesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShiftTemplatesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShiftTemplatesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShiftTemplatesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> shortCode = const Value.absent(),
+                Value<int> color = const Value.absent(),
+                Value<int?> startMinutes = const Value.absent(),
+                Value<int?> endMinutes = const Value.absent(),
+                Value<int> stableMinutes = const Value.absent(),
+                Value<String?> preferredTime = const Value.absent(),
+                Value<bool> isNight = const Value.absent(),
+                Value<bool> archived = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftTemplatesCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                shortCode: shortCode,
+                color: color,
+                startMinutes: startMinutes,
+                endMinutes: endMinutes,
+                stableMinutes: stableMinutes,
+                preferredTime: preferredTime,
+                isNight: isNight,
+                archived: archived,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String shortCode,
+                required int color,
+                Value<int?> startMinutes = const Value.absent(),
+                Value<int?> endMinutes = const Value.absent(),
+                required int stableMinutes,
+                Value<String?> preferredTime = const Value.absent(),
+                Value<bool> isNight = const Value.absent(),
+                Value<bool> archived = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftTemplatesCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                shortCode: shortCode,
+                color: color,
+                startMinutes: startMinutes,
+                endMinutes: endMinutes,
+                stableMinutes: stableMinutes,
+                preferredTime: preferredTime,
+                isNight: isNight,
+                archived: archived,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShiftTemplatesTable, ShiftTemplateRow>(table),
+                  $$ShiftTemplatesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({shiftDaysRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (shiftDaysRefs) db.shiftDays],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (shiftDaysRefs)
+                    await $_getPrefetchedDataByColumns<
+                      ShiftTemplateRow,
+                      $ShiftTemplatesTable,
+                      ShiftDayRow,
+                      $ShiftDaysTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$ShiftTemplatesTableReferences
+                          ._shiftDaysRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$ShiftTemplatesTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).shiftDaysRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'template_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ShiftTemplatesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShiftTemplatesTable,
+      ShiftTemplateRow,
+      $$ShiftTemplatesTableFilterComposer,
+      $$ShiftTemplatesTableOrderingComposer,
+      $$ShiftTemplatesTableAnnotationComposer,
+      $$ShiftTemplatesTableCreateCompanionBuilder,
+      $$ShiftTemplatesTableUpdateCompanionBuilder,
+      (ShiftTemplateRow, $$ShiftTemplatesTableReferences),
+      ShiftTemplateRow,
+      PrefetchHooks Function({bool shiftDaysRefs})
+    >;
+typedef $$ShiftPatternsTableCreateCompanionBuilder =
+    ShiftPatternsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String id,
+      required String name,
+      required String steps,
+      required LocalDate startDate,
+      required int weeks,
+      Value<int> rowid,
+    });
+typedef $$ShiftPatternsTableUpdateCompanionBuilder =
+    ShiftPatternsCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> steps,
+      Value<LocalDate> startDate,
+      Value<int> weeks,
+      Value<int> rowid,
+    });
+
+final class $$ShiftPatternsTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $ShiftPatternsTable, ShiftPatternRow> {
+  $$ShiftPatternsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<$ShiftDaysTable, List<ShiftDayRow>>
+  _shiftDaysRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.shiftDays,
+    aliasName: 'shift_patterns__id__shift_days__pattern_id',
+  );
+
+  $$ShiftDaysTableProcessedTableManager get shiftDaysRefs {
+    final manager = $$ShiftDaysTableTableManager(
+      $_db,
+      $_db.shiftDays,
+    ).filter((f) => f.patternId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_shiftDaysRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$ShiftPatternsTableFilterComposer
+    extends Composer<_$AppDatabase, $ShiftPatternsTable> {
+  $$ShiftPatternsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get startDate =>
+      $composableBuilder(
+        column: $table.startDate,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<int> get weeks => $composableBuilder(
+    column: $table.weeks,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> shiftDaysRefs(
+    Expression<bool> Function($$ShiftDaysTableFilterComposer f) f,
+  ) {
+    final $$ShiftDaysTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shiftDays,
+      getReferencedColumn: (t) => t.patternId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftDaysTableFilterComposer(
+            $db: $db,
+            $table: $db.shiftDays,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ShiftPatternsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShiftPatternsTable> {
+  $$ShiftPatternsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get weeks => $composableBuilder(
+    column: $table.weeks,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShiftPatternsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShiftPatternsTable> {
+  $$ShiftPatternsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get steps =>
+      $composableBuilder(column: $table.steps, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get startDate =>
+      $composableBuilder(column: $table.startDate, builder: (column) => column);
+
+  GeneratedColumn<int> get weeks =>
+      $composableBuilder(column: $table.weeks, builder: (column) => column);
+
+  Expression<T> shiftDaysRefs<T extends Object>(
+    Expression<T> Function($$ShiftDaysTableAnnotationComposer a) f,
+  ) {
+    final $$ShiftDaysTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.shiftDays,
+      getReferencedColumn: (t) => t.patternId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftDaysTableAnnotationComposer(
+            $db: $db,
+            $table: $db.shiftDays,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$ShiftPatternsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShiftPatternsTable,
+          ShiftPatternRow,
+          $$ShiftPatternsTableFilterComposer,
+          $$ShiftPatternsTableOrderingComposer,
+          $$ShiftPatternsTableAnnotationComposer,
+          $$ShiftPatternsTableCreateCompanionBuilder,
+          $$ShiftPatternsTableUpdateCompanionBuilder,
+          (ShiftPatternRow, $$ShiftPatternsTableReferences),
+          ShiftPatternRow,
+          PrefetchHooks Function({bool shiftDaysRefs})
+        > {
+  $$ShiftPatternsTableTableManager(_$AppDatabase db, $ShiftPatternsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShiftPatternsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShiftPatternsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShiftPatternsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> steps = const Value.absent(),
+                Value<LocalDate> startDate = const Value.absent(),
+                Value<int> weeks = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftPatternsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                steps: steps,
+                startDate: startDate,
+                weeks: weeks,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String steps,
+                required LocalDate startDate,
+                required int weeks,
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftPatternsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                name: name,
+                steps: steps,
+                startDate: startDate,
+                weeks: weeks,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShiftPatternsTable, ShiftPatternRow>(table),
+                  $$ShiftPatternsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({shiftDaysRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (shiftDaysRefs) db.shiftDays],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (shiftDaysRefs)
+                    await $_getPrefetchedDataByColumns<
+                      ShiftPatternRow,
+                      $ShiftPatternsTable,
+                      ShiftDayRow,
+                      $ShiftDaysTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$ShiftPatternsTableReferences
+                          ._shiftDaysRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$ShiftPatternsTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).shiftDaysRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'pattern_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ShiftPatternsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShiftPatternsTable,
+      ShiftPatternRow,
+      $$ShiftPatternsTableFilterComposer,
+      $$ShiftPatternsTableOrderingComposer,
+      $$ShiftPatternsTableAnnotationComposer,
+      $$ShiftPatternsTableCreateCompanionBuilder,
+      $$ShiftPatternsTableUpdateCompanionBuilder,
+      (ShiftPatternRow, $$ShiftPatternsTableReferences),
+      ShiftPatternRow,
+      PrefetchHooks Function({bool shiftDaysRefs})
+    >;
+typedef $$ShiftDaysTableCreateCompanionBuilder = ShiftDaysCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required LocalDate date,
+  Value<String?> templateId,
+  Value<int?> overrideMinutes,
+  Value<bool> otherPersonCovers,
+  Value<String?> note,
+  Value<String> source,
+  Value<String?> patternId,
+  Value<int> rowid,
+});
+typedef $$ShiftDaysTableUpdateCompanionBuilder = ShiftDaysCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<LocalDate> date,
+  Value<String?> templateId,
+  Value<int?> overrideMinutes,
+  Value<bool> otherPersonCovers,
+  Value<String?> note,
+  Value<String> source,
+  Value<String?> patternId,
+  Value<int> rowid,
+});
+
+final class $$ShiftDaysTableReferences
+    extends BaseReferences<_$AppDatabase, $ShiftDaysTable, ShiftDayRow> {
+  $$ShiftDaysTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $ShiftTemplatesTable _templateIdTable(_$AppDatabase db) => db
+      .shiftTemplates
+      .createAlias('shift_days__template_id__shift_templates__id');
+
+  $$ShiftTemplatesTableProcessedTableManager? get templateId {
+    final $_column = $_itemColumn<String>('template_id');
+    if ($_column == null) return null;
+    final manager = $$ShiftTemplatesTableTableManager(
+      $_db,
+      $_db.shiftTemplates,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_templateIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $ShiftPatternsTable _patternIdTable(_$AppDatabase db) => db
+      .shiftPatterns
+      .createAlias('shift_days__pattern_id__shift_patterns__id');
+
+  $$ShiftPatternsTableProcessedTableManager? get patternId {
+    final $_column = $_itemColumn<String>('pattern_id');
+    if ($_column == null) return null;
+    final manager = $$ShiftPatternsTableTableManager(
+      $_db,
+      $_db.shiftPatterns,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_patternIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$ShiftDaysTableFilterComposer
+    extends Composer<_$AppDatabase, $ShiftDaysTable> {
+  $$ShiftDaysTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get date =>
+      $composableBuilder(
+        column: $table.date,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<int> get overrideMinutes => $composableBuilder(
+    column: $table.overrideMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get otherPersonCovers => $composableBuilder(
+    column: $table.otherPersonCovers,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$ShiftTemplatesTableFilterComposer get templateId {
+    final $$ShiftTemplatesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.templateId,
+      referencedTable: $db.shiftTemplates,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftTemplatesTableFilterComposer(
+            $db: $db,
+            $table: $db.shiftTemplates,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ShiftPatternsTableFilterComposer get patternId {
+    final $$ShiftPatternsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patternId,
+      referencedTable: $db.shiftPatterns,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftPatternsTableFilterComposer(
+            $db: $db,
+            $table: $db.shiftPatterns,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShiftDaysTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShiftDaysTable> {
+  $$ShiftDaysTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get overrideMinutes => $composableBuilder(
+    column: $table.overrideMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get otherPersonCovers => $composableBuilder(
+    column: $table.otherPersonCovers,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$ShiftTemplatesTableOrderingComposer get templateId {
+    final $$ShiftTemplatesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.templateId,
+      referencedTable: $db.shiftTemplates,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftTemplatesTableOrderingComposer(
+            $db: $db,
+            $table: $db.shiftTemplates,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ShiftPatternsTableOrderingComposer get patternId {
+    final $$ShiftPatternsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patternId,
+      referencedTable: $db.shiftPatterns,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftPatternsTableOrderingComposer(
+            $db: $db,
+            $table: $db.shiftPatterns,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShiftDaysTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShiftDaysTable> {
+  $$ShiftDaysTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<int> get overrideMinutes => $composableBuilder(
+    column: $table.overrideMinutes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get otherPersonCovers => $composableBuilder(
+    column: $table.otherPersonCovers,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  $$ShiftTemplatesTableAnnotationComposer get templateId {
+    final $$ShiftTemplatesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.templateId,
+      referencedTable: $db.shiftTemplates,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftTemplatesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.shiftTemplates,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$ShiftPatternsTableAnnotationComposer get patternId {
+    final $$ShiftPatternsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.patternId,
+      referencedTable: $db.shiftPatterns,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ShiftPatternsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.shiftPatterns,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ShiftDaysTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShiftDaysTable,
+          ShiftDayRow,
+          $$ShiftDaysTableFilterComposer,
+          $$ShiftDaysTableOrderingComposer,
+          $$ShiftDaysTableAnnotationComposer,
+          $$ShiftDaysTableCreateCompanionBuilder,
+          $$ShiftDaysTableUpdateCompanionBuilder,
+          (ShiftDayRow, $$ShiftDaysTableReferences),
+          ShiftDayRow,
+          PrefetchHooks Function({bool templateId, bool patternId})
+        > {
+  $$ShiftDaysTableTableManager(_$AppDatabase db, $ShiftDaysTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShiftDaysTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShiftDaysTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShiftDaysTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<LocalDate> date = const Value.absent(),
+                Value<String?> templateId = const Value.absent(),
+                Value<int?> overrideMinutes = const Value.absent(),
+                Value<bool> otherPersonCovers = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String> source = const Value.absent(),
+                Value<String?> patternId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftDaysCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                date: date,
+                templateId: templateId,
+                overrideMinutes: overrideMinutes,
+                otherPersonCovers: otherPersonCovers,
+                note: note,
+                source: source,
+                patternId: patternId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required LocalDate date,
+                Value<String?> templateId = const Value.absent(),
+                Value<int?> overrideMinutes = const Value.absent(),
+                Value<bool> otherPersonCovers = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String> source = const Value.absent(),
+                Value<String?> patternId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShiftDaysCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                date: date,
+                templateId: templateId,
+                overrideMinutes: overrideMinutes,
+                otherPersonCovers: otherPersonCovers,
+                note: note,
+                source: source,
+                patternId: patternId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShiftDaysTable, ShiftDayRow>(table),
+                  $$ShiftDaysTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({templateId = false, patternId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (templateId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.templateId,
+                        referencedTable: $$ShiftDaysTableReferences
+                            ._templateIdTable(db),
+                        referencedColumn: $$ShiftDaysTableReferences
+                            ._templateIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+                    if (patternId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.patternId,
+                        referencedTable: $$ShiftDaysTableReferences
+                            ._patternIdTable(db),
+                        referencedColumn: $$ShiftDaysTableReferences
+                            ._patternIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ShiftDaysTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShiftDaysTable,
+      ShiftDayRow,
+      $$ShiftDaysTableFilterComposer,
+      $$ShiftDaysTableOrderingComposer,
+      $$ShiftDaysTableAnnotationComposer,
+      $$ShiftDaysTableCreateCompanionBuilder,
+      $$ShiftDaysTableUpdateCompanionBuilder,
+      (ShiftDayRow, $$ShiftDaysTableReferences),
+      ShiftDayRow,
+      PrefetchHooks Function({bool templateId, bool patternId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -10367,4 +13486,10 @@ class $AppDatabaseManager {
       $$CareEventsTableTableManager(_db, _db.careEvents);
   $$CareRemindersTableTableManager get careReminders =>
       $$CareRemindersTableTableManager(_db, _db.careReminders);
+  $$ShiftTemplatesTableTableManager get shiftTemplates =>
+      $$ShiftTemplatesTableTableManager(_db, _db.shiftTemplates);
+  $$ShiftPatternsTableTableManager get shiftPatterns =>
+      $$ShiftPatternsTableTableManager(_db, _db.shiftPatterns);
+  $$ShiftDaysTableTableManager get shiftDays =>
+      $$ShiftDaysTableTableManager(_db, _db.shiftDays);
 }

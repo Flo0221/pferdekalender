@@ -74,7 +74,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emptyDienstMessage =>
-      'Hier erscheinen bald deine Schichten und die Stallzeit pro Tag.';
+      'Lege Schichtvorlagen an – mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.';
 
   @override
   String get emptyPferdTitle => 'Noch kein Pferd angelegt';
@@ -974,4 +974,256 @@ class AppLocalizationsDe extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get shiftCreateDefaults => 'Standard-Vorlagen anlegen';
+
+  @override
+  String get shiftCreateDefaultsHint =>
+      'Früh, Spät, Nacht, Frei, Urlaub – alles anpassbar';
+
+  @override
+  String get shiftTemplates => 'Schichtvorlagen';
+
+  @override
+  String get shiftTemplateNew => 'Neue Vorlage';
+
+  @override
+  String get shiftTemplateEdit => 'Vorlage bearbeiten';
+
+  @override
+  String get shiftTemplateName => 'Name';
+
+  @override
+  String get shiftTemplateShort => 'Kürzel';
+
+  @override
+  String get shiftTemplateShortHint => '1–3 Zeichen, z. B. F';
+
+  @override
+  String get shiftTemplateStart => 'Beginn';
+
+  @override
+  String get shiftTemplateEnd => 'Ende';
+
+  @override
+  String get shiftTemplateNoTime => 'Ohne Uhrzeit';
+
+  @override
+  String get shiftTemplateStable => 'Stallzeit an diesem Tag';
+
+  @override
+  String get shiftTemplateStableHint =>
+      'Wie viel Zeit bleibt dir an solchen Tagen für dein Pferd (inkl. Putzen)?';
+
+  @override
+  String get shiftTemplatePreferred => 'Bevorzugte Stallzeit';
+
+  @override
+  String get shiftTemplatePreferredNone => 'Egal';
+
+  @override
+  String get shiftTemplateNight => 'Nachtschicht';
+
+  @override
+  String get shiftTemplateNightHint =>
+      'Der Tag danach wird im Trainingsplan geschont.';
+
+  @override
+  String get shiftTemplateRemoved => 'Vorlage gelöscht';
+
+  @override
+  String get shiftTemplateArchived =>
+      'Vorlage wird noch verwendet und wurde daher nur ausgeblendet.';
+
+  @override
+  String shiftTemplateRemoveTitle(String name) {
+    return '$name entfernen?';
+  }
+
+  @override
+  String get shiftTemplateRemoveText =>
+      'Wird die Vorlage noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.';
+
+  @override
+  String get dayTime_morgens => 'Morgens';
+
+  @override
+  String get dayTime_nachmittags => 'Nachmittags';
+
+  @override
+  String get dayTime_abends => 'Abends';
+
+  @override
+  String minutesValue(int value) {
+    return '$value min';
+  }
+
+  @override
+  String get shiftQuickMode => 'Schnell eintragen';
+
+  @override
+  String get shiftQuickModeEnd => 'Fertig';
+
+  @override
+  String get shiftQuickHint => 'Vorlage wählen, dann Tage antippen.';
+
+  @override
+  String get shiftQuickClear => 'Leeren';
+
+  @override
+  String get shiftNoShift => 'Keine Schicht';
+
+  @override
+  String get shiftDayEdit => 'Tag bearbeiten';
+
+  @override
+  String get shiftStableToday => 'Stallzeit';
+
+  @override
+  String get shiftOverride => 'Eigene Stallzeit für diesen Tag';
+
+  @override
+  String get shiftOverrideHint => 'z. B. heute nur 20 min';
+
+  @override
+  String get shiftOtherPerson => 'Beisteller/Reitbeteiligung übernimmt';
+
+  @override
+  String get shiftOtherPersonHint =>
+      'An diesem Tag bewegt jemand anderes das Pferd.';
+
+  @override
+  String get shiftNote => 'Notiz';
+
+  @override
+  String shiftFromPattern(String name) {
+    return 'aus Rhythmus „$name“';
+  }
+
+  @override
+  String get shiftDayEmpty => 'Noch nichts eingetragen';
+
+  @override
+  String shiftWeekTotal(String duration) {
+    return 'Diese Woche: $duration Stallzeit';
+  }
+
+  @override
+  String shiftTimeRange(String start, String end) {
+    return '$start–$end';
+  }
+
+  @override
+  String get shiftPatterns => 'Rhythmen';
+
+  @override
+  String get shiftPatternNew => 'Neuer Rhythmus';
+
+  @override
+  String get shiftPatternName => 'Name';
+
+  @override
+  String get shiftPatternNameHint => 'z. B. Wechselschicht';
+
+  @override
+  String get shiftPatternSteps => 'Ablauf';
+
+  @override
+  String get shiftPatternStepsHint =>
+      'Tippe die Schichten in der Reihenfolge an. Der Ablauf wiederholt sich.';
+
+  @override
+  String shiftPatternCycle(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage',
+      one: '1 Tag',
+    );
+    return 'Zyklus: $_temp0';
+  }
+
+  @override
+  String get shiftPatternUndo => 'Letzten Schritt entfernen';
+
+  @override
+  String get shiftPatternStart => 'Startdatum';
+
+  @override
+  String shiftPatternWeeks(int weeks) {
+    String _temp0 = intl.Intl.pluralLogic(
+      weeks,
+      locale: localeName,
+      other: '$weeks Wochen',
+      one: '1 Woche',
+    );
+    return 'Dauer: $_temp0';
+  }
+
+  @override
+  String get shiftPatternOverwrite => 'Manuell geänderte Tage überschreiben';
+
+  @override
+  String get shiftPatternOverwriteHint =>
+      'Sonst bleiben einzeln geänderte Tage erhalten.';
+
+  @override
+  String get shiftPatternPreview => 'Vorschau';
+
+  @override
+  String get shiftPatternApply => 'Ausrollen';
+
+  @override
+  String shiftPatternApplied(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Tage eingetragen',
+      one: '1 Tag eingetragen',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shiftPatternSkipped(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count manuell geänderte Tage blieben erhalten',
+      one: '1 manuell geänderter Tag blieb erhalten',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shiftPatternEmpty => 'Noch keine Rhythmen';
+
+  @override
+  String shiftPatternRange(String from, String to) {
+    return '$from – $to';
+  }
+
+  @override
+  String get shiftPatternReapply => 'Erneut ausrollen';
+
+  @override
+  String get shiftPatternDelete => 'Rhythmus löschen';
+
+  @override
+  String get shiftPatternDeleteText =>
+      'Sollen auch die vom Rhythmus eingetragenen Tage ab heute entfernt werden? Manuell geänderte Tage bleiben immer erhalten.';
+
+  @override
+  String get shiftPatternDeleteKeepDays => 'Nur Rhythmus löschen';
+
+  @override
+  String get shiftPatternDeleteWithDays => 'Mit Tagen ab heute';
+
+  @override
+  String get shiftNeedTemplates =>
+      'Lege zuerst mindestens eine Schichtvorlage an.';
+
+  @override
+  String get shiftPatternDefaultName => 'Rhythmus';
 }

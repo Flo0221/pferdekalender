@@ -15,4 +15,8 @@ abstract final class SettingKeys {
 
   /// `"true"`, sobald der Hinweis zu Intervallen einmal bestätigt wurde.
   static const careDisclaimerSeen = 'care_disclaimer_seen';
+
+  /// Zeitpunkt (ISO-8601, UTC) der letzten Dienstplan-Änderung – der
+  /// Trainings-Tab bietet danach „Plan neu verteilen“ an.
+  static const shiftChangedAt = 'shift_changed_at';
 }

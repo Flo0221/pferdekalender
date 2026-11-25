@@ -117,10 +117,21 @@ test/                         spiegelt lib/
   Folgetermin entsteht nur für erledigte oder selbst angelegte Einträge, nie
   für offene Folgetermine (Kette läuft max. einen Termin voraus). Verschieben
   eines offenen Folgetermins nur nach Nachfrage („neu berechnen?“).
+- **Dienstplan:** reine Logik in `dienstplan/domain/shift_logic.dart`
+  (`rolloutPattern`, `availabilityFor` → `DayAvailability` mit Stallzeit,
+  Tag-nach-Nacht, Beisteller – Eingabe für den Trainings-Generator).
+  Manuell geänderte Tage werden beim Ausrollen nur auf Wunsch überschrieben;
+  eigene Stallzeit/Beisteller/Notiz bleiben immer. Jede Dienstplan-Änderung
+  setzt Setting `shift_changed_at` (für „Plan neu verteilen?“ in M5).
+  Startvorlagen nur per Knopf („Standard-Vorlagen anlegen“), kein Seeding.
+- **Kalender-Widget** `core/widgets/month_calendar.dart`: Punkte (`dotsFor`)
+  oder Kürzel-Abzeichen (`badgeFor`) je Tag; wiederverwendbar für Training.
 - **Android-Ressourcen per Name** (z. B. Benachrichtigungs-Icon) in
   `res/raw/keep.xml` eintragen, sonst entfernt der Release-Build sie.
 - **Test-Hilfe:** `test/helpers/test_app.dart` (`TestApp.create()`, `pump`,
-  `openTab`, `dispose`) für App-Widget-Tests.
+  `openTab`, `read`, `dispose`) für App-Widget-Tests. DB-Lesezugriffe
+  *nach* UI-Aktionen über `app.read(tester, …)` (sonst hängt der Test).
+  Bottom-Sheets: Aktionsknöpfe außerhalb des Scrollbereichs anordnen.
 - **App-Version** steht doppelt: `pubspec.yaml` und `lib/core/app_info.dart`
   (Test prüft Gleichheit). Bewusst kein `package_info_plus`.
 
@@ -143,8 +154,10 @@ test/                         spiegelt lib/
 `horse_contacts` · `care_event_types`, `care_interval_defaults`,
 `care_events` (+ `variant_key`, `series_id`, `parent_event_id`) ·
 `care_reminders` (event_id, offset_days; Geburtstage über `horses.birthday_reminder`) ·
-`shift_templates`, `shift_days` (1 Eintrag pro Datum, `source`, `pattern_id`,
-`override_minutes`, `other_person_covers`), `shift_patterns` ·
+`shift_templates` (+ `stable_minutes`, `preferred_time`, `is_night`),
+`shift_days` (PK = Datum, `source` manual/pattern, `pattern_id`,
+`override_minutes`, `other_person_covers`, `note`), `shift_patterns`
+(`steps` JSON-Liste von Vorlagen-IDs/null, `start_date`, `weeks`) ·
 `training_plans` (+ `distributed_at`), `training_sessions` (+ `form`, `reason`,
 `pinned`, `template_key`), `horse_time_share` · `feed_items` (+ `stock`,
 `low_stock_threshold`), `feed_plans` (valid_from), `feed_meals`,
@@ -159,9 +172,10 @@ test/                         spiegelt lib/
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v3** (`settings`; `horses`, `horse_photos`,
+Aktueller Stand: **Schema v4** (`settings`; `horses`, `horse_photos`,
 `horse_weights`, `contacts`, `horse_contacts`; `care_event_types`,
-`care_interval_defaults`, `care_events`, `care_reminders`). Migrationstest:
+`care_interval_defaults`, `care_events`, `care_reminders`;
+`shift_templates`, `shift_patterns`, `shift_days`). Migrationstest:
 `test/drift/app_database/migration_test.dart` (je Version ein Datenerhalt-Test).
 
 **Startwerte** (eingebaute Eintragsarten, Standard-Intervalle) werden in
@@ -222,7 +236,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
       Manifest-Härtung, CLAUDE.md
 - [x] 2. Pferd: Liste, Profil, Fotos, Gewicht, Kontakte, Pferde-Umschalter
 - [x] 3. Pflege-Kalender inkl. Wiederholungen, Folgetermine, Erinnerungen
-- [ ] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
+- [x] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
 - [ ] 5. Training: Kalender, manuelle Einheiten, Generator + Tests, Neu-Verteilen
 - [ ] 6. Futterplan mit Versionen und temporären Zusätzen
 - [ ] 7. Export/Import, Einstellungen, Übersichtskarte, Feinschliff
@@ -241,5 +255,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - Kontakte global verwalten (ohne Pferd, endgültig löschen): Meilenstein 7.
 - Beim endgültigen Löschen eines Pferdes müssen auch Trainings- und
   Futterdaten mitgelöscht werden (FK mit `onDelete: cascade`; Pflege erledigt).
+- Stallzeit-Aufteilung bei mehreren Pferden (`horse_time_share`) kommt mit
+  dem Generator in Meilenstein 5.
 - Release-Signierung: APK ist derzeit mit dem Debug-Key signiert (Meilenstein 8).
 - iOS-Projekt ist nur generiert, nicht angepasst (Meilenstein 9).

@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../features/dienstplan/ui/dienstplan_screen.dart';
+import '../../features/dienstplan/ui/shift_patterns_screen.dart';
+import '../../features/dienstplan/ui/shift_templates_screen.dart';
 import '../../features/einstellungen/ui/settings_screen.dart';
 import '../../features/futter/ui/futter_screen.dart';
 import '../../features/pferd/ui/horse_edit_screen.dart';
@@ -47,6 +49,29 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
           path: 'intervalle',
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const CareIntervalsScreen(),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: Routes.shiftTemplates,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const ShiftTemplatesScreen(),
+    ),
+    GoRoute(
+      path: Routes.shiftPatterns,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const ShiftPatternsScreen(),
+      routes: [
+        GoRoute(
+          path: 'neu',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const ShiftPatternEditScreen(),
+        ),
+        GoRoute(
+          path: ':id',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) =>
+              ShiftPatternEditScreen(patternId: state.pathParameters['id']),
         ),
       ],
     ),

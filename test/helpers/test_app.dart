@@ -56,6 +56,11 @@ class TestApp {
     await tester.pumpAndSettle();
   }
 
+  /// Liest aus der Datenbank, nachdem UI-Aktionen Schreibzugriffe ausgelöst
+  /// haben. Direkt im Test-Zone-`await` kann das hängen; `runAsync` nicht.
+  Future<T> read<T>(WidgetTester tester, Future<T> Function() query) async =>
+      (await tester.runAsync(query)) as T;
+
   /// Sauberes Beenden (Drift-Stream-Timer, Datenbank schließen).
   Future<void> dispose(WidgetTester tester) async {
     await tester.pumpWidget(const SizedBox.shrink());

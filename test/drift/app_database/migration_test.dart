@@ -8,6 +8,7 @@ import 'generated/schema.dart';
 import 'generated/schema_v1.dart' as v1;
 import 'generated/schema_v2.dart' as v2;
 import 'generated/schema_v3.dart' as v3;
+import 'generated/schema_v4.dart' as v4;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -95,6 +96,61 @@ void main() {
           await newDb.select(newDb.careIntervalDefaults).get(),
           isNotEmpty,
         );
+      },
+    );
+  });
+
+  test('v3 → v4 behält Pflegeeinträge, Dienstplan-Tabellen leer', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 3,
+      newVersion: 4,
+      createOld: v3.DatabaseAtV3.new,
+      createNew: v4.DatabaseAtV4.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch
+          ..insert(
+            oldDb.horses,
+            v3.HorsesCompanion.insert(
+              id: 'h1',
+              name: 'Amigo',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.careEventTypes,
+            v3.CareEventTypesCompanion.insert(
+              id: 'builtin_huf',
+              name: 'Hufbearbeitung',
+              kind: 'huf',
+              color: 0xFF8D6E63,
+              icon: 'huf',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.careEvents,
+            v3.CareEventsCompanion.insert(
+              id: 'e1',
+              horseId: 'h1',
+              typeId: 'builtin_huf',
+              date: '2026-12-01',
+              repeatValue: const Value(7),
+              repeatUnit: const Value('weeks'),
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          );
+      },
+      validateItems: (newDb) async {
+        final e = await newDb.select(newDb.careEvents).getSingle();
+        expect(e.date, '2026-12-01');
+        expect(e.repeatValue, 7);
+        expect(await newDb.select(newDb.shiftTemplates).get(), isEmpty);
+        expect(await newDb.select(newDb.shiftDays).get(), isEmpty);
       },
     );
   });

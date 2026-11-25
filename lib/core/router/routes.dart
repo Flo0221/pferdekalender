@@ -15,4 +15,8 @@ abstract final class Routes {
   static String careEdit(String id) => '/pflege-eintrag/$id';
   static const careTypes = '/einstellungen/eintragsarten';
   static const careIntervals = '/einstellungen/intervalle';
+  static const shiftTemplates = '/dienst-vorlagen';
+  static const shiftPatterns = '/dienst-rhythmen';
+  static const shiftPatternNew = '/dienst-rhythmen/neu';
+  static String shiftPatternEdit(String id) => '/dienst-rhythmen/$id';
 }

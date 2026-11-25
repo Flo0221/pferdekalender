@@ -5,6 +5,14 @@ import '../../l10n/generated/app_localizations.dart';
 import '../time/calendar_grid.dart';
 import '../time/local_date.dart';
 
+/// Kurzes, farbiges Abzeichen unter dem Tag (z. B. Schicht-Kürzel „F“).
+class CalendarBadge {
+  const CalendarBadge(this.label, this.color, {this.semanticLabel});
+  final String label;
+  final Color color;
+  final String? semanticLabel;
+}
+
 /// Eigener, schlanker Kalender (Monat / 2 Wochen / Woche, Montag zuerst).
 /// Unter jedem Tag erscheinen bis zu 4 farbige Punkte ([dotsFor]).
 class MonthCalendar extends StatelessWidget {
@@ -18,7 +26,11 @@ class MonthCalendar extends StatelessWidget {
     required this.onFocusChange,
     required this.onSpanChange,
     this.semanticsCountFor,
+    this.badgeFor,
   });
+
+  /// Optionales Abzeichen je Tag; ersetzt dann die Punkte.
+  final CalendarBadge? Function(LocalDate day)? badgeFor;
 
   final LocalDate focused;
   final LocalDate selected;
@@ -131,6 +143,7 @@ class MonthCalendar extends StatelessWidget {
     final isSelected = day == selected;
     final isToday = day == today;
     final dots = dotsFor(day);
+    final badge = badgeFor?.call(day);
     final count = semanticsCountFor?.call(day) ?? dots.length;
 
     final Color? fill = isSelected
@@ -151,13 +164,14 @@ class MonthCalendar extends StatelessWidget {
       selected: isSelected,
       label:
           '${_dayFormat.format(day.toLocalDateTime())}'
+          '${badge?.semanticLabel != null ? ', ${badge!.semanticLabel}' : ''}'
           '${count > 0 ? ', ${l10n.calendarEntries(count)}' : ''}',
       excludeSemantics: true,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: () => onSelect(day),
         child: SizedBox(
-          height: 48,
+          height: badge == null ? 48 : 56,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -169,24 +183,48 @@ class MonthCalendar extends StatelessWidget {
                 child: Text('${day.day}', style: TextStyle(color: textColor)),
               ),
               const SizedBox(height: 2),
-              SizedBox(
-                height: 6,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (final c in dots.take(4))
-                      Container(
-                        width: 6,
-                        height: 6,
-                        margin: const EdgeInsets.symmetric(horizontal: 1),
-                        decoration: BoxDecoration(
-                          color: inMonth ? c : c.withValues(alpha: 0.4),
-                          shape: BoxShape.circle,
+              if (badge != null)
+                Container(
+                  constraints: const BoxConstraints(minWidth: 22),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  decoration: BoxDecoration(
+                    color: badge.color.withValues(alpha: inMonth ? 1 : 0.4),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    badge.label,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color:
+                          ThemeData.estimateBrightnessForColor(badge.color) ==
+                              Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                )
+              else
+                SizedBox(
+                  height: 6,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (final c in dots.take(4))
+                        Container(
+                          width: 6,
+                          height: 6,
+                          margin: const EdgeInsets.symmetric(horizontal: 1),
+                          decoration: BoxDecoration(
+                            color: inMonth ? c : c.withValues(alpha: 0.4),
+                            shape: BoxShape.circle,
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
             ],
           ),
         ),

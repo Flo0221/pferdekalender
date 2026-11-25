@@ -217,7 +217,7 @@ abstract class AppLocalizations {
   /// No description provided for @emptyDienstMessage.
   ///
   /// In de, this message translates to:
-  /// **'Hier erscheinen bald deine Schichten und die Stallzeit pro Tag.'**
+  /// **'Lege Schichtvorlagen an – mit der Stallzeit, die dir an solchen Tagen für dein Pferd bleibt. Daraus plant später der Trainings-Generator.'**
   String get emptyDienstMessage;
 
   /// No description provided for @emptyPferdTitle.
@@ -1719,6 +1719,402 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'{count, plural, =1{1 Eintrag} other{{count} Einträge}}'**
   String calendarEntries(int count);
+
+  /// No description provided for @shiftCreateDefaults.
+  ///
+  /// In de, this message translates to:
+  /// **'Standard-Vorlagen anlegen'**
+  String get shiftCreateDefaults;
+
+  /// No description provided for @shiftCreateDefaultsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Früh, Spät, Nacht, Frei, Urlaub – alles anpassbar'**
+  String get shiftCreateDefaultsHint;
+
+  /// No description provided for @shiftTemplates.
+  ///
+  /// In de, this message translates to:
+  /// **'Schichtvorlagen'**
+  String get shiftTemplates;
+
+  /// No description provided for @shiftTemplateNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Vorlage'**
+  String get shiftTemplateNew;
+
+  /// No description provided for @shiftTemplateEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorlage bearbeiten'**
+  String get shiftTemplateEdit;
+
+  /// No description provided for @shiftTemplateName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get shiftTemplateName;
+
+  /// No description provided for @shiftTemplateShort.
+  ///
+  /// In de, this message translates to:
+  /// **'Kürzel'**
+  String get shiftTemplateShort;
+
+  /// No description provided for @shiftTemplateShortHint.
+  ///
+  /// In de, this message translates to:
+  /// **'1–3 Zeichen, z. B. F'**
+  String get shiftTemplateShortHint;
+
+  /// No description provided for @shiftTemplateStart.
+  ///
+  /// In de, this message translates to:
+  /// **'Beginn'**
+  String get shiftTemplateStart;
+
+  /// No description provided for @shiftTemplateEnd.
+  ///
+  /// In de, this message translates to:
+  /// **'Ende'**
+  String get shiftTemplateEnd;
+
+  /// No description provided for @shiftTemplateNoTime.
+  ///
+  /// In de, this message translates to:
+  /// **'Ohne Uhrzeit'**
+  String get shiftTemplateNoTime;
+
+  /// No description provided for @shiftTemplateStable.
+  ///
+  /// In de, this message translates to:
+  /// **'Stallzeit an diesem Tag'**
+  String get shiftTemplateStable;
+
+  /// No description provided for @shiftTemplateStableHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie viel Zeit bleibt dir an solchen Tagen für dein Pferd (inkl. Putzen)?'**
+  String get shiftTemplateStableHint;
+
+  /// No description provided for @shiftTemplatePreferred.
+  ///
+  /// In de, this message translates to:
+  /// **'Bevorzugte Stallzeit'**
+  String get shiftTemplatePreferred;
+
+  /// No description provided for @shiftTemplatePreferredNone.
+  ///
+  /// In de, this message translates to:
+  /// **'Egal'**
+  String get shiftTemplatePreferredNone;
+
+  /// No description provided for @shiftTemplateNight.
+  ///
+  /// In de, this message translates to:
+  /// **'Nachtschicht'**
+  String get shiftTemplateNight;
+
+  /// No description provided for @shiftTemplateNightHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Tag danach wird im Trainingsplan geschont.'**
+  String get shiftTemplateNightHint;
+
+  /// No description provided for @shiftTemplateRemoved.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorlage gelöscht'**
+  String get shiftTemplateRemoved;
+
+  /// No description provided for @shiftTemplateArchived.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorlage wird noch verwendet und wurde daher nur ausgeblendet.'**
+  String get shiftTemplateArchived;
+
+  /// No description provided for @shiftTemplateRemoveTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'{name} entfernen?'**
+  String shiftTemplateRemoveTitle(String name);
+
+  /// No description provided for @shiftTemplateRemoveText.
+  ///
+  /// In de, this message translates to:
+  /// **'Wird die Vorlage noch im Dienstplan verwendet, wird sie nur ausgeblendet; die Tage behalten ihre Schicht.'**
+  String get shiftTemplateRemoveText;
+
+  /// No description provided for @dayTime_morgens.
+  ///
+  /// In de, this message translates to:
+  /// **'Morgens'**
+  String get dayTime_morgens;
+
+  /// No description provided for @dayTime_nachmittags.
+  ///
+  /// In de, this message translates to:
+  /// **'Nachmittags'**
+  String get dayTime_nachmittags;
+
+  /// No description provided for @dayTime_abends.
+  ///
+  /// In de, this message translates to:
+  /// **'Abends'**
+  String get dayTime_abends;
+
+  /// No description provided for @minutesValue.
+  ///
+  /// In de, this message translates to:
+  /// **'{value} min'**
+  String minutesValue(int value);
+
+  /// No description provided for @shiftQuickMode.
+  ///
+  /// In de, this message translates to:
+  /// **'Schnell eintragen'**
+  String get shiftQuickMode;
+
+  /// No description provided for @shiftQuickModeEnd.
+  ///
+  /// In de, this message translates to:
+  /// **'Fertig'**
+  String get shiftQuickModeEnd;
+
+  /// No description provided for @shiftQuickHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorlage wählen, dann Tage antippen.'**
+  String get shiftQuickHint;
+
+  /// No description provided for @shiftQuickClear.
+  ///
+  /// In de, this message translates to:
+  /// **'Leeren'**
+  String get shiftQuickClear;
+
+  /// No description provided for @shiftNoShift.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Schicht'**
+  String get shiftNoShift;
+
+  /// No description provided for @shiftDayEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Tag bearbeiten'**
+  String get shiftDayEdit;
+
+  /// No description provided for @shiftStableToday.
+  ///
+  /// In de, this message translates to:
+  /// **'Stallzeit'**
+  String get shiftStableToday;
+
+  /// No description provided for @shiftOverride.
+  ///
+  /// In de, this message translates to:
+  /// **'Eigene Stallzeit für diesen Tag'**
+  String get shiftOverride;
+
+  /// No description provided for @shiftOverrideHint.
+  ///
+  /// In de, this message translates to:
+  /// **'z. B. heute nur 20 min'**
+  String get shiftOverrideHint;
+
+  /// No description provided for @shiftOtherPerson.
+  ///
+  /// In de, this message translates to:
+  /// **'Beisteller/Reitbeteiligung übernimmt'**
+  String get shiftOtherPerson;
+
+  /// No description provided for @shiftOtherPersonHint.
+  ///
+  /// In de, this message translates to:
+  /// **'An diesem Tag bewegt jemand anderes das Pferd.'**
+  String get shiftOtherPersonHint;
+
+  /// No description provided for @shiftNote.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get shiftNote;
+
+  /// No description provided for @shiftFromPattern.
+  ///
+  /// In de, this message translates to:
+  /// **'aus Rhythmus „{name}“'**
+  String shiftFromPattern(String name);
+
+  /// No description provided for @shiftDayEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch nichts eingetragen'**
+  String get shiftDayEmpty;
+
+  /// No description provided for @shiftWeekTotal.
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Woche: {duration} Stallzeit'**
+  String shiftWeekTotal(String duration);
+
+  /// No description provided for @shiftTimeRange.
+  ///
+  /// In de, this message translates to:
+  /// **'{start}–{end}'**
+  String shiftTimeRange(String start, String end);
+
+  /// No description provided for @shiftPatterns.
+  ///
+  /// In de, this message translates to:
+  /// **'Rhythmen'**
+  String get shiftPatterns;
+
+  /// No description provided for @shiftPatternNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neuer Rhythmus'**
+  String get shiftPatternNew;
+
+  /// No description provided for @shiftPatternName.
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get shiftPatternName;
+
+  /// No description provided for @shiftPatternNameHint.
+  ///
+  /// In de, this message translates to:
+  /// **'z. B. Wechselschicht'**
+  String get shiftPatternNameHint;
+
+  /// No description provided for @shiftPatternSteps.
+  ///
+  /// In de, this message translates to:
+  /// **'Ablauf'**
+  String get shiftPatternSteps;
+
+  /// No description provided for @shiftPatternStepsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Tippe die Schichten in der Reihenfolge an. Der Ablauf wiederholt sich.'**
+  String get shiftPatternStepsHint;
+
+  /// No description provided for @shiftPatternCycle.
+  ///
+  /// In de, this message translates to:
+  /// **'Zyklus: {days, plural, =1{1 Tag} other{{days} Tage}}'**
+  String shiftPatternCycle(int days);
+
+  /// No description provided for @shiftPatternUndo.
+  ///
+  /// In de, this message translates to:
+  /// **'Letzten Schritt entfernen'**
+  String get shiftPatternUndo;
+
+  /// No description provided for @shiftPatternStart.
+  ///
+  /// In de, this message translates to:
+  /// **'Startdatum'**
+  String get shiftPatternStart;
+
+  /// No description provided for @shiftPatternWeeks.
+  ///
+  /// In de, this message translates to:
+  /// **'Dauer: {weeks, plural, =1{1 Woche} other{{weeks} Wochen}}'**
+  String shiftPatternWeeks(int weeks);
+
+  /// No description provided for @shiftPatternOverwrite.
+  ///
+  /// In de, this message translates to:
+  /// **'Manuell geänderte Tage überschreiben'**
+  String get shiftPatternOverwrite;
+
+  /// No description provided for @shiftPatternOverwriteHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Sonst bleiben einzeln geänderte Tage erhalten.'**
+  String get shiftPatternOverwriteHint;
+
+  /// No description provided for @shiftPatternPreview.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorschau'**
+  String get shiftPatternPreview;
+
+  /// No description provided for @shiftPatternApply.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausrollen'**
+  String get shiftPatternApply;
+
+  /// No description provided for @shiftPatternApplied.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Tag eingetragen} other{{count} Tage eingetragen}}'**
+  String shiftPatternApplied(int count);
+
+  /// No description provided for @shiftPatternSkipped.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 manuell geänderter Tag blieb erhalten} other{{count} manuell geänderte Tage blieben erhalten}}'**
+  String shiftPatternSkipped(int count);
+
+  /// No description provided for @shiftPatternEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Rhythmen'**
+  String get shiftPatternEmpty;
+
+  /// No description provided for @shiftPatternRange.
+  ///
+  /// In de, this message translates to:
+  /// **'{from} – {to}'**
+  String shiftPatternRange(String from, String to);
+
+  /// No description provided for @shiftPatternReapply.
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut ausrollen'**
+  String get shiftPatternReapply;
+
+  /// No description provided for @shiftPatternDelete.
+  ///
+  /// In de, this message translates to:
+  /// **'Rhythmus löschen'**
+  String get shiftPatternDelete;
+
+  /// No description provided for @shiftPatternDeleteText.
+  ///
+  /// In de, this message translates to:
+  /// **'Sollen auch die vom Rhythmus eingetragenen Tage ab heute entfernt werden? Manuell geänderte Tage bleiben immer erhalten.'**
+  String get shiftPatternDeleteText;
+
+  /// No description provided for @shiftPatternDeleteKeepDays.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur Rhythmus löschen'**
+  String get shiftPatternDeleteKeepDays;
+
+  /// No description provided for @shiftPatternDeleteWithDays.
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Tagen ab heute'**
+  String get shiftPatternDeleteWithDays;
+
+  /// No description provided for @shiftNeedTemplates.
+  ///
+  /// In de, this message translates to:
+  /// **'Lege zuerst mindestens eine Schichtvorlage an.'**
+  String get shiftNeedTemplates;
+
+  /// No description provided for @shiftPatternDefaultName.
+  ///
+  /// In de, this message translates to:
+  /// **'Rhythmus'**
+  String get shiftPatternDefaultName;
 }
 
 class _AppLocalizationsDelegate

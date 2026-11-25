@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../features/dienstplan/data/shift_tables.dart';
 import '../../features/pferd/data/horse_tables.dart';
 import '../../features/pflege/data/care_seed.dart';
 import '../../features/pflege/data/care_tables.dart';
@@ -30,6 +31,9 @@ part 'app_database.g.dart';
     CareIntervalDefaults,
     CareEvents,
     CareReminders,
+    ShiftTemplates,
+    ShiftPatterns,
+    ShiftDays,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -46,7 +50,7 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -64,6 +68,11 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(schema.careIntervalDefaults);
         await m.createTable(schema.careEvents);
         await m.createTable(schema.careReminders);
+      },
+      from3To4: (m, schema) async {
+        await m.createTable(schema.shiftTemplates);
+        await m.createTable(schema.shiftPatterns);
+        await m.createTable(schema.shiftDays);
       },
     ),
     beforeOpen: (details) async {

@@ -17,6 +17,13 @@ abstract final class Fmt {
   /// 1250 → „12,50“.
   static String money(int cents) => _money.format(cents / 100);
 
+  /// Dauer → „1 h 30 min“, „45 min“, „2 h“.
+  static String duration(int minutes) {
+    final h = minutes ~/ 60, m = minutes % 60;
+    if (h == 0) return '$m min';
+    return m == 0 ? '$h h' : '$h h $m min';
+  }
+
   /// Minuten seit Mitternacht → „07:30“.
   static String time(int minutes) =>
       '${(minutes ~/ 60).toString().padLeft(2, '0')}:'
