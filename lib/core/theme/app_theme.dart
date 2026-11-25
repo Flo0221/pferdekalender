@@ -17,6 +17,9 @@ abstract final class AppTheme {
       useMaterial3: true,
       // Web: gebündelte Schrift (sonst lädt Flutter Roboto von Google).
       fontFamily: kIsWeb ? 'Roboto' : null,
+      // Web: Zeichen, die Roboto fehlt, aus der gebündelten Symbolschrift
+      // (sonst würde Flutter Ersatzschriften von Google nachladen).
+      fontFamilyFallback: kIsWeb ? const ['PkSymbols'] : null,
       colorScheme: scheme,
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,

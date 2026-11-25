@@ -3985,7 +3985,7 @@ abstract class AppLocalizations {
   /// No description provided for @webInstallOtherBrowser.
   ///
   /// In de, this message translates to:
-  /// **'In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.'**
+  /// **'In Chrome/Edge: Drei-Punkte-Menü → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.'**
   String get webInstallOtherBrowser;
 
   /// No description provided for @webUpdateAvailable.

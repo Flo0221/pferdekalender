@@ -43,6 +43,8 @@ flutter:
   assets:
     - assets/training_templates.json
     - assets/blood_reference.json
+    - assets/fonts/Roboto_LICENSE.txt
+    - assets/fonts/PkSymbols_LICENSE.txt
   # Im Web gebündelt, damit keine Schriften von Google-Servern geladen werden.
   fonts:
     - family: Roboto
@@ -52,3 +54,7 @@ flutter:
           weight: 500
         - asset: assets/fonts/Roboto-Bold.ttf
           weight: 700
+    # Teilmenge von DejaVu Sans für Zeichen, die Roboto fehlen (→, ★ …).
+    - family: PkSymbols
+      fonts:
+        - asset: assets/fonts/PkSymbols.ttf

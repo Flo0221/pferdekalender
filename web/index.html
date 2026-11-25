@@ -81,8 +81,10 @@
     // werden NICHT automatisch aktiviert: die App zeigt „Neue Version
     // verfügbar – jetzt neu laden“ und ruft erst dann pkApplyUpdate() auf.
     window.pkUpdateAvailable = false;
+    var pkUpdating = false;
     window.pkApplyUpdate = function () {
       var reg = window.pkRegistration;
+      pkUpdating = true;
       if (reg && reg.waiting) {
         reg.waiting.postMessage({ type: 'SKIP_WAITING' });
       } else {
@@ -96,7 +98,8 @@
     if ('serviceWorker' in navigator) {
       var reloading = false;
       navigator.serviceWorker.addEventListener('controllerchange', function () {
-        if (reloading) return;
+        // Nur nach „Neu laden“ – nicht, wenn der erste Worker übernimmt.
+        if (reloading || !pkUpdating) return;
         reloading = true;
         window.location.reload();
       });

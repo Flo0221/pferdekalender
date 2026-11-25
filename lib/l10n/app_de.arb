@@ -1410,7 +1410,7 @@
   "webInstallStep2": "„Zum Home-Bildschirm“ wählen (ggf. nach unten scrollen) und „Hinzufügen“ tippen.",
   "webInstallStep3": "Pferdekalender über das neue Symbol auf dem Home-Bildschirm öffnen und nur dort Daten eintragen.",
   "webInstallWhy": "Browser-Tab und installierte App haben getrennte Speicher. Daten, die du hier im Browser-Tab einträgst, siehst du in der installierten App nicht.",
-  "webInstallOtherBrowser": "In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.",
+  "webInstallOtherBrowser": "In Chrome/Edge: Drei-Punkte-Menü → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.",
   "webUpdateAvailable": "Neue Version verfügbar – jetzt neu laden",
   "webUpdateReload": "Neu laden"
 }

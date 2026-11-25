@@ -2356,7 +2356,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get webInstallOtherBrowser =>
-      'In Chrome/Edge: Menü (⋮) → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.';
+      'In Chrome/Edge: Drei-Punkte-Menü → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.';
 
   @override
   String get webUpdateAvailable => 'Neue Version verfügbar – jetzt neu laden';

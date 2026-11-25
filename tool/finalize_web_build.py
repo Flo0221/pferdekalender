@@ -12,16 +12,29 @@ root = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "build/web")
 for junk in ["flutter_service_worker.js", "flutter.js.map", "main.dart.js.map"]:
     (root / junk).unlink(missing_ok=True)
 
+def skip(rel: str) -> bool:
+    # Nur im Wasm-Build/experimentell genutzt bzw. Debug-Symbole: nicht
+    # vorab laden (würde ~20 MB extra kosten). Geladen wird im JS-Build
+    # canvaskit/canvaskit.* (Safari/Firefox) oder canvaskit/chromium/*.
+    name = rel.rsplit("/", 1)[-1]
+    return (
+        name.endswith(".symbols")
+        or name.startswith(("skwasm", "wimp"))
+        or rel.startswith("canvaskit/webparagraph/")
+    )
+
+
 files = sorted(
     p for p in root.rglob("*")
     if p.is_file() and p.name not in {"sw.js", ".last_build_id"}
 )
+precache_files = [p for p in files if not skip(p.relative_to(root).as_posix())]
 h = hashlib.sha256()
 for p in files:
     h.update(p.relative_to(root).as_posix().encode())
     h.update(p.read_bytes())
 version = h.hexdigest()[:12]
-precache = ["./"] + [p.relative_to(root).as_posix() for p in files]
+precache = ["./"] + [p.relative_to(root).as_posix() for p in precache_files]
 
 sw = (root / "sw.js").read_text(encoding="utf-8")
 if "__PK_VERSION__" not in sw:
@@ -29,5 +42,5 @@ if "__PK_VERSION__" not in sw:
 sw = sw.replace("'__PK_VERSION__'", json.dumps(version))
 sw = sw.replace("__PK_PRECACHE__", json.dumps(precache, indent=1))
 (root / "sw.js").write_text(sw, encoding="utf-8")
-total = sum(p.stat().st_size for p in files)
+total = sum(p.stat().st_size for p in precache_files)
 print(f"sw.js: Version {version}, {len(precache)} Dateien, {total / 1e6:.1f} MB")
