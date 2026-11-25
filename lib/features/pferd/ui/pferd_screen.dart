@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -45,25 +46,42 @@ class PferdScreen extends ConsumerWidget {
       ],
       body: switch (selected) {
         AsyncData(value: final Horse h) => _Profile(horse: h),
-        AsyncData() => Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            EmptyState(
-              icon: Icons.pets_outlined,
-              title: l10n.emptyPferdTitle,
-              message: l10n.emptyPferdMessage,
-            ),
-            FilledButton.icon(
-              onPressed: () => context.push(Routes.horseNew),
-              icon: const Icon(Icons.add),
-              label: Text(l10n.emptyPferdAction),
-            ),
-          ],
+        AsyncData() => _scrollableOnWeb(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              EmptyState(
+                icon: Icons.pets_outlined,
+                title: l10n.emptyPferdTitle,
+                message: l10n.emptyPferdMessage,
+              ),
+              FilledButton.icon(
+                onPressed: () => context.push(Routes.horseNew),
+                icon: const Icon(Icons.add),
+                label: Text(l10n.emptyPferdAction),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );
   }
+}
+
+/// Web (iPhone quer): Leerzustand scrollbar, damit der Knopf erreichbar
+/// bleibt. TODO: nach Rückfrage auch für Android übernehmen.
+Widget _scrollableOnWeb(Widget child) {
+  if (!kIsWeb) return child;
+  return LayoutBuilder(
+    builder: (context, c) => SingleChildScrollView(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: c.maxHeight),
+        child: child,
+      ),
+    ),
+  );
 }
 
 class _Profile extends StatelessWidget {

@@ -1,8 +1,9 @@
 # Pferdekalender – Projektregeln für Claude
 
 Mobile-App (Flutter) zur Verwaltung von Pflege, Training, Futter und Dienstplan
-für ein oder mehrere Pferde. Android zuerst, iOS später (Meilenstein 9, erst
-nach Freigabe). Oberfläche komplett **Deutsch**.
+für ein oder mehrere Pferde. Android ist die Hauptversion; iOS ist konfiguriert;
+zusätzlich eine **Web-App (PWA)** für den iPhone-Testlauf (`docs/WEB.md`).
+Oberfläche komplett **Deutsch**.
 
 Application-ID / Bundle-ID: `de.flo.pferdekalender` (nie ändern).
 
@@ -190,6 +191,27 @@ test/                         spiegelt lib/
   Stream-Providern nutzen. Echte Datei-I/O im Test nur in `tester.runAsync`;
   `TestApp` hat einen eigenen Temp-Dokumentenordner je Test.
   Bottom-Sheets: Aktionsknöpfe außerhalb des Scrollbereichs anordnen.
+- **Web-App (PWA):** Plattform-Weiche `core/platform/web_env.dart`
+  (Conditional Import `web_env_web.dart`/`web_env_stub.dart`; Tests:
+  `FakeWebEnv`, `TestApp.create(webEnv: …)`). Standalone-Erkennung,
+  `persist()`/`estimate()` (Einstellungen → „Speicher im Browser“),
+  Installations-Hinweis + Anleitung und Update-Banner (`WebBanners` in
+  `TabScaffold`), Download, Badging. Fotos im Web als Blobs (`DbPhotoStore`,
+  Tabelle `photo_blobs`, nicht im JSON-Export – Fotos kommen über `photos/`).
+  Benachrichtigungen im Web aus (`UnsupportedNotificationGateway`); statt
+  dessen Heute-Karte (`CareTodayCard`) und ICS-Export
+  (`pflege/domain/ics_export.dart`, UID `care-<id>@pferdekalender`, VALARM
+  nach denselben Regeln wie die Erinnerungen) – **nur im Web**. Datenbank:
+  `web/sqlite3.wasm` + `web/drift_worker.js` (eingecheckt, neu mit
+  `tool/build_web_assets.sh`). Build: `tool/build_web.sh` (ohne CDN, setzt
+  per `tool/finalize_web_build.py` Version + Precache-Liste in `web/sw.js`).
+  Prüfung: `node tool/check_web_requests.mjs` (nur eigene Herkunft, offline).
+  **Keine externen Ressourcen**: Schriften Roboto + `PkSymbols` (Teilmenge
+  DejaVu Sans), `test/core/web_glyphs_test.dart` verlangt, dass jedes
+  UI-Zeichen darin vorkommt – neue Sonderzeichen ggf. in PkSymbols ergänzen
+  (`pyftsubset`). Fonts nur im Web als `fontFamily` aktiv.
+  CI: `.github/workflows/web.yml` (Secrets-Check `tool/check_secrets.sh`,
+  Analyse, Tests, Build, Browser-Check, Pages-Deploy).
 - **App-Version** steht doppelt: `pubspec.yaml` und `lib/core/app_info.dart`
   (Test prüft Gleichheit). Bewusst kein `package_info_plus`.
 
@@ -237,7 +259,7 @@ vom eigenen Befund). Nur abweichende Werte werden gespeichert.
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v7** (`settings`; `horses`, `horse_photos`,
+Aktueller Stand: **Schema v8** (`settings`; `photo_blobs` (Web); `horses`, `horse_photos`,
 `horse_weights`, `contacts`, `horse_contacts`; `care_event_types`,
 `care_interval_defaults`, `care_events`, `care_reminders`;
 `shift_templates`, `shift_patterns`, `shift_days`; `training_plans`,
@@ -295,6 +317,7 @@ Vorher immer prüfen, ob per Name genutzte Ressourcen im APK sind:
 | archive | ZIP für Export/Import | reines Dart, kein Netzwerk |
 | share_plus | Sicherung teilen/„In Dateien sichern“ | keine Permissions (nur eigener FileProvider); Web: `navigator.share`, Fallback Download; `mailto`-Fallback abgeschaltet |
 | file_picker | ZIP für Import wählen | keine Permissions; Web liest nur lokale Blob-URLs (`fetch` auf `blob:`) |
+| web | Browser-APIs (nur Web-Code) | reine JS-Bindings des Dart-Teams, kein Netzwerk; war schon transitiv da |
 
 Verworfen: `table_calendar` (nutzt noch `flutter/material`, bricht mit
 `material_ui`) → eigener Kalender `core/widgets/month_calendar.dart`
@@ -314,10 +337,19 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - [x] 6. Futterplan mit Versionen und temporären Zusätzen
 - [x] 6b. Gesundheit: Blutbild mit Laboklin-Referenzwerten, Regel-Auswertung, Futter-Bausteine
 - [ ] 7. Export/Import, Einstellungen, Übersichtskarte, Feinschliff
+      (Export/Import fertig: `features/backup`)
+- [x] Web-App (PWA) für iPhone-Test: Speicher, Offline, ICS, Heute-Karte,
+      CI + Pages (`docs/WEB.md`); auf echtem iPhone noch abzunehmen
 - [ ] 8. Release-Build Android (Icon, Splash, Signing, Permission-Prüfung)
 - [x] 9. iOS: Konfiguration fertig (Info.plist, Backup-Ausschluss, Privacy-Manifest, Benachrichtigungen); **Build auf Mac/Xcode noch nicht verifiziert** – Anleitung `docs/IOS.md`
 
 ## TODO / offen
+
+- Web: Abnahme auf echtem iPhone (Checkliste in `docs/WEB.md`). Pages muss
+  der Nutzer einschalten (Settings → Pages → GitHub Actions); bei privatem
+  Repo nur mit bezahltem Plan.
+- Leerzustand „Erstes Pferd anlegen“ ist nur im Web scrollbar (Querformat);
+  für Android nach Rückfrage übernehmen (`_scrollableOnWeb` in pferd_screen).
 
 - Antippen einer Benachrichtigung öffnet nur die App, nicht den Eintrag
   (payload `care:<id>` / `birthday:<id>` ist vorhanden) – Meilenstein 7.

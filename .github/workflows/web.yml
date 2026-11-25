@@ -1,0 +1,65 @@
+# Web-App (PWA): prüfen, testen, bauen und auf GitHub Pages veröffentlichen.
+# Voraussetzung: Settings → Pages → Source: „GitHub Actions“ (siehe docs/WEB.md).
+name: Web-App
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Keine Secrets im Repo
+        run: tool/check_secrets.sh
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.50.1
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed lib test
+      - run: flutter analyze
+      - name: Tests
+        run: flutter test
+        env:
+          TZ: Europe/Berlin
+
+      - name: Web-Build (ohne CDN, Basis /pferdekalender/)
+        run: tool/build_web.sh "/${{ github.event.repository.name }}/"
+
+      - name: Browser-Check (nur eigene Herkunft, offline-fähig)
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+          node tool/check_web_requests.mjs build/web "/${{ github.event.repository.name }}/"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
