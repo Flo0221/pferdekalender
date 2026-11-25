@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:pferdekalender/core/time/local_date.dart';
 import 'package:pferdekalender/features/dienstplan/ui/shift_providers.dart';
 
+import '../../helpers/calendar_finders.dart';
 import '../../helpers/test_app.dart';
 
 void main() {
@@ -28,7 +29,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final today = LocalDate.today();
-    await tester.tap(find.text('${today.day}').first);
+    await tester.tap(dayCell(today));
     await tester.pumpAndSettle();
 
     final repo = app.container.read(shiftRepositoryProvider);
@@ -148,7 +149,7 @@ void main() {
     );
     expect(chip.selected, isTrue);
     final today = LocalDate.today();
-    await tester.tap(find.text('${today.day}').first);
+    await tester.tap(dayCell(today));
     await tester.pumpAndSettle();
 
     final templates = await app.read(tester, () => repo.watchTemplates().first);
