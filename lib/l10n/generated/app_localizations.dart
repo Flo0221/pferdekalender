@@ -3393,6 +3393,318 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Vorrat'**
   String get feedItemStockLabel;
+
+  /// No description provided for @healthTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Gesundheit'**
+  String get healthTitle;
+
+  /// No description provided for @healthNoTest.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch kein Blutbild eingetragen'**
+  String get healthNoTest;
+
+  /// No description provided for @healthAllInRange.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbild vom {date}: alles im Referenzbereich'**
+  String healthAllInRange(String date);
+
+  /// No description provided for @healthSummary.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbild vom {date}: {summary}'**
+  String healthSummary(String date, String summary);
+
+  /// No description provided for @healthAddTest.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbild eintragen'**
+  String get healthAddTest;
+
+  /// No description provided for @healthTests.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbilder'**
+  String get healthTests;
+
+  /// No description provided for @healthTestsEmptyHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Trag nur die Werte ein, die auf dem Befund zu hoch oder zu niedrig sind – alle anderen gelten als im Referenzbereich.'**
+  String get healthTestsEmptyHint;
+
+  /// No description provided for @bloodNew.
+  ///
+  /// In de, this message translates to:
+  /// **'Neues Blutbild'**
+  String get bloodNew;
+
+  /// No description provided for @bloodEdit.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbild bearbeiten'**
+  String get bloodEdit;
+
+  /// No description provided for @bloodDate.
+  ///
+  /// In de, this message translates to:
+  /// **'Datum der Blutentnahme'**
+  String get bloodDate;
+
+  /// No description provided for @bloodLab.
+  ///
+  /// In de, this message translates to:
+  /// **'Labor'**
+  String get bloodLab;
+
+  /// No description provided for @bloodLabDefault.
+  ///
+  /// In de, this message translates to:
+  /// **'Laboklin'**
+  String get bloodLabDefault;
+
+  /// No description provided for @bloodNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz'**
+  String get bloodNotes;
+
+  /// No description provided for @bloodSearch.
+  ///
+  /// In de, this message translates to:
+  /// **'Wert suchen (z. B. GGT, Selen, Hämoglobin)'**
+  String get bloodSearch;
+
+  /// No description provided for @bloodSearchClear.
+  ///
+  /// In de, this message translates to:
+  /// **'Suche leeren'**
+  String get bloodSearchClear;
+
+  /// No description provided for @bloodOnlyEntered.
+  ///
+  /// In de, this message translates to:
+  /// **'Nur eingetragene'**
+  String get bloodOnlyEntered;
+
+  /// No description provided for @bloodEnteredCount.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =0{Noch kein Wert eingetragen} =1{1 Wert eingetragen} other{{count} Werte eingetragen}}'**
+  String bloodEnteredCount(int count);
+
+  /// No description provided for @bloodRange.
+  ///
+  /// In de, this message translates to:
+  /// **'Referenz {range}'**
+  String bloodRange(String range);
+
+  /// No description provided for @bloodRangeBetween.
+  ///
+  /// In de, this message translates to:
+  /// **'{low}–{high}'**
+  String bloodRangeBetween(String low, String high);
+
+  /// No description provided for @bloodRangeBelow.
+  ///
+  /// In de, this message translates to:
+  /// **'< {high}'**
+  String bloodRangeBelow(String high);
+
+  /// No description provided for @bloodRangeAbove.
+  ///
+  /// In de, this message translates to:
+  /// **'> {low}'**
+  String bloodRangeAbove(String low);
+
+  /// No description provided for @bloodNoMatch.
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Wert gefunden'**
+  String get bloodNoMatch;
+
+  /// No description provided for @bloodValue.
+  ///
+  /// In de, this message translates to:
+  /// **'Wert'**
+  String get bloodValue;
+
+  /// No description provided for @bloodOwnRange.
+  ///
+  /// In de, this message translates to:
+  /// **'Referenzbereich vom eigenen Befund (optional)'**
+  String get bloodOwnRange;
+
+  /// No description provided for @bloodOwnLow.
+  ///
+  /// In de, this message translates to:
+  /// **'untere Grenze'**
+  String get bloodOwnLow;
+
+  /// No description provided for @bloodOwnHigh.
+  ///
+  /// In de, this message translates to:
+  /// **'obere Grenze'**
+  String get bloodOwnHigh;
+
+  /// No description provided for @bloodRemoveValue.
+  ///
+  /// In de, this message translates to:
+  /// **'Wert entfernen'**
+  String get bloodRemoveValue;
+
+  /// No description provided for @bloodStatusHigh.
+  ///
+  /// In de, this message translates to:
+  /// **'zu hoch'**
+  String get bloodStatusHigh;
+
+  /// No description provided for @bloodStatusLow.
+  ///
+  /// In de, this message translates to:
+  /// **'zu niedrig'**
+  String get bloodStatusLow;
+
+  /// No description provided for @bloodStatusStrongHigh.
+  ///
+  /// In de, this message translates to:
+  /// **'deutlich zu hoch'**
+  String get bloodStatusStrongHigh;
+
+  /// No description provided for @bloodStatusStrongLow.
+  ///
+  /// In de, this message translates to:
+  /// **'deutlich zu niedrig'**
+  String get bloodStatusStrongLow;
+
+  /// No description provided for @bloodStatusOk.
+  ///
+  /// In de, this message translates to:
+  /// **'im Bereich'**
+  String get bloodStatusOk;
+
+  /// No description provided for @bloodDeleteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Blutbild löschen?'**
+  String get bloodDeleteTitle;
+
+  /// No description provided for @bloodDeleteText.
+  ///
+  /// In de, this message translates to:
+  /// **'Das Blutbild und alle eingetragenen Werte werden gelöscht. Bereits übernommene Zusätze und Termine bleiben.'**
+  String get bloodDeleteText;
+
+  /// No description provided for @bloodEvaluation.
+  ///
+  /// In de, this message translates to:
+  /// **'Auswertung'**
+  String get bloodEvaluation;
+
+  /// No description provided for @bloodDeviations.
+  ///
+  /// In de, this message translates to:
+  /// **'Abweichende Werte'**
+  String get bloodDeviations;
+
+  /// No description provided for @bloodNoDeviations.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Werte im Referenzbereich – nicht eingetragene Werte gelten als normal.'**
+  String get bloodNoDeviations;
+
+  /// No description provided for @bloodVetFirst.
+  ///
+  /// In de, this message translates to:
+  /// **'Zuerst tierärztlich abklären'**
+  String get bloodVetFirst;
+
+  /// No description provided for @bloodSuggestions.
+  ///
+  /// In de, this message translates to:
+  /// **'Mögliche Bausteine'**
+  String get bloodSuggestions;
+
+  /// No description provided for @bloodSuggestionsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Auswahl übernehmen: Ergänzungen kommen als zeitlich begrenzte Zusätze in den Futterplan (Menge laut Packungsangabe), Termine in den Pflege-Kalender, Fütterungshinweise in die Notiz des Futterplans.'**
+  String get bloodSuggestionsHint;
+
+  /// No description provided for @bloodKind_supplement.
+  ///
+  /// In de, this message translates to:
+  /// **'Futter-Zusatz'**
+  String get bloodKind_supplement;
+
+  /// No description provided for @bloodKind_ration.
+  ///
+  /// In de, this message translates to:
+  /// **'Fütterung'**
+  String get bloodKind_ration;
+
+  /// No description provided for @bloodKind_management.
+  ///
+  /// In de, this message translates to:
+  /// **'Haltung'**
+  String get bloodKind_management;
+
+  /// No description provided for @bloodKind_care.
+  ///
+  /// In de, this message translates to:
+  /// **'Termin'**
+  String get bloodKind_care;
+
+  /// No description provided for @bloodWeeks.
+  ///
+  /// In de, this message translates to:
+  /// **'für {weeks} Wochen'**
+  String bloodWeeks(int weeks);
+
+  /// No description provided for @bloodControlIn.
+  ///
+  /// In de, this message translates to:
+  /// **'in {weeks, plural, =1{1 Woche} other{{weeks} Wochen}}'**
+  String bloodControlIn(int weeks);
+
+  /// No description provided for @bloodInDays.
+  ///
+  /// In de, this message translates to:
+  /// **'in {days, plural, =1{1 Tag} other{{days} Tagen}}'**
+  String bloodInDays(int days);
+
+  /// No description provided for @bloodApply.
+  ///
+  /// In de, this message translates to:
+  /// **'In Futterplan übernehmen'**
+  String get bloodApply;
+
+  /// No description provided for @bloodApplied.
+  ///
+  /// In de, this message translates to:
+  /// **'{supplements} Zusätze, {events} Termine, {notes} Hinweise übernommen'**
+  String bloodApplied(int supplements, int events, int notes);
+
+  /// No description provided for @bloodApplyNothing.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte mindestens einen Baustein auswählen.'**
+  String get bloodApplyNothing;
+
+  /// No description provided for @bloodPlanNoteLine.
+  ///
+  /// In de, this message translates to:
+  /// **'Hinweis aus Blutbild vom {date}: {title}'**
+  String bloodPlanNoteLine(String date, String title);
+
+  /// No description provided for @bloodSource.
+  ///
+  /// In de, this message translates to:
+  /// **'Quelle der Referenzwerte'**
+  String get bloodSource;
 }
 
 class _AppLocalizationsDelegate

@@ -1,0 +1,1830 @@
+{
+ "version": 1,
+ "source": "Referenzwerte: Laboklin Leistungsverzeichnis Pferd 2025/26, Kap. 14.1 „Referenzwerte Pferd“ (adulte Pferde). Bei abweichenden Werten auf dem eigenen Befund bitte diese übernehmen.",
+ "disclaimer": "Die Auswertung ist ein Hinweis zur Besprechung mit dem Tierarzt – keine Diagnose und keine Therapieempfehlung. Ergänzungen nur nach Absprache füttern.",
+ "groups": [
+  {
+   "key": "enzyme",
+   "name": "Enzyme"
+  },
+  {
+   "key": "substrate",
+   "name": "Substrate"
+  },
+  {
+   "key": "minerals",
+   "name": "Elektrolyte, Spurenelemente, Vitamine"
+  },
+  {
+   "key": "blood",
+   "name": "Blutbild (Hämatologie)"
+  },
+  {
+   "key": "hormones",
+   "name": "Hormone"
+  }
+ ],
+ "categories": {
+  "leber": "Leberwerte",
+  "muskel": "Muskelwerte",
+  "niere": "Nierenwerte",
+  "eiweiss": "Eiweißwerte",
+  "stoffwechsel": "Stoffwechselwerte",
+  "mineral": "Mineralstoffe",
+  "blutbild": "Rotes Blutbild",
+  "entzuendung": "Entzündungswerte",
+  "parasiten": "Eosinophile",
+  "hormone": "Hormonwerte"
+ },
+ "parameters": [
+  {
+   "key": "ast",
+   "name": "AST (GOT)",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 568,
+   "aliases": [
+    "GOT",
+    "Aspartat-Aminotransferase"
+   ],
+   "category": "muskel",
+   "strongHigh": 1500,
+   "note": "Nicht leberspezifisch – immer zusammen mit CK und GLDH beurteilen.",
+   "summary": "category"
+  },
+  {
+   "key": "ck",
+   "name": "CK",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 452,
+   "aliases": [
+    "Creatinkinase",
+    "Kreatinkinase"
+   ],
+   "category": "muskel",
+   "strongHigh": 2000,
+   "summary": "category"
+  },
+  {
+   "key": "gldh",
+   "name": "GLDH",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 13,
+   "aliases": [
+    "Glutamatdehydrogenase"
+   ],
+   "category": "leber",
+   "strongHigh": 40,
+   "summary": "category"
+  },
+  {
+   "key": "ggt",
+   "name": "γ-GT",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 44,
+   "aliases": [
+    "GGT",
+    "Gamma-GT",
+    "gamma-Glutamyltransferase"
+   ],
+   "category": "leber",
+   "strongHigh": 150,
+   "summary": "category"
+  },
+  {
+   "key": "ap",
+   "name": "AP",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 352,
+   "aliases": [
+    "Alkalische Phosphatase",
+    "ALP"
+   ],
+   "category": "leber",
+   "note": "Bei jungen Pferden im Wachstum physiologisch höher.",
+   "summary": "category"
+  },
+  {
+   "key": "ldh",
+   "name": "LDH",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 455,
+   "aliases": [
+    "Laktatdehydrogenase"
+   ],
+   "category": "muskel",
+   "summary": "category"
+  },
+  {
+   "key": "hbdh",
+   "name": "α-HBDH",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 221,
+   "aliases": [
+    "HBDH",
+    "Hydroxybutyrat-Dehydrogenase"
+   ],
+   "category": "muskel",
+   "summary": "category"
+  },
+  {
+   "key": "lipase",
+   "name": "Lipase (DGGR)",
+   "group": "enzyme",
+   "unit": "U/l",
+   "high": 20,
+   "aliases": [
+    "Lipase"
+   ],
+   "category": "stoffwechsel",
+   "summary": "category"
+  },
+  {
+   "key": "albumin",
+   "name": "Albumin",
+   "group": "substrate",
+   "unit": "g/l",
+   "low": 25,
+   "high": 54,
+   "category": "eiweiss",
+   "summary": "category"
+  },
+  {
+   "key": "ag",
+   "name": "A/G-Quotient",
+   "group": "substrate",
+   "unit": "",
+   "low": 0.7,
+   "high": 1.1,
+   "aliases": [
+    "Albumin-Globulin-Quotient"
+   ],
+   "category": "eiweiss",
+   "summary": "category"
+  },
+  {
+   "key": "bilirubin",
+   "name": "Bilirubin, total",
+   "group": "substrate",
+   "unit": "µmol/l",
+   "low": 8.6,
+   "high": 59.9,
+   "aliases": [
+    "Bilirubin"
+   ],
+   "category": "leber",
+   "summary": "category"
+  },
+  {
+   "key": "cholesterin",
+   "name": "Cholesterin",
+   "group": "substrate",
+   "unit": "mmol/l",
+   "low": 1.81,
+   "high": 4.66,
+   "aliases": [
+    "Cholesterol"
+   ],
+   "category": "stoffwechsel",
+   "summary": "category"
+  },
+  {
+   "key": "fructosamin",
+   "name": "Fructosamine",
+   "group": "substrate",
+   "unit": "µmol/l",
+   "high": 360,
+   "aliases": [
+    "Fruktosamin"
+   ],
+   "category": "stoffwechsel",
+   "summary": "category"
+  },
+  {
+   "key": "gallensaeuren",
+   "name": "Gallensäuren",
+   "group": "substrate",
+   "unit": "µmol/l",
+   "high": 12,
+   "aliases": [
+    "Gallensaeuren"
+   ],
+   "category": "leber",
+   "strongHigh": 25,
+   "summary": "category"
+  },
+  {
+   "key": "globuline",
+   "name": "Globuline",
+   "group": "substrate",
+   "unit": "g/l",
+   "low": 24,
+   "high": 51,
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "glucose",
+   "name": "Glucose",
+   "group": "substrate",
+   "unit": "mmol/l",
+   "low": 3.05,
+   "high": 4.99,
+   "aliases": [
+    "Glukose",
+    "Blutzucker"
+   ],
+   "category": "stoffwechsel",
+   "summary": "category"
+  },
+  {
+   "key": "harnstoff",
+   "name": "Harnstoff",
+   "group": "substrate",
+   "unit": "mmol/l",
+   "low": 3.3,
+   "high": 6.7,
+   "aliases": [
+    "Urea"
+   ],
+   "category": "niere",
+   "summary": "category"
+  },
+  {
+   "key": "kreatinin",
+   "name": "Kreatinin",
+   "group": "substrate",
+   "unit": "µmol/l",
+   "low": 71,
+   "high": 159,
+   "aliases": [
+    "Creatinin"
+   ],
+   "category": "niere",
+   "strongHigh": 250,
+   "summary": "category"
+  },
+  {
+   "key": "lactat",
+   "name": "Lactat",
+   "group": "substrate",
+   "unit": "mmol/l",
+   "low": 0.5,
+   "high": 2.0,
+   "aliases": [
+    "Laktat"
+   ],
+   "category": "stoffwechsel",
+   "summary": "category"
+  },
+  {
+   "key": "protein",
+   "name": "Gesamt-Eiweiß",
+   "group": "substrate",
+   "unit": "g/l",
+   "low": 55,
+   "high": 75,
+   "aliases": [
+    "Protein",
+    "Gesamteiweiß",
+    "Gesamtprotein",
+    "TP"
+   ],
+   "category": "eiweiss",
+   "summary": "category"
+  },
+  {
+   "key": "saa",
+   "name": "SAA",
+   "group": "substrate",
+   "unit": "µg/ml",
+   "high": 7,
+   "aliases": [
+    "Serum-Amyloid A",
+    "Amyloid"
+   ],
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "sdma",
+   "name": "SDMA",
+   "group": "substrate",
+   "unit": "µmol/l",
+   "high": 0.75,
+   "category": "niere",
+   "summary": "category"
+  },
+  {
+   "key": "triglyceride",
+   "name": "Triglyceride",
+   "group": "substrate",
+   "unit": "mmol/l",
+   "high": 0.97,
+   "aliases": [
+    "Triglyzeride",
+    "Blutfette"
+   ],
+   "category": "stoffwechsel",
+   "strongHigh": 5.0,
+   "summary": "category"
+  },
+  {
+   "key": "calcium",
+   "name": "Calcium",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 2.5,
+   "high": 3.4,
+   "aliases": [
+    "Kalzium",
+    "Ca"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "chlorid",
+   "name": "Chlorid",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 95,
+   "high": 105,
+   "aliases": [
+    "Cl"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "eisen",
+   "name": "Eisen",
+   "group": "minerals",
+   "unit": "µmol/l",
+   "low": 17.9,
+   "high": 64.5,
+   "aliases": [
+    "Fe"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "kalium",
+   "name": "Kalium",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 2.8,
+   "high": 4.5,
+   "aliases": [
+    "K",
+    "Potassium"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "kupfer",
+   "name": "Kupfer",
+   "group": "minerals",
+   "unit": "µmol/l",
+   "low": 7.9,
+   "high": 21.0,
+   "aliases": [
+    "Cu"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "magnesium",
+   "name": "Magnesium",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 0.5,
+   "high": 0.9,
+   "aliases": [
+    "Mg"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "mangan",
+   "name": "Mangan",
+   "group": "minerals",
+   "unit": "µg/l",
+   "low": 0.6,
+   "high": 3.5,
+   "aliases": [
+    "Mn"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "natrium",
+   "name": "Natrium",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 125,
+   "high": 150,
+   "aliases": [
+    "Na",
+    "Sodium"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "phosphat",
+   "name": "Phosphat anorg.",
+   "group": "minerals",
+   "unit": "mmol/l",
+   "low": 0.7,
+   "high": 1.5,
+   "aliases": [
+    "Phosphor",
+    "P"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "selen",
+   "name": "Selen",
+   "group": "minerals",
+   "unit": "µg/l",
+   "low": 100,
+   "high": 200,
+   "aliases": [
+    "Se"
+   ],
+   "category": "mineral",
+   "strongLow": 70,
+   "strongHigh": 300,
+   "note": "Laboklin: bis 70 µg/l marginal, über 300 µg/l hoch/kritisch; Fohlen und Islandpferde z. T. deutlich niedriger.",
+   "summary": "parameter"
+  },
+  {
+   "key": "zink",
+   "name": "Zink",
+   "group": "minerals",
+   "unit": "µmol/l",
+   "low": 5.0,
+   "high": 14.4,
+   "aliases": [
+    "Zn"
+   ],
+   "category": "mineral",
+   "summary": "parameter"
+  },
+  {
+   "key": "vitamin_e",
+   "name": "Vitamin E",
+   "group": "minerals",
+   "unit": "mg/l",
+   "low": 2.0,
+   "aliases": [
+    "Tocopherol",
+    "Vit. E"
+   ],
+   "category": "mineral",
+   "strongLow": 1.5,
+   "note": "Laboklin: > 2 mg/l adäquat, 1,5–2 mg/l marginal, < 1,5 mg/l defizient.",
+   "summary": "parameter"
+  },
+  {
+   "key": "erythrozyten",
+   "name": "Erythrozyten",
+   "group": "blood",
+   "unit": "T/l",
+   "low": 6,
+   "high": 12,
+   "aliases": [
+    "RBC",
+    "rote Blutkörperchen"
+   ],
+   "category": "blutbild",
+   "note": "Rassenunterschiede: Warmblut 6,5–9, Kaltblut 6–9, Ponys 5,5–8,5, Vollblut 8–12 T/l.",
+   "summary": "category"
+  },
+  {
+   "key": "haematokrit",
+   "name": "Hämatokrit",
+   "group": "blood",
+   "unit": "l/l",
+   "low": 0.3,
+   "high": 0.5,
+   "aliases": [
+    "HKT",
+    "Hkt",
+    "Haematokrit"
+   ],
+   "category": "blutbild",
+   "summary": "category"
+  },
+  {
+   "key": "haemoglobin",
+   "name": "Hämoglobin",
+   "group": "blood",
+   "unit": "g/l",
+   "low": 110,
+   "high": 170,
+   "aliases": [
+    "Hb",
+    "Haemoglobin"
+   ],
+   "category": "blutbild",
+   "summary": "category"
+  },
+  {
+   "key": "leukozyten",
+   "name": "Leukozyten",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 5,
+   "high": 10,
+   "aliases": [
+    "WBC",
+    "weiße Blutkörperchen"
+   ],
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "thrombozyten",
+   "name": "Thrombozyten",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 90,
+   "high": 300,
+   "aliases": [
+    "Blutplättchen",
+    "PLT"
+   ],
+   "category": "blutbild",
+   "summary": "category"
+  },
+  {
+   "key": "neutrophile",
+   "name": "Segmentkernige (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 3,
+   "high": 7,
+   "aliases": [
+    "Neutrophile",
+    "Segmentkernige Granulozyten"
+   ],
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "stabkernige",
+   "name": "Stabkernige (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 0,
+   "high": 0.6,
+   "aliases": [
+    "Stabkernige Granulozyten"
+   ],
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "lymphozyten",
+   "name": "Lymphozyten (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 1.5,
+   "high": 4,
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "monozyten",
+   "name": "Monozyten (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 0.04,
+   "high": 0.4,
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "eosinophile",
+   "name": "Eosinophile (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 0.04,
+   "high": 0.3,
+   "aliases": [
+    "Eosinophile Granulozyten"
+   ],
+   "category": "parasiten",
+   "summary": "category"
+  },
+  {
+   "key": "basophile",
+   "name": "Basophile (absolut)",
+   "group": "blood",
+   "unit": "G/l",
+   "low": 0,
+   "high": 0.15,
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "fibrinogen",
+   "name": "Fibrinogen",
+   "group": "blood",
+   "unit": "mg/dl",
+   "low": 100,
+   "high": 350,
+   "category": "entzuendung",
+   "summary": "category"
+  },
+  {
+   "key": "insulin",
+   "name": "Insulin (basal)",
+   "group": "hormones",
+   "unit": "µU/ml",
+   "high": 15,
+   "aliases": [
+    "Insulin"
+   ],
+   "category": "stoffwechsel",
+   "strongHigh": 35,
+   "note": "Laboklin: < 15 negativ, 15–35 verdächtig für eine Insulindysregulation, > 35 positiv.",
+   "summary": "category"
+  },
+  {
+   "key": "acth",
+   "name": "ACTH (basal)",
+   "group": "hormones",
+   "unit": "pg/ml",
+   "high": 15,
+   "aliases": [
+    "ACTH"
+   ],
+   "category": "hormone",
+   "note": "Saisonale Grenzwerte nach Equine Endocrinology Group 2023.",
+   "seasonalHigh": [
+    {
+     "months": [
+      12,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "high": 15,
+     "strongHigh": 40
+    },
+    {
+     "months": [
+      7
+     ],
+     "high": 15,
+     "strongHigh": 50
+    },
+    {
+     "months": [
+      8
+     ],
+     "high": 20,
+     "strongHigh": 75
+    },
+    {
+     "months": [
+      9,
+      10
+     ],
+     "high": 30,
+     "strongHigh": 90
+    },
+    {
+     "months": [
+      11
+     ],
+     "high": 15,
+     "strongHigh": 40
+    }
+   ],
+   "summary": "category"
+  },
+  {
+   "key": "cortisol",
+   "name": "Cortisol",
+   "group": "hormones",
+   "unit": "ng/ml",
+   "low": 30,
+   "high": 70,
+   "aliases": [
+    "Kortisol"
+   ],
+   "category": "hormone",
+   "summary": "category"
+  },
+  {
+   "key": "t4",
+   "name": "T4",
+   "group": "hormones",
+   "unit": "µg/dl",
+   "low": 1.3,
+   "high": 4.1,
+   "aliases": [
+    "Thyroxin"
+   ],
+   "category": "hormone",
+   "summary": "category"
+  }
+ ],
+ "suggestions": {
+  "leber_ergaenzung": {
+   "kind": "supplement",
+   "title": "Leberunterstützendes Ergänzungsfutter",
+   "text": "Kräutermischung bzw. Ergänzungsfutter zur Leberunterstützung, z. B. mit Mariendistel oder Artischocke. Dosierung laut Packung, Anwendung mit dem Tierarzt abstimmen.",
+   "item": {
+    "name": "Leber-Ergänzungsfutter (z. B. Mariendistel)",
+    "category": "ergaenzung",
+    "unit": "g"
+   },
+   "weeks": 6
+  },
+  "heu_hygiene": {
+   "kind": "management",
+   "title": "Heu und Weide prüfen",
+   "text": "Heu auf Staub, Schimmel und Giftpflanzen (z. B. Jakobskreuzkraut) prüfen, ggf. Heuanalyse. Weide auf Giftpflanzen absuchen."
+  },
+  "zuckerarm": {
+   "kind": "ration",
+   "title": "Stärke- und zuckerarm füttern",
+   "text": "Getreide/Kraftfutter reduzieren, strukturreiches Heu bevorzugen, Heu bei Bedarf 30–60 min wässern (Mineralstoffe dann ergänzen), Weidegang begrenzen. Umstellung schrittweise."
+  },
+  "selen_vite": {
+   "kind": "supplement",
+   "title": "Selen-/Vitamin-E-Ergänzung",
+   "text": "Nur nach Absprache mit dem Tierarzt – Selen ist überdosiert giftig. Selengehalt im vorhandenen Mineralfutter mitrechnen.",
+   "item": {
+    "name": "Selen-/Vitamin-E-Ergänzung",
+    "category": "ergaenzung",
+    "unit": "g"
+   },
+   "weeks": 8
+  },
+  "vitamin_e": {
+   "kind": "supplement",
+   "title": "Vitamin-E-Ergänzung",
+   "text": "Vitamin E (bevorzugt natürliches) ergänzen, v. a. in Wintermonaten ohne Weidegang und bei sportlicher Belastung.",
+   "item": {
+    "name": "Vitamin-E-Ergänzung",
+    "category": "ergaenzung",
+    "unit": "g"
+   },
+   "weeks": 8
+  },
+  "mineral_spuren": {
+   "kind": "supplement",
+   "title": "Mineralfutter mit Spurenelementen",
+   "text": "Bedarfsgerechtes Mineralfutter mit Zink und Kupfer (gern organisch gebunden). Nicht mehrere Mineralfutter kombinieren.",
+   "item": {
+    "name": "Mineralfutter mit Zink/Kupfer",
+    "category": "mineralfutter",
+    "unit": "g"
+   },
+   "weeks": 12
+  },
+  "mineral_ca": {
+   "kind": "supplement",
+   "title": "Calciumbetontes Mineralfutter",
+   "text": "Mineralfutter mit passendem Calcium-Phosphor-Verhältnis (Ca:P ≈ 1,5–2 : 1); kalziumreiches Raufutter wie Luzerne kann helfen.",
+   "item": {
+    "name": "Mineralfutter calciumbetont",
+    "category": "mineralfutter",
+    "unit": "g"
+   },
+   "weeks": 12
+  },
+  "magnesium": {
+   "kind": "supplement",
+   "title": "Magnesium-Ergänzung",
+   "text": "Magnesium ergänzen (z. B. Magnesiumoxid oder -citrat laut Packung), auf Rationsgesamtgehalt achten.",
+   "item": {
+    "name": "Magnesium-Ergänzung",
+    "category": "ergaenzung",
+    "unit": "g"
+   },
+   "weeks": 8
+  },
+  "salz": {
+   "kind": "supplement",
+   "title": "Salz anbieten",
+   "text": "Salzleckstein frei zugänglich bzw. Viehsalz über das Futter, besonders bei Schweiß.",
+   "item": {
+    "name": "Salz (Viehsalz/Leckstein)",
+    "category": "mineralfutter",
+    "unit": "g"
+   },
+   "weeks": 12
+  },
+  "eiweiss": {
+   "kind": "supplement",
+   "title": "Hochwertiges Eiweiß ergänzen",
+   "text": "Eiweißreiche Komponenten mit guter Aminosäurequalität, z. B. Luzerne, Leinkuchen oder Sojaextraktionsschrot.",
+   "item": {
+    "name": "Eiweißergänzung (z. B. Luzerne/Leinkuchen)",
+    "category": "kraftfutter",
+    "unit": "g"
+   },
+   "weeks": 8
+  },
+  "eiweiss_reduzieren": {
+   "kind": "ration",
+   "title": "Eiweißüberschuss vermeiden",
+   "text": "Sehr eiweißreiche Futtermittel (z. B. viel Luzerne, Eiweißkonzentrate) reduzieren; ausreichend Wasser."
+  },
+  "oel_energie": {
+   "kind": "supplement",
+   "title": "Öl als Energiequelle",
+   "text": "Energie über Pflanzenöl (z. B. Lein- oder Rapsöl) statt über Stärke; langsam einschleichen.",
+   "item": {
+    "name": "Pflanzenöl (z. B. Leinöl)",
+    "category": "oel",
+    "unit": "ml"
+   },
+   "weeks": 8
+  },
+  "raufutter": {
+   "kind": "ration",
+   "title": "Fresspausen vermeiden",
+   "text": "Raufutter möglichst ad libitum bzw. mehrmals täglich, keine Fresspausen über 4–6 Stunden; Futteraufnahme beobachten."
+  },
+  "wasser": {
+   "kind": "management",
+   "title": "Wasserversorgung prüfen",
+   "text": "Ständiger Zugang zu sauberem Wasser, Trinkmenge beobachten (auch im Winter: Tränke eisfrei)."
+  },
+  "bewegung": {
+   "kind": "management",
+   "title": "Regelmäßige Bewegung",
+   "text": "Tägliche, moderate Bewegung unterstützt den Stoffwechsel (nur wenn keine Hufrehe besteht)."
+  },
+  "belastung_reduzieren": {
+   "kind": "management",
+   "title": "Belastung vorübergehend reduzieren",
+   "text": "Training anpassen, gut aufwärmen, Stehtage vermeiden; Muskelwerte nach einigen Tagen kontrollieren."
+  },
+  "ergaenzung_pruefen": {
+   "kind": "ration",
+   "title": "Ergänzungen prüfen",
+   "text": "Alle Mineral- und Ergänzungsfutter auf diesen Stoff prüfen und ggf. reduzieren oder absetzen – Überversorgung kann schaden."
+  },
+  "kotprobe": {
+   "kind": "care",
+   "title": "Kotprobe veranlassen",
+   "text": "Parasitenbefall als Ursache abklären (Kotprobe).",
+   "careType": "builtin_kotprobe",
+   "careTitle": "Kotprobe (Blutbild)",
+   "inDays": 7
+  },
+  "kontrolle": {
+   "kind": "care",
+   "title": "Kontroll-Blutbild",
+   "text": "Werte nach einigen Wochen erneut bestimmen lassen.",
+   "careType": "builtin_tierarzt",
+   "careTitle": "Kontroll-Blutbild"
+  },
+  "tierarzt": {
+   "kind": "care",
+   "title": "Tierarzt-Termin",
+   "text": "Befund zeitnah mit dem Tierarzt besprechen.",
+   "careType": "builtin_tierarzt",
+   "careTitle": "Blutbild besprechen",
+   "inDays": 3
+  }
+ },
+ "rules": [
+  {
+   "param": "ast",
+   "direction": "high",
+   "text": "AST stammt aus Muskel und Leber. Zusammen mit CK spricht es eher für Muskelbelastung, zusammen mit GLDH/γ-GT für die Leber.",
+   "suggestions": [
+    "belastung_reduzieren"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "ck",
+   "direction": "high",
+   "text": "CK zeigt eine frische Muskelbelastung oder -schädigung (z. B. nach Training, Transport, Kreuzverschlag).",
+   "suggestions": [
+    "belastung_reduzieren",
+    "oel_energie",
+    "zuckerarm"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 1
+  },
+  {
+   "param": "ldh",
+   "direction": "high",
+   "text": "LDH kommt aus Muskel, Leber und roten Blutkörperchen – Einordnung zusammen mit CK/AST.",
+   "suggestions": [
+    "belastung_reduzieren"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "hbdh",
+   "direction": "high",
+   "text": "α-HBDH stammt v. a. aus Herz- und Skelettmuskel.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "gldh",
+   "direction": "high",
+   "text": "GLDH ist leberspezifisch und zeigt eine akute Leberzellbelastung.",
+   "suggestions": [
+    "leber_ergaenzung",
+    "heu_hygiene"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "ggt",
+   "direction": "high",
+   "text": "γ-GT weist auf eine Belastung von Leber bzw. Gallenwegen hin. Laut Laboklin bei geringer Erhöhung Nachtest nach 2–4 Wochen.",
+   "suggestions": [
+    "leber_ergaenzung",
+    "heu_hygiene"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 3
+  },
+  {
+   "param": "ap",
+   "direction": "high",
+   "text": "AP stammt aus Leber/Galle und Knochen; bei jungen Pferden normal erhöht.",
+   "suggestions": [
+    "heu_hygiene"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "gallensaeuren",
+   "direction": "high",
+   "text": "Erhöhte Gallensäuren können auf eine eingeschränkte Leberfunktion hinweisen.",
+   "suggestions": [
+    "leber_ergaenzung",
+    "heu_hygiene"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "bilirubin",
+   "direction": "high",
+   "text": "Bilirubin steigt beim Pferd schon bei Futterentzug (Fastenhyperbilirubinämie), aber auch bei Leber- oder Bluterkrankungen.",
+   "suggestions": [
+    "raufutter"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "lipase",
+   "direction": "high",
+   "text": "Erhöhte Lipase kann auf die Bauchspeicheldrüse hinweisen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "albumin",
+   "direction": "low",
+   "text": "Niedriges Albumin: zu wenig Eiweiß im Futter, Eiweißverlust (Darm, Niere, Parasiten) oder Leber.",
+   "suggestions": [
+    "eiweiss",
+    "kotprobe"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 6
+  },
+  {
+   "param": "albumin",
+   "direction": "high",
+   "text": "Erhöhtes Albumin deutet meist auf Flüssigkeitsmangel hin.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "ag",
+   "direction": "low",
+   "text": "Niedriger A/G-Quotient: meist erhöhte Globuline (Entzündung, Immunreaktion).",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "protein",
+   "direction": "low",
+   "text": "Niedriges Gesamteiweiß: Eiweißversorgung, Eiweißverlust oder Parasiten abklären.",
+   "suggestions": [
+    "eiweiss",
+    "kotprobe"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 6
+  },
+  {
+   "param": "protein",
+   "direction": "high",
+   "text": "Erhöhtes Gesamteiweiß: Flüssigkeitsmangel oder vermehrte Globuline (Entzündung).",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "globuline",
+   "direction": "high",
+   "text": "Erhöhte Globuline sprechen für Entzündung oder Immunreaktion.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "harnstoff",
+   "direction": "low",
+   "text": "Niedriger Harnstoff kann eine zu knappe Versorgung mit Eiweiß bzw. Aminosäuren widerspiegeln.",
+   "suggestions": [
+    "eiweiss"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "harnstoff",
+   "direction": "high",
+   "text": "Erhöhter Harnstoff: Eiweißüberschuss, Flüssigkeitsmangel oder Niere (zusammen mit Kreatinin beurteilen).",
+   "suggestions": [
+    "eiweiss_reduzieren",
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "kreatinin",
+   "direction": "high",
+   "text": "Erhöhtes Kreatinin kann auf Flüssigkeitsmangel oder eine eingeschränkte Nierenfunktion hinweisen.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "kreatinin",
+   "direction": "low",
+   "text": "Niedriges Kreatinin passt zu geringer Muskelmasse.",
+   "suggestions": [
+    "eiweiss"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "sdma",
+   "direction": "high",
+   "text": "SDMA ist ein früher Marker für die Nierenfunktion.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "glucose",
+   "direction": "high",
+   "text": "Erhöhte Glucose: Stress/Aufregung bei der Blutentnahme oder Stoffwechselstörung (EMS) – mit Insulin abklären.",
+   "suggestions": [
+    "zuckerarm",
+    "bewegung"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 6
+  },
+  {
+   "param": "glucose",
+   "direction": "low",
+   "text": "Niedrige Glucose (Probe zu lange gelagert?) oder Energiemangel.",
+   "suggestions": [
+    "raufutter"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "fructosamin",
+   "direction": "high",
+   "text": "Fructosamine spiegeln den Blutzucker der letzten Wochen – Hinweis auf Stoffwechselstörung.",
+   "suggestions": [
+    "zuckerarm",
+    "bewegung"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "triglyceride",
+   "direction": "high",
+   "text": "Erhöhte Triglyceride: Energiemangel/Fasten (Achtung Ponys, Esel, Minis: Hyperlipämie ist ein Notfall!) oder Stoffwechselstörung.",
+   "suggestions": [
+    "raufutter"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 2
+  },
+  {
+   "param": "cholesterin",
+   "direction": "high",
+   "text": "Erhöhtes Cholesterin kommt bei Stoffwechselstörungen vor.",
+   "suggestions": [
+    "zuckerarm",
+    "bewegung"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "lactat",
+   "direction": "high",
+   "text": "Erhöhtes Lactat nach Belastung normal, sonst Hinweis auf Kreislauf-/Kolikgeschehen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "insulin",
+   "direction": "high",
+   "text": "Erhöhtes basales Insulin weist auf eine Insulindysregulation (EMS) hin – erhöhtes Hufrehe-Risiko.",
+   "suggestions": [
+    "zuckerarm",
+    "bewegung"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "acth",
+   "direction": "high",
+   "text": "Erhöhtes ACTH (saisonal bewertet) weist auf PPID (Equines Cushing) hin.",
+   "suggestions": [
+    "zuckerarm"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true,
+   "controlWeeks": 12
+  },
+  {
+   "param": "cortisol",
+   "direction": "high",
+   "text": "Erhöhtes Cortisol: Stress oder hormonelle Störung.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "cortisol",
+   "direction": "low",
+   "text": "Niedriges Cortisol kann medikamentös bedingt sein.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "t4",
+   "direction": "low",
+   "text": "Niedriges T4 ist beim Pferd oft Folge anderer Erkrankungen oder von Medikamenten – kein Futterthema.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "t4",
+   "direction": "high",
+   "text": "Erhöhtes T4 ist selten.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "calcium",
+   "direction": "low",
+   "text": "Niedriges Calcium: Versorgung bzw. Ca:P-Verhältnis prüfen (viel Kleie/Getreide verschiebt es).",
+   "suggestions": [
+    "mineral_ca"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "calcium",
+   "direction": "high",
+   "text": "Erhöhtes Calcium: Überversorgung oder Nierenthema.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "phosphat",
+   "direction": "high",
+   "text": "Erhöhtes Phosphat: oft viel Getreide/Kleie – Ca:P-Verhältnis prüfen.",
+   "suggestions": [
+    "mineral_ca",
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "phosphat",
+   "direction": "low",
+   "text": "Niedriges Phosphat: Versorgung prüfen.",
+   "suggestions": [
+    "mineral_ca"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "magnesium",
+   "direction": "low",
+   "text": "Niedriges Magnesium: Versorgung prüfen (Nervosität, Muskelzittern möglich).",
+   "suggestions": [
+    "magnesium"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "magnesium",
+   "direction": "high",
+   "text": "Erhöhtes Magnesium: Überversorgung oder Nierenthema.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "natrium",
+   "direction": "low",
+   "text": "Niedriges Natrium: Salzversorgung, starkes Schwitzen oder Durchfall.",
+   "suggestions": [
+    "salz"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "natrium",
+   "direction": "high",
+   "text": "Erhöhtes Natrium: Flüssigkeitsmangel.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "chlorid",
+   "direction": "low",
+   "text": "Niedriges Chlorid: oft mit Natrium (Schweißverlust).",
+   "suggestions": [
+    "salz"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "chlorid",
+   "direction": "high",
+   "text": "Erhöhtes Chlorid: Flüssigkeitsmangel.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "kalium",
+   "direction": "low",
+   "text": "Niedriges Kalium: geringe Futteraufnahme oder Verluste.",
+   "suggestions": [
+    "raufutter"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 4
+  },
+  {
+   "param": "kalium",
+   "direction": "high",
+   "text": "Erhöhtes Kalium: häufig Probenfehler (Hämolyse, zu lange gelagert), sonst Niere/Muskel.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "selen",
+   "direction": "low",
+   "text": "Niedriges Selen ist häufig (selenarme Böden/Raufutter) und kann Muskulatur und Immunsystem beeinträchtigen.",
+   "suggestions": [
+    "selen_vite"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": false,
+   "controlWeeks": 12
+  },
+  {
+   "param": "selen",
+   "direction": "high",
+   "text": "Erhöhtes Selen: Überversorgung durch Ergänzungen – Selen ist in höherer Dosis giftig.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 8
+  },
+  {
+   "param": "vitamin_e",
+   "direction": "low",
+   "text": "Vitamin E ist ohne frisches Gras schnell knapp (Winter, Heufütterung, Sport).",
+   "suggestions": [
+    "vitamin_e"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": false,
+   "controlWeeks": 12
+  },
+  {
+   "param": "zink",
+   "direction": "low",
+   "text": "Niedriges Zink: Versorgung prüfen (Haut, Fell, Hufhorn).",
+   "suggestions": [
+    "mineral_spuren"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 12
+  },
+  {
+   "param": "zink",
+   "direction": "high",
+   "text": "Erhöhtes Zink: Überversorgung durch Ergänzungen.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "kupfer",
+   "direction": "low",
+   "text": "Niedriges Kupfer: Versorgung prüfen (Fellfarbe, Bindegewebe); zu viel Zink/Eisen hemmt die Aufnahme.",
+   "suggestions": [
+    "mineral_spuren"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 12
+  },
+  {
+   "param": "kupfer",
+   "direction": "high",
+   "text": "Erhöhtes Kupfer: Überversorgung oder Entzündung.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "mangan",
+   "direction": "low",
+   "text": "Niedriges Mangan: Versorgung prüfen.",
+   "suggestions": [
+    "mineral_spuren"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 12
+  },
+  {
+   "param": "mangan",
+   "direction": "high",
+   "text": "Erhöhtes Mangan: Überversorgung durch Ergänzungen.",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "eisen",
+   "direction": "low",
+   "text": "Eisenmangel durch Futter ist beim Pferd selten – meist stecken Blutverlust, Parasiten oder Entzündungen dahinter. Kein Eisen ohne tierärztliche Abklärung.",
+   "suggestions": [
+    "kotprobe"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "eisen",
+   "direction": "high",
+   "text": "Erhöhtes Eisen: Überversorgung (Eisen ist in vielen Futtermitteln reichlich enthalten).",
+   "suggestions": [
+    "ergaenzung_pruefen"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "erythrozyten",
+   "direction": "low",
+   "text": "Hinweis auf Blutarmut (Anämie) – Ursachen wie Parasiten, Blutverlust oder Entzündungen tierärztlich abklären.",
+   "suggestions": [
+    "kotprobe"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "erythrozyten",
+   "direction": "high",
+   "text": "Erhöht meist durch Aufregung/Belastung bei der Blutentnahme oder Flüssigkeitsmangel.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "haemoglobin",
+   "direction": "low",
+   "text": "Hinweis auf Blutarmut (Anämie) – Ursachen wie Parasiten, Blutverlust oder Entzündungen tierärztlich abklären.",
+   "suggestions": [
+    "kotprobe"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "haemoglobin",
+   "direction": "high",
+   "text": "Erhöht meist durch Aufregung/Belastung bei der Blutentnahme oder Flüssigkeitsmangel.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "haematokrit",
+   "direction": "low",
+   "text": "Hinweis auf Blutarmut (Anämie) – Ursachen wie Parasiten, Blutverlust oder Entzündungen tierärztlich abklären.",
+   "suggestions": [
+    "kotprobe"
+   ],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "haematokrit",
+   "direction": "high",
+   "text": "Erhöht meist durch Aufregung/Belastung bei der Blutentnahme oder Flüssigkeitsmangel.",
+   "suggestions": [
+    "wasser"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true
+  },
+  {
+   "param": "leukozyten",
+   "direction": "high",
+   "text": "Erhöhte Leukozyten: Hinweis auf Entzündung oder Infektion (auch Stress).",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "leukozyten",
+   "direction": "low",
+   "text": "Niedrige Leukozyten: z. B. bei Virusinfektionen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "neutrophile",
+   "direction": "high",
+   "text": "Vermehrte Segmentkernige: Entzündung oder Stress.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "neutrophile",
+   "direction": "low",
+   "text": "Verminderte Segmentkernige: tierärztlich abklären.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "stabkernige",
+   "direction": "high",
+   "text": "Vermehrte Stabkernige: Hinweis auf eine akute Entzündung.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "lymphozyten",
+   "direction": "high",
+   "text": "Vermehrte Lymphozyten: z. B. bei jungen oder aufgeregten Pferden, chronischen Reizen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "lymphozyten",
+   "direction": "low",
+   "text": "Verminderte Lymphozyten: Stress, Infektion oder Medikamente.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "monozyten",
+   "direction": "high",
+   "text": "Vermehrte Monozyten: eher chronische Entzündung.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "eosinophile",
+   "direction": "high",
+   "text": "Vermehrte Eosinophile: Hinweis auf Parasiten oder Allergie.",
+   "suggestions": [
+    "kotprobe"
+   ],
+   "vetFirst": false,
+   "vetIfStrong": true,
+   "controlWeeks": 6
+  },
+  {
+   "param": "basophile",
+   "direction": "high",
+   "text": "Vermehrte Basophile: Hinweis auf allergisches Geschehen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "thrombozyten",
+   "direction": "low",
+   "text": "Niedrige Thrombozyten: Gerinnungsneigung beachten – auch Probenfehler (Verklumpung) möglich.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "thrombozyten",
+   "direction": "high",
+   "text": "Erhöhte Thrombozyten: oft bei Entzündungen.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "fibrinogen",
+   "direction": "high",
+   "text": "Erhöhtes Fibrinogen: Entzündungsmarker.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  },
+  {
+   "param": "saa",
+   "direction": "high",
+   "text": "Erhöhtes SAA: empfindlicher Marker für eine akute Entzündung.",
+   "suggestions": [],
+   "vetFirst": true,
+   "vetIfStrong": true
+  }
+ ],
+ "combos": [
+  {
+   "id": "leber_zelle_galle",
+   "all": [
+    [
+     "gldh",
+     "high"
+    ],
+    [
+     "ggt",
+     "high"
+    ]
+   ],
+   "title": "Leber: Zellbelastung und Gallenwege",
+   "text": "GLDH und γ-GT gemeinsam erhöht sprechen für eine Leberbelastung mit Beteiligung der Gallenwege. Bitte zeitnah tierärztlich abklären (u. a. Giftpflanzen, Futterhygiene).",
+   "vet": true,
+   "suggestions": [
+    "leber_ergaenzung",
+    "heu_hygiene"
+   ],
+   "category": "leber"
+  },
+  {
+   "id": "muskel",
+   "all": [
+    [
+     "ck",
+     "high"
+    ],
+    [
+     "ast",
+     "high"
+    ]
+   ],
+   "none": [
+    [
+     "gldh",
+     "high"
+    ]
+   ],
+   "title": "Muskel statt Leber",
+   "text": "CK und AST erhöht bei normaler GLDH: Die Erhöhung stammt sehr wahrscheinlich aus der Muskulatur, nicht aus der Leber. Vitamin-E-/Selen-Status mitbeachten.",
+   "suggestions": [
+    "belastung_reduzieren",
+    "oel_energie",
+    "zuckerarm"
+   ],
+   "category": "muskel"
+  },
+  {
+   "id": "niere",
+   "all": [
+    [
+     "harnstoff",
+     "high"
+    ],
+    [
+     "kreatinin",
+     "high"
+    ]
+   ],
+   "title": "Nierenwerte gemeinsam erhöht",
+   "text": "Harnstoff und Kreatinin gemeinsam erhöht: Flüssigkeitsmangel oder eingeschränkte Nierenfunktion. Bitte tierärztlich abklären.",
+   "vet": true,
+   "suggestions": [
+    "wasser"
+   ],
+   "category": "niere"
+  },
+  {
+   "id": "ems",
+   "all": [
+    [
+     "insulin",
+     "high"
+    ]
+   ],
+   "any": [
+    [
+     "glucose",
+     "high"
+    ],
+    [
+     "triglyceride",
+     "high"
+    ],
+    [
+     "fructosamin",
+     "high"
+    ]
+   ],
+   "title": "Hinweis auf Equines Metabolisches Syndrom",
+   "text": "Erhöhtes Insulin zusammen mit Blutzucker- bzw. Blutfettwerten passt zu EMS. Fütterung und Bewegung anpassen, Hufrehe-Risiko beachten.",
+   "vet": true,
+   "suggestions": [
+    "zuckerarm",
+    "bewegung"
+   ],
+   "category": "stoffwechsel"
+  },
+  {
+   "id": "selen_vit_e",
+   "all": [
+    [
+     "selen",
+     "low"
+    ],
+    [
+     "vitamin_e",
+     "low"
+    ]
+   ],
+   "title": "Selen und Vitamin E niedrig",
+   "text": "Beide Antioxidantien sind knapp – häufig im Winter bzw. bei Heufütterung. Eine kombinierte Ergänzung ist üblich (Selen nur nach Absprache).",
+   "suggestions": [
+    "selen_vite"
+   ],
+   "category": "mineral"
+  },
+  {
+   "id": "anaemie_parasiten",
+   "any": [
+    [
+     "erythrozyten",
+     "low"
+    ],
+    [
+     "haemoglobin",
+     "low"
+    ],
+    [
+     "haematokrit",
+     "low"
+    ]
+   ],
+   "all": [
+    [
+     "eosinophile",
+     "high"
+    ]
+   ],
+   "title": "Blutarmut und Eosinophile",
+   "text": "Niedrige rote Blutwerte zusammen mit vermehrten Eosinophilen können auf Parasitenbefall hinweisen.",
+   "vet": true,
+   "suggestions": [
+    "kotprobe"
+   ],
+   "category": "parasiten"
+  }
+ ]
+}

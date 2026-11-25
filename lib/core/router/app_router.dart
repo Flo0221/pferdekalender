@@ -11,6 +11,9 @@ import '../../features/futter/ui/feed_plan_edit_screen.dart';
 import '../../features/futter/ui/feed_supplements_screen.dart';
 import '../../features/futter/ui/feed_versions_screen.dart';
 import '../../features/futter/ui/futter_screen.dart';
+import '../../features/gesundheit/ui/blood_detail_screen.dart';
+import '../../features/gesundheit/ui/blood_edit_screen.dart';
+import '../../features/gesundheit/ui/health_screen.dart';
 import '../../features/pferd/ui/horse_edit_screen.dart';
 import '../../features/pferd/ui/horse_list_screen.dart';
 import '../../features/pferd/ui/pferd_screen.dart';
@@ -134,6 +137,32 @@ GoRouter createRouter({String initialLocation = Routes.pflege}) => GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) =>
           FeedPlanEditScreen(planId: state.pathParameters['id']),
+    ),
+    GoRoute(
+      path: Routes.health,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const HealthScreen(),
+      routes: [
+        GoRoute(
+          path: 'neu',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const BloodEditScreen(),
+        ),
+        GoRoute(
+          path: ':id',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) =>
+              BloodDetailScreen(testId: state.pathParameters['id']!),
+          routes: [
+            GoRoute(
+              path: 'bearbeiten',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder: (context, state) =>
+                  BloodEditScreen(testId: state.pathParameters['id']),
+            ),
+          ],
+        ),
+      ],
     ),
     GoRoute(
       path: Routes.careNewBase,

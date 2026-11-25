@@ -1139,5 +1139,156 @@
   "feedSupplementFromBlood": "aus Blutbild-Auswertung",
   "feedSupplementDeleteTitle": "Zusatz löschen?",
   "feedDisclaimer": "Nur Dokumentation – keine Rationsberechnung. Mengen bitte mit Tierarzt oder Futterberatung abstimmen.",
-  "feedItemStockLabel": "Vorrat"
+  "feedItemStockLabel": "Vorrat",
+  "healthTitle": "Gesundheit",
+  "healthNoTest": "Noch kein Blutbild eingetragen",
+  "healthAllInRange": "Blutbild vom {date}: alles im Referenzbereich",
+  "@healthAllInRange": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "healthSummary": "Blutbild vom {date}: {summary}",
+  "@healthSummary": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "summary": {
+        "type": "String"
+      }
+    }
+  },
+  "healthAddTest": "Blutbild eintragen",
+  "healthTests": "Blutbilder",
+  "healthTestsEmptyHint": "Trag nur die Werte ein, die auf dem Befund zu hoch oder zu niedrig sind – alle anderen gelten als im Referenzbereich.",
+  "bloodNew": "Neues Blutbild",
+  "bloodEdit": "Blutbild bearbeiten",
+  "bloodDate": "Datum der Blutentnahme",
+  "bloodLab": "Labor",
+  "bloodLabDefault": "Laboklin",
+  "bloodNotes": "Notiz",
+  "bloodSearch": "Wert suchen (z. B. GGT, Selen, Hämoglobin)",
+  "bloodSearchClear": "Suche leeren",
+  "bloodOnlyEntered": "Nur eingetragene",
+  "bloodEnteredCount": "{count, plural, =0{Noch kein Wert eingetragen} =1{1 Wert eingetragen} other{{count} Werte eingetragen}}",
+  "@bloodEnteredCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bloodRange": "Referenz {range}",
+  "@bloodRange": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "bloodRangeBetween": "{low}–{high}",
+  "@bloodRangeBetween": {
+    "placeholders": {
+      "low": {
+        "type": "String"
+      },
+      "high": {
+        "type": "String"
+      }
+    }
+  },
+  "bloodRangeBelow": "< {high}",
+  "@bloodRangeBelow": {
+    "placeholders": {
+      "high": {
+        "type": "String"
+      }
+    }
+  },
+  "bloodRangeAbove": "> {low}",
+  "@bloodRangeAbove": {
+    "placeholders": {
+      "low": {
+        "type": "String"
+      }
+    }
+  },
+  "bloodNoMatch": "Kein Wert gefunden",
+  "bloodValue": "Wert",
+  "bloodOwnRange": "Referenzbereich vom eigenen Befund (optional)",
+  "bloodOwnLow": "untere Grenze",
+  "bloodOwnHigh": "obere Grenze",
+  "bloodRemoveValue": "Wert entfernen",
+  "bloodStatusHigh": "zu hoch",
+  "bloodStatusLow": "zu niedrig",
+  "bloodStatusStrongHigh": "deutlich zu hoch",
+  "bloodStatusStrongLow": "deutlich zu niedrig",
+  "bloodStatusOk": "im Bereich",
+  "bloodDeleteTitle": "Blutbild löschen?",
+  "bloodDeleteText": "Das Blutbild und alle eingetragenen Werte werden gelöscht. Bereits übernommene Zusätze und Termine bleiben.",
+  "bloodEvaluation": "Auswertung",
+  "bloodDeviations": "Abweichende Werte",
+  "bloodNoDeviations": "Alle Werte im Referenzbereich – nicht eingetragene Werte gelten als normal.",
+  "bloodVetFirst": "Zuerst tierärztlich abklären",
+  "bloodSuggestions": "Mögliche Bausteine",
+  "bloodSuggestionsHint": "Auswahl übernehmen: Ergänzungen kommen als zeitlich begrenzte Zusätze in den Futterplan (Menge laut Packungsangabe), Termine in den Pflege-Kalender, Fütterungshinweise in die Notiz des Futterplans.",
+  "bloodKind_supplement": "Futter-Zusatz",
+  "bloodKind_ration": "Fütterung",
+  "bloodKind_management": "Haltung",
+  "bloodKind_care": "Termin",
+  "bloodWeeks": "für {weeks} Wochen",
+  "@bloodWeeks": {
+    "placeholders": {
+      "weeks": {
+        "type": "int"
+      }
+    }
+  },
+  "bloodControlIn": "in {weeks, plural, =1{1 Woche} other{{weeks} Wochen}}",
+  "@bloodControlIn": {
+    "placeholders": {
+      "weeks": {
+        "type": "int"
+      }
+    }
+  },
+  "bloodInDays": "in {days, plural, =1{1 Tag} other{{days} Tagen}}",
+  "@bloodInDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "bloodApply": "In Futterplan übernehmen",
+  "bloodApplied": "{supplements} Zusätze, {events} Termine, {notes} Hinweise übernommen",
+  "@bloodApplied": {
+    "placeholders": {
+      "supplements": {
+        "type": "int"
+      },
+      "events": {
+        "type": "int"
+      },
+      "notes": {
+        "type": "int"
+      }
+    }
+  },
+  "bloodApplyNothing": "Bitte mindestens einen Baustein auswählen.",
+  "bloodPlanNoteLine": "Hinweis aus Blutbild vom {date}: {title}",
+  "@bloodPlanNoteLine": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "bloodSource": "Quelle der Referenzwerte"
 }

@@ -11,6 +11,8 @@ import 'package:pferdekalender/core/db/app_database.dart';
 import 'package:pferdekalender/core/db/database_provider.dart';
 import 'package:pferdekalender/core/files/documents_dir_provider.dart';
 import 'package:pferdekalender/core/notifications/notification_providers.dart';
+import 'package:pferdekalender/features/gesundheit/domain/blood.dart';
+import 'package:pferdekalender/features/gesundheit/ui/blood_providers.dart';
 import 'package:pferdekalender/features/training/domain/training_catalog.dart';
 import 'package:pferdekalender/features/training/ui/training_providers.dart';
 
@@ -36,6 +38,7 @@ class TestApp {
         notificationGatewayProvider.overrideWithValue(notifications),
         // rootBundle lädt in der Testzeit nicht – Vorlagen direkt lesen.
         trainingCatalogProvider.overrideWithValue(AsyncData(testCatalog)),
+        bloodCatalogProvider.overrideWithValue(AsyncData(testBloodCatalog)),
       ],
     );
     return TestApp(db, container, notifications);
@@ -91,5 +94,11 @@ class TestApp {
 /// Trainingsvorlagen aus `assets/training_templates.json`.
 final testCatalog = TrainingCatalog.fromJson(
   (jsonDecode(File('assets/training_templates.json').readAsStringSync()) as Map)
+      .cast<String, Object?>(),
+);
+
+/// Blutbild-Referenzwerte aus `assets/blood_reference.json`.
+final testBloodCatalog = BloodCatalog.fromJson(
+  (jsonDecode(File('assets/blood_reference.json').readAsStringSync()) as Map)
       .cast<String, Object?>(),
 );

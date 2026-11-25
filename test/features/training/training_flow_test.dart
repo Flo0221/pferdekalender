@@ -131,7 +131,13 @@ void main() {
         findsOneWidget,
       );
       await tester.tap(find.text('Neu verteilen'));
-      await app.settle(tester, rounds: 40);
+      // Warten, bis das Neu-Verteilen fertig ist (unter Last unterschiedlich).
+      final banner = find.text(
+        'Dienstplan geändert – Plan ab heute neu verteilen?',
+      );
+      for (var i = 0; i < 20 && banner.evaluate().isNotEmpty; i++) {
+        await app.settle(tester);
+      }
       expect(
         find.text('Dienstplan geändert – Plan ab heute neu verteilen?'),
         findsNothing,

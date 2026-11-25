@@ -30,4 +30,8 @@ abstract final class Routes {
   static const feedSupplements = '/futter-zusaetze';
   static const feedPlanNew = '/futterplan/neu';
   static String feedPlanEdit(String id) => '/futterplan/$id';
+  static const health = '/gesundheit';
+  static const bloodNew = '/gesundheit/neu';
+  static String bloodDetail(String id) => '/gesundheit/$id';
+  static String bloodEdit(String id) => '/gesundheit/$id/bearbeiten';
 }

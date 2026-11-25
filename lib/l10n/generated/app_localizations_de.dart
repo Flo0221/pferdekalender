@@ -1964,4 +1964,207 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get feedItemStockLabel => 'Vorrat';
+
+  @override
+  String get healthTitle => 'Gesundheit';
+
+  @override
+  String get healthNoTest => 'Noch kein Blutbild eingetragen';
+
+  @override
+  String healthAllInRange(String date) {
+    return 'Blutbild vom $date: alles im Referenzbereich';
+  }
+
+  @override
+  String healthSummary(String date, String summary) {
+    return 'Blutbild vom $date: $summary';
+  }
+
+  @override
+  String get healthAddTest => 'Blutbild eintragen';
+
+  @override
+  String get healthTests => 'Blutbilder';
+
+  @override
+  String get healthTestsEmptyHint =>
+      'Trag nur die Werte ein, die auf dem Befund zu hoch oder zu niedrig sind – alle anderen gelten als im Referenzbereich.';
+
+  @override
+  String get bloodNew => 'Neues Blutbild';
+
+  @override
+  String get bloodEdit => 'Blutbild bearbeiten';
+
+  @override
+  String get bloodDate => 'Datum der Blutentnahme';
+
+  @override
+  String get bloodLab => 'Labor';
+
+  @override
+  String get bloodLabDefault => 'Laboklin';
+
+  @override
+  String get bloodNotes => 'Notiz';
+
+  @override
+  String get bloodSearch => 'Wert suchen (z. B. GGT, Selen, Hämoglobin)';
+
+  @override
+  String get bloodSearchClear => 'Suche leeren';
+
+  @override
+  String get bloodOnlyEntered => 'Nur eingetragene';
+
+  @override
+  String bloodEnteredCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Werte eingetragen',
+      one: '1 Wert eingetragen',
+      zero: 'Noch kein Wert eingetragen',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String bloodRange(String range) {
+    return 'Referenz $range';
+  }
+
+  @override
+  String bloodRangeBetween(String low, String high) {
+    return '$low–$high';
+  }
+
+  @override
+  String bloodRangeBelow(String high) {
+    return '< $high';
+  }
+
+  @override
+  String bloodRangeAbove(String low) {
+    return '> $low';
+  }
+
+  @override
+  String get bloodNoMatch => 'Kein Wert gefunden';
+
+  @override
+  String get bloodValue => 'Wert';
+
+  @override
+  String get bloodOwnRange => 'Referenzbereich vom eigenen Befund (optional)';
+
+  @override
+  String get bloodOwnLow => 'untere Grenze';
+
+  @override
+  String get bloodOwnHigh => 'obere Grenze';
+
+  @override
+  String get bloodRemoveValue => 'Wert entfernen';
+
+  @override
+  String get bloodStatusHigh => 'zu hoch';
+
+  @override
+  String get bloodStatusLow => 'zu niedrig';
+
+  @override
+  String get bloodStatusStrongHigh => 'deutlich zu hoch';
+
+  @override
+  String get bloodStatusStrongLow => 'deutlich zu niedrig';
+
+  @override
+  String get bloodStatusOk => 'im Bereich';
+
+  @override
+  String get bloodDeleteTitle => 'Blutbild löschen?';
+
+  @override
+  String get bloodDeleteText =>
+      'Das Blutbild und alle eingetragenen Werte werden gelöscht. Bereits übernommene Zusätze und Termine bleiben.';
+
+  @override
+  String get bloodEvaluation => 'Auswertung';
+
+  @override
+  String get bloodDeviations => 'Abweichende Werte';
+
+  @override
+  String get bloodNoDeviations =>
+      'Alle Werte im Referenzbereich – nicht eingetragene Werte gelten als normal.';
+
+  @override
+  String get bloodVetFirst => 'Zuerst tierärztlich abklären';
+
+  @override
+  String get bloodSuggestions => 'Mögliche Bausteine';
+
+  @override
+  String get bloodSuggestionsHint =>
+      'Auswahl übernehmen: Ergänzungen kommen als zeitlich begrenzte Zusätze in den Futterplan (Menge laut Packungsangabe), Termine in den Pflege-Kalender, Fütterungshinweise in die Notiz des Futterplans.';
+
+  @override
+  String get bloodKind_supplement => 'Futter-Zusatz';
+
+  @override
+  String get bloodKind_ration => 'Fütterung';
+
+  @override
+  String get bloodKind_management => 'Haltung';
+
+  @override
+  String get bloodKind_care => 'Termin';
+
+  @override
+  String bloodWeeks(int weeks) {
+    return 'für $weeks Wochen';
+  }
+
+  @override
+  String bloodControlIn(int weeks) {
+    String _temp0 = intl.Intl.pluralLogic(
+      weeks,
+      locale: localeName,
+      other: '$weeks Wochen',
+      one: '1 Woche',
+    );
+    return 'in $_temp0';
+  }
+
+  @override
+  String bloodInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tagen',
+      one: '1 Tag',
+    );
+    return 'in $_temp0';
+  }
+
+  @override
+  String get bloodApply => 'In Futterplan übernehmen';
+
+  @override
+  String bloodApplied(int supplements, int events, int notes) {
+    return '$supplements Zusätze, $events Termine, $notes Hinweise übernommen';
+  }
+
+  @override
+  String get bloodApplyNothing => 'Bitte mindestens einen Baustein auswählen.';
+
+  @override
+  String bloodPlanNoteLine(String date, String title) {
+    return 'Hinweis aus Blutbild vom $date: $title';
+  }
+
+  @override
+  String get bloodSource => 'Quelle der Referenzwerte';
 }

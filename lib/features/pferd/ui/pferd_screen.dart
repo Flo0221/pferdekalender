@@ -8,6 +8,7 @@ import '../../../core/time/local_date.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../../core/widgets/tab_scaffold.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../gesundheit/ui/health_section.dart';
 import '../domain/horse.dart';
 import 'horse_labels.dart';
 import 'horse_providers.dart';
@@ -158,6 +159,7 @@ class _Profile extends StatelessWidget {
         ContactsSection(horse: h),
         WeightSection(horse: h),
         PhotosSection(horse: h),
+        HealthSection(horse: h),
       ],
     );
   }

@@ -11855,6 +11855,927 @@ class FeedSupplementsTemporaryCompanion
   }
 }
 
+class $BloodTestsTable extends BloodTests
+    with TableInfo<$BloodTestsTable, BloodTestRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BloodTestsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _horseIdMeta = const VerificationMeta(
+    'horseId',
+  );
+  @override
+  late final GeneratedColumn<String> horseId = GeneratedColumn<String>(
+    'horse_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES horses (id) ON DELETE CASCADE',
+    ),
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> date =
+      GeneratedColumn<String>(
+        'date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($BloodTestsTable.$converterdate);
+  static const VerificationMeta _labMeta = const VerificationMeta('lab');
+  @override
+  late final GeneratedColumn<String> lab = GeneratedColumn<String>(
+    'lab',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    id,
+    horseId,
+    date,
+    lab,
+    notes,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'blood_tests';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<BloodTestRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('horse_id')) {
+      context.handle(
+        _horseIdMeta,
+        horseId.isAcceptableOrUnknown(data['horse_id']!, _horseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_horseIdMeta);
+    }
+    if (data.containsKey('lab')) {
+      context.handle(
+        _labMeta,
+        lab.isAcceptableOrUnknown(data['lab']!, _labMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  BloodTestRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BloodTestRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      horseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}horse_id'],
+      )!,
+      date: $BloodTestsTable.$converterdate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}date'],
+        )!,
+      ),
+      lab: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}lab'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+    );
+  }
+
+  @override
+  $BloodTestsTable createAlias(String alias) {
+    return $BloodTestsTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<LocalDate, String> $converterdate =
+      const LocalDateConverter();
+}
+
+class BloodTestRow extends DataClass implements Insertable<BloodTestRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String id;
+  final String horseId;
+  final LocalDate date;
+  final String? lab;
+  final String? notes;
+  const BloodTestRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.id,
+    required this.horseId,
+    required this.date,
+    this.lab,
+    this.notes,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['id'] = Variable<String>(id);
+    map['horse_id'] = Variable<String>(horseId);
+    {
+      map['date'] = Variable<String>(
+        $BloodTestsTable.$converterdate.toSql(date),
+      );
+    }
+    if (!nullToAbsent || lab != null) {
+      map['lab'] = Variable<String>(lab);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    return map;
+  }
+
+  BloodTestsCompanion toCompanion(bool nullToAbsent) {
+    return BloodTestsCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      id: Value(id),
+      horseId: Value(horseId),
+      date: Value(date),
+      lab: lab == null && nullToAbsent ? const Value.absent() : Value(lab),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+    );
+  }
+
+  factory BloodTestRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BloodTestRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      horseId: serializer.fromJson<String>(json['horseId']),
+      date: serializer.fromJson<LocalDate>(json['date']),
+      lab: serializer.fromJson<String?>(json['lab']),
+      notes: serializer.fromJson<String?>(json['notes']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'id': serializer.toJson<String>(id),
+      'horseId': serializer.toJson<String>(horseId),
+      'date': serializer.toJson<LocalDate>(date),
+      'lab': serializer.toJson<String?>(lab),
+      'notes': serializer.toJson<String?>(notes),
+    };
+  }
+
+  BloodTestRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? id,
+    String? horseId,
+    LocalDate? date,
+    Value<String?> lab = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+  }) => BloodTestRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    id: id ?? this.id,
+    horseId: horseId ?? this.horseId,
+    date: date ?? this.date,
+    lab: lab.present ? lab.value : this.lab,
+    notes: notes.present ? notes.value : this.notes,
+  );
+  BloodTestRow copyWithCompanion(BloodTestsCompanion data) {
+    return BloodTestRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      id: data.id.present ? data.id.value : this.id,
+      horseId: data.horseId.present ? data.horseId.value : this.horseId,
+      date: data.date.present ? data.date.value : this.date,
+      lab: data.lab.present ? data.lab.value : this.lab,
+      notes: data.notes.present ? data.notes.value : this.notes,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BloodTestRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('date: $date, ')
+          ..write('lab: $lab, ')
+          ..write('notes: $notes')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(createdAt, updatedAt, id, horseId, date, lab, notes);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BloodTestRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.id == this.id &&
+          other.horseId == this.horseId &&
+          other.date == this.date &&
+          other.lab == this.lab &&
+          other.notes == this.notes);
+}
+
+class BloodTestsCompanion extends UpdateCompanion<BloodTestRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> id;
+  final Value<String> horseId;
+  final Value<LocalDate> date;
+  final Value<String?> lab;
+  final Value<String?> notes;
+  final Value<int> rowid;
+  const BloodTestsCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.horseId = const Value.absent(),
+    this.date = const Value.absent(),
+    this.lab = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BloodTestsCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String id,
+    required String horseId,
+    required LocalDate date,
+    this.lab = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       horseId = Value(horseId),
+       date = Value(date);
+  static Insertable<BloodTestRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? id,
+    Expression<String>? horseId,
+    Expression<String>? date,
+    Expression<String>? lab,
+    Expression<String>? notes,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (id != null) 'id': id,
+      if (horseId != null) 'horse_id': horseId,
+      if (date != null) 'date': date,
+      if (lab != null) 'lab': lab,
+      if (notes != null) 'notes': notes,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BloodTestsCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? id,
+    Value<String>? horseId,
+    Value<LocalDate>? date,
+    Value<String?>? lab,
+    Value<String?>? notes,
+    Value<int>? rowid,
+  }) {
+    return BloodTestsCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      id: id ?? this.id,
+      horseId: horseId ?? this.horseId,
+      date: date ?? this.date,
+      lab: lab ?? this.lab,
+      notes: notes ?? this.notes,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (horseId.present) {
+      map['horse_id'] = Variable<String>(horseId.value);
+    }
+    if (date.present) {
+      map['date'] = Variable<String>(
+        $BloodTestsTable.$converterdate.toSql(date.value),
+      );
+    }
+    if (lab.present) {
+      map['lab'] = Variable<String>(lab.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BloodTestsCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('id: $id, ')
+          ..write('horseId: $horseId, ')
+          ..write('date: $date, ')
+          ..write('lab: $lab, ')
+          ..write('notes: $notes, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $BloodValuesTable extends BloodValues
+    with TableInfo<$BloodValuesTable, BloodValueRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BloodValuesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _testIdMeta = const VerificationMeta('testId');
+  @override
+  late final GeneratedColumn<String> testId = GeneratedColumn<String>(
+    'test_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES blood_tests (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _paramKeyMeta = const VerificationMeta(
+    'paramKey',
+  );
+  @override
+  late final GeneratedColumn<String> paramKey = GeneratedColumn<String>(
+    'param_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _valueMeta = const VerificationMeta('value');
+  @override
+  late final GeneratedColumn<double> value = GeneratedColumn<double>(
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refLowMeta = const VerificationMeta('refLow');
+  @override
+  late final GeneratedColumn<double> refLow = GeneratedColumn<double>(
+    'ref_low',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _refHighMeta = const VerificationMeta(
+    'refHigh',
+  );
+  @override
+  late final GeneratedColumn<double> refHigh = GeneratedColumn<double>(
+    'ref_high',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    createdAt,
+    updatedAt,
+    testId,
+    paramKey,
+    value,
+    refLow,
+    refHigh,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'blood_values';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<BloodValueRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('test_id')) {
+      context.handle(
+        _testIdMeta,
+        testId.isAcceptableOrUnknown(data['test_id']!, _testIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_testIdMeta);
+    }
+    if (data.containsKey('param_key')) {
+      context.handle(
+        _paramKeyMeta,
+        paramKey.isAcceptableOrUnknown(data['param_key']!, _paramKeyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paramKeyMeta);
+    }
+    if (data.containsKey('value')) {
+      context.handle(
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_valueMeta);
+    }
+    if (data.containsKey('ref_low')) {
+      context.handle(
+        _refLowMeta,
+        refLow.isAcceptableOrUnknown(data['ref_low']!, _refLowMeta),
+      );
+    }
+    if (data.containsKey('ref_high')) {
+      context.handle(
+        _refHighMeta,
+        refHigh.isAcceptableOrUnknown(data['ref_high']!, _refHighMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {testId, paramKey};
+  @override
+  BloodValueRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BloodValueRow(
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      testId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}test_id'],
+      )!,
+      paramKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}param_key'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}value'],
+      )!,
+      refLow: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}ref_low'],
+      ),
+      refHigh: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}ref_high'],
+      ),
+    );
+  }
+
+  @override
+  $BloodValuesTable createAlias(String alias) {
+    return $BloodValuesTable(attachedDatabase, alias);
+  }
+}
+
+class BloodValueRow extends DataClass implements Insertable<BloodValueRow> {
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String testId;
+
+  /// Schlüssel aus `assets/blood_reference.json` (`parameters[].key`).
+  final String paramKey;
+  final double value;
+
+  /// Eigener Referenzbereich vom Befund (optional).
+  final double? refLow;
+  final double? refHigh;
+  const BloodValueRow({
+    required this.createdAt,
+    required this.updatedAt,
+    required this.testId,
+    required this.paramKey,
+    required this.value,
+    this.refLow,
+    this.refHigh,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['test_id'] = Variable<String>(testId);
+    map['param_key'] = Variable<String>(paramKey);
+    map['value'] = Variable<double>(value);
+    if (!nullToAbsent || refLow != null) {
+      map['ref_low'] = Variable<double>(refLow);
+    }
+    if (!nullToAbsent || refHigh != null) {
+      map['ref_high'] = Variable<double>(refHigh);
+    }
+    return map;
+  }
+
+  BloodValuesCompanion toCompanion(bool nullToAbsent) {
+    return BloodValuesCompanion(
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      testId: Value(testId),
+      paramKey: Value(paramKey),
+      value: Value(value),
+      refLow: refLow == null && nullToAbsent
+          ? const Value.absent()
+          : Value(refLow),
+      refHigh: refHigh == null && nullToAbsent
+          ? const Value.absent()
+          : Value(refHigh),
+    );
+  }
+
+  factory BloodValueRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BloodValueRow(
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      testId: serializer.fromJson<String>(json['testId']),
+      paramKey: serializer.fromJson<String>(json['paramKey']),
+      value: serializer.fromJson<double>(json['value']),
+      refLow: serializer.fromJson<double?>(json['refLow']),
+      refHigh: serializer.fromJson<double?>(json['refHigh']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'testId': serializer.toJson<String>(testId),
+      'paramKey': serializer.toJson<String>(paramKey),
+      'value': serializer.toJson<double>(value),
+      'refLow': serializer.toJson<double?>(refLow),
+      'refHigh': serializer.toJson<double?>(refHigh),
+    };
+  }
+
+  BloodValueRow copyWith({
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? testId,
+    String? paramKey,
+    double? value,
+    Value<double?> refLow = const Value.absent(),
+    Value<double?> refHigh = const Value.absent(),
+  }) => BloodValueRow(
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    testId: testId ?? this.testId,
+    paramKey: paramKey ?? this.paramKey,
+    value: value ?? this.value,
+    refLow: refLow.present ? refLow.value : this.refLow,
+    refHigh: refHigh.present ? refHigh.value : this.refHigh,
+  );
+  BloodValueRow copyWithCompanion(BloodValuesCompanion data) {
+    return BloodValueRow(
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      testId: data.testId.present ? data.testId.value : this.testId,
+      paramKey: data.paramKey.present ? data.paramKey.value : this.paramKey,
+      value: data.value.present ? data.value.value : this.value,
+      refLow: data.refLow.present ? data.refLow.value : this.refLow,
+      refHigh: data.refHigh.present ? data.refHigh.value : this.refHigh,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BloodValueRow(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('testId: $testId, ')
+          ..write('paramKey: $paramKey, ')
+          ..write('value: $value, ')
+          ..write('refLow: $refLow, ')
+          ..write('refHigh: $refHigh')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    createdAt,
+    updatedAt,
+    testId,
+    paramKey,
+    value,
+    refLow,
+    refHigh,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BloodValueRow &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.testId == this.testId &&
+          other.paramKey == this.paramKey &&
+          other.value == this.value &&
+          other.refLow == this.refLow &&
+          other.refHigh == this.refHigh);
+}
+
+class BloodValuesCompanion extends UpdateCompanion<BloodValueRow> {
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> testId;
+  final Value<String> paramKey;
+  final Value<double> value;
+  final Value<double?> refLow;
+  final Value<double?> refHigh;
+  final Value<int> rowid;
+  const BloodValuesCompanion({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.testId = const Value.absent(),
+    this.paramKey = const Value.absent(),
+    this.value = const Value.absent(),
+    this.refLow = const Value.absent(),
+    this.refHigh = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BloodValuesCompanion.insert({
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    required String testId,
+    required String paramKey,
+    required double value,
+    this.refLow = const Value.absent(),
+    this.refHigh = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : testId = Value(testId),
+       paramKey = Value(paramKey),
+       value = Value(value);
+  static Insertable<BloodValueRow> custom({
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? testId,
+    Expression<String>? paramKey,
+    Expression<double>? value,
+    Expression<double>? refLow,
+    Expression<double>? refHigh,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (testId != null) 'test_id': testId,
+      if (paramKey != null) 'param_key': paramKey,
+      if (value != null) 'value': value,
+      if (refLow != null) 'ref_low': refLow,
+      if (refHigh != null) 'ref_high': refHigh,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BloodValuesCompanion copyWith({
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? testId,
+    Value<String>? paramKey,
+    Value<double>? value,
+    Value<double?>? refLow,
+    Value<double?>? refHigh,
+    Value<int>? rowid,
+  }) {
+    return BloodValuesCompanion(
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      testId: testId ?? this.testId,
+      paramKey: paramKey ?? this.paramKey,
+      value: value ?? this.value,
+      refLow: refLow ?? this.refLow,
+      refHigh: refHigh ?? this.refHigh,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (testId.present) {
+      map['test_id'] = Variable<String>(testId.value);
+    }
+    if (paramKey.present) {
+      map['param_key'] = Variable<String>(paramKey.value);
+    }
+    if (value.present) {
+      map['value'] = Variable<double>(value.value);
+    }
+    if (refLow.present) {
+      map['ref_low'] = Variable<double>(refLow.value);
+    }
+    if (refHigh.present) {
+      map['ref_high'] = Variable<double>(refHigh.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BloodValuesCompanion(')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('testId: $testId, ')
+          ..write('paramKey: $paramKey, ')
+          ..write('value: $value, ')
+          ..write('refLow: $refLow, ')
+          ..write('refHigh: $refHigh, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -11882,6 +12803,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $FeedMealItemsTable feedMealItems = $FeedMealItemsTable(this);
   late final $FeedSupplementsTemporaryTable feedSupplementsTemporary =
       $FeedSupplementsTemporaryTable(this);
+  late final $BloodTestsTable bloodTests = $BloodTestsTable(this);
+  late final $BloodValuesTable bloodValues = $BloodValuesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -11907,6 +12830,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     feedMeals,
     feedMealItems,
     feedSupplementsTemporary,
+    bloodTests,
+    bloodValues,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -12023,6 +12948,20 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       result: [
         TableUpdate('feed_supplements_temporary', kind: UpdateKind.delete),
       ],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'horses',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('blood_tests', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'blood_tests',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('blood_values', kind: UpdateKind.delete)],
     ),
   ]);
 }
@@ -12427,6 +13366,24 @@ final class $$HorsesTableReferences
       manager.$state.copyWith(prefetchedData: cache),
     );
   }
+
+  static MultiTypedResultKey<$BloodTestsTable, List<BloodTestRow>>
+  _bloodTestsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.bloodTests,
+    aliasName: 'horses__id__blood_tests__horse_id',
+  );
+
+  $$BloodTestsTableProcessedTableManager get bloodTestsRefs {
+    final manager = $$BloodTestsTableTableManager(
+      $_db,
+      $_db.bloodTests,
+    ).filter((f) => f.horseId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_bloodTestsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
 }
 
 class $$HorsesTableFilterComposer
@@ -12768,6 +13725,31 @@ class $$HorsesTableFilterComposer
                     $removeJoinBuilderFromRootComposer,
               ),
         );
+    return f(composer);
+  }
+
+  Expression<bool> bloodTestsRefs(
+    Expression<bool> Function($$BloodTestsTableFilterComposer f) f,
+  ) {
+    final $$BloodTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.bloodTests,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.bloodTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
     return f(composer);
   }
 }
@@ -13220,6 +14202,31 @@ class $$HorsesTableAnnotationComposer
         );
     return f(composer);
   }
+
+  Expression<T> bloodTestsRefs<T extends Object>(
+    Expression<T> Function($$BloodTestsTableAnnotationComposer a) f,
+  ) {
+    final $$BloodTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.bloodTests,
+      getReferencedColumn: (t) => t.horseId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.bloodTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$HorsesTableTableManager
@@ -13244,6 +14251,7 @@ class $$HorsesTableTableManager
             bool trainingSessionsRefs,
             bool feedPlansRefs,
             bool feedSupplementsTemporaryRefs,
+            bool bloodTestsRefs,
           })
         > {
   $$HorsesTableTableManager(_$AppDatabase db, $HorsesTable table)
@@ -13391,6 +14399,7 @@ class $$HorsesTableTableManager
                 trainingSessionsRefs = false,
                 feedPlansRefs = false,
                 feedSupplementsTemporaryRefs = false,
+                bloodTestsRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -13404,6 +14413,7 @@ class $$HorsesTableTableManager
                     if (feedPlansRefs) db.feedPlans,
                     if (feedSupplementsTemporaryRefs)
                       db.feedSupplementsTemporary,
+                    if (bloodTestsRefs) db.bloodTests,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -13568,6 +14578,26 @@ class $$HorsesTableTableManager
                           referencedColumn: 'horse_id',
                           typedResults: items,
                         ),
+                      if (bloodTestsRefs)
+                        await $_getPrefetchedDataByColumns<
+                          HorseRow,
+                          $HorsesTable,
+                          BloodTestRow,
+                          $BloodTestsTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$HorsesTableReferences
+                              ._bloodTestsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$HorsesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).bloodTestsRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'horse_id',
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -13597,6 +14627,7 @@ typedef $$HorsesTableProcessedTableManager =
         bool trainingSessionsRefs,
         bool feedPlansRefs,
         bool feedSupplementsTemporaryRefs,
+        bool bloodTestsRefs,
       })
     >;
 typedef $$HorsePhotosTableCreateCompanionBuilder =
@@ -21809,6 +22840,800 @@ typedef $$FeedSupplementsTemporaryTableProcessedTableManager =
       FeedSupplementRow,
       PrefetchHooks Function({bool horseId, bool itemId})
     >;
+typedef $$BloodTestsTableCreateCompanionBuilder = BloodTestsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  required String id,
+  required String horseId,
+  required LocalDate date,
+  Value<String?> lab,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+typedef $$BloodTestsTableUpdateCompanionBuilder = BloodTestsCompanion Function({
+  Value<DateTime> createdAt,
+  Value<DateTime> updatedAt,
+  Value<String> id,
+  Value<String> horseId,
+  Value<LocalDate> date,
+  Value<String?> lab,
+  Value<String?> notes,
+  Value<int> rowid,
+});
+
+final class $$BloodTestsTableReferences
+    extends BaseReferences<_$AppDatabase, $BloodTestsTable, BloodTestRow> {
+  $$BloodTestsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $HorsesTable _horseIdTable(_$AppDatabase db) =>
+      db.horses.createAlias('blood_tests__horse_id__horses__id');
+
+  $$HorsesTableProcessedTableManager get horseId {
+    final $_column = $_itemColumn<String>('horse_id')!;
+
+    final manager = $$HorsesTableTableManager(
+      $_db,
+      $_db.horses,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_horseIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$BloodValuesTable, List<BloodValueRow>>
+  _bloodValuesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.bloodValues,
+    aliasName: 'blood_tests__id__blood_values__test_id',
+  );
+
+  $$BloodValuesTableProcessedTableManager get bloodValuesRefs {
+    final manager = $$BloodValuesTableTableManager(
+      $_db,
+      $_db.bloodValues,
+    ).filter((f) => f.testId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_bloodValuesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$BloodTestsTableFilterComposer
+    extends Composer<_$AppDatabase, $BloodTestsTable> {
+  $$BloodTestsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get date =>
+      $composableBuilder(
+        column: $table.date,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnFilters<String> get lab => $composableBuilder(
+    column: $table.lab,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$HorsesTableFilterComposer get horseId {
+    final $$HorsesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableFilterComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> bloodValuesRefs(
+    Expression<bool> Function($$BloodValuesTableFilterComposer f) f,
+  ) {
+    final $$BloodValuesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.bloodValues,
+      getReferencedColumn: (t) => t.testId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodValuesTableFilterComposer(
+            $db: $db,
+            $table: $db.bloodValues,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$BloodTestsTableOrderingComposer
+    extends Composer<_$AppDatabase, $BloodTestsTable> {
+  $$BloodTestsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lab => $composableBuilder(
+    column: $table.lab,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$HorsesTableOrderingComposer get horseId {
+    final $$HorsesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableOrderingComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$BloodTestsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BloodTestsTable> {
+  $$BloodTestsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<LocalDate, String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<String> get lab =>
+      $composableBuilder(column: $table.lab, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  $$HorsesTableAnnotationComposer get horseId {
+    final $$HorsesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.horseId,
+      referencedTable: $db.horses,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$HorsesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.horses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> bloodValuesRefs<T extends Object>(
+    Expression<T> Function($$BloodValuesTableAnnotationComposer a) f,
+  ) {
+    final $$BloodValuesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.bloodValues,
+      getReferencedColumn: (t) => t.testId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodValuesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.bloodValues,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$BloodTestsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BloodTestsTable,
+          BloodTestRow,
+          $$BloodTestsTableFilterComposer,
+          $$BloodTestsTableOrderingComposer,
+          $$BloodTestsTableAnnotationComposer,
+          $$BloodTestsTableCreateCompanionBuilder,
+          $$BloodTestsTableUpdateCompanionBuilder,
+          (BloodTestRow, $$BloodTestsTableReferences),
+          BloodTestRow,
+          PrefetchHooks Function({bool horseId, bool bloodValuesRefs})
+        > {
+  $$BloodTestsTableTableManager(_$AppDatabase db, $BloodTestsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BloodTestsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BloodTestsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BloodTestsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> horseId = const Value.absent(),
+                Value<LocalDate> date = const Value.absent(),
+                Value<String?> lab = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BloodTestsCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                date: date,
+                lab: lab,
+                notes: notes,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String id,
+                required String horseId,
+                required LocalDate date,
+                Value<String?> lab = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BloodTestsCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                id: id,
+                horseId: horseId,
+                date: date,
+                lab: lab,
+                notes: notes,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BloodTestsTable, BloodTestRow>(table),
+                  $$BloodTestsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({horseId = false, bloodValuesRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (bloodValuesRefs) db.bloodValues],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (horseId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.horseId,
+                        referencedTable: $$BloodTestsTableReferences
+                            ._horseIdTable(db),
+                        referencedColumn: $$BloodTestsTableReferences
+                            ._horseIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (bloodValuesRefs)
+                    await $_getPrefetchedDataByColumns<
+                      BloodTestRow,
+                      $BloodTestsTable,
+                      BloodValueRow,
+                      $BloodValuesTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$BloodTestsTableReferences
+                          ._bloodValuesRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$BloodTestsTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).bloodValuesRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'test_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$BloodTestsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BloodTestsTable,
+      BloodTestRow,
+      $$BloodTestsTableFilterComposer,
+      $$BloodTestsTableOrderingComposer,
+      $$BloodTestsTableAnnotationComposer,
+      $$BloodTestsTableCreateCompanionBuilder,
+      $$BloodTestsTableUpdateCompanionBuilder,
+      (BloodTestRow, $$BloodTestsTableReferences),
+      BloodTestRow,
+      PrefetchHooks Function({bool horseId, bool bloodValuesRefs})
+    >;
+typedef $$BloodValuesTableCreateCompanionBuilder =
+    BloodValuesCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      required String testId,
+      required String paramKey,
+      required double value,
+      Value<double?> refLow,
+      Value<double?> refHigh,
+      Value<int> rowid,
+    });
+typedef $$BloodValuesTableUpdateCompanionBuilder =
+    BloodValuesCompanion Function({
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> testId,
+      Value<String> paramKey,
+      Value<double> value,
+      Value<double?> refLow,
+      Value<double?> refHigh,
+      Value<int> rowid,
+    });
+
+final class $$BloodValuesTableReferences
+    extends BaseReferences<_$AppDatabase, $BloodValuesTable, BloodValueRow> {
+  $$BloodValuesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $BloodTestsTable _testIdTable(_$AppDatabase db) =>
+      db.bloodTests.createAlias('blood_values__test_id__blood_tests__id');
+
+  $$BloodTestsTableProcessedTableManager get testId {
+    final $_column = $_itemColumn<String>('test_id')!;
+
+    final manager = $$BloodTestsTableTableManager(
+      $_db,
+      $_db.bloodTests,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_testIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$BloodValuesTableFilterComposer
+    extends Composer<_$AppDatabase, $BloodValuesTable> {
+  $$BloodValuesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paramKey => $composableBuilder(
+    column: $table.paramKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get value => $composableBuilder(
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get refLow => $composableBuilder(
+    column: $table.refLow,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get refHigh => $composableBuilder(
+    column: $table.refHigh,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$BloodTestsTableFilterComposer get testId {
+    final $$BloodTestsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.bloodTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodTestsTableFilterComposer(
+            $db: $db,
+            $table: $db.bloodTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$BloodValuesTableOrderingComposer
+    extends Composer<_$AppDatabase, $BloodValuesTable> {
+  $$BloodValuesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paramKey => $composableBuilder(
+    column: $table.paramKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get value => $composableBuilder(
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get refLow => $composableBuilder(
+    column: $table.refLow,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get refHigh => $composableBuilder(
+    column: $table.refHigh,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$BloodTestsTableOrderingComposer get testId {
+    final $$BloodTestsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.bloodTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodTestsTableOrderingComposer(
+            $db: $db,
+            $table: $db.bloodTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$BloodValuesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BloodValuesTable> {
+  $$BloodValuesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get paramKey =>
+      $composableBuilder(column: $table.paramKey, builder: (column) => column);
+
+  GeneratedColumn<double> get value =>
+      $composableBuilder(column: $table.value, builder: (column) => column);
+
+  GeneratedColumn<double> get refLow =>
+      $composableBuilder(column: $table.refLow, builder: (column) => column);
+
+  GeneratedColumn<double> get refHigh =>
+      $composableBuilder(column: $table.refHigh, builder: (column) => column);
+
+  $$BloodTestsTableAnnotationComposer get testId {
+    final $$BloodTestsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.testId,
+      referencedTable: $db.bloodTests,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$BloodTestsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.bloodTests,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$BloodValuesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BloodValuesTable,
+          BloodValueRow,
+          $$BloodValuesTableFilterComposer,
+          $$BloodValuesTableOrderingComposer,
+          $$BloodValuesTableAnnotationComposer,
+          $$BloodValuesTableCreateCompanionBuilder,
+          $$BloodValuesTableUpdateCompanionBuilder,
+          (BloodValueRow, $$BloodValuesTableReferences),
+          BloodValueRow,
+          PrefetchHooks Function({bool testId})
+        > {
+  $$BloodValuesTableTableManager(_$AppDatabase db, $BloodValuesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BloodValuesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BloodValuesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BloodValuesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> testId = const Value.absent(),
+                Value<String> paramKey = const Value.absent(),
+                Value<double> value = const Value.absent(),
+                Value<double?> refLow = const Value.absent(),
+                Value<double?> refHigh = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BloodValuesCompanion(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                testId: testId,
+                paramKey: paramKey,
+                value: value,
+                refLow: refLow,
+                refHigh: refHigh,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                required String testId,
+                required String paramKey,
+                required double value,
+                Value<double?> refLow = const Value.absent(),
+                Value<double?> refHigh = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BloodValuesCompanion.insert(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                testId: testId,
+                paramKey: paramKey,
+                value: value,
+                refLow: refLow,
+                refHigh: refHigh,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BloodValuesTable, BloodValueRow>(table),
+                  $$BloodValuesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({testId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (testId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.testId,
+                        referencedTable: $$BloodValuesTableReferences
+                            ._testIdTable(db),
+                        referencedColumn: $$BloodValuesTableReferences
+                            ._testIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$BloodValuesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BloodValuesTable,
+      BloodValueRow,
+      $$BloodValuesTableFilterComposer,
+      $$BloodValuesTableOrderingComposer,
+      $$BloodValuesTableAnnotationComposer,
+      $$BloodValuesTableCreateCompanionBuilder,
+      $$BloodValuesTableUpdateCompanionBuilder,
+      (BloodValueRow, $$BloodValuesTableReferences),
+      BloodValueRow,
+      PrefetchHooks Function({bool testId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -21856,4 +23681,8 @@ class $AppDatabaseManager {
         _db,
         _db.feedSupplementsTemporary,
       );
+  $$BloodTestsTableTableManager get bloodTests =>
+      $$BloodTestsTableTableManager(_db, _db.bloodTests);
+  $$BloodValuesTableTableManager get bloodValues =>
+      $$BloodValuesTableTableManager(_db, _db.bloodValues);
 }

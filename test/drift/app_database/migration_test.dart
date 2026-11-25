@@ -11,6 +11,7 @@ import 'generated/schema_v3.dart' as v3;
 import 'generated/schema_v4.dart' as v4;
 import 'generated/schema_v5.dart' as v5;
 import 'generated/schema_v6.dart' as v6;
+import 'generated/schema_v7.dart' as v7;
 
 /// Prüft jede Schema-Migration gegen die gespeicherten Snapshots in
 /// drift_schemas/. Bei jeder neuen Version hier einen Datenerhalt-Test ergänzen.
@@ -239,6 +240,46 @@ void main() {
         expect(s.level, 3);
         expect(await newDb.select(newDb.feedItems).get(), isEmpty);
         expect(await newDb.select(newDb.feedPlans).get(), isEmpty);
+      },
+    );
+  });
+
+  test('v6 → v7 behält Futterplan, Blutbild-Tabellen leer', () async {
+    final ts = DateTime.utc(2026, 11, 1).millisecondsSinceEpoch ~/ 1000;
+    await verifier.testWithDataIntegrity(
+      oldVersion: 6,
+      newVersion: 7,
+      createOld: v6.DatabaseAtV6.new,
+      createNew: v7.DatabaseAtV7.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch
+          ..insert(
+            oldDb.horses,
+            v6.HorsesCompanion.insert(
+              id: 'h1',
+              name: 'Amigo',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          )
+          ..insert(
+            oldDb.feedPlans,
+            v6.FeedPlansCompanion.insert(
+              id: 'p1',
+              horseId: 'h1',
+              name: 'Winter',
+              validFrom: '2026-11-01',
+              createdAt: Value(ts),
+              updatedAt: Value(ts),
+            ),
+          );
+      },
+      validateItems: (newDb) async {
+        final p = await newDb.select(newDb.feedPlans).getSingle();
+        expect(p.name, 'Winter');
+        expect(p.validFrom, '2026-11-01');
+        expect(await newDb.select(newDb.bloodTests).get(), isEmpty);
       },
     );
   });

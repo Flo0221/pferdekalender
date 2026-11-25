@@ -142,6 +142,20 @@ test/                         spiegelt lib/
   `copyPlanAsNewVersion`). Trainingstag = Einheit ab Stufe 2, nicht
   ausgefallen (`trainingDaysProvider`). Planversionen werden beim Speichern
   komplett ersetzt (Mahlzeiten neu). Keine Rationsberechnung/Empfehlungen.
+- **Gesundheit / Blutbild:** `features/gesundheit`. Referenzwerte und Regeln
+  in `assets/blood_reference.json`, **erzeugt** von
+  `tool/gen_blood_reference.py` (dort ändern, dann `python3
+  tool/gen_blood_reference.py`). Referenzwerte = Laboklin Leistungsverzeichnis
+  Pferd 2025/26, Kap. 14.1 (einmalig ausgewertet). ACTH saisonal. Auswertung
+  `gesundheit/domain/blood_evaluation.dart` (`evaluate`): nicht eingetragene
+  Werte gelten als normal; Einzelregeln + Muster (`combos`), „zuerst Tierarzt“
+  bei Regel-Flag oder deutlicher Abweichung; Vorschläge ohne Marken.
+  Übernahme (`blood_apply.dart`): Zusätze ohne Menge („laut Packungsangabe“),
+  Termine in den Pflege-Kalender, Fütterungshinweise als Notiz der aktuellen
+  Futterplan-Version. Fachtexte stehen bewusst in der JSON-Datei, nicht in
+  der ARB (wie die Trainingsvorlagen). Immer als Hinweis zur Rücksprache
+  formulieren, nie als Diagnose. Karte „Gesundheit“ im Pferde-Profil unter
+  „Fotos“ mit Kurzinfo (`healthSummaryText`).
 - **Tab-FABs** stehen in `HeroMode(enabled: false)` (IndexedStack, sonst
   Hero-Tag-Kollision).
 - **Kalender-Widget** `core/widgets/month_calendar.dart`: Punkte (`dotsFor`)
@@ -192,7 +206,9 @@ test/                         spiegelt lib/
 `valid_from`), `feed_meals`, `feed_meal_items` (+ `variant`:
 always/training/rest), `feed_supplements_temporary` (`amount` nullable =
 laut Packungsangabe, `meal_name` statt FK, `source` manual/blood,
-`blood_test_id`).
+`blood_test_id`) · `blood_tests` (Befund je Pferd: Datum, Labor, Notiz),
+`blood_values` (PK test_id+param_key, `value`, optional `ref_low`/`ref_high`
+vom eigenen Befund). Nur abweichende Werte werden gespeichert.
 
 ### Migrationen
 
@@ -202,12 +218,13 @@ laut Packungsangabe, `meal_name` statt FK, `source` manual/blood,
 3. Schritt in `MigrationStrategy.onUpgrade` (via `stepByStep`) ergänzen.
 4. Migrationstest ausführen. Alte Schema-Snapshots nie löschen.
 
-Aktueller Stand: **Schema v6** (`settings`; `horses`, `horse_photos`,
+Aktueller Stand: **Schema v7** (`settings`; `horses`, `horse_photos`,
 `horse_weights`, `contacts`, `horse_contacts`; `care_event_types`,
 `care_interval_defaults`, `care_events`, `care_reminders`;
 `shift_templates`, `shift_patterns`, `shift_days`; `training_plans`,
 `training_sessions`; `feed_items`, `feed_plans`, `feed_meals`,
-`feed_meal_items`, `feed_supplements_temporary`). Migrationstest:
+`feed_meal_items`, `feed_supplements_temporary`; `blood_tests`,
+`blood_values`). Migrationstest:
 `test/drift/app_database/migration_test.dart` (je Version ein Datenerhalt-Test).
 
 **Startwerte** (eingebaute Eintragsarten, Standard-Intervalle) werden in
@@ -226,6 +243,8 @@ gelöscht, nur ausgeblendet.
   downloads.gradle.org. Android-SDK liegt unter `/opt/sdk/android`
   (`ANDROID_HOME`), Flutter unter `/opt/sdk/flutter`. Beides ist nicht
   persistent – bei neuem Container neu installieren.
+- Die Umgebung erlaubt zusätzlich `laboklin.de` – nur für die einmalige
+  Recherche der Referenzwerte, die App selbst lädt nie etwas.
 - Maven Central antwortet gelegentlich mit 429 → Build einfach wiederholen.
 - `compileSdk = 37` fest in `android/app/build.gradle.kts` (Plugin-Vorgabe);
   Plattform `platforms;android-37.0` muss installiert sein.
@@ -271,7 +290,7 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
 - [x] 4. Dienstplan: Vorlagen, Schnell-Eintragen, Rhythmen
 - [x] 5. Training: Kalender, manuelle Einheiten, Generator + Tests, Neu-Verteilen
 - [x] 6. Futterplan mit Versionen und temporären Zusätzen
-- [ ] 6b. Gesundheit: Blutbild mit Laboklin-Referenzwerten, Regel-Auswertung, Futter-Bausteine
+- [x] 6b. Gesundheit: Blutbild mit Laboklin-Referenzwerten, Regel-Auswertung, Futter-Bausteine
 - [ ] 7. Export/Import, Einstellungen, Übersichtskarte, Feinschliff
 - [ ] 8. Release-Build Android (Icon, Splash, Signing, Permission-Prüfung)
 - [ ] 9. iOS (nur nach Freigabe)
@@ -291,5 +310,8 @@ Bewusst **nicht** verwendet: `package_info_plus`, `table_calendar`, Diagramm-Bib
   Einheit aus Vorlage wählen beim manuellen Anlegen – optional.
 - Stallzeit bei mehreren Pferden wird je Plan als Prozent-Anteil gewählt; eine
   gemeinsame Planung über alle Pferde gleichzeitig gibt es nicht.
+- Blutbild: Referenzwerte gelten für adulte Pferde (keine Fohlen/Esel-Werte);
+  Rassenunterschiede nur als Hinweistext. Verlaufsdiagramm einzelner Werte
+  über mehrere Blutbilder fehlt noch.
 - Release-Signierung: APK ist derzeit mit dem Debug-Key signiert (Meilenstein 8).
 - iOS-Projekt ist nur generiert, nicht angepasst (Meilenstein 9).

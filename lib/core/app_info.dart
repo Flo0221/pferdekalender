@@ -3,4 +3,4 @@
 /// Muss mit `version:` in pubspec.yaml übereinstimmen – geprüft durch
 /// test/core/app_info_test.dart. (Bewusst kein package_info_plus, um keine
 /// zusätzlichen Abhängigkeiten mit Netzwerkcode einzubinden.)
-const appVersion = '0.4.0+4';
+const appVersion = '0.5.0+5';
